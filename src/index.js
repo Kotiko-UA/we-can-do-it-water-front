@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
+import { App } from './components/App';
 import { ThemeProvider } from 'styled-components';
-import { GlobalStyles } from 'Globalstyle';
+import { GlobalStyles } from 'components/GlobalStyle';
 import { BrowserRouter } from 'react-router-dom';
 
 const colors = {};
