@@ -1,10 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { App } from 'components/App';
-import './index.css';
+import App from './App';
+import { ThemeProvider } from 'styled-components';
+import { GlobalStyles } from 'Globalstyle';
+import { BrowserRouter } from 'react-router-dom';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+const colors = {};
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider theme={colors}>
+      <BrowserRouter basename="/we-can-do-it-water-front">
+        <App />
+        <GlobalStyles />
+      </BrowserRouter>
+    </ThemeProvider>
   </React.StrictMode>
 );
