@@ -5,7 +5,11 @@ import { ThemeProvider } from 'styled-components';
 import { GlobalStyles } from 'components/GlobalStyle';
 import { BrowserRouter } from 'react-router-dom';
 
-const colors = {};
+//кольоры для прикладу
+const colors = {
+  mainText: '#000',
+  bodyColor: '#fff',
+};
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
