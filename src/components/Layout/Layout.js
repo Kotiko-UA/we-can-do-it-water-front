@@ -1,4 +1,5 @@
 import { Outlet } from 'react-router-dom';
+
 // import { Suspense } from 'react';
 import {
   LogoSvg,
@@ -7,6 +8,7 @@ import {
   StyledLinkLogo,
   StyledLink,
 } from './Layout.styled.js';
+
 
 export const Layout = () => {
   return (
