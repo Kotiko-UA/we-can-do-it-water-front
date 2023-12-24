@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom';
 
 // import { Suspense } from 'react';
 import {
+  Header,
   LogoSvg,
   UserAvatar,
   Nav,
@@ -13,7 +14,7 @@ import {
 export const Layout = () => {
   return (
     <>
-      <header>
+      <Header>
         <Container>
           <Nav>
             <li>
@@ -30,7 +31,7 @@ export const Layout = () => {
             </li>
           </Nav>
         </Container>
-      </header>
+      </Header>
       <main>
         <Outlet />
         {/* <Suspense> */}
