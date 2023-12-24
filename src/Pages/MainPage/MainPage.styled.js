@@ -2,6 +2,11 @@ import styled from 'styled-components';
 import { ReactComponent as CalendarSvg } from '../../icons/calendarss.svg';
 import { ReactComponent as PresentationSvg } from '../../icons/presentation.svg';
 import { ReactComponent as ScrewSvg } from '../../icons/screw.svg';
+import backgroundMainPageMobile from '../../icons/backgroundMainPageMobile.svg';
+import backgroundMainPageTablet from '../../icons/backgroundMainPageTablet.svg'
+import backgroundMainPageDesc from '../../icons/backgroundMainPageDesc.svg'
+
+
 
 export const Container = styled.div`
   /* margin-top: 24px;
@@ -19,11 +24,40 @@ export const Container = styled.div`
     padding-right: 32px;
   }
 
-
   @media (min-width: 1440px) {
     padding-left: 112px;
     padding-right: 112px;
   }
+`;
+
+export const HomeSection = styled.div`
+  /* min-width: 320px; */
+  /* height: 100%; */
+  padding-bottom: 40px;
+  background-size: cover;
+  background-position: top 0 left 0;
+  background-repeat: no-repeat;
+  background-image: url(${backgroundMainPageMobile});
+  width: 100%;
+  height: 100%;
+
+
+
+  @media (min-width: 768px) {
+    background-image: url(${backgroundMainPageTablet});
+    padding-bottom: 50px;
+    display: block;
+    /* width: 100%;
+    height: 800px; */
+
+  }
+
+  /* @media (min-width: 1440px) {
+    background-image: url(${backgroundMainPageDesc});
+    min-width: 1440px;
+  } */
+
+
 `;
 
 export const Heading = styled.h1`
@@ -55,8 +89,6 @@ export const ListTitle = styled.p`
   line-height: 20px;
   margin-bottom: 12px;
 
-
-  
   @media (min-width: 1440px) {
     padding-top: 31px;
   }
@@ -139,8 +171,26 @@ export const ArgumentsContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 12px;
+  height: 368px;
+  margin-left: auto;
+  margin-right: auto;
 
   border-radius: 10px;
   background: var(--Secondary-color-2, #ecf2ff);
   box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.3);
+
+
+  @media (min-width: 768px) {
+    padding: 32px 24px;
+    width: 494px;
+    height: 332px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  @media (min-width: 1440px) {
+    padding-left: 112px;
+    padding-right: 112px;
+  }
+  
 `;
