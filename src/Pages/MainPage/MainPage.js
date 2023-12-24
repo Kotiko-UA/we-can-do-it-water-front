@@ -14,31 +14,32 @@ import {
   ArgumentsContainer,
   ListBenefits,
   HomeSection,
+  BenefitsContainer
 } from './MainPage.styled';
 const MainPage = () => {
   return (
     <HomeSection>
       <Container>
-        <div>
+        <BenefitsContainer>
           <Heading>Water consumption tracker</Heading>
           <Paragraph>Record daily water intake and track</Paragraph>
           <ListTitle>Tracker Benefits</ListTitle>
           <ListBenefits>
-            <Li>
+            <Li style={{width:' 248px'}}>
               <Calendar alt="calendar" />
               <Text>Habit drive</Text>
             </Li>
-            <Li>
+            <Li style={{width:' 248px'}}>
               <Presentation alt="presentation" />
               <Text>View statistics</Text>
             </Li>
-            <Li>
+            <Li style={{width:' 248px'}}>
               <Screw alt="screw" />
               <Text>Personal rate setting</Text>
             </Li>
           </ListBenefits>
           <Button>Try tracker</Button>
-        </div>
+        </BenefitsContainer>
         <ArgumentsContainer>
           <ListTitle>Why drink water</ListTitle>
           <List>
