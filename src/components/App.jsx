@@ -6,6 +6,7 @@ import { Route, Routes } from "react-router-dom";
 import { RestrictedRoute } from "./RestrictedRoute";
 import { refreshUser } from "../components/redux/auth/operations";
 import { useAuth } from "Hooks";
+import MainPage from '../Pages/MainPage/MainPage.js';
 
 
 //const HomePage = lazy(() => import("../pages/SignIn"));
@@ -14,7 +15,7 @@ const SignInPage = lazy(() => import("../pages/SignIn"));
 //const ContactsPage = lazy(() => import("../pages/Contacts"));
 //const NotFoundPage = lazy(() => import("../pages/NotFound"));
 
-export const App = () => {
+/*export const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
 
@@ -24,7 +25,7 @@ export const App = () => {
 
   return isRefreshing ? (
     <b>Refreshing user...</b>
-  ) : (
+  ) : 
     <Routes>
       <Route path="/" element={<Layout />}>
 
@@ -41,11 +42,29 @@ export const App = () => {
           }
         />
       </Route>
-    </Routes>
-import { Route, Routes } from 'react-router-dom';
-import { Layout } from './Layout/Layout';
-import MainPage from '../Pages/MainPage/MainPage.js';
+    </Routes>*/
 
+
+export const App = () => {
+  return (
+    <div>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route path="/" index element={<MainPage />}></Route>
+
+         <Route path="/signup" element={<SignUpPage />}></Route>
+         <Route path="/signup" element={<SignUpPage />} />
+         <Route path="/signin" element={<SignInPage />} />
+         <Route path="/forgot-password" element={<ForgotPasswordPage />} /> 
+        </Route>
+      </Routes>
+    </div>
+  );
+};
+
+  
+
+  
 // поки що lazy не працює, підключайте маршрути просто через звичайний імпорт,
 // тобто -> import SignUpPage from './pages/SignUpPage';
 
@@ -55,21 +74,5 @@ import MainPage from '../Pages/MainPage/MainPage.js';
 // const SigninPage = lazy(() => import('.......'));
 // const ForgotPasswordPage = lazy(() => import('......'));
 
-export const App = () => {
-  return (
-    <div>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route path="/" index element={<MainPage />}></Route>
-
-         {/* <Route path="/signup" element={<SignUpPage />}></Route>
-         <Route path="/signup" element={<SignUpPage />} />
-         <Route path="/signin" element={<SigninPage />} />
-         <Route path="/forgot-password" element={<ForgotPasswordPage />} /> */}
-        </Route>
-      </Routes>
-    </div>
-  );
-};
 
 //        <Route index element={<SignUp />} />
