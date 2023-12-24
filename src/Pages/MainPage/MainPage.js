@@ -16,55 +16,10 @@ import {
   HomeSection,
   BenefitsContainer
 } from './MainPage.styled';
-
-import { useState } from "react";
-
-import { PopUpsLinks } from "../../components/PopUpsLinks/PopUpsLinks";
-import { LogOut } from "../../components/LogOut/LogOut";
-import { Setting } from "../../components/Setting/Setting";
-
-
 const MainPage = () => {
-  
-  const [setting, setSetting] = useState(false);
-  const [logOut, setLogOut] = useState(false);
-
-  const changeSetting = () => {
-    setting ? setSetting(false) : setSetting(true)
-  }
-
-  const changeLogOut = () => {
-    logOut ? setLogOut(false) : setLogOut(true)
-  }
-
-  const handleBackdropClickSetting = (evt) => {
-    if (evt.target === evt.currentTarget) {
-      setSetting(false)
-    }
-  }
-
-  const closeSetting = () => {
-    setSetting(false)
-  }
-
-  const handleBackdropClickLogOut = (evt) => {
-    if (evt.target === evt.currentTarget) {
-      setLogOut(false)
-    }
-  }
-
-  const closeLogOut = () => {
-      setLogOut(false)
-  }
-
   return (
     <HomeSection>
       <Container>
-        <div>
-      <PopUpsLinks showLogOut={changeLogOut} showSetting={changeSetting} />
-      {setting && <Setting backdropClick={handleBackdropClickSetting} close={closeSetting} />}
-      {logOut && <LogOut backdropClick={handleBackdropClickLogOut} close={closeLogOut} />}
-    </div>
         <BenefitsContainer>
           <Heading>Water consumption tracker</Heading>
           <Paragraph>Record daily water intake and track</Paragraph>
