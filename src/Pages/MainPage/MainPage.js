@@ -33,6 +33,7 @@ const MainPage = () => {
               <Presentation alt="presentation" />
               <Text>View statistics</Text>
             </Li>
+        
             <Li style={{width:' 248px'}}>
               <Screw alt="screw" />
               <Text>Personal rate setting</Text>
