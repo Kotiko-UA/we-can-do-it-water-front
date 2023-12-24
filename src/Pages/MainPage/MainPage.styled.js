@@ -4,9 +4,26 @@ import { ReactComponent as PresentationSvg } from '../../icons/presentation.svg'
 import { ReactComponent as ScrewSvg } from '../../icons/screw.svg';
 
 export const Container = styled.div`
-  margin-top: 24px;
+  /* margin-top: 24px;
   padding-left: 24px;
-  padding-right: 24px;
+  padding-right: 24px; */
+
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (min-width: 768px) {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+
+  @media (min-width: 1440px) {
+    padding-left: 112px;
+    padding-right: 112px;
+  }
 `;
 
 export const Heading = styled.h1`
@@ -37,6 +54,12 @@ export const ListTitle = styled.p`
   font-weight: 500;
   line-height: 20px;
   margin-bottom: 12px;
+
+
+  
+  @media (min-width: 1440px) {
+    padding-top: 31px;
+  }
 `;
 
 export const ListBenefits = styled.ul`

@@ -7,6 +7,7 @@ import {
   Nav,
   StyledLinkLogo,
   StyledLink,
+  Container
 } from './Layout.styled.js';
 
 
@@ -14,6 +15,7 @@ export const Layout = () => {
   return (
     <div>
       <header>
+      <Container>
         <Nav>
           <li>
             <StyledLinkLogo to="/">
@@ -28,6 +30,7 @@ export const Layout = () => {
             </StyledLink>
           </li>
         </Nav>
+        </Container>
       </header>
       <Outlet />
       {/* <Suspense> */}
