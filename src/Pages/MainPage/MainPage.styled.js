@@ -2,8 +2,14 @@ import styled from 'styled-components';
 import { ReactComponent as CalendarSvg } from '../../icons/calendarss.svg';
 import { ReactComponent as PresentationSvg } from '../../icons/presentation.svg';
 import { ReactComponent as ScrewSvg } from '../../icons/screw.svg';
+import backgroundMainPageMobile from '../../icons/backgroundMainPageMobile.svg';
+import backgroundMainPageTablet from '../../icons/backgroundMainPageTablet.svg';
+import backgroundMainPageDesc from '../../icons/backgroundMainPageDesc.svg';
+import { ReactComponent as PointSvg } from '../../icons/mark-list.svg';
 
 export const Container = styled.div`
+  min-width: 768px;
+
   /* margin-top: 24px;
   padding-left: 24px;
   padding-right: 24px; */
@@ -19,11 +25,35 @@ export const Container = styled.div`
     padding-right: 32px;
   }
 
-
   @media (min-width: 1440px) {
     padding-left: 112px;
     padding-right: 112px;
+    display: flex;
+    flex-direction: row;
+    gap: 81px;
+    justify-content: center;
   }
+`;
+
+export const HomeSection = styled.section`
+  width: 100%;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-size: 100%;
+  background-position: bottom right;
+  background-repeat: no-repeat;
+  background-image: url(${backgroundMainPageMobile});
+
+  @media (min-width: 768px) {
+    background-image: url(${backgroundMainPageTablet});
+    padding-bottom: 50px;
+    display: block;
+  }
+
+  /* @media (min-width: 1440px) {
+    background-image: url(${backgroundMainPageDesc});
+    min-width: 1440px;
+  } */
 `;
 
 export const Heading = styled.h1`
@@ -55,10 +85,8 @@ export const ListTitle = styled.p`
   line-height: 20px;
   margin-bottom: 12px;
 
-
-  
   @media (min-width: 1440px) {
-    padding-top: 31px;
+    /* padding-top: 31px; */
   }
 `;
 
@@ -69,6 +97,10 @@ export const ListBenefits = styled.ul`
 
   @media (min-width: 768px) {
     flex-direction: row;
+  }
+
+  @media (min-width: 1440px) {
+    flex-direction: column;
   }
 `;
 
@@ -84,6 +116,16 @@ export const Li = styled.li`
   gap: 8px;
 `;
 
+// List li::before {
+//   content: "\2022";
+//   color: blue;
+//   font-weight: bold;
+//   display: inline-block;
+//   width: 8px;
+//   height: 8px;
+//   margin-left: -1em;
+// }
+
 export const Calendar = styled(CalendarSvg)`
   width: 24px;
   height: 24px;
@@ -97,6 +139,11 @@ export const Presentation = styled(PresentationSvg)`
 export const Screw = styled(ScrewSvg)`
   width: 24px;
   height: 24px;
+`;
+
+export const Point = styled(PointSvg)`
+  /* width: 24px;
+  height: 24px; */
 `;
 
 export const Text = styled.p`
@@ -139,8 +186,24 @@ export const ArgumentsContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 12px;
+  height: 368px;
+  margin-left: auto;
+  margin-right: auto;
 
   border-radius: 10px;
   background: var(--Secondary-color-2, #ecf2ff);
   box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.3);
+
+  @media (min-width: 768px) {
+    padding: 32px 0 32px 24px;
+    width: 494px;
+    height: 332px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  @media (min-width: 1440px) {
+    /* padding-left: 112px;
+    padding-right: 112px; */
+  }
 `;

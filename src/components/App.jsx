@@ -13,17 +13,15 @@ import MainPage from '../Pages/MainPage/MainPage.js';
 
 export const App = () => {
   return (
-    <div>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route path="/" index element={<MainPage />}></Route>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route path="/" index element={<MainPage />}></Route>
 
-         {/* <Route path="/signup" element={<SignUpPage />}></Route>
+        {/* <Route path="/signup" element={<SignUpPage />}></Route>
          <Route path="/signup" element={<SignUpPage />} />
          <Route path="/signin" element={<SigninPage />} />
          <Route path="/forgot-password" element={<ForgotPasswordPage />} /> */}
-        </Route>
-      </Routes>
-    </div>
+      </Route>
+    </Routes>
   );
 };
