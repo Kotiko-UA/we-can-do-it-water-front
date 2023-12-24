@@ -40,8 +40,9 @@ export const SignUpForm = () => {
                     <label>
                         Enter your email
                     </label>
-                    <Field type="email" name="email" placeholder="E-mail" /> 
+                    <Field type="email" name="email" placeholder="E-mail"/> 
                     <ErrorMessage name="email" component="div" />
+                    
                     <label>
                         Enter your password
                     </label>
@@ -56,10 +57,16 @@ export const SignUpForm = () => {
                     
                 </Form>
             </Formik>
-                    <a href="" >Sign in</a>
         </div>
     );
 };
+
+<div>
+     <a to={/*location?.state?.from ??*/ '/signIn'}>Sign in</a>
+
+</div>
+    
+
 
 /*export const SignUpForm = () => {
     const dispatch = useDispatch();
