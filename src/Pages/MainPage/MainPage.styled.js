@@ -3,12 +3,12 @@ import { ReactComponent as CalendarSvg } from '../../icons/calendarss.svg';
 import { ReactComponent as PresentationSvg } from '../../icons/presentation.svg';
 import { ReactComponent as ScrewSvg } from '../../icons/screw.svg';
 import backgroundMainPageMobile from '../../icons/backgroundMainPageMobile.svg';
-import backgroundMainPageTablet from '../../icons/backgroundMainPageTablet.svg'
-import backgroundMainPageDesc from '../../icons/backgroundMainPageDesc.svg'
-
-
+import backgroundMainPageTablet from '../../icons/backgroundMainPageTablet.svg';
+import backgroundMainPageDesc from '../../icons/backgroundMainPageDesc.svg';
 
 export const Container = styled.div`
+  min-width: 768px;
+
   /* margin-top: 24px;
   padding-left: 24px;
   padding-right: 24px; */
@@ -30,34 +30,25 @@ export const Container = styled.div`
   }
 `;
 
-export const HomeSection = styled.div`
-  /* min-width: 320px; */
-  /* height: 100%; */
+export const HomeSection = styled.section`
+  width: 100%;
+  padding-top: 40px;
   padding-bottom: 40px;
-  background-size: cover;
-  background-position: top 0 left 0;
+  background-size: 100%;
+  background-position: bottom right;
   background-repeat: no-repeat;
   background-image: url(${backgroundMainPageMobile});
-  width: 100%;
-  height: 100%;
-
-
 
   @media (min-width: 768px) {
     background-image: url(${backgroundMainPageTablet});
     padding-bottom: 50px;
     display: block;
-    /* width: 100%;
-    height: 800px; */
-
   }
 
   /* @media (min-width: 1440px) {
     background-image: url(${backgroundMainPageDesc});
     min-width: 1440px;
   } */
-
-
 `;
 
 export const Heading = styled.h1`
@@ -179,7 +170,6 @@ export const ArgumentsContainer = styled.div`
   background: var(--Secondary-color-2, #ecf2ff);
   box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.3);
 
-
   @media (min-width: 768px) {
     padding: 32px 24px;
     width: 494px;
@@ -192,5 +182,4 @@ export const ArgumentsContainer = styled.div`
     padding-left: 112px;
     padding-right: 112px;
   }
-  
 `;
