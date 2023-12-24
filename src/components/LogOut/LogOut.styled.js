@@ -26,6 +26,17 @@ transform: translate(-50%, -50%);
 }
 `;
 
+export const CloseButton = styled.button`
+color: rgba(64, 123, 255, 1);
+background-color: transparent;
+svg {
+    display: block;
+    color: rgba(64, 123, 255, 1);
+    width: 18px;
+    height: 18px;
+}
+`
+
 
 export const Container = styled.div`
 display: flex;

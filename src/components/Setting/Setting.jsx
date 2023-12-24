@@ -1,33 +1,50 @@
+import { useEffect } from "react";
 import { VscChromeClose } from "react-icons/vsc";
 import { PiUploadSimpleThin } from "react-icons/pi";
-import { Avatar, AvatarContainer, Container, GenderLabel, InputFile, Label, MainContainer, Modal, DataContainer, Overlay, SettingContainer, SettingText, DataLabel, PasswordLabel, CommonInput, YourPhoto, Text, SaveButton, PasswordInputContainer, PasswordContainer, GenderRadio, CloseButton, InfoContainer, CommonInfoContainer } from "./Setting.styled";
+
+import { Avatar, AvatarContainer, Container, GenderLabel, InputFile, Label, MainContainer, Modal, DataContainer, Overlay, SettingContainer, SettingText, DataLabel, PasswordLabel, CommonInput, YourPhoto, Text, SaveButton, PasswordInputContainer, PasswordContainer, GenderRadio, CloseButton, InfoContainer, CommonInfoContainer, AvatarOutContainer } from "./Setting.styled";
 import { PasswordInput } from "components/PasswordInput/PasswordInput";
 
-export const Setting = () => {
+export const Setting = ({ backdropClick, close }) => {
+
+    useEffect(() => {
+  const handleKeydown = e => {
+    if (e.code === 'Escape') {
+        backdropClick()
+      }
+    }
+
+    window.addEventListener('keydown', handleKeydown)
+    
+    return () => {
+    window.removeEventListener('keydown', handleKeydown)
+    }
+}, [backdropClick])
+
     return (
-        <Overlay>
+        <Overlay onClick={backdropClick}>
             <Modal>
                 <Container>
                 <SettingContainer>
                     <SettingText>Setting</SettingText>
-                    <CloseButton type="button"><VscChromeClose /></CloseButton>
+                    <CloseButton type="button" onClick={close}><VscChromeClose /></CloseButton>
                 </SettingContainer>
                     <MainContainer>
                         <div>
-                        <avatarOutContainer>
+                        <AvatarOutContainer>
                         <YourPhoto>Your photo</YourPhoto>
                         <AvatarContainer>
                             <Avatar></Avatar>
                             <InputFile type="file" name="file" id="file" />
                             <Label label for="file"><PiUploadSimpleThin size="14" /> Upload a photo</Label>
                             </AvatarContainer>
-                            </avatarOutContainer>
+                            </AvatarOutContainer>
                         </div>
                         <CommonInfoContainer>
                         <InfoContainer>
                         <div>
                             <Text>Your gender identity</Text>
-                            <GenderRadio id="girl" type="radio" value="girl" name="gender" checked required />
+                            <GenderRadio id="girl" type="radio" value="girl" name="gender" required />
                             {/* <CustomRadio/> */}
                             <GenderLabel for="girl">Girl</GenderLabel>
                             <GenderRadio id="man" type="radio" value="man" name="gender" />
@@ -57,7 +74,7 @@ export const Setting = () => {
                             </PasswordInputContainer>
                             </PasswordContainer>
                         </CommonInfoContainer>
-                        <SaveButton type="submit">Save</SaveButton>
+                        <SaveButton type="submit" onClick={close}>Save</SaveButton>
                 </MainContainer>
                 </Container>
             </Modal>

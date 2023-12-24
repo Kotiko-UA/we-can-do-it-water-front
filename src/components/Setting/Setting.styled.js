@@ -77,7 +77,7 @@ margin-bottom: 24px;
 margin-right: 34px;
 `
 
-export const avatarOutContainer = styled.div`
+export const AvatarOutContainer = styled.div`
 @media(min-width: 768px) {
   display: flex;
 }
