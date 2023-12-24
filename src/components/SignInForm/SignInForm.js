@@ -1,33 +1,67 @@
 import { useDispatch } from "react-redux";
-import { signIn } from "../redux/auth/operations.js";
+import { signIn } from "../redux/auth/operations";
+import * as Yup from 'yup';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { useSelector } from "react-redux";
+import { StyledLink } from './SignIn.styled.js';
+
+
+const SignUpFormSchema = Yup.object().shape({
+    email: Yup.string().required('Required'),
+    password: Yup.string().required('Required')
+
+});
 
 
 export const SignInForm = () => {
-    const dispatch = useDispatch();
+    
+const dispatch = useDispatch();    
 
-    const handleSubmit = e => {
-        e.preventDefault();
-        const form = e.currentTarget;
+    const handleSubmit = values => {
         dispatch(
-            signIn({
-                email: form.elements.email.value,
-                password: form.elements.password.value,
-            })
+            signIn({email: values.email, password: values.password})
         );
-        form.reset();
-    };
-
+};
+       
     return (
-        <form onSubmit={handleSubmit} autoComplete="off">
-            <label>
-                Email
-                <input type="email" name="email" />
-            </label>
-            <label>
-                Password
-                <input type="password" name="password" />
-            </label>
-            <button type="submit">Sign In</button>
-        </form>
+        <div>
+            <div>
+                <h1>Sign In</h1>
+            </div>
+
+            <Formik
+                initialValues={{
+                    email: '',
+                    password: '',
+                }}
+                autoComplete="off"
+                validationSchema={SignUpFormSchema}
+                onSubmit={(values, actions) => {
+                    handleSubmit(values);
+                    actions.resetForm();
+                }}
+            >
+                <Form>
+                    <label>
+                        Enter your email
+                    </label>
+                    <Field type="email" name="email" placeholder="E-mail"/> 
+                    <ErrorMessage name="email" component="div" />
+                    
+                    <label>
+                        Enter your password
+                    </label>
+                    <Field type="password" name="password" placeholder="Password" /> 
+                    <ErrorMessage name="password" component="div" />
+                    
+                    <button type="submit">Sign In</button>
+                    
+                </Form>
+            </Formik>
+
+            <div>
+                <StyledLink to="/signUp">Sign up</StyledLink>
+            </div>
+        </div>
     );
 };

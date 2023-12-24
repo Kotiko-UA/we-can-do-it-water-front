@@ -1,48 +1,19 @@
 import { useEffect, lazy } from "react";
 import { useDispatch} from "react-redux";
-import { Layout } from "./Layout";
+import { Layout } from "../components/Layout/Layout.js";
 import { Route, Routes } from "react-router-dom";
 //import { PrivateRoute } from "./PrivateRoute";
 import { RestrictedRoute } from "./RestrictedRoute";
 import { refreshUser } from "../components/redux/auth/operations";
 import { useAuth } from "Hooks";
-import MainPage from '../Pages/MainPage/MainPage.js';
-
+import MainPage from '../pages/MainPage/MainPage.js';
+import ForgotPasswordPage from "../pages/ForgotPasswordPage.js";
+import SignIn from "../pages/SignIn.js";
+import SignUp from "../pages/SignUp.js"
 
 //const HomePage = lazy(() => import("../pages/SignIn"));
-const SignUpPage = lazy(() => import("../pages/SignUp"));
-const SignInPage = lazy(() => import("../pages/SignIn"));
-//const ContactsPage = lazy(() => import("../pages/Contacts"));
-//const NotFoundPage = lazy(() => import("../pages/NotFound"));
-
-/*export const App = () => {
-  const dispatch = useDispatch();
-  const { isRefreshing } = useAuth();
-
-  useEffect(() => {
-    dispatch(refreshUser());
-  }, [dispatch]);
-
-  return isRefreshing ? (
-    <b>Refreshing user...</b>
-  ) : 
-    <Routes>
-      <Route path="/" element={<Layout />}>
-
-        <Route
-          path="/signup"
-          element={
-            <RestrictedRoute redirectTo="/signup" component={<SignUpPage />} />
-          }
-        />
-        <Route
-          path="/signin"
-          element={
-            <RestrictedRoute redirectTo="/signin" component={<SignInPage />} />
-          }
-        />
-      </Route>
-    </Routes>*/
+//const SignUpPage = lazy(() => import("../pages/SignUp"));
+//const SignInPage = lazy(() => import("../pages/SignIn.js"));
 
 
 export const App = () => {
@@ -51,10 +22,19 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="/" index element={<MainPage />}></Route>
+          <Route
+            path="/signin"
+            element={
+              <RestrictedRoute redirectTo="/signin" component={<SignIn/>} />
+            }
+          />
+          <Route
+            path="/signup"
+            element={
+              <RestrictedRoute redirectTo="/signup" component={<SignUp />}/>
+            }
+          />
 
-         <Route path="/signup" element={<SignUpPage />}></Route>
-         <Route path="/signup" element={<SignUpPage />} />
-         <Route path="/signin" element={<SignInPage />} />
          <Route path="/forgot-password" element={<ForgotPasswordPage />} /> 
         </Route>
       </Routes>
@@ -63,7 +43,7 @@ export const App = () => {
 };
 
   
-
+//<Route path="/signup" element={<SignUp />} />
   
 // поки що lazy не працює, підключайте маршрути просто через звичайний імпорт,
 // тобто -> import SignUpPage from './pages/SignUpPage';

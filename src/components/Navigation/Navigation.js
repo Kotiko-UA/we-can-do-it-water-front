@@ -7,13 +7,22 @@ export const Navigation = () => {
     return (
         <nav>
             <NavLink to="/">
-                Sign Up
+                Logo
             </NavLink>
             {isLoggedIn && (
-                <NavLink to="/signin">
-                    Sign In
-                </NavLink>
+            <NavLink to="/signin">
+                Sign In
+            </NavLink>
             )}
         </nav>
     );
 };
+
+/*
+<NavLink to="/signIn">
+                Sign in
+            </NavLink>
+
+
+
+*/

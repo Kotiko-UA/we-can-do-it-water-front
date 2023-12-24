@@ -1,15 +1,10 @@
 import { NavLink } from "react-router-dom";
 
 export const AuthNav = () => {
-    return (
+    /*return (
         <div>
-            <NavLink to="/signup">
-                
-            </NavLink>
-            <NavLink to="/signin">
-                
-            </NavLink>
+            <NavLink to="/signin">Sign In</NavLink>
         </div>
-    );
+    );*/
 };
-//Sign Up, Sign In
+//Sign Up, , <NavLink to="/signup"></NavLink>

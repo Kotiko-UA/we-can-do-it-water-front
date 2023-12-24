@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet";
-import { SignInForm } from "../components/SignInForm/SignInForm";
+import {SignInForm} from "../components/SignInForm/SignInForm.js";
 
 export default function SignIn() {
     return (

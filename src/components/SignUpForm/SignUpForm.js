@@ -3,36 +3,46 @@ import { signUp } from "../redux/auth/operations";
 import * as Yup from 'yup';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { useSelector } from "react-redux";
+import { StyledLink } from './SignUp.styled.js';
 
 
 const SignUpFormSchema = Yup.object().shape({
     email: Yup.string()
-        .email()
-        .required('Required'),
+        .email().required('Required'),
     password: Yup.string()
-        .min(8, 'Too short! At least 8')
-        .max(64, "Too long! Less then 64")
-        .required("Required"),
-    passwordConfirmation: Yup.string()
-        .oneOf([Yup.ref('password'), null], 'Passwords must match')
-        .required("Required"),
+        .min(8, 'Too short! At least 8').required('Required')
+        .max(64, "Too long! Less then 64"),
+    repeatPassword: Yup.string()
+        .oneOf([Yup.ref('password'), null], 'Passwords must match').required("Required"),
 });
+
 
 export const SignUpForm = () => {
     
+const dispatch = useDispatch();    
+
+    const handleSubmit = values => {
+        dispatch(
+            signUp({email: values.email, password: values.password, repeatPassword: values.repeatPassword})
+        );
+};
+       
     return (
         <div>
+            <div>
+                <h1>Sign Up</h1>
+            </div>
 
             <Formik
                 initialValues={{
                     email: '',
                     password: '',
-                    passwordConfirmation: "",
+                    repeatPassword: "",
                 }}
                 autoComplete="off"
                 validationSchema={SignUpFormSchema}
                 onSubmit={(values, actions) => {
-                    //addHandContact(values);
+                    handleSubmit(values);
                     actions.resetForm();
                 }}
             >
@@ -51,56 +61,18 @@ export const SignUpForm = () => {
                     <label>
                         Repeat password
                     </label>
-                    <Field type="password" name="password" placeholder="Repeat password" /> 
-                    <ErrorMessage name="password" component="div" />
+                    <Field type="password" name="repeatPassword" placeholder="repeat password" /> 
+                    <ErrorMessage name="repeatPassword" component="div" />
                     <button type="submit">Sign Up</button>
                     
                 </Form>
             </Formik>
+
+            <div>
+                <StyledLink to="/signIn">Sign in</StyledLink>
+            </div>
         </div>
     );
 };
 
-<div>
-     <a to={/*location?.state?.from ??*/ '/signIn'}>Sign in</a>
-
-</div>
-    
-
-
-/*export const SignUpForm = () => {
-    const dispatch = useDispatch();
-
-    const handleSubmit = e => {
-        e.preventDefault();
-        
-        const form = e.currentTarget;
-        dispatch(
-            signUp({
-                email: form.elements.email.value,
-                password: form.elements.password.value,
-            })
-        );
-        form.reset();
-    };
-
-    return (
-        <form  onSubmit={handleSubmit} autoComplete="off">
-
-            <label >
-                Enter your email
-                <input type="email" name="email" />
-            </label>
-            <label >
-                Enter your password
-                <input type="password" name="password" />
-            </label>
-             <label >
-                Repeat password
-                <input type="password" name="password" />
-            </label>
-            <button type="submit">Sign Up</button>
-            <a href="" >Sign In</a>
-        </form>
-    );
-};*/
+            

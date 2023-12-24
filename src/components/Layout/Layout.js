@@ -1,4 +1,5 @@
 import { Outlet } from 'react-router-dom';
+import { AppBar } from 'components/AppBar/AppBar';
 
 // import { Suspense } from 'react';
 import {
@@ -15,7 +16,8 @@ export const Layout = () => {
   return (
     <div>
       <header>
-      <Container>
+        <Container>
+          <AppBar/>
         <Nav>
           <li>
             <StyledLinkLogo to="/">
@@ -24,7 +26,7 @@ export const Layout = () => {
             </StyledLinkLogo>
           </li>
           <li>
-            <StyledLink to="/signup">
+            <StyledLink to="/signin">
               Sign in
               <UserAvatar alt="user avatar" />
             </StyledLink>
