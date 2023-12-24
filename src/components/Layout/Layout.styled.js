@@ -3,6 +3,28 @@ import { ReactComponent as Logo } from '../../icons/logo.svg';
 import { ReactComponent as Avatar } from '../../icons/user.svg';
 import { NavLink } from 'react-router-dom';
 
+
+export const Container = styled.div`
+  /* margin-top: 24px; */
+
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (min-width: 768px) {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+
+  @media (min-width: 1440px) {
+    padding-left: 112px;
+    padding-right: 112px;
+  }
+`
+
 export const LogoSvg = styled(Logo)`
   width: 40px;
   height: 45px;
@@ -22,22 +44,18 @@ export const Nav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  padding-left: 22px;
-  padding-right: 22px;
   padding-top: 8px;
+  margin-bottom: 24px;
 
   @media (min-width: 768px) {
-    padding-left: 32px;
-    padding-right: 32px;
     padding-top: 16px;
+    margin-bottom: 40px;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1440px) {
     padding-left: 112px;
-    padding-right: 112px;
-    padding-top: 12px;
     padding: 12px, 112px 0;
+    margin-bottom: 49px;
   }
 `;
 
