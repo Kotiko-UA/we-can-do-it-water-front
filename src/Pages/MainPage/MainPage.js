@@ -8,6 +8,7 @@ import {
   Calendar,
   Presentation,
   Screw,
+  Point,
   Button,
   Text,
   ArgumentsContainer,
@@ -41,29 +42,36 @@ const MainPage = () => {
         <ArgumentsContainer>
           <ListTitle>Why drink water</ListTitle>
           <List>
-            <li>
+            <Li>
+              <Point alt="point" />
               <Text>Supply of nutrients to all organs</Text>
-            </li>
-            <li>
+            </Li>
+            <Li>
+              <Point alt="point" />
               <Text>Providing oxygen to the lungs</Text>
-            </li>
-            <li>
+            </Li>
+            <Li>
+              <Point alt="point" />
               <Text>Maintaining the work of the heart</Text>
-            </li>
-            <li>
+            </Li>
+            <Li>
+              <Point alt="point" />
               <Text>Release of processed substances</Text>
-            </li>
-            <li>
+            </Li>
+            <Li>
+              <Point alt="point" />
               <Text>Ensuring the stability of the internal environment</Text>
-            </li>
-            <li>
+            </Li>
+            <Li>
+              <Point alt="point" />
               <Text>Maintaining within the normal temperature</Text>
-            </li>
-            <li>
+            </Li>
+            <Li>
+              <Point alt="point" />
               <Text>
                 Maintaining an immune system capable of resisting disease
               </Text>
-            </li>
+            </Li>
           </List>
         </ArgumentsContainer>
       </Container>

@@ -5,6 +5,7 @@ import { ReactComponent as ScrewSvg } from '../../icons/screw.svg';
 import backgroundMainPageMobile from '../../icons/backgroundMainPageMobile.svg';
 import backgroundMainPageTablet from '../../icons/backgroundMainPageTablet.svg';
 import backgroundMainPageDesc from '../../icons/backgroundMainPageDesc.svg';
+import { ReactComponent as PointSvg } from '../../icons/mark-list.svg';
 
 export const Container = styled.div`
   min-width: 768px;
@@ -27,6 +28,10 @@ export const Container = styled.div`
   @media (min-width: 1440px) {
     padding-left: 112px;
     padding-right: 112px;
+    display: flex;
+    flex-direction: row;
+    gap: 81px;
+    justify-content: center;
   }
 `;
 
@@ -81,7 +86,7 @@ export const ListTitle = styled.p`
   margin-bottom: 12px;
 
   @media (min-width: 1440px) {
-    padding-top: 31px;
+    /* padding-top: 31px; */
   }
 `;
 
@@ -92,6 +97,10 @@ export const ListBenefits = styled.ul`
 
   @media (min-width: 768px) {
     flex-direction: row;
+  }
+
+  @media (min-width: 1440px) {
+    flex-direction: column;
   }
 `;
 
@@ -107,6 +116,16 @@ export const Li = styled.li`
   gap: 8px;
 `;
 
+// List li::before {
+//   content: "\2022";
+//   color: blue;
+//   font-weight: bold;
+//   display: inline-block;
+//   width: 8px;
+//   height: 8px;
+//   margin-left: -1em;
+// }
+
 export const Calendar = styled(CalendarSvg)`
   width: 24px;
   height: 24px;
@@ -120,6 +139,11 @@ export const Presentation = styled(PresentationSvg)`
 export const Screw = styled(ScrewSvg)`
   width: 24px;
   height: 24px;
+`;
+
+export const Point = styled(PointSvg)`
+  /* width: 24px;
+  height: 24px; */
 `;
 
 export const Text = styled.p`
@@ -171,7 +195,7 @@ export const ArgumentsContainer = styled.div`
   box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.3);
 
   @media (min-width: 768px) {
-    padding: 32px 24px;
+    padding: 32px 0 32px 24px;
     width: 494px;
     height: 332px;
     margin-left: 0;
@@ -179,7 +203,7 @@ export const ArgumentsContainer = styled.div`
   }
 
   @media (min-width: 1440px) {
-    padding-left: 112px;
-    padding-right: 112px;
+    /* padding-left: 112px;
+    padding-right: 112px; */
   }
 `;
