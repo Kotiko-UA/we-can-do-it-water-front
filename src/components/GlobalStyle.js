@@ -37,7 +37,7 @@ a:focus,a:active{outline: none;}
 nav,footer,header,aside{display: block;}
 
 html,body{
-	background-color: rgba(255, 255, 255, 1);
+	background-color:#ffffff;
 	height: 100%;
 	width: 100%;
 	font-size: 100%;
