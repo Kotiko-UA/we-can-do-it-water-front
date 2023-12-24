@@ -3,12 +3,17 @@ import { ReactComponent as CalendarSvg } from '../../icons/calendarss.svg';
 import { ReactComponent as PresentationSvg } from '../../icons/presentation.svg';
 import { ReactComponent as ScrewSvg } from '../../icons/screw.svg';
 import backgroundMainPageMobile from '../../icons/backgroundMainPageMobile.svg';
-import backgroundMainPageTablet from '../../icons/backgroundMainPageTablet.svg';
+import backgroundMainPageTablet from '../../icons/tablet.svg';
+
+
 import backgroundMainPageDesc from '../../icons/backgroundMainPageDesc.svg';
+
+
+
 import { ReactComponent as PointSvg } from '../../icons/mark-list.svg';
 
 export const Container = styled.div`
-  min-width: 768px;
+  /* min-width: 768px; */
 
   /* margin-top: 24px;
   padding-left: 24px;
@@ -35,25 +40,44 @@ export const Container = styled.div`
   }
 `;
 
+export const BenefitsContainer = styled.div`
+width: 280px;
+margin-left:auto;
+margin-right:auto;
+
+@media (min-width: 768px) {
+width: 100%;
+}
+
+@media (min-width: 1440px) {
+width: 439px;
+margin-left: 0;
+margin-right: 0;
+}
+
+`
+
 export const HomeSection = styled.section`
   width: 100%;
-  padding-top: 40px;
+  padding-top: 24px;
   padding-bottom: 40px;
   background-size: 100%;
   background-position: bottom right;
   background-repeat: no-repeat;
   background-image: url(${backgroundMainPageMobile});
 
-  @media (min-width: 768px) {
+  @media (min-width: 768px)  {
     background-image: url(${backgroundMainPageTablet});
+    padding-top: 40px;
     padding-bottom: 50px;
     display: block;
   }
 
-  /* @media (min-width: 1440px) {
+  @media (min-width: 1440px) {
     background-image: url(${backgroundMainPageDesc});
-    min-width: 1440px;
-  } */
+    height: 691px;
+    background-size: cover; 
+  }
 `;
 
 export const Heading = styled.h1`
@@ -176,19 +200,33 @@ export const Button = styled.button`
   font-weight: 500;
   line-height: 20px;
 
-  margin-top: 30px;
+  margin-top: 24px;
   margin-bottom: 40px;
+
+
+  
+  @media (min-width: 768px) {
+    margin-bottom: 60px;
+  }
+
+
+
+
 `;
 
 export const ArgumentsContainer = styled.div`
+
   display: flex;
   padding: 24px 16px;
   flex-direction: column;
-  align-items: flex-start;
+  /* align-items: flex-start; */
   gap: 12px;
   height: 368px;
+  width: 280px;
   margin-left: auto;
   margin-right: auto;
+
+  height: 416px;
 
   border-radius: 10px;
   background: var(--Secondary-color-2, #ecf2ff);
@@ -202,8 +240,5 @@ export const ArgumentsContainer = styled.div`
     margin-right: 0;
   }
 
-  @media (min-width: 1440px) {
-    /* padding-left: 112px;
-    padding-right: 112px; */
-  }
+
 `;

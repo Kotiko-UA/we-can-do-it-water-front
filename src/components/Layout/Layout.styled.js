@@ -3,6 +3,15 @@ import { ReactComponent as Logo } from '../../icons/logo.svg';
 import { ReactComponent as Avatar } from '../../icons/user.svg';
 import { NavLink } from 'react-router-dom';
 
+
+
+export const Header = styled.header`
+padding-top: 8px;
+@media (min-width: 768px){
+  padding-top: 16px;
+}
+`
+
 export const Container = styled.div`
   /* margin-top: 24px; */
 
@@ -25,7 +34,7 @@ export const Container = styled.div`
 
 export const LogoSvg = styled(Logo)`
   width: 40px;
-  height: 45px;
+  height: 48px;
   margin-left: auto;
   margin-right: auto;
 `;
@@ -42,14 +51,6 @@ export const Nav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  @media (min-width: 768px) {
-  }
-
-  @media (min-width: 1440px) {
-    padding-left: 112px;
-    padding: 12px, 112px 0;
-  }
 `;
 
 export const StyledLinkLogo = styled(NavLink)`
