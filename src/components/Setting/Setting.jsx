@@ -10,7 +10,7 @@ export const Setting = ({ backdropClick, close }) => {
     useEffect(() => {
   const handleKeydown = e => {
     if (e.code === 'Escape') {
-        backdropClick()
+        close()
       }
     }
 
@@ -19,7 +19,7 @@ export const Setting = ({ backdropClick, close }) => {
     return () => {
     window.removeEventListener('keydown', handleKeydown)
     }
-}, [backdropClick])
+}, [close])
 
     return (
         <Overlay onClick={backdropClick}>
