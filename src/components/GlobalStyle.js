@@ -14,6 +14,22 @@ export const GlobalStyles = createGlobalStyle`
 	box-sizing: border-box;
 }
 
+@font-face {
+	font-family: 'Roboto';
+  	font-style: normal;
+  	font-weight: 500;
+  	font-display: swap;
+  	src: url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+	src: url(https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2) format('woff2');
+}
+
 :focus,:active{outline: none;}
 
 a:focus,a:active{outline: none;}
@@ -21,7 +37,7 @@ a:focus,a:active{outline: none;}
 nav,footer,header,aside{display: block;}
 
 html,body{
-	background-color:#f2ece0;
+	background-color: rgba(255, 255, 255, 1);
 	height: 100%;
 	width: 100%;
 	font-size: 100%;
