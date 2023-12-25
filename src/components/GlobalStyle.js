@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components'; //npm i styled-components
 import 'modern-normalize'; //npm i modern-normalize
+import '../../font/fonts.css';
 export const GlobalStyles = createGlobalStyle` 
 
 *{
@@ -14,22 +15,6 @@ export const GlobalStyles = createGlobalStyle`
 	box-sizing: border-box;
 }
 
-@font-face {
-	font-family: 'Roboto';
-  	font-style: normal;
-  	font-weight: 500;
-  	font-display: swap;
-  	src: url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format('woff2');
-}
-
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-	src: url(https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2) format('woff2');
-}
-
 :focus,:active{outline: none;}
 
 a:focus,a:active{outline: none;}
@@ -37,6 +22,7 @@ a:focus,a:active{outline: none;}
 nav,footer,header,aside{display: block;}
 
 html,body{
+	font-family: 'Roboto', sans-serif;
 	background-color:#ffffff;
 	height: 100%;
 	width: 100%;
