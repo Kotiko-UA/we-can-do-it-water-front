@@ -1,6 +1,6 @@
 import aksonov from './teamsphoto/aksonov.jpg';
 import sukhara from './teamsphoto/sukhra.jpg';
-import sharyak from './teamsphoto/sharyak.jpg';
+// import sharyak from './teamsphoto/sharyak.jpg';
 import shkarupa from './teamsphoto/shkarupa.jpg';
 import zaharova from './teamsphoto/zaharova.jpg';
 import parkhomenko from './teamsphoto/parkhomenko.jpg';
