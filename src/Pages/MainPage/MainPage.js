@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import {
   Container,
   Heading,
@@ -14,9 +15,15 @@ import {
   ArgumentsContainer,
   ListBenefits,
   HomeSection,
-  BenefitsContainer
+  BenefitsContainer,
 } from './MainPage.styled';
+
 const MainPage = () => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate('/signup');
+  };
+
   return (
     <HomeSection>
       <Container>
@@ -25,21 +32,21 @@ const MainPage = () => {
           <Paragraph>Record daily water intake and track</Paragraph>
           <ListTitle>Tracker Benefits</ListTitle>
           <ListBenefits>
-            <Li style={{width:' 248px'}}>
+            <Li style={{ width: ' 248px' }}>
               <Calendar alt="calendar" />
               <Text>Habit drive</Text>
             </Li>
-            <Li style={{width:' 248px'}}>
+            <Li style={{ width: ' 248px' }}>
               <Presentation alt="presentation" />
               <Text>View statistics</Text>
             </Li>
-        
-            <Li style={{width:' 248px'}}>
+
+            <Li style={{ width: ' 248px' }}>
               <Screw alt="screw" />
               <Text>Personal rate setting</Text>
             </Li>
           </ListBenefits>
-          <Button>Try tracker</Button>
+          <Button onClick={handleClick}>Try tracker</Button>
         </BenefitsContainer>
         <ArgumentsContainer>
           <ListTitle>Why drink water</ListTitle>
