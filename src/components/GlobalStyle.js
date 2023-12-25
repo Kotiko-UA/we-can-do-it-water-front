@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components'; //npm i styled-components
 import 'modern-normalize'; //npm i modern-normalize
+import '../../font/fonts.css';
 export const GlobalStyles = createGlobalStyle` 
 
 *{
@@ -21,7 +22,8 @@ a:focus,a:active{outline: none;}
 nav,footer,header,aside{display: block;}
 
 html,body{
-	background-color:#f2ece0;
+	font-family: 'Roboto', sans-serif;
+	background-color:#ffffff;
 	height: 100%;
 	width: 100%;
 	font-size: 100%;
