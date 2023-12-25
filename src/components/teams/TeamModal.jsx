@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import {
   Backdrop,
   ButtonClose,
+  ButtonCloseIcon,
   Modal,
   TeamCart,
   TeamLink,
@@ -35,7 +36,9 @@ export const TeamModal = ({ onClick }) => {
   return (
     <Backdrop className="js-backdrop">
       <Modal>
-        <ButtonClose type="button">X</ButtonClose>
+        <ButtonClose type="button" onClick={onClick}>
+          <ButtonCloseIcon />
+        </ButtonClose>
         <TeamList>
           {teamGroup.map(({ id, link, name, photo, role }) => {
             return (

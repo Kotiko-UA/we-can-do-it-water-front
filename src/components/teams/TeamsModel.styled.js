@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { ReactComponent as Close } from '../../icons/close.svg';
 
 export const Backdrop = styled.div`
   position: fixed;
@@ -8,7 +9,10 @@ export const Backdrop = styled.div`
   height: 100%;
 
   opacity: 1;
-  background-color: rgba(0, 0, 0, 0.8);
+  background: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0) 100%);
+  -webkit-backdrop-filter: blur(11px);
+  backdrop-filter: blur(11px);
+  z-index: 999;
 `;
 export const Modal = styled.div`
   position: absolute;
@@ -26,18 +30,31 @@ export const Modal = styled.div`
   @media screen and (min-width: 1440px) {
     width: 850px;
     height: 700px;
+    overflow-y: hidden;
   }
 `;
 export const ButtonClose = styled.button`
   display: block;
-  text-align: center;
+  padding: 2px;
   background-color: transparent;
-  color: #407bff;
   margin-left: auto;
   border: 2px solid #407bff;
   border-radius: 50%;
   width: 24px;
   height: 24px;
+  scale: 1;
+  transition: scale 100ms linear;
+  &:hover,
+  &:focus {
+    scale: 1.1;
+  }
+`;
+export const ButtonCloseIcon = styled(Close)`
+  stroke: #407bff;
+  margin: auto;
+  width: 12px;
+  height: 12px;
+  display: block;
 `;
 export const TeamList = styled.ul`
   display: flex;
