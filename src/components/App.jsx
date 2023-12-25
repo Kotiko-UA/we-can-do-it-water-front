@@ -1,3 +1,9 @@
+import HomePage from 'Pages/HomePage/HomePage';
+
 export const App = () => {
-  return <div>text </div>;
+  return (
+    <div>
+      <HomePage />
+    </div>
+  );
 };
