@@ -1,59 +1,82 @@
 import { useDispatch } from "react-redux";
 import { signIn } from "../redux/auth/operations";
 import * as Yup from 'yup';
-import { Formik, Field, Form, ErrorMessage } from 'formik';
-//import { useSelector } from "react-redux";
-import { StyledLink } from './SignInForm.styled.js';
+import { Formik} from 'formik';
+import { StyledLink, FormWrapper, Label, FieldInput, ErrorMsg, ButtonSbmt, EyeSlash, EyeActive } from './SignInForm.styled.js';
+import React, { useState } from "react";
 
 
-const SignUpFormSchema = Yup.object().shape({
+const SignInFormSchema = Yup.object().shape({
     email: Yup.string().required('Required'),
     password: Yup.string().required('Required')
 
 });
 
-
 export const SignInForm = () => {
     
-const dispatch = useDispatch();    
+    const dispatch = useDispatch();    
 
+    const [type, setType] = useState('password');
+    const [icon, setIcon] = useState(<EyeSlash alt="eye_slash">EyeSlash</EyeSlash>);
+    
+    const handleToggle = () => {
+        if (type === 'password') {
+            setIcon(<EyeActive alt="eye_active">EyeActive</EyeActive>);
+            setType('text')
+        } else {
+            setIcon(<EyeSlash alt="eye_slash">EyeSlash</EyeSlash>)
+            setType('password')
+        }
+    };
+
+    
     const handleSubmit = values => {
         dispatch(
             signIn({email: values.email, password: values.password})
         );
-};
+    };
        
     return (
         <div>
-
             <Formik
                 initialValues={{
                     email: '',
                     password: '',
                 }}
                 autoComplete="off"
-                validationSchema={SignUpFormSchema}
+                validationSchema={SignInFormSchema}
                 onSubmit={(values, actions) => {
                     handleSubmit(values);
                     actions.resetForm();
                 }}
             >
-                <Form>
-                    <label>
+                <FormWrapper>
+                        <Label>
                         Enter your email
-                    </label>
-                    <Field type="email" name="email" placeholder="E-mail"/> 
-                    <ErrorMessage name="email" component="div" />
+                        </Label>
+                        <FieldInput
+                            type="email"
+                            name="email"
+                            placeholder="E-mail"/> 
+                        <ErrorMsg name="email" component="div" />
                     
-                    <label>
-                        Enter your password
-                    </label>
-                    <Field type="password" name="password" placeholder="Password" /> 
-                    <ErrorMessage name="password" component="div" />
-                    
-                    <button type="submit">Sign In</button>
-                    
-                </Form>
+                        <Label>
+                            Enter your password
+                        </Label>
+                        
+                            <FieldInput
+                            type={type}
+                            name="password"
+                            placeholder="Password"  
+                            />
+                            <span onClick={handleToggle}>
+                                {icon}
+                            </span>
+                         
+                        <ErrorMsg name="password" component="div" />
+                        
+                        <ButtonSbmt type="submit">Sign In</ButtonSbmt>
+                </FormWrapper>
             </Formik>
 
             <div>
@@ -62,3 +85,7 @@ const dispatch = useDispatch();
         </div>
     );
 };
+
+/*                           <EyeSlash alt="eye_slash">EyeSlash</EyeSlash>  
+<EyeActive alt="eye_active">EyeActive</EyeActive>                            
+                              */

@@ -1,5 +1,29 @@
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import { NavLink} from 'react-router-dom';
+import { ReactComponent as EyeSlashSvg } from "../../icons/eye_slash.svg";
+import { ReactComponent as EyeActiveSvg } from "../../icons/eye_active.svg";
+import { Field, Form, ErrorMessage } from 'formik';
+
+
+export const EyeSlash = styled(EyeSlashSvg)`
+  width: 16px;
+  height: 16px;
+  position: relative; 
+  bottom: 30px;
+  left: 190px;
+  vertical-align: middle; 
+  cursor: pointer;
+`;
+
+export const EyeActive = styled(EyeActiveSvg)`
+  width: 16px;
+  height: 16px;
+  position: relative; 
+  bottom: 30px;
+  left: 190px;
+  vertical-align: middle; 
+  cursor: pointer;
+`;
 
 export const StyledLink = styled(NavLink)`
   font-family: Roboto;
@@ -11,5 +35,80 @@ export const StyledLink = styled(NavLink)`
 
   display: flex;
   align-items: center;
-  gap: 8px;
+  margin-top:16px;
+
+  &:hover,
+  :focus{
+    color: var(--Secondary-color-5, #FF9D43);
+  }
+`;
+
+export const FormWrapper = styled(Form)`
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+`;
+
+export const Label = styled.label`
+color: #2F2F2F;
+font-family: Roboto;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: 24px;
+margin-top: 16px;
+`;
+
+export const FieldInput = styled(Field)`
+color: #9EBBFF;
+font-family: Roboto;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 20px; 
+padding: 12px 10px;
+border-radius: 6px;
+border: 1px solid #D7E3FF;
+background: #FFF;
+
+&:focus{
+color: #407BFF;
+}
+`;
+
+export const ErrorMsg = styled(ErrorMessage)`
+color: #EF5050;
+font-family: Roboto;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 18px;
+`;
+
+
+export const PasswordForm = styled.form`
+position: absolute;
+`;
+
+
+export const ButtonSbmt = styled.button`
+margin-right: auto;
+margin-left: auto;
+width: 100%;
+display: flex;
+padding: 8px 30px;
+justify-content: center;
+align-items: center;
+align-self: center;
+border-radius: 10px;
+background: var(--Primery-Color-Blue, #407BFF);
+box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
+
+color: #FFFFFF;
+text-align: center;
+font-family: Roboto;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: 20px;
 `;

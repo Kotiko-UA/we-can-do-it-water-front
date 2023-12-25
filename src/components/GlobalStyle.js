@@ -21,7 +21,7 @@ a:focus,a:active{outline: none;}
 nav,footer,header,aside{display: block;}
 
 html,body{
-	background-color:#f2ece0;
+	background-color:#ffffff;
 	height: 100%;
 	width: 100%;
 	font-size: 100%;
@@ -43,3 +43,5 @@ ul li{list-style: none;}
 img{vertical-align: top;}
 
 h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}`;
+
+

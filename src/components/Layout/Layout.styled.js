@@ -84,4 +84,9 @@ export const StyledLink = styled(NavLink)`
   display: flex;
   align-items: center;
   gap: 8px;
+
+  &:hover,
+  :focus{
+    color: var(--Secondary-color-5, #FF9D43);
+  }
 `;
