@@ -17,7 +17,7 @@ import {
   HomeSection,
   BenefitsContainer,
 } from './MainPage.styled';
-
+import { Paskal } from 'components/pascal/paskal';
 const MainPage = () => {
   const navigate = useNavigate();
   const handleClick = () => {
@@ -84,6 +84,7 @@ const MainPage = () => {
           </List>
         </ArgumentsContainer>
       </Container>
+      <Paskal />
     </HomeSection>
   );
 };
