@@ -7,8 +7,6 @@ export const Backdrop = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-
-  opacity: 1;
   background: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0) 100%);
   -webkit-backdrop-filter: blur(11px);
   backdrop-filter: blur(11px);
