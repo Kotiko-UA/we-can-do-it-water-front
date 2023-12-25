@@ -55,7 +55,7 @@ export const teamGroup = [
     id: '7',
     name: 'Igor Volk',
     photo: vovk,
-    link: 'https://www.linkedin.com/in/igor-volk',
+    link: 'https://www.linkedin.com/in/igor-volk/',
     role: 'developer',
   },
   //   {
