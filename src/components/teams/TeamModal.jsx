@@ -1,3 +1,4 @@
+import teamGroup from './teamArr';
 export const TeamModal = () => {
   return (
     <div>

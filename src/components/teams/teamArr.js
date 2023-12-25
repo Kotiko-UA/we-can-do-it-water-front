@@ -8,7 +8,7 @@ import vovk from './teamsphoto/vovk.jpg';
 // import aksonov from './teamsphoto/aksonov.jpg'
 // import aksonov from './teamsphoto/aksonov.jpg'
 
-export const teamGroup = [
+const teamGroup = [
   {
     id: '1',
     name: 'Aksonov Yevhen',
@@ -73,3 +73,5 @@ export const teamGroup = [
   //     role: 'developer',
   //   },
 ];
+
+export default teamGroup;
