@@ -4,7 +4,7 @@ import { useAuth } from "Hooks";
 export const Navigation = () => {
     const { isLoggedIn } = useAuth();
 
-    return (
+    /*return (
         <nav>
             <NavLink to="/">
                 Logo
@@ -15,7 +15,7 @@ export const Navigation = () => {
             </NavLink>
             )}
         </nav>
-    );
+    )*/
 };
 
 /*

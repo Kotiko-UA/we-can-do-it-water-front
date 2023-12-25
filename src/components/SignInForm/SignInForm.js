@@ -2,8 +2,8 @@ import { useDispatch } from "react-redux";
 import { signIn } from "../redux/auth/operations";
 import * as Yup from 'yup';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
-import { useSelector } from "react-redux";
-import { StyledLink } from './SignIn.styled.js';
+//import { useSelector } from "react-redux";
+import { StyledLink } from './SignInForm.styled.js';
 
 
 const SignUpFormSchema = Yup.object().shape({
@@ -25,9 +25,6 @@ const dispatch = useDispatch();
        
     return (
         <div>
-            <div>
-                <h1>Sign In</h1>
-            </div>
 
             <Formik
                 initialValues={{

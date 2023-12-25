@@ -3,7 +3,7 @@ import { logOut } from "../redux/auth/operations.js";
 import { useAuth } from "Hooks";
 
 export const UserMenu = () => {
-    const dispatch = useDispatch();
+    /*const dispatch = useDispatch();
     const { user } = useAuth();
 
     return (
@@ -11,7 +11,7 @@ export const UserMenu = () => {
             <p>Welcome, {user.name}</p>
             <button type="button" onClick={() => {}}>Logout</button>
         </div>
-    );
+    );*/
 };
 
 ///*dispatch(logOut())

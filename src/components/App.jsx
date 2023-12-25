@@ -8,8 +8,8 @@ import { refreshUser } from "../components/redux/auth/operations";
 import { useAuth } from "Hooks";
 import MainPage from '../pages/MainPage/MainPage.js';
 import ForgotPasswordPage from "../pages/ForgotPasswordPage.js";
-import SignIn from "../pages/SignIn.js";
-import SignUp from "../pages/SignUp.js"
+import SignInPage from "../pages/SignInPage/SignInPage.js";
+import SignUpPage from "../pages/SignUpPage/SignUpPage.js"
 
 //const HomePage = lazy(() => import("../pages/SignIn"));
 //const SignUpPage = lazy(() => import("../pages/SignUp"));
@@ -23,15 +23,15 @@ export const App = () => {
         <Route path="/" element={<Layout />}>
           <Route path="/" index element={<MainPage />}></Route>
           <Route
-            path="/signin"
+            path="/signIn"
             element={
-              <RestrictedRoute redirectTo="/signin" component={<SignIn/>} />
+              <RestrictedRoute redirectTo="/signIn" component={<SignInPage/>} />
             }
           />
           <Route
-            path="/signup"
+            path="/signUp"
             element={
-              <RestrictedRoute redirectTo="/signup" component={<SignUp />}/>
+              <RestrictedRoute redirectTo="/signUp" component={<SignUpPage />}/>
             }
           />
 
