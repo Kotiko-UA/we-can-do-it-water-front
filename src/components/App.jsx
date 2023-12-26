@@ -6,10 +6,12 @@ import ForgetPasswordPage from '../Pages/ForgetPasswordPage/ForgetPasswordPage.j
 import RecoveryPasswordPage from 'Pages/RecoveryPage/RecoveryPage.jsx';
 import SignInPage from '../Pages/SignInPage/SignInPage';
 import SignUpPage from '../Pages/SignUpPage/SignUpPage.jsx';
+import HomePage from 'Pages/HomePage/HomePage.jsx';
 
 export const App = () => {
   return (
     <div>
+      {/* 111 */}
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="/" index element={<MainPage />}></Route>
