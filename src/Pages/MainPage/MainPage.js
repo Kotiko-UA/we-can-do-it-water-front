@@ -17,7 +17,6 @@ import {
   HomeSection,
   BenefitsContainer,
 } from './MainPage.styled';
-
 const MainPage = () => {
   const navigate = useNavigate();
   const handleClick = () => {
