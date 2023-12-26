@@ -5,7 +5,7 @@ import SignInPage from "../pages/SignInPage/SignInPage.js";
 import SignUpPage from "../pages/SignUpPage/SignUpPage.js";
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout/Layout.jsx';
-import MainPage from '../Pages/MainPage/MainPage.js';
+import MainPage from '../pages/MainPage/MainPage.js';
 
 
 export const App = () => {
