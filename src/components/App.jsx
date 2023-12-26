@@ -1,7 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout/Layout.jsx';
 import MainPage from '../Pages/MainPage/MainPage.js';
-import { DailyNormaModal } from './DailyNormaModal/DailyNormaModal.jsx';
 
 // поки що lazy не працює, підключайте маршрути просто через звичайний імпорт,
 // тобто -> import SignUpPage from './pages/SignUpPage';
@@ -21,7 +20,6 @@ export const App = () => {
         {/* <Route path="/signup" element={<SignUpPage />} /> */}
         {/* <Route path="/signin" element={<SigninPage />} /> */}
         {/* <Route path="/forgot-password" element={<ForgotPasswordPage />} /> */}
-         <Route path="/daily-norma" element={<DailyNormaModal />} />
       </Route>
     </Routes>
   );

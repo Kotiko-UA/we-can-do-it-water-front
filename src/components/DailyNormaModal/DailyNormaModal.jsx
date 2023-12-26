@@ -1,5 +1,12 @@
+<<<<<<< Updated upstream
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
+=======
+
+import { ErrorMessage, Field, Form, Formik } from 'formik';
+import * as Yup from 'yup';
+// import {ModalContainer, ModalContent} from './DailyNormaModal.js'
+>>>>>>> Stashed changes
 
 
 const DailyNormaSchema = Yup.object().shape({
