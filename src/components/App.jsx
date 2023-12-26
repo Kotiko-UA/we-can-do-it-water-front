@@ -2,7 +2,7 @@
 import { RestrictedRoute } from "./RestrictedRoute";
 import ForgotPasswordPage from "../pages/ForgotPasswordPage.js";
 import SignInPage from "../pages/SignInPage/SignInPage.jsx/index.js";
-import SignUpPage from "../pages/SignUpPage/SignUpPage.js";
+import SignUpPage from "../pages/SignUpPage/SignUpPage.jsx/index.js";
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout/Layout.jsx';
 import MainPage from '../pages/MainPage/MainPage.js';
