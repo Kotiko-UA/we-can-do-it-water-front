@@ -86,6 +86,3 @@ export const SignInForm = () => {
     );
 };
 
-/*                           <EyeSlash alt="eye_slash">EyeSlash</EyeSlash>  
-<EyeActive alt="eye_active">EyeActive</EyeActive>                            
-                              */
