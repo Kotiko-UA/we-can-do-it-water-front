@@ -10,7 +10,7 @@ export const EyeSlash = styled(EyeSlashSvg)`
   height: 16px;
   position: relative; 
   bottom: 30px;
-  left: 190px;
+  left: 180px;
   vertical-align: middle; 
   cursor: pointer;
 `;
@@ -20,7 +20,7 @@ export const EyeActive = styled(EyeActiveSvg)`
   height: 16px;
   position: relative; 
   bottom: 30px;
-  left: 190px;
+  left: 180px;
   vertical-align: middle; 
   cursor: pointer;
 `;
@@ -128,6 +128,9 @@ line-height: 20px;
 box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
 }
 
+&:focus{
+box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+}
 `;
 
 

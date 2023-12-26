@@ -5,12 +5,15 @@ import { ReactComponent as EyeActiveSvg } from "../../icons/eye_active.svg";
 import { Field, Form, ErrorMessage } from 'formik';
 
 
+
+
+
 export const EyeSlash = styled(EyeSlashSvg)`
   width: 16px;
   height: 16px;
   position: relative; 
   bottom: 30px;
-  left: 190px;
+  left: 180px;
   vertical-align: middle; 
   cursor: pointer;
 `;
@@ -20,7 +23,7 @@ export const EyeActive = styled(EyeActiveSvg)`
   height: 16px;
   position: relative; 
   bottom: 30px;
-  left: 190px;
+  left: 180px;
   vertical-align: middle; 
   cursor: pointer;
 `;
@@ -111,4 +114,12 @@ font-size: 16px;
 font-style: normal;
 font-weight: 500;
 line-height: 20px;
+
+&:hover{
+box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+}
+
+&:focus{
+box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+}
 `;

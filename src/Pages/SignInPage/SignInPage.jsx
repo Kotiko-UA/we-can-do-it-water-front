@@ -1,13 +1,17 @@
 //import { Helmet } from "react-helmet";
 import {SignInForm} from "../../components/SignInForm/SignInForm.jsx";
-import {Container, Title } from './SignInPage.styled.js';
+import {Container, Title, SignInSection} from './SignInPage.styled.js';
+
 
 export default function SignInPage() {
     return (
-        <Container>
+        <SignInSection>
+            <Container>
                 <Title>Sign In</Title>
-            <SignInForm />
-        </Container>
+                <SignInForm />
+            </Container>
+        </SignInSection>
+        
     );
 };
 
