@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { NavLink} from 'react-router-dom';
 import { ReactComponent as EyeSlashSvg } from "../../icons/eye_slash.svg";
 import { ReactComponent as EyeActiveSvg } from "../../icons/eye_active.svg";
-
 import { Field, Form, ErrorMessage } from 'formik';
 
 
@@ -124,6 +123,10 @@ font-size: 16px;
 font-style: normal;
 font-weight: 500;
 line-height: 20px;
+
+&:hover{
+box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+}
 
 `;
 
