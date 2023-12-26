@@ -1,7 +1,7 @@
 //import { useEffect, lazy } from "react";
 import { RestrictedRoute } from "./RestrictedRoute";
 import ForgotPasswordPage from "../pages/ForgotPasswordPage.js";
-import SignInPage from "../pages/SignInPage/SignInPage.js";
+import SignInPage from "../pages/SignInPage/SignInPage.jsx/index.js";
 import SignUpPage from "../pages/SignUpPage/SignUpPage.js";
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout/Layout.jsx';

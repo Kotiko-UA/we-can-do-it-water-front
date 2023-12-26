@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { signIn } from "../redux/auth/operations";
+import { signIn } from "../redux/auth/operations.js";
 import * as Yup from 'yup';
 import { Formik} from 'formik';
 import { StyledLink, FormWrapper, Label, FieldInput, ErrorMsg, ButtonSbmt, EyeSlash, EyeActive } from './SignInForm.styled.js';

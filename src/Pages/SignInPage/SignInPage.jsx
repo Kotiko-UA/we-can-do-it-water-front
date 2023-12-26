@@ -1,5 +1,5 @@
 //import { Helmet } from "react-helmet";
-import {SignInForm} from "../../components/SignInForm/SignInForm.js";
+import {SignInForm} from "../../components/SignInForm/SignInForm.jsx/index.js";
 import {Container, Title } from './SignInPage.styled.js';
 
 export default function SignInPage() {
