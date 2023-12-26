@@ -1,12 +1,8 @@
-<<<<<<< Updated upstream
-import { ErrorMessage, Field, Form, Formik } from 'formik';
-import * as Yup from 'yup';
-=======
 
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
-// import {ModalContainer, ModalContent} from './DailyNormaModal.js'
->>>>>>> Stashed changes
+import { Backdrop, Modal } from './DailyNormaModal.styled';
+import { useCallback, useEffect, useState } from 'react';
 
 
 const DailyNormaSchema = Yup.object().shape({
@@ -30,6 +26,39 @@ const normaForGirl = (values) => {
   };
 
 export const DailyNormaModal = () => {
+  const [modal, setModal] = useState(false);
+ 
+  // const onClick = () => {
+  //   setModal(!modal);
+  // };
+
+  const onClick = useCallback(() => {
+    setModal(!modal);
+  }, [modal]);
+
+  useEffect(() => {
+    const handleClick = (e) => {
+      if (e.target === e.currentTarget) {
+        onClick();
+      }
+    };
+
+    const handleKeydown = (e) => {
+      if (e.key === 'Escape') {
+        onClick();
+      }
+    };
+
+    const backdrop = document.querySelector('.js-backdrop');
+    document.addEventListener('keydown', handleKeydown);
+    backdrop.addEventListener('click', handleClick);
+
+    return () => {
+      backdrop.removeEventListener('click', handleClick);
+      document.removeEventListener('keydown', handleKeydown);
+    };
+  }, [onClick]);
+
 
     const dailyNormaCounter = (values) =>
     values.picked === 'For girl' ? normaForGirl(values).toFixed(1) :
@@ -37,8 +66,8 @@ export const DailyNormaModal = () => {
     0;
 
   return (
-    <div>
-      <div>
+    <Backdrop className="js-backdrop">
+      <Modal>
         <h1>My daily norma</h1>
         <Formik
           initialValues={{
@@ -98,7 +127,7 @@ export const DailyNormaModal = () => {
             </Form>
           )}
         </Formik>
-      </div>
-    </div>
+      </Modal>
+    </Backdrop>
   );
 };
