@@ -38,8 +38,6 @@ export const Container = styled.div`
   }
 `;
 
-
-
 export const HomeSection = styled.section`
   width: 100%;
   padding-top: 24px;
@@ -63,9 +61,6 @@ export const HomeSection = styled.section`
     padding-top: 31px;
   }
 `;
-
-
-
 
 export const BenefitsContainer = styled.div`
   width: 280px;

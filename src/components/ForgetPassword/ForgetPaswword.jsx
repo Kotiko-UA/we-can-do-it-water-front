@@ -31,7 +31,7 @@ export const ForgetPassword = () => {
     <Wrap>
       <Form onSubmit={submit}>
         <Label>
-          ENTER YOUR EMAIL
+          Enter your email
           <Input onChange={handlEmail} type="email" placeholder="Email" />
         </Label>
         <Button type="button">

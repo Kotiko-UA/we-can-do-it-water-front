@@ -48,7 +48,7 @@ export const RecoveryPassword = () => {
     <Wrap>
       <Form onSubmit={submit}>
         <Label>
-          ENTER YOUR EMAIL
+          Enter your email
           <Input
             onChange={handlEmail}
             type="email"
@@ -57,12 +57,12 @@ export const RecoveryPassword = () => {
           />
         </Label>
         <Label>
-          ENTER NEW PASSWORD
+          Enter new password
           <Input onChange={handlEmail} type={type} placeholder="New Password" />
         </Label>
         <span onClick={handleToggle}>{icon}</span>
         <Label>
-          REPEAT NEW PASSWORD
+          Rereat new password
           <Input
             onChange={handlEmail}
             type={type}
