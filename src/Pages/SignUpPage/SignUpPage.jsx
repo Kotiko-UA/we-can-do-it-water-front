@@ -1,5 +1,5 @@
 //import { Helmet } from "react-helmet";
-import { SignUpForm } from "components/SignUpForm/SignUpForm.js";
+import { SignUpForm } from "../../components/SignUpForm/SignUpForm";
 import {Container, Title } from './SignUpPage.styled.js';
 
 export default function SignUpPage() {
