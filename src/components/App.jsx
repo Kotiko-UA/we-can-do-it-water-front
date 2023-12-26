@@ -1,19 +1,11 @@
-import { useEffect, lazy } from "react";
-import { useDispatch} from "react-redux";
-import { Layout } from "../components/Layout/Layout.js";
-import { Route, Routes } from "react-router-dom";
-//import { PrivateRoute } from "./PrivateRoute";
+//import { useEffect, lazy } from "react";
 import { RestrictedRoute } from "./RestrictedRoute";
-import { refreshUser } from "../components/redux/auth/operations";
-import { useAuth } from "Hooks";
-import MainPage from '../pages/MainPage/MainPage.js';
 import ForgotPasswordPage from "../pages/ForgotPasswordPage.js";
 import SignInPage from "../pages/SignInPage/SignInPage.js";
-import SignUpPage from "../pages/SignUpPage/SignUpPage.js"
-
-//const HomePage = lazy(() => import("../pages/SignIn"));
-//const SignUpPage = lazy(() => import("../pages/SignUp"));
-//const SignInPage = lazy(() => import("../pages/SignIn.js"));
+import SignUpPage from "../pages/SignUpPage/SignUpPage.js";
+import { Route, Routes } from 'react-router-dom';
+import { Layout } from './Layout/Layout.jsx';
+import MainPage from '../Pages/MainPage/MainPage.js';
 
 
 export const App = () => {
@@ -22,20 +14,20 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="/" index element={<MainPage />}></Route>
-          <Route
-            path="/signIn"
-            element={
-              <RestrictedRoute redirectTo="/signIn" component={<SignInPage/>} />
-            }
-          />
+          <Route path="/signup" element={<SignUpPage />}></Route>
           <Route
             path="/signUp"
             element={
-              <RestrictedRoute redirectTo="/signUp" component={<SignUpPage />}/>
+              <RestrictedRoute redirectTo="/signUp" component={<SignUpPage />} />
             }
           />
-
-         <Route path="/forgot-password" element={<ForgotPasswordPage />} /> 
+          <Route
+            path="/signIn"
+            element={
+              <RestrictedRoute redirectTo="/signIn" component={<SignInPage />} />
+            }
+          />
+          <Route path="/forgot-password" element={<ForgotPasswordPage />} />
         </Route>
       </Routes>
     </div>
@@ -44,7 +36,7 @@ export const App = () => {
 
   
 //<Route path="/signup" element={<SignUp />} />
-  
+////import { PrivateRoute } from "./PrivateRoute";
 // поки що lazy не працює, підключайте маршрути просто через звичайний імпорт,
 // тобто -> import SignUpPage from './pages/SignUpPage';
 
@@ -53,6 +45,10 @@ export const App = () => {
 // const SignUpPage = lazy(() => import('./SignUpPage'));
 // const SigninPage = lazy(() => import('.......'));
 // const ForgotPasswordPage = lazy(() => import('......'));
+
+//const HomePage = lazy(() => import("../pages/SignIn"));
+//const SignUpPage = lazy(() => import("../pages/SignUp"));
+//const SignInPage = lazy(() => import("../pages/SignIn.js"));
 
 
 //        <Route index element={<SignUp />} />

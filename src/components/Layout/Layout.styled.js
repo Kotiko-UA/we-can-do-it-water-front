@@ -4,6 +4,18 @@ import { ReactComponent as Avatar } from '../../icons/user.svg';
 import { NavLink } from 'react-router-dom';
 
 
+
+export const Header = styled.header`
+padding-top: 8px;
+@media (min-width: 768px){
+  padding-top: 16px;
+}
+
+@media (min-width: 1440px){
+  padding-top: 12px;
+}
+`
+
 export const Container = styled.div`
   /* margin-top: 24px; */
 
@@ -18,16 +30,15 @@ export const Container = styled.div`
     padding-right: 32px;
   }
 
-
   @media (min-width: 1440px) {
     padding-left: 112px;
     padding-right: 112px;
   }
-`
+`;
 
 export const LogoSvg = styled(Logo)`
   width: 40px;
-  height: 45px;
+  height: 48px;
   margin-left: auto;
   margin-right: auto;
 `;
@@ -44,19 +55,6 @@ export const Nav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 8px;
-  margin-bottom: 24px;
-
-  @media (min-width: 768px) {
-    padding-top: 16px;
-    margin-bottom: 40px;
-  }
-
-  @media (min-width: 1440px) {
-    padding-left: 112px;
-    padding: 12px, 112px 0;
-    margin-bottom: 49px;
-  }
 `;
 
 export const StyledLinkLogo = styled(NavLink)`
@@ -84,9 +82,4 @@ export const StyledLink = styled(NavLink)`
   display: flex;
   align-items: center;
   gap: 8px;
-
-  &:hover,
-  :focus{
-    color: var(--Secondary-color-5, #FF9D43);
-  }
 `;

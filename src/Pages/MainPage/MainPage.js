@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import {
   Container,
   Heading,
@@ -8,63 +9,81 @@ import {
   Calendar,
   Presentation,
   Screw,
+  Point,
   Button,
   Text,
   ArgumentsContainer,
   ListBenefits,
+  HomeSection,
+  BenefitsContainer,
 } from './MainPage.styled';
 const MainPage = () => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate('/signup');
+  };
+
   return (
-    <Container>
-      <div>
-        <Heading>Water consumption tracker</Heading>
-        <Paragraph>Record daily water intake and track</Paragraph>
-        <ListTitle>Tracker Benefits</ListTitle>
-        <ListBenefits>
-          <Li>
-            <Calendar alt="calendar" />
-            <Text>Habit drive</Text>
-          </Li>
-          <Li>
-            <Presentation alt="presentation" />
-            <Text>View statistics</Text>
-          </Li>
-          <Li>
-            <Screw alt="screw" />
-            <Text>Personal rate setting</Text>
-          </Li>
-        </ListBenefits>
-        <Button>Try tracker</Button>
-      </div>
-      <ArgumentsContainer>
-        <ListTitle>Why drink water</ListTitle>
-        <List>
-          <li>
-            <Text>Supply of nutrients to all organs</Text>
-          </li>
-          <li>
-            <Text>Providing oxygen to the lungs</Text>
-          </li>
-          <li>
-            <Text>Maintaining the work of the heart</Text>
-          </li>
-          <li>
-            <Text>Release of processed substances</Text>
-          </li>
-          <li>
-            <Text>Ensuring the stability of the internal environment</Text>
-          </li>
-          <li>
-            <Text>Maintaining within the normal temperature</Text>
-          </li>
-          <li>
-            <Text>
-              Maintaining an immune system capable of resisting disease
-            </Text>
-          </li>
-        </List>
-      </ArgumentsContainer>
-    </Container>
+    <HomeSection>
+      <Container>
+        <BenefitsContainer>
+          <Heading>Water consumption tracker</Heading>
+          <Paragraph>Record daily water intake and track</Paragraph>
+          <ListTitle>Tracker Benefits</ListTitle>
+          <ListBenefits>
+            <Li style={{ width: ' 248px' }}>
+              <Calendar alt="calendar" />
+              <Text>Habit drive</Text>
+            </Li>
+            <Li style={{ width: ' 248px' }}>
+              <Presentation alt="presentation" />
+              <Text>View statistics</Text>
+            </Li>
+
+            <Li style={{ width: ' 248px' }}>
+              <Screw alt="screw" />
+              <Text>Personal rate setting</Text>
+            </Li>
+          </ListBenefits>
+          <Button onClick={handleClick}>Try tracker</Button>
+        </BenefitsContainer>
+        <ArgumentsContainer>
+          <ListTitle>Why drink water</ListTitle>
+          <List>
+            <Li>
+              <Point alt="point" />
+              <Text>Supply of nutrients to all organs</Text>
+            </Li>
+            <Li>
+              <Point alt="point" />
+              <Text>Providing oxygen to the lungs</Text>
+            </Li>
+            <Li>
+              <Point alt="point" />
+              <Text>Maintaining the work of the heart</Text>
+            </Li>
+            <Li>
+              <Point alt="point" />
+              <Text>Release of processed substances</Text>
+            </Li>
+            <Li>
+              <Point alt="point" />
+              <Text>Ensuring the stability of the internal environment</Text>
+            </Li>
+            <Li>
+              <Point alt="point" />
+              <Text>Maintaining within the normal temperature</Text>
+            </Li>
+            <Li>
+              <Point alt="point" />
+              <Text>
+                Maintaining an immune system capable of resisting disease
+              </Text>
+            </Li>
+          </List>
+        </ArgumentsContainer>
+      </Container>
+    </HomeSection>
   );
 };
 
