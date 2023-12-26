@@ -16,8 +16,7 @@ export const Layout = () => {
   return (
     <div>
       <header>
-        <Container>
-          <AppBar/>
+        <Container> 
         <Nav>
           <li>
             <StyledLinkLogo to="/">
@@ -42,3 +41,5 @@ export const Layout = () => {
     </div>
   );
 };
+
+// <AppBar/>
