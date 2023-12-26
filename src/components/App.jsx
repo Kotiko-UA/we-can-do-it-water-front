@@ -1,7 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
-import { Layout } from './Layout/Layout';
+import { Layout } from './Layout/Layout.jsx';
 import MainPage from '../Pages/MainPage/MainPage.js';
-
 
 // поки що lazy не працює, підключайте маршрути просто через звичайний імпорт,
 // тобто -> import SignUpPage from './pages/SignUpPage';
@@ -18,9 +17,9 @@ export const App = () => {
       <Route path="/" element={<Layout />}>
         <Route path="/" index element={<MainPage />}></Route>
         {/* <Route path="/signup" element={<SignUpPage />}></Route> */}
-         {/* <Route path="/signup" element={<SignUpPage />} /> */}
-         {/* <Route path="/signin" element={<SigninPage />} /> */}
-         {/* <Route path="/forgot-password" element={<ForgotPasswordPage />} /> */} 
+        {/* <Route path="/signup" element={<SignUpPage />} /> */}
+        {/* <Route path="/signin" element={<SigninPage />} /> */}
+        {/* <Route path="/forgot-password" element={<ForgotPasswordPage />} /> */}
       </Route>
     </Routes>
   );
