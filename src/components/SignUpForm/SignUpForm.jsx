@@ -5,9 +5,6 @@ import { Formik} from 'formik';
 import React, { useState } from "react";
 import { StyledLink, FormWrapper, Label, FieldInput, ErrorMsg, ButtonSbmt, EyeSlash, EyeActive } from './SignUpForm.styled.js';
 
-import {Icon} from 'react-icons-kit';
-import {eyeOff} from 'react-icons-kit/feather/eyeOff';
-import { eye } from 'react-icons-kit/feather/eye';
 
 
 
