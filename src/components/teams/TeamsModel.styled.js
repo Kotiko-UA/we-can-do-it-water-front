@@ -14,9 +14,10 @@ export const Backdrop = styled.div`
 `;
 export const Modal = styled.div`
   position: absolute;
-  padding: 8px;
+  padding: 32px 24px;
   width: 280px;
   height: 560px;
+  border-radius: 10px;
   top: 50%;
   left: 50%;
   overflow-y: auto;
@@ -27,7 +28,7 @@ export const Modal = styled.div`
   }
   @media screen and (min-width: 1440px) {
     width: 850px;
-    height: 700px;
+    height: 764px;
     overflow-y: hidden;
   }
 `;
@@ -36,8 +37,6 @@ export const ButtonClose = styled.button`
   padding: 2px;
   background-color: transparent;
   margin-left: auto;
-  border: 2px solid #407bff;
-  border-radius: 50%;
   width: 24px;
   height: 24px;
   scale: 1;
@@ -48,10 +47,9 @@ export const ButtonClose = styled.button`
   }
 `;
 export const ButtonCloseIcon = styled(Close)`
-  stroke: #407bff;
-  margin: auto;
-  width: 12px;
-  height: 12px;
+  fill: #407bff;
+  width: 24px;
+  height: 24px;
   display: block;
 `;
 export const TeamList = styled.ul`
