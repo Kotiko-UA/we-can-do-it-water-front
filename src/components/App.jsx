@@ -12,24 +12,18 @@ export const App = () => {
     <div>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="/" index element={<HomePage />}></Route>
+          <Route path="/" index element={<MainPage />}></Route>
           <Route path="/signup" element={<SignUpPage />}></Route>
           <Route
             path="/signUp"
             element={
-              <RestrictedRoute
-                redirectTo="/signUp"
-                component={<SignUpPage />}
-              />
+              <RestrictedRoute redirectTo="/signUp" component={<SignUpPage />} />
             }
           />
           <Route
             path="/signIn"
             element={
-              <RestrictedRoute
-                redirectTo="/signIn"
-                component={<SignInPage />}
-              />
+              <RestrictedRoute redirectTo="/signIn" component={<SignInPage />} />
             }
           />
           <Route path="/forgot-password" element={<ForgotPasswordPage />} />
@@ -38,3 +32,5 @@ export const App = () => {
     </div>
   );
 };
+
+  
