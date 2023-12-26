@@ -3,9 +3,6 @@ import { Layout } from './Layout/Layout';
 import MainPage from '../Pages/MainPage/MainPage.js';
 
 import HomePage from 'Pages/HomePage/HomePage.jsx';
-// УВАГА! Щоб дивитися HomePage в браузері,
-//  треба вставити "HomePage"(без лапок) в
-//  Route замість "MainPage"
 
 // поки що lazy не працює, підключайте маршрути просто через звичайний імпорт,
 // тобто -> import SignUpPage from './pages/SignUpPage';
