@@ -1,4 +1,4 @@
-export const Month = [
+export const Months = [
   {
     date: '1, December',
     norma: '2.0 L',
