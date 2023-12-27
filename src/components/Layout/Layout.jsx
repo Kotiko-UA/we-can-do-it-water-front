@@ -1,15 +1,7 @@
 import { Outlet } from 'react-router-dom';
-
+import HeaderMarkup from 'components/HeaderMarkup/HeaderMarkup.jsx';
 // import { Suspense } from 'react';
-import {
-  Header,
-  LogoSvg,
-  UserAvatar,
-  Nav,
-  StyledLinkLogo,
-  StyledLink,
-  Container,
-} from './Layout.styled.js';
+import { Header } from './Layout.styled.js';
 import { useState } from 'react';
 import { Paskal } from 'components/pascal/paskal.jsx';
 import { TeamModal } from 'components/teams/TeamModal.jsx';
@@ -22,22 +14,7 @@ export const Layout = () => {
   return (
     <>
       <Header>
-        <Container>
-          <Nav>
-            <li>
-              <StyledLinkLogo to="/">
-                <LogoSvg alt="logo" />
-                Tracker <br /> of water
-              </StyledLinkLogo>
-            </li>
-            <li>
-              <StyledLink to="/signup">
-                Sign in
-                <UserAvatar alt="user avatar" />
-              </StyledLink>
-            </li>
-          </Nav>
-        </Container>
+        <HeaderMarkup />
       </Header>
       <main>
         <Outlet />
