@@ -1,4 +1,3 @@
-// import { useContext } from 'react';
 import {
   DailyNormaContainer,
   Container,
@@ -12,10 +11,6 @@ import {
   WaterInfo,
   Button,
 } from './DailyNorma.styled';
-
-// import { AddButton } from '../../../MainStyle/Buttons/AddButton.styled';
-// import { ModalContext } from 'components/helpers/ModalContext';
-// import DailyNormaModal from 'components/test/Modals/DailyNorma/DailyNorma';
 
 import imgDesk from '../../../../../icons/HomePage/main/bottle-desk-1x.webp';
 import imgDesk2x from '../../../../../icons/HomePage/main/bottle-desk-2x.webp';

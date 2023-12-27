@@ -1,8 +1,4 @@
 import { useContext, useEffect, useRef } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-
-// import { selectorWaterCurrentDay } from 'redux/userData/selectors';
-// import { fetchTodayThunk } from 'redux/userData/thunk';
 
 import {
   Viewport,
@@ -18,39 +14,15 @@ import {
 } from './Today.styled';
 
 import { ModalContext } from 'components/helpers/ModalContext';
-// import AddWaterModal from 'components/Modals/AddWater/AddWaterModal';
-// import DeleteEntryModal from 'components/Modals/DeleteEntry/DeleteEntryModal';
-// import EditAmountModal from 'components/Modals/EditAmount/EditAmountModal';
 
 import css from './Today.module.css';
 import Icons from '../../../../../icons/HomePage/sprite.svg';
 import { DayInfo } from 'FetchExamples/DayInfo';
 
 const Today = () => {
-  // const dispatch = useDispatch();
   const toggleModal = useContext(ModalContext);
-  // const { waterInputsForToday } = useSelector(selectorWaterCurrentDay);
+
   const listRef = useRef(null);
-
-  // const handleOpenWaterModal = () => {
-  //   toggleModal(<AddWaterModal />);
-  // };
-  // const handleDeleteNotice = waterId => {
-  //   toggleModal(<DeleteEntryModal waterId={waterId} />);
-  // };
-  // const handleEditNotice = ({ data }) => {
-  //   toggleModal(<EditAmountModal data={data} />);
-  // };
-
-  // useEffect(() => {
-  //   dispatch(fetchTodayThunk());
-  // }, [dispatch]);
-
-  // useEffect(() => {
-  //   if (listRef.current) {
-  //     listRef.current.scrollTop = listRef.current.scrollHeight;
-  //   }
-  // }, [waterInputsForToday]);
 
   return (
     <Container>
@@ -58,11 +30,6 @@ const Today = () => {
       <Viewport ref={listRef}>
         <TableStyled>
           <tbody>
-            {/* {waterInputsForToday
-              .toSorted(
-                (a, b) =>
-                  new Date(a.date).getTime() - new Date(b.date).getTime()
-              ) */}
             {DayInfo.map(data => (
               <TableRow key={data._id}>
                 <TableCell>
@@ -81,22 +48,14 @@ const Today = () => {
                   }).format(new Date(data.updatedAt))}
                 </TimeCell>
                 <TableCell>
-                  <Button
-                    aria-label="Edit notice"
-                    // onClick={() => {
-                    //   handleEditNotice({ data });
-                    // }}
-                  >
+                  <Button aria-label="Edit notice">
                     <svg className={css.icon_pencil} width="16" height="16">
                       <use href={Icons + '#pencil-square'}></use>
                     </svg>
                   </Button>
                 </TableCell>
                 <TableCell>
-                  <Button
-                    aria-label="Delete notice"
-                 
-                  >
+                  <Button aria-label="Delete notice">
                     <svg className={css.icon_trash} width="16" height="16">
                       <use href={Icons + '#trash'}></use>
                     </svg>
@@ -106,12 +65,7 @@ const Today = () => {
             ))}
           </tbody>
         </TableStyled>
-        <AddButton
-          type="submit"
-        
-        >
-          + Add water
-        </AddButton>
+        <AddButton type="submit">+ Add water</AddButton>
       </Viewport>
     </Container>
   );
