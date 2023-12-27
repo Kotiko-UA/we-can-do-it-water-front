@@ -1,13 +1,18 @@
-//import { Helmet } from "react-helmet";
 import { SignUpForm } from "../../components/SignUpForm/SignUpForm";
-import {Container, Title } from './SignUpPage.styled.js';
+import {SignUpContainer, Title, SignUpSection } from './SignUpPage.styled.js';
+import BcgBottleSignUp from "../../components/BcgImageSection/BcgBottleSignUp.jsx";
 
 export default function SignUpPage() {
     return (
-        <Container>
+        <SignUpSection>
+            <SignUpContainer>
                 <Title>Sign Up</Title>
-            <SignUpForm/>
-        </Container>
+                <SignUpForm />
+                <BcgBottleSignUp/>
+            </SignUpContainer>
+        </SignUpSection>
+        
     )
-}
-//<Helmet> </Helmet>
+};
+
+//

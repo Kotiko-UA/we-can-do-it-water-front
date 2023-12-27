@@ -1,18 +1,19 @@
-//import { Helmet } from "react-helmet";
 import {SignInForm} from "../../components/SignInForm/SignInForm.jsx";
-import {Container, Title, SignInSection} from './SignInPage.styled.js';
+import {SignInContainer, Title, SignInSection} from './SignInPage.styled.js';
+import BcgImageSignIn from "../../components/BcgImageSection/BcgImageSignIn.jsx";
 
 
 export default function SignInPage() {
     return (
         <SignInSection>
-            <Container>
+            <SignInContainer>
                 <Title>Sign In</Title>
                 <SignInForm />
-            </Container>
+                <BcgImageSignIn /> 
+            </SignInContainer> 
         </SignInSection>
-        
+       
+            
     );
 };
 
-//<Helmet>  </Helmet>
