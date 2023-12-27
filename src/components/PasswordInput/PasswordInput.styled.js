@@ -1,5 +1,7 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
+import { ReactComponent as EyeSlashSvg } from "../../icons/eye_slash.svg";
+import { ReactComponent as EyeActiveSvg } from "../../icons/eye_active.svg";
 
 export const PasswordInputStyle = styled.input`
 width: 100%;
@@ -24,8 +26,24 @@ padding: 0;
 export const EyeButton = styled.div`
 color: rgba(64, 123, 255, 1);
 background-color: transparent;
-svg {
-    display: block;
-    color: rgba(64, 123, 255, 1);
-}
 `
+
+export const EyeSlash = styled(EyeSlashSvg)`
+width: 16px;
+height: 16px;
+position: relative; 
+/* bottom: 30px;
+left: 190px; */
+/* vertical-align: middle;  */
+cursor: pointer;
+`;
+
+export const EyeActive = styled(EyeActiveSvg)`
+width: 16px;
+height: 16px;
+position: relative; 
+/* bottom: 30px;
+left: 190px; */
+/* vertical-align: middle;  */
+cursor: pointer;
+`;

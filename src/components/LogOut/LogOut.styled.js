@@ -1,17 +1,23 @@
 import styled from "styled-components";
 
+import { ReactComponent as CloseSvg } from "../../icons/close.svg";
+
 export const Overlay = styled.div`
 position: fixed;
-background-color: rgba(0, 0, 0, 0.8);
+top: 0;
+left: 0;
 width: 100%;
 height: 100%;
-z-index: 1;
+background: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0) 100%);
+-webkit-backdrop-filter: blur(11px);
+backdrop-filter: blur(11px);
+z-index: 999;
 `;
 
 export const Modal = styled.div`
 border-radius: 10px;
 padding: 32px 24px;
-background-color: rgba(255, 255, 255, 1);
+background-color: ${props => props.theme.primaryWhite};
 position: absolute;
 left: 50%;
 top: 20%;
@@ -27,14 +33,13 @@ transform: translate(-50%, -50%);
 `;
 
 export const CloseButton = styled.button`
-color: rgba(64, 123, 255, 1);
 background-color: transparent;
-svg {
-    display: block;
-    color: rgba(64, 123, 255, 1);
-    width: 18px;
-    height: 18px;
-}
+`
+
+export const Close = styled(CloseSvg)`
+color: ${props => props.theme.primaryBlue};
+width: 18px;
+height: 18px;
 `
 
 
@@ -88,8 +93,8 @@ text-align: center;
 `
 
 export const LogOutButton = styled(Button)`
-color: rgba(255, 255, 255, 1);
-background-color: rgba(239, 80, 80, 1);
+color: ${props => props.theme.primaryWhite};
+background-color: ${props => props.theme.secondaryRed};
 box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
 margin-bottom: 24px;
 
@@ -99,8 +104,8 @@ margin-bottom: 24px;
 `;
 
 export const CancelButton = styled(Button)`
-color: rgba(64, 123, 255, 1);
-background-color: rgba(215, 227, 255, 1);
+color: ${props => props.theme.primaryBlue};
+background-color: ${props => props.theme.secondaryLightBlue};
 `;
 
 export const MediaButtonsContainer = styled.div`

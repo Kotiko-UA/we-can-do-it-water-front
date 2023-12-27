@@ -1,17 +1,24 @@
 import styled from "styled-components";
 
+import { ReactComponent as CloseSvg } from "../../icons/close.svg";
+import { ReactComponent as ArrowUpSvg } from "../../icons/arrow-up.svg";
+
 export const Overlay = styled.div`
 position: fixed;
-background-color: rgba(0, 0, 0, 0.8);
+top: 0;
+left: 0;
 width: 100%;
 height: 100%;
-z-index: 1;
+background: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0) 100%);
+-webkit-backdrop-filter: blur(11px);
+backdrop-filter: blur(11px);
+z-index: 999;
 `;
 
 export const Modal = styled.div`
 border-radius: 10px;
 padding: 32px 12px;
-background-color: rgba(255, 255, 255, 1);
+background-color: ${props => props.theme.primaryWhite};
 position: absolute;
 left: 50%;
 top: 50%;
@@ -36,14 +43,14 @@ align-items: center;
 `;
 
 export const CloseButton = styled.button`
-color: rgba(64, 123, 255, 1);
+color: ${props => props.theme.primaryBlue};
 background-color: transparent;
-svg {
-    display: block;
-    color: rgba(64, 123, 255, 1);
-    width: 18px;
-    height: 18px;
-}
+`
+
+export const Close = styled(CloseSvg)`
+color: ${props => props.theme.primaryBlue};
+width: 18px;
+height: 18px;
 `
 
 export const SettingText = styled.p`
@@ -87,7 +94,7 @@ export const Avatar = styled.div`
 width: 80px;
 height: 80px;
 border-radius: 50%;
-background-color: black;
+background-color: ${props => props.theme.primaryBlack};
 `
 
 export const InputFile = styled.input`
@@ -99,13 +106,19 @@ position: absolute;
 z-index: -1;
 `
 
+export const UploadSvg = styled(ArrowUpSvg)`
+color: ${props => props.theme.primaryBlue};
+width: 16px;
+height: 16px;
+`
+
 export const Label = styled.label`
 font-family: 'Roboto';
 white-space: nowrap;
 font-size: 14px;
 font-weight: 500;
 line-height: 1.29;
-color: rgba(64, 123, 255, 1);
+color: ${props => props.theme.primaryBlue};
 display: flex;
 align-items: center;
 gap: 8px;
@@ -182,8 +195,8 @@ export const CommonInput = styled.input`
 width: 256px;
 padding: 12px 10px;
 border-radius: 6px;
-border: 1px solid rgba(215, 227, 255, 1);
-color: rgba(64, 123, 255, 1);
+border: 1px solid ${props => props.theme.secondaryLightBlue};
+color: ${props => props.theme.primaryBlue};
 font-family: 'Roboto';
 font-size: 16px;
 font-weight: 400;
@@ -205,8 +218,8 @@ display: flex;
 width: 256px;
 padding: 12px 10px;
 border-radius: 6px;
-border: 1px solid rgba(215, 227, 255, 1);
-color: rgba(64, 123, 255, 1);
+border: 1px solid ${props => props.theme.secondaryLightBlue};
+color: ${props => props.theme.primaryBlue};
 font-family: 'Roboto';
 font-size: 16px;
 font-weight: 400;
@@ -228,8 +241,8 @@ line-height: 1.25;
 
 export const SaveButton = styled.button`
 margin: 0 auto;
-background-color: rgba(64, 123, 255, 1);
-color: rgba(255, 255, 255, 1);
+background-color: ${props => props.theme.primaryBlue};
+color: ${props => props.theme.primaryWhite};
 width: 256px;
 margin-top: 12px;
 padding: 8px 30px;
