@@ -1,11 +1,18 @@
 import styled from "styled-components";
 
+import { ReactComponent as CloseSvg } from "../../icons/close.svg";
+import { ReactComponent as ArrowUpSvg } from "../../icons/arrow-up.svg";
+
 export const Overlay = styled.div`
 position: fixed;
-background-color: rgba(0, 0, 0, 0.8);
+top: 0;
+left: 0;
 width: 100%;
 height: 100%;
-z-index: 1;
+background: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0) 100%);
+-webkit-backdrop-filter: blur(11px);
+backdrop-filter: blur(11px);
+z-index: 999;
 `;
 
 export const Modal = styled.div`
@@ -38,12 +45,12 @@ align-items: center;
 export const CloseButton = styled.button`
 color: rgba(64, 123, 255, 1);
 background-color: transparent;
-svg {
-    display: block;
-    color: rgba(64, 123, 255, 1);
-    width: 18px;
-    height: 18px;
-}
+`
+
+export const Close = styled(CloseSvg)`
+color: rgba(64, 123, 255, 1);
+width: 18px;
+height: 18px;
 `
 
 export const SettingText = styled.p`
@@ -97,6 +104,12 @@ opacity: 0;
 overflow: hidden;
 position: absolute;
 z-index: -1;
+`
+
+export const UploadSvg = styled(ArrowUpSvg)`
+color: rgba(64, 123, 255, 1);
+width: 16px;
+height: 16px;
 `
 
 export const Label = styled.label`

@@ -14,7 +14,7 @@ import {
   LogOutIcon,
 } from './HeaderMarkup.styled.js';
 
-const HeaderMarkup = () => {
+const HeaderMarkup = ({toggleSetting, toggleLogOut}) => {
   const { isLoggedIn } = useAuth();
   const { userIcon } = useAuth();
   //   const { user } = useAuth();
@@ -41,13 +41,13 @@ const HeaderMarkup = () => {
                 <NavMenu className="navMenu">
                   <NavLi>
                     <SettingsIcon />
-                    <a href="/settings" style={{ color: '#407bff' }}>
+                    <a href="#settings" style={{ color: '#407bff' }} onClick={() => toggleSetting()}>
                       Settings
                     </a>
                   </NavLi>
                   <NavLi>
                     <LogOutIcon />
-                    <a href="/logout" style={{ color: '#407bff' }}>
+                    <a href="#logout" style={{ color: '#407bff' }} onClick={() => toggleLogOut()}>
                       Log out
                     </a>
                   </NavLi>
