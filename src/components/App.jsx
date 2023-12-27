@@ -6,7 +6,6 @@ import ForgotPasswordPage from '../Pages/ForgotPasswordPage';
 import SignInPage from '../Pages/SignInPage/SignInPage';
 import SignUpPage from '../Pages/SignUpPage/SignUpPage.jsx';
 import HomePage from 'Pages/HomePage/HomePage.jsx';
-import { DailyNormaModal } from './DailyNormaModal/DailyNormaModal.jsx';
 
 export const App = () => {
   return (
@@ -14,7 +13,7 @@ export const App = () => {
       {/* 111 */}
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="/" index element={< DailyNormaModal/>}></Route>
+          <Route path="/" index element={< MainPage/>}></Route>
           <Route path="/signup" element={<SignUpPage />}></Route>
           <Route
             path="/signUp"
