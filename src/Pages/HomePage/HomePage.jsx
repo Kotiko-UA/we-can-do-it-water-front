@@ -1,18 +1,11 @@
-import { Container, WrapperHomePage } from './HomePage.styled';
-
-import { MyDailyNorma } from './components/MyDailyNorma/MyDailyNorma';
-import Calendar from './components/Calendar/Calendar';
+import { useAuth } from 'Hooks/useAuth.js';
+import HomeDefaultPage from 'Pages/HomeDefaultPage/HomeDefaultPage';
+import HomeUserPage from 'Pages/HomeUserPage/HomeUserPage';
 
 const HomePage = () => {
-  return (
-    <Container>
-      <WrapperHomePage>
-        {/* {isLoading && <Loader />} */}
-        <MyDailyNorma />
-        <Calendar />
-      </WrapperHomePage>
-    </Container>
-  );
+  const { isLoggedIn } = useAuth();
+
+  return <>{isLoggedIn ? <HomeUserPage /> : <HomeDefaultPage />}</>;
 };
 
 export default HomePage;
