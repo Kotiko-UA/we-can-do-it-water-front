@@ -1,5 +1,4 @@
-
-import {Formik } from 'formik';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
 import {
   Backdrop,
@@ -25,7 +24,7 @@ import {
   WrapInfo,
   WrapTitle,
 } from './DailyNormaModal.styled';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 const DailyNormaSchema = Yup.object().shape({
   weight: Yup.number()
@@ -47,28 +46,26 @@ const normaForMan = values => {
   return values.weight * 0.04 + values.time * 0.6;
 };
 
-export const DailyNormaModal = () => {
-  const [isOpen, setIsOpen] = useState(true);
-
-  const closeModal = useCallback(() => {
-    setIsOpen(false);
-  }, []);
-
+export const DailyNormaModal = ({ onClick }) => {
   useEffect(() => {
-    const handleKeyPress = (e) => {
-      if (e.key === 'Escape') {
-        closeModal();
+    const handleClick = e => {
+      if (e.target === e.currentTarget) {
+        onClick('edit-daily-norm');
       }
     };
-
-    document.addEventListener('keydown', handleKeyPress);
-
-    return () => {
-      document.removeEventListener('keydown', handleKeyPress);
+    const handleKeydown = e => {
+      if (e.key === 'Escape') {
+        onClick('edit-daily-norm');
+      }
     };
-  }, [closeModal]);
-
-
+    const backdrop = document.querySelector('.js-dayly-backdrop');
+    document.addEventListener('keydown', handleKeydown);
+    backdrop.addEventListener('click', handleClick);
+    return () => {
+      backdrop.removeEventListener('click', handleClick);
+      document.removeEventListener('keydown', handleKeydown);
+    };
+  }, [onClick]);
   const dailyNormaCounter = values =>
     values.picked === 'For girl'
       ? normaForGirl(values).toFixed(1)
@@ -76,16 +73,12 @@ export const DailyNormaModal = () => {
       ? normaForMan(values).toFixed(1)
       : 0;
 
-      const handleClickInsideModal = (e) => {
-        e.stopPropagation(); 
-      };
-
-  return isOpen? (
-    <Backdrop className="js-backdrop" onClick={closeModal}>
-      <Modal onClick={handleClickInsideModal}>
+  return (
+    <Backdrop className="js-dayly-backdrop">
+      <Modal>
         <WrapTitle>
           <Title>My daily norma</Title>
-          <ButtonClose type="button" onClick={closeModal}>
+          <ButtonClose type="button" onClick={() => onClick('edit-daily-norm')}>
             <ButtonCloseIcon />
           </ButtonClose>
         </WrapTitle>
@@ -157,11 +150,11 @@ export const DailyNormaModal = () => {
                   <ErrMsg name="drink" component="div" />
                 </LabelFormNorma>
               </FormCalculateWrap>
-                <ButtonSave type="submit">Save</ButtonSave>
+              <ButtonSave type="submit">Save</ButtonSave>
             </FormStyled>
           )}
         </Formik>
       </Modal>
     </Backdrop>
-  ) : null;
+  );
 };

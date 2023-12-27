@@ -12,12 +12,15 @@ import {
   NavLi,
   SettingsIcon,
   LogOutIcon,
+  ArrowIcon
 } from './HeaderMarkup.styled.js';
 
 const HeaderMarkup = ({toggleSetting, toggleLogOut}) => {
   const { isLoggedIn } = useAuth();
   const { userIcon } = useAuth();
-  //   const { user } = useAuth();
+    // const { user } = useAuth();
+
+    console.log(userIcon)
 
   return (
     <>
@@ -36,6 +39,7 @@ const HeaderMarkup = ({toggleSetting, toggleLogOut}) => {
                 <StyledLink to="/">
                   <h3>Hi, user</h3>
                   <RealUserIcon src={userIcon} alt="user real avatar" />
+                  <ArrowIcon/>
                 </StyledLink>
 
                 <NavMenu className="navMenu">

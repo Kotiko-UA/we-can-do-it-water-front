@@ -27,14 +27,14 @@ import imgMobPng2x from '../../../../../icons/HomePage/main/bottle-mob-2x.png';
 
 import sprite from '../../../../../icons/HomePage/sprite.svg';
 
-export const DailyNorma = () => {
+export const DailyNorma = ({ onClick }) => {
   return (
     <Container>
       <DailyNormaContainer>
         <Title>My daily norma</Title>
         <NormaContainer>
           <Norma>1,5 L</Norma>
-          <NormaBtn>Edit</NormaBtn>
+          <NormaBtn onClick={() => onClick('edit-daily-norm')}>Edit</NormaBtn>
         </NormaContainer>
       </DailyNormaContainer>
       <picture>

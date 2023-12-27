@@ -13,7 +13,7 @@ import {
   EyeSlash,
   EyeActive,
 } from './SignUpForm.styled.js';
-import { useAuth } from 'Hooks/useAuth.js';
+// import { useAuth } from 'Hooks/useAuth.js';
 
 const SignUpFormSchema = Yup.object().shape({
   email: Yup.string().email().required('Required'),
