@@ -9,6 +9,11 @@ import {
   StyledLinkLogo,
   StyledLink,
   Container,
+  LeftNavWrapper,
+  NavMenu,
+  SettingsIcon,
+  LogOutIcon,
+  NavLi
 } from './Layout.styled.js';
 import { useState } from 'react';
 import { Paskal } from 'components/pascal/paskal.jsx';
@@ -30,11 +35,26 @@ export const Layout = () => {
                 Tracker <br /> of water
               </StyledLinkLogo>
             </li>
-            <li>
-              <StyledLink to="/signup">
-                Sign in
-                <UserAvatar alt="user avatar" />
-              </StyledLink>
+
+            <li style={{width:"118px"}}>
+              <LeftNavWrapper>
+                <StyledLink to="/signup" style={{justifyContent: "flex-end"}}>
+                  Sign in
+                  <UserAvatar alt="user avatar" />
+                </StyledLink>
+
+                <NavMenu className="navMenu">
+                  <NavLi>
+                    <SettingsIcon/>
+                    <a href="/settings" style={{color: "#407bff"}}>Settings</a>
+                  </NavLi>
+                  <NavLi>
+                    <LogOutIcon/>
+                    <a href="/logout" style={{color: "#407bff"}}>Log out</a>
+                  </NavLi>
+                </NavMenu>
+
+              </LeftNavWrapper>
             </li>
           </Nav>
         </Container>
