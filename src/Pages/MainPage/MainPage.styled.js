@@ -38,8 +38,6 @@ export const Container = styled.div`
   }
 `;
 
-
-
 export const HomeSection = styled.section`
   width: 100%;
   padding-top: 24px;
@@ -63,9 +61,6 @@ export const HomeSection = styled.section`
     padding-top: 31px;
   }
 `;
-
-
-
 
 export const BenefitsContainer = styled.div`
   width: 280px;
@@ -199,7 +194,7 @@ export const Button = styled.button`
   height: 36px;
 
   border-radius: 10px;
-  background: var(--Primery-Color-Blue, #407bff);
+  background: #407bff;
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
 
   color: #fff;
@@ -212,6 +207,12 @@ export const Button = styled.button`
 
   margin-top: 24px;
   margin-bottom: 40px;
+  &:hover {
+    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+  }
+  &:active {
+    box-shadow: none;
+  }
 
   @media (min-width: 768px) {
     margin-bottom: 60px;
