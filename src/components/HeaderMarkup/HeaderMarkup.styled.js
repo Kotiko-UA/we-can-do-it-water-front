@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import theme from '../../index.js';
 import { ReactComponent as Logo } from '../../icons/logo.svg';
 import { ReactComponent as Avatar } from '../../icons/user.svg';
 import { ReactComponent as LogOut } from '../../icons/logout.svg';
 import { ReactComponent as Settings } from '../../icons/settings.svg';
+import { ReactComponent as Arrow } from '../../icons/arrow.svg';
 import { NavLink } from 'react-router-dom';
 
 export const Container = styled.div`
@@ -86,9 +86,16 @@ export const RealUserIcon = styled.img`
   border-radius: 28px;
 `;
 
+export const ArrowIcon = styled(Arrow)`
+  width: 16px;
+  height: 16px;
+  margin-left: 4px;
+`;
+
 export const UserAvatar = styled(Avatar)`
   width: 28px;
   height: 28px;
+
 `;
 
 export const NavMenu = styled.ul`
