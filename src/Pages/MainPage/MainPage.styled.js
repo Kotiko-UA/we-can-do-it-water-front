@@ -3,12 +3,9 @@ import { ReactComponent as CalendarSvg } from '../../icons/calendarss.svg';
 import { ReactComponent as PresentationSvg } from '../../icons/presentation.svg';
 import { ReactComponent as ScrewSvg } from '../../icons/screw.svg';
 import backgroundMainPageMobile from '../../icons/backgroundMainPageMobile.svg';
-import backgroundMainPageTablet from '../../icons/tablet.svg';
-
+import backgroundMainPageTablet from '../../icons/NewTablet.svg';
 
 import backgroundMainPageDesc from '../../icons/backgroundMainPageDesc.svg';
-
-
 
 import { ReactComponent as PointSvg } from '../../icons/mark-list.svg';
 
@@ -37,25 +34,9 @@ export const Container = styled.div`
     flex-direction: row;
     gap: 81px;
     justify-content: center;
+    align-items: flex-end;
   }
 `;
-
-export const BenefitsContainer = styled.div`
-width: 280px;
-margin-left:auto;
-margin-right:auto;
-
-@media (min-width: 768px) {
-width: 100%;
-}
-
-@media (min-width: 1440px) {
-width: 439px;
-margin-left: 0;
-margin-right: 0;
-}
-
-`
 
 export const HomeSection = styled.section`
   width: 100%;
@@ -66,20 +47,36 @@ export const HomeSection = styled.section`
   background-repeat: no-repeat;
   background-image: url(${backgroundMainPageMobile});
 
-  @media (min-width: 768px)  {
+  @media (min-width: 768px) {
     background-image: url(${backgroundMainPageTablet});
-    padding-top: 40px;
-    padding-bottom: 50px;
-    display: block;
+    background-size: cover;
+    margin-top: 26px;
+    padding-bottom: 60px;
   }
 
   @media (min-width: 1440px) {
     background-image: url(${backgroundMainPageDesc});
-    height: 691px;
-    background-size: cover; 
+    height: 693px;
+    margin-top: 49px;
+    padding-top: 31px;
   }
 `;
 
+export const BenefitsContainer = styled.div`
+  width: 280px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (min-width: 768px) {
+    width: 100%;
+  }
+
+  @media (min-width: 1440px) {
+    width: 439px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+`;
 export const Heading = styled.h1`
   color: #2f2f2f;
   font-family: Roboto;
@@ -88,6 +85,10 @@ export const Heading = styled.h1`
   font-weight: 700;
   line-height: 32px;
   margin-bottom: 16px;
+  @media (min-width: 768px) {
+    font-size: 36px;
+    line-height: 42px;
+  }
 `;
 
 export const Paragraph = styled.h1`
@@ -98,6 +99,10 @@ export const Paragraph = styled.h1`
   font-weight: 400;
   line-height: 30px;
   margin-bottom: 24px;
+  @media (min-width: 768px) {
+    font-size: 26px;
+    line-height: 32px;
+  }
 `;
 
 export const ListTitle = styled.p`
@@ -151,18 +156,18 @@ export const Li = styled.li`
 // }
 
 export const Calendar = styled(CalendarSvg)`
-  width: 24px;
-  height: 24px;
+  width: 40px;
+  height: 40px;
 `;
 
 export const Presentation = styled(PresentationSvg)`
-  width: 24px;
-  height: 24px;
+  width: 40px;
+  height: 40px;
 `;
 
 export const Screw = styled(ScrewSvg)`
-  width: 24px;
-  height: 24px;
+  width: 40px;
+  height: 40px;
 `;
 
 export const Point = styled(PointSvg)`
@@ -189,7 +194,7 @@ export const Button = styled.button`
   height: 36px;
 
   border-radius: 10px;
-  background: var(--Primery-Color-Blue, #407bff);
+  background: #407bff;
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
 
   color: #fff;
@@ -202,20 +207,22 @@ export const Button = styled.button`
 
   margin-top: 24px;
   margin-bottom: 40px;
+  &:hover {
+    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+  }
+  &:active {
+    box-shadow: none;
+  }
 
-
-  
   @media (min-width: 768px) {
     margin-bottom: 60px;
   }
-
-
-
-
+  @media (min-width: 1440px) {
+    margin-bottom: 0;
+  }
 `;
 
 export const ArgumentsContainer = styled.div`
-
   display: flex;
   padding: 24px 16px;
   flex-direction: column;
@@ -239,6 +246,4 @@ export const ArgumentsContainer = styled.div`
     margin-left: 0;
     margin-right: 0;
   }
-
-
 `;
