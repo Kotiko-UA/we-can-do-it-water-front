@@ -3,6 +3,7 @@ import { ReactComponent as Logo } from '../../icons/logo.svg';
 import { ReactComponent as Avatar } from '../../icons/user.svg';
 import { ReactComponent as LogOut } from '../../icons/logout.svg';
 import { ReactComponent as Settings } from '../../icons/settings.svg';
+import { ReactComponent as Arrow } from '../../icons/arrow.svg';
 import { NavLink } from 'react-router-dom';
 
 export const Container = styled.div`
@@ -24,13 +25,13 @@ export const Container = styled.div`
 `;
 
 export const StyledLinkLogo = styled(NavLink)`
-  font-family: Roboto;
   font-size: 12px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
   text-transform: uppercase;
   color: #407bff;
+  color: ${props => props.theme.primaryBlue};
 
   display: flex;
   align-items: center;
@@ -38,7 +39,7 @@ export const StyledLinkLogo = styled(NavLink)`
   justify-content: flex-end;
 
   &:hover {
-    color: #ff9d43;
+    color: ${props => props.theme.secondaryOrange};
   }
 `;
 
@@ -65,18 +66,17 @@ export const RightNavWrapper = styled.div`
   }
 `;
 export const StyledLink = styled(NavLink)`
-  font-family: Roboto;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
   line-height: 24px;
-  color: #407bff;
+  color: ${props => props.theme.primaryBlue};
 
   display: flex;
   align-items: center;
   gap: 8px;
   &:hover {
-    color: #ff9d43;
+    color: ${props => props.theme.secondaryOrange};
   }
 `;
 
@@ -86,9 +86,16 @@ export const RealUserIcon = styled.img`
   border-radius: 28px;
 `;
 
+export const ArrowIcon = styled(Arrow)`
+  width: 16px;
+  height: 16px;
+  margin-left: 4px;
+`;
+
 export const UserAvatar = styled(Avatar)`
   width: 28px;
   height: 28px;
+
 `;
 
 export const NavMenu = styled.ul`
@@ -100,10 +107,10 @@ export const NavMenu = styled.ul`
   width: 118px;
 
   border-radius: 10px;
-  background: #fff;
+  background: ${props => props.theme.primaryWhite};
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.2);
 
-  color: #407bff;
+  color: ${props => props.theme.primaryBlue};
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
