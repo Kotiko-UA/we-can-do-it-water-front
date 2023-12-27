@@ -1,4 +1,4 @@
-import theme from 'Pages/HomePage/MainStyle/themeJSX';
+import theme from 'Pages/HomeUserPage/MainStyle/themeJSX';
 import styled from 'styled-components';
 
 export const Container = styled.div`

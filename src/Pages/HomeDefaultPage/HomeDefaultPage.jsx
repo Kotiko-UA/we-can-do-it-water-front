@@ -16,8 +16,8 @@ import {
   ListBenefits,
   HomeSection,
   BenefitsContainer,
-} from './MainPage.styled';
-const MainPage = () => {
+} from './HomeDefaultPage.styled';
+const HomeDefaultPage = () => {
   const navigate = useNavigate();
   const handleClick = () => {
     navigate('/signup');
@@ -87,4 +87,4 @@ const MainPage = () => {
   );
 };
 
-export default MainPage;
+export default HomeDefaultPage;
