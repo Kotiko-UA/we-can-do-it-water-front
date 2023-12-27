@@ -22,6 +22,13 @@ export const Wrap = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  @media (min-width: 768px) {
+    width: 336px;
+
+    flex-direction: row;
+    justify-content: flex-start;
+  }
 `;
 export const Form = styled.form`
   display: flex;
@@ -30,11 +37,12 @@ export const Form = styled.form`
 `;
 
 export const Label = styled.label`
+  width: 280px;
   display: flex;
   gap: 8px;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
   color: #2f2f2f;
   font-family: Roboto;
   font-size: 18px;
@@ -42,8 +50,12 @@ export const Label = styled.label`
   font-weight: 400;
   line-height: 24px;
   margin-bottom: 8px;
+  @media (min-width: 768px) {
+    width: 336px;
+  }
 `;
 export const Input = styled.input`
+  width: 100%;
   color: #9ebbff;
   font-family: Roboto;
   font-size: 16px;
@@ -85,9 +97,12 @@ export const EyeSlash = styled(EyeSlashSvg)`
   height: 16px;
   position: relative;
   bottom: 60px;
-  left: 185px;
+  left: 250px;
   vertical-align: middle;
   cursor: pointer;
+  @media (min-width: 768px) {
+    left: 300px;
+  }
 `;
 
 export const EyeActive = styled(EyeActiveSvg)`

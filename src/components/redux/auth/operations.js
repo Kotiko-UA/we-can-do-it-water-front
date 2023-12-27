@@ -23,6 +23,7 @@ export const signUp = createAsyncThunk(
     }
   }
 );
+// export const forgetPass = createAsyncThunk('auth/signup');
 
 export const signIn = createAsyncThunk(
   'auth/signin',
