@@ -1,3 +1,4 @@
+
 import styled from 'styled-components';
 import { ReactComponent as Close } from '../../icons/close.svg';
 import {ErrorMessage, Field, Form } from 'formik';
@@ -61,7 +62,6 @@ export const ButtonCloseIcon = styled(Close)`
   display: block;
 `;
 
-
 export const WrapTitle = styled.div`
 display: flex;
 justify-content: space-between;
@@ -72,7 +72,6 @@ font-size: 26px;
 font-weight: 500;
 line-height: 1.23;
 `;
-
 
 export const TextWrap = styled.div`
 display: flex;

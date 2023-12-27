@@ -1,8 +1,8 @@
-import { ErrorMessage, Field, Form, Formik } from 'formik';
+
+import {Formik } from 'formik';
 import * as Yup from 'yup';
 import {
   Backdrop,
-  BtnWrap,
   ButtonClose,
   ButtonCloseIcon,
   ButtonSave,
@@ -11,14 +11,10 @@ import {
   FormCalculateWrap,
   FormStyled,
   Formula,
-  Label,
-  LabelForm,
   LabelFormNorma,
   Modal,
-  NormaSpan,
   NormaWrap,
   RadioBtnField,
-  RadioBtnIcon,
   RadioBtnLabel,
   RadioWrap,
   SpanStar,
@@ -26,7 +22,6 @@ import {
   TextNorma,
   TextWrap,
   Title,
-  Wrap,
   WrapInfo,
   WrapTitle,
 } from './DailyNormaModal.styled';
@@ -53,38 +48,26 @@ const normaForMan = values => {
 };
 
 export const DailyNormaModal = () => {
-  const [modal, setModal] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
-  // const onClick = () => {
-  //   setModal(!modal);
-  // };
-
-  const onClick = useCallback(() => {
-    setModal(!modal);
-  }, [modal]);
+  const closeModal = useCallback(() => {
+    setIsOpen(false);
+  }, []);
 
   useEffect(() => {
-    const handleClick = e => {
-      if (e.target === e.currentTarget) {
-        onClick();
-      }
-    };
-
-    const handleKeydown = e => {
+    const handleKeyPress = (e) => {
       if (e.key === 'Escape') {
-        onClick();
+        closeModal();
       }
     };
 
-    const backdrop = document.querySelector('.js-backdrop');
-    document.addEventListener('keydown', handleKeydown);
-    backdrop.addEventListener('click', handleClick);
+    document.addEventListener('keydown', handleKeyPress);
 
     return () => {
-      backdrop.removeEventListener('click', handleClick);
-      document.removeEventListener('keydown', handleKeydown);
+      document.removeEventListener('keydown', handleKeyPress);
     };
-  }, [onClick]);
+  }, [closeModal]);
+
 
   const dailyNormaCounter = values =>
     values.picked === 'For girl'
@@ -93,12 +76,16 @@ export const DailyNormaModal = () => {
       ? normaForMan(values).toFixed(1)
       : 0;
 
-  return (
-    <Backdrop className="js-backdrop">
-      <Modal>
+      const handleClickInsideModal = (e) => {
+        e.stopPropagation(); 
+      };
+
+  return isOpen? (
+    <Backdrop className="js-backdrop" onClick={closeModal}>
+      <Modal onClick={handleClickInsideModal}>
         <WrapTitle>
           <Title>My daily norma</Title>
-          <ButtonClose type="button" onClick={onClick}>
+          <ButtonClose type="button" onClick={closeModal}>
             <ButtonCloseIcon />
           </ButtonClose>
         </WrapTitle>
@@ -132,7 +119,6 @@ export const DailyNormaModal = () => {
         >
           {({ values }) => (
             <FormStyled>
-              {/* <div id="my-radio-group">Picked</div> */}
               <FormCalculateWrap>
                 <Subtitle>Calculate your rate:</Subtitle>
                 <RadioWrap role="group" aria-labelledby="my-radio-group">
@@ -177,5 +163,5 @@ export const DailyNormaModal = () => {
         </Formik>
       </Modal>
     </Backdrop>
-  );
+  ) : null;
 };
