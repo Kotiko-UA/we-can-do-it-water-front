@@ -6,6 +6,7 @@ import ForgetPasswordPage from '../Pages/ForgetPasswordPage/ForgetPasswordPage.j
 import RecoveryPasswordPage from 'Pages/RecoveryPage/RecoveryPage.jsx';
 import SignInPage from '../Pages/SignInPage/SignInPage';
 import SignUpPage from '../Pages/SignUpPage/SignUpPage.jsx';
+import { Toaster } from 'react-hot-toast';
 
 export const App = () => {
   return (
@@ -36,6 +37,7 @@ export const App = () => {
           <Route path="/recovery" element={<RecoveryPasswordPage />} />
         </Route>
       </Routes>
+      <Toaster />
     </div>
   );
 };
