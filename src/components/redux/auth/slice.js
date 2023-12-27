@@ -28,6 +28,7 @@ const authSlice = createSlice({
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
+        state.icon = action.payload.avatarURL;
       })
       .addCase(signIn.rejected, (state, action) => {
         handleRejected(state, action);
