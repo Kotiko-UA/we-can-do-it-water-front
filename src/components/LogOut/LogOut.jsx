@@ -1,9 +1,12 @@
 import { useEffect } from "react";
-import { VscChromeClose } from "react-icons/vsc";
+import { useDispatch } from "react-redux";
 
-import { CancelButton, Container, LogOutButton, LogOutContainer, LogOutText, Modal, Overlay, SecondaryText, MediaButtonsContainer, CloseButton } from "./LogOut.styled";
+import { CancelButton, Container, LogOutButton, LogOutContainer, LogOutText, Modal, Overlay, SecondaryText, MediaButtonsContainer, CloseButton, Close } from "./LogOut.styled";
+import { logOut } from "components/redux/auth/operations";
 
 export const LogOut = ({ backdropClick, close }) => {
+
+    const dispatch = useDispatch();
     
     useEffect(() => {
   const handleKeydown = e => {
@@ -20,16 +23,16 @@ export const LogOut = ({ backdropClick, close }) => {
 }, [close])
 
     return (
-        <Overlay onClick={backdropClick}>
+        <Overlay id="logout" onClick={backdropClick}>
             <Modal>
                 <Container>
                 <LogOutContainer>
                     <LogOutText>Log out</LogOutText>
-                    <CloseButton type="button" onClick={close}><VscChromeClose /></CloseButton>
+                    <CloseButton type="button" onClick={close}><Close /></CloseButton>
                 </LogOutContainer>
                     <SecondaryText>Do you really want to leave?</SecondaryText>
                     <MediaButtonsContainer>
-                    <LogOutButton>Log out</LogOutButton>
+                        <LogOutButton type="submit" onClick={() => {dispatch(logOut()); close()}}>Log out</LogOutButton>
                     <CancelButton onClick={close}>Cancel</CancelButton>
                     </MediaButtonsContainer>
                 </Container>
