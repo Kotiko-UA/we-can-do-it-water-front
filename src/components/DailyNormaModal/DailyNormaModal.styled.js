@@ -193,11 +193,11 @@ font-weight: 500;
 line-height: 1.25;
 color: ${({theme}) => theme.primaryWhite};
 
-:hover {
+&:hover {
 padding: 10px 30px;
 box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
 }
-:active {
+&:active {
   box-shadow: none;
 }
 @media screen and (min-width: 768px) {
