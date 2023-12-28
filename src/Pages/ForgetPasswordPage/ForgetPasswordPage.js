@@ -4,7 +4,7 @@ import { Container, Title, Bootle } from './ForgetPasswordPage.styled';
 const ForgetPasswordPage = () => {
   return (
     <Container>
-      <Title>Forget Password</Title>
+      <Title>Forgot Password</Title>
       <ForgetPassword />
       <Bootle />
     </Container>
