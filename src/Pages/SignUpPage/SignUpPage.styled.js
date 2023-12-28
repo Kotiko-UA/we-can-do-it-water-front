@@ -75,7 +75,7 @@ export const SignUpContainer = styled.div`
     margin-bottom: 196px;
     margin-left: auto;
     margin-right: 198px;
-    align-items: center;
+    align-items: flex-start;
   }
   `
 

@@ -1,6 +1,5 @@
 import {SignInForm} from "../../components/SignInForm/SignInForm.jsx";
 import {SignInContainer, Title, SignInSection} from './SignInPage.styled.js';
-//import BcgImageSignIn from "../../components/BcgImageSection/BcgImageSignIn.jsx";
 
 
 export default function SignInPage() {
@@ -17,4 +16,3 @@ export default function SignInPage() {
     );
 };
 
-//<BcgImageSignIn />

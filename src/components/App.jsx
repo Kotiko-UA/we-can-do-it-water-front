@@ -16,24 +16,8 @@ export const App = () => {
         <Route path="/" element={<Layout />}>
           <Route path="/" index element={<HomePage />}></Route>
           <Route path="/signup" element={<SignUpPage />}></Route>
-          <Route
-            path="/signUp"
-            element={
-              <RestrictedRoute
-                redirectTo="/signUp"
-                component={<SignUpPage />}
-              />
-            }
-          />
-          <Route
-            path="/signIn"
-            element={
-              <RestrictedRoute
-                redirectTo="/signIn"
-                component={<SignInPage />}
-              />
-            }
-          />
+          <Route path="/signUp" element={<RestrictedRoute redirectTo="/signUp" component={<SignUpPage />} />}/>
+          <Route path="/signIn" element={<RestrictedRoute redirectTo="/signIn" component={<SignInPage />} />}/>
           <Route path="/forget_password" element={<ForgetPasswordPage />} />
           <Route path="/recovery" element={<RecoveryPasswordPage />} />
         </Route>
