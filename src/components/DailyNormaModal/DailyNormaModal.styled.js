@@ -88,7 +88,6 @@ gap: 24px;
 `;
 
 export const Formula = styled.span`
-margin-left: 4px;
 font-size: 18px;
 line-height: 1.33;
 color: ${({theme}) => theme.primaryBlue};
