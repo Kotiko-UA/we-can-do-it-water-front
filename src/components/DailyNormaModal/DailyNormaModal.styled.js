@@ -132,8 +132,8 @@ export const RadioBtnLabel = styled.label`
 display: flex;
 gap: 6px;
 cursor: pointer;
-color: #000; /* Змініть колір тексту на ваш вибір */
-  font-size: 16px; /* Змініть розмір шрифту на ваш вибір */
+color: #000; 
+  font-size: 16px; 
 `;
 
 export const RadioBtnField = styled(Field)`
