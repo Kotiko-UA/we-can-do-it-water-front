@@ -132,11 +132,37 @@ export const RadioBtnLabel = styled.label`
 display: flex;
 gap: 6px;
 cursor: pointer;
+color: #000; /* Змініть колір тексту на ваш вибір */
+  font-size: 16px; /* Змініть розмір шрифту на ваш вибір */
 `;
 
 export const RadioBtnField = styled(Field)`
-width: 14px;
-height: 14px;
+ position: relative;
+  appearance: none; 
+  width: 14px; 
+  height: 14px; 
+  border: 1px solid ${({theme}) => theme.primaryBlue}; 
+  border-radius: 50%; 
+  margin-top: 2px;
+  cursor: pointer;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 7px; 
+    height: 7px; 
+    background-color: transparent; 
+    border-radius: 50%;
+  }
+
+  &:checked {
+    &::before {
+      background-color: ${({theme}) => theme.primaryBlue};
+    }
+  }
 `;
 
 export const FieldForm = styled(Field)`
