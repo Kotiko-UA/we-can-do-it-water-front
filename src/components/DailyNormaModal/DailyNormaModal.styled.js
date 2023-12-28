@@ -29,7 +29,7 @@ export const Modal = styled.div`
   flex-direction: column;
   justify-content: center;
   gap: 24px;
-  color: #2F2F2F;
+  color: ${({theme}) => theme.primaryBlack};
 
   @media screen and (min-width: 768px) {
     min-width: 704px;
@@ -91,7 +91,7 @@ export const Formula = styled.span`
 margin-left: 4px;
 font-size: 18px;
 line-height: 1.33;
-color: #407BFF;
+color: ${({theme}) => theme.primaryBlue};
 `;
 
 export const WrapInfo = styled.div`
@@ -104,7 +104,7 @@ color: #8F8F8F;
 `;
 
 export const SpanStar = styled.span`
-color: #407BFF;
+color: ${({theme}) => theme.primaryBlue};
 `;
 
 export const FormStyled = styled(Form)`
@@ -145,13 +145,13 @@ margin-top: 8px;
 padding: 12px 10px;
 border-radius: 6px;
 border: 1px solid #D7E3FF;
-color: #407BFF;
+color: ${({theme}) => theme.primaryBlue};
 width: 100%;
 `;
 
 export const ErrMsg = styled(ErrorMessage)`
 font-size: 14px;
-color: #EF5050;
+color: ${({theme}) => theme.secondaryRed};
 line-height: 1.28;
 margin-top: 4px;
 font-weight: 400;
@@ -162,7 +162,7 @@ export const TextNorma = styled.p`
 font-size: 18px;
 font-weight: 700;
 line-height: 1.33;
-color: #407BFF;
+color: ${({theme}) => theme.primaryBlue};
 `;
 
 export const NormaWrap = styled.div`
@@ -191,7 +191,7 @@ text-align: center;
 font-size: 16px;
 font-weight: 500;
 line-height: 1.25;
-color: #FFF;
+color: ${({theme}) => theme.primaryWhite};
 
 :hover {
 padding: 10px 30px;
