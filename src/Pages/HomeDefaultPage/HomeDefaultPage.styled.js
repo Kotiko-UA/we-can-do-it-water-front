@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import theme from '../../index.js';
 import { ReactComponent as CalendarSvg } from '../../icons/calendarss.svg';
 import { ReactComponent as PresentationSvg } from '../../icons/presentation.svg';
 import { ReactComponent as ScrewSvg } from '../../icons/screw.svg';
@@ -38,8 +39,6 @@ export const Container = styled.div`
   }
 `;
 
-
-
 export const HomeSection = styled.section`
   width: 100%;
   padding-top: 24px;
@@ -64,9 +63,6 @@ export const HomeSection = styled.section`
   }
 `;
 
-
-
-
 export const BenefitsContainer = styled.div`
   width: 280px;
   margin-left: auto;
@@ -83,13 +79,13 @@ export const BenefitsContainer = styled.div`
   }
 `;
 export const Heading = styled.h1`
-  color: #2f2f2f;
-  font-family: Roboto;
+  color: ${props => props.theme.primaryBlack};
   font-size: 28px;
   font-style: normal;
   font-weight: 700;
   line-height: 32px;
   margin-bottom: 16px;
+
   @media (min-width: 768px) {
     font-size: 36px;
     line-height: 42px;
@@ -97,8 +93,7 @@ export const Heading = styled.h1`
 `;
 
 export const Paragraph = styled.h1`
-  color: #2f2f2f;
-  font-family: Roboto;
+  color: ${props => props.theme.primaryBlack};
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
@@ -111,8 +106,7 @@ export const Paragraph = styled.h1`
 `;
 
 export const ListTitle = styled.p`
-  color: #2f2f2f;
-  font-family: Roboto;
+  color: ${props => props.theme.primaryBlack};
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
@@ -150,16 +144,6 @@ export const Li = styled.li`
   gap: 8px;
 `;
 
-// List li::before {
-//   content: "\2022";
-//   color: blue;
-//   font-weight: bold;
-//   display: inline-block;
-//   width: 8px;
-//   height: 8px;
-//   margin-left: -1em;
-// }
-
 export const Calendar = styled(CalendarSvg)`
   width: 40px;
   height: 40px;
@@ -181,8 +165,7 @@ export const Point = styled(PointSvg)`
 `;
 
 export const Text = styled.p`
-  color: var(--Primery-Color-Black, #2f2f2f);
-  font-family: Roboto;
+  color: ${props => props.theme.primaryBlack};
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -199,19 +182,24 @@ export const Button = styled.button`
   height: 36px;
 
   border-radius: 10px;
-  background: var(--Primery-Color-Blue, #407bff);
+  background: #407bff;
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
 
-  color: #fff;
-  text-align: center;
-  font-family: Roboto;
+  color: ${props => props.theme.primaryWhite};
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
   line-height: 20px;
+  text-align: center;
 
   margin-top: 24px;
   margin-bottom: 40px;
+  &:hover {
+    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+  }
+  &:active {
+    box-shadow: none;
+  }
 
   @media (min-width: 768px) {
     margin-bottom: 60px;
@@ -235,7 +223,7 @@ export const ArgumentsContainer = styled.div`
   height: 416px;
 
   border-radius: 10px;
-  background: var(--Secondary-color-2, #ecf2ff);
+  background: ${props => props.theme.secondaryGrey};
   box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.3);
 
   @media (min-width: 768px) {
