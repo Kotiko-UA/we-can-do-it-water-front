@@ -7,7 +7,6 @@ import SignInPage from '../Pages/SignInPage/SignInPage';
 import SignUpPage from '../Pages/SignUpPage/SignUpPage.jsx';
 import HomePage from 'Pages/HomePage/HomePage.jsx';
 
-
 export const App = () => {
   return (
     <div>
