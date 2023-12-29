@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import axios from 'axios';
 import { checkUser } from 'Helpers/ForgotPassFetch';
 import {
   Wrap,
@@ -9,6 +8,7 @@ import {
   Form,
   // StyledLink,
 } from './ForgetPassword.styled';
+
 
 export const ForgetPassword = () => {
   const [email, setEmail] = useState(null);
