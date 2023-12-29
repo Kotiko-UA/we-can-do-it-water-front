@@ -58,7 +58,7 @@ const HeaderMarkup = ({toggleSetting, toggleLogOut}) => {
                 </NavMenu>
               </RightNavWrapper>
             ) : (
-              <StyledLink to="/signup">
+              <StyledLink to="/signIn">
                 Sign in
                 <UserAvatar alt="user default avatar" />
               </StyledLink>

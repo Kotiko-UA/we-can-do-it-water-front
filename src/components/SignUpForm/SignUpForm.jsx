@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { signUp } from '../redux/auth/operations';
+import { signUp, signIn } from '../redux/auth/operations';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import React, { useState } from 'react';
@@ -13,7 +13,7 @@ import {
   EyeSlash,
   EyeActive,
 } from './SignUpForm.styled.js';
-// import { useAuth } from 'Hooks/useAuth.js';
+ import { useAuth } from 'Hooks/useAuth';
 
 const SignUpFormSchema = Yup.object().shape({
   email: Yup.string().email().required('Required'),
@@ -44,14 +44,14 @@ export const SignUpForm = () => {
     }
   };
 
-  const handleSubmit = values => {
-    dispatch(
+  const HandleSubmit = values => {
+    console.log(dispatch(
       signUp({
         email: values.email,
         password: values.password,
         repeatPassword: values.repeatPassword,
       })
-    );
+    ));
   };
 
   return (
@@ -62,10 +62,10 @@ export const SignUpForm = () => {
           password: '',
           repeatPassword: '',
         }}
-        autoComplete="off"
+        autoComplete="on"
         validationSchema={SignUpFormSchema}
         onSubmit={(values, actions) => {
-          handleSubmit(values);
+          HandleSubmit(values);
           actions.resetForm();
         }}
       >

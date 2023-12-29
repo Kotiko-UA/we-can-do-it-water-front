@@ -1,28 +1,42 @@
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout/Layout.jsx';
 import { RestrictedRoute } from './RestrictedRoute';
+import { PrivateRoute } from './PrivateRoute.js';
+import { refreshUser } from './redux/auth/operations.js';
 import ForgetPasswordPage from '../Pages/ForgetPasswordPage/ForgetPasswordPage.js';
 import RecoveryPasswordPage from 'Pages/RecoveryPage/RecoveryPage.jsx';
 import SignInPage from '../Pages/SignInPage/SignInPage';
 import SignUpPage from '../Pages/SignUpPage/SignUpPage.jsx';
 import { Toaster } from 'react-hot-toast';
 import HomePage from 'Pages/HomePage/HomePage.jsx';
+import { useDispatch } from "react-redux";
+import { useAuth } from "Hooks";
+import { useEffect /*lazy*/ } from "react";
 
 
 export const App = () => {
-  return (
+  const dispatch = useDispatch();
+  const { isRefreshing } = useAuth();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
+
+   return (
     <div>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="/" index element={<HomePage />}></Route>
-          <Route path="/signup" element={<SignUpPage />}></Route>
-          <Route path="/signUp" element={<RestrictedRoute redirectTo="/signUp" component={<SignUpPage />} />}/>
-          <Route path="/signIn" element={<RestrictedRoute redirectTo="/signIn" component={<SignInPage />} />}/>
+          <Route path="/signUp" element={<RestrictedRoute redirectTo="/" component={<SignUpPage />} />} />
+          <Route path="/signIn" element={<RestrictedRoute redirectTo="/" component={<SignInPage />} />}/>
           <Route path="/forget_password" element={<ForgetPasswordPage />} />
           <Route path="/recovery" element={<RecoveryPasswordPage />} />
         </Route>
       </Routes>
-      <Toaster />
+      <Toaster position="top-right"/>
     </div>
   );
 };
+//<Route path="/signup" element={<SignUpPage />}></Route>
+//<Route path="/signUp" element={<RestrictedRoute redirectTo="/signUp" component={<SignUpPage />} />} />

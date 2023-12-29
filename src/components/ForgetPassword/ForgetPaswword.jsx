@@ -9,7 +9,7 @@ import {
   Form,
   StyledLink,
 } from './ForgetPassword.styled';
-axios.defaults.baseURL = 'http://localhost:8000/api';
+//axios.defaults.baseURL = 'http://localhost:8000/api';
 
 export const ForgetPassword = () => {
   const [email, setEmail] = useState(null);
