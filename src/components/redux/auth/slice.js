@@ -12,7 +12,6 @@ const initialState = {
 
 const handleRejected = (state, action) => {
   alert(action.payload);
-  state.isLoading = false;
 };
 
 function isPendingAction(action) {
@@ -20,6 +19,9 @@ function isPendingAction(action) {
 }
 function isFulfilledAction(action) {
   return typeof action.type === 'string' && action.type.endsWith('/fulfilled');
+}
+function isRejectedAction(action) {
+  return typeof action.type === 'string' && action.type.endsWith('/rejected');
 }
 
 const authSlice = createSlice({
@@ -72,6 +74,9 @@ const authSlice = createSlice({
         state.isLoading = true;
       })
       .addMatcher(isFulfilledAction, (state, action) => {
+        state.isLoading = false;
+      })
+      .addMatcher(isRejectedAction, (state, action) => {
         state.isLoading = false;
       });
   },

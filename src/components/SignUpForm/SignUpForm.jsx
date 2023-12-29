@@ -1,4 +1,5 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { useAuth } from 'Hooks/useAuth.js';
 import { signUp } from '../redux/auth/operations';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
@@ -54,11 +55,12 @@ export const SignUpForm = () => {
     );
   };
 
-  const loading = useSelector(state => state.auth.isLoading);
+  //const loading = useSelector(state => state.auth.isLoading);
+  const { isLoading } = useAuth();
 
   return (
     <div>
-      {loading ? (
+      {isLoading ? (
         <Loader />
       ) : (
         <div>

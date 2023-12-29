@@ -15,17 +15,18 @@ import {
   ArrowIcon,
 } from './HeaderMarkup.styled.js';
 import { Loader } from '../Loader.jsx';
-import { useSelector } from 'react-redux';
+//import { useSelector } from 'react-redux';
 
 const HeaderMarkup = ({ toggleSetting, toggleLogOut }) => {
   const { isLoggedIn } = useAuth();
   const { userIcon } = useAuth();
   // const { user } = useAuth();
-  const loading = useSelector(state => state.auth.isLoading);
+  //const loading = useSelector(state => state.auth.isLoading);
+  const { isLoading } = useAuth();
 
   return (
     <>
-      {loading ? (
+      {isLoading ? (
         <Loader />
       ) : (
         <Container>
