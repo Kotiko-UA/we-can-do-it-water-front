@@ -7,11 +7,16 @@ const initialState = {
   isLoggedIn: false,
   isRefreshing: false,
   icon: null,
+  isLoading: false,
 };
 
 const handleRejected = (state, action) => {
   alert(action.payload);
 };
+
+function isPendingAction(action) {
+  return typeof action.type === 'string' && action.type.endsWith('/pending');
+}
 
 const authSlice = createSlice({
   name: 'auth',
@@ -59,10 +64,11 @@ const authSlice = createSlice({
       .addCase(logOut.rejected, (state, action) => {
         handleRejected(state, action);
       })
+      .addMatcher(isPendingAction, (state, action) => {
+        state.isLoading = true; // початок завантаження
+        // console.log('pending', state.isLoading);
+      });
   },
 });
-
-console.log(authSlice);
-// console.log(state.icon)
 
 export const authReducer = authSlice.reducer;
