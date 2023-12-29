@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { signUp } from '../redux/auth/operations';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
@@ -13,7 +13,7 @@ import {
   EyeSlash,
   EyeActive,
 } from './SignUpForm.styled.js';
-
+import { Loader } from '../../components/Loader.jsx';
 
 const SignUpFormSchema = Yup.object().shape({
   email: Yup.string().email().required('Required'),
@@ -54,49 +54,57 @@ export const SignUpForm = () => {
     );
   };
 
+  const loading = useSelector(state => state.auth.isLoading);
+
   return (
     <div>
-      <Formik
-        initialValues={{
-          email: '',
-          password: '',
-          repeatPassword: '',
-        }}
-        autoComplete="on"
-        validationSchema={SignUpFormSchema}
-        onSubmit={(values, actions) => {
-          HandleSubmit(values);
-          actions.resetForm();
-        }}
-      >
-        <FormWrapper>
-          <Label>Enter your email</Label>
-          <FieldInput type="email" name="email" placeholder="E-mail" />
-          <ErrorMsg name="email" component="div" />
+      {loading ? (
+        <Loader />
+      ) : (
+        <div>
+          <Formik
+            initialValues={{
+              email: '',
+              password: '',
+              repeatPassword: '',
+            }}
+            autoComplete="on"
+            validationSchema={SignUpFormSchema}
+            onSubmit={(values, actions) => {
+              HandleSubmit(values);
+              actions.resetForm();
+            }}
+          >
+            <FormWrapper>
+              <Label>Enter your email</Label>
+              <FieldInput type="email" name="email" placeholder="E-mail" />
+              <ErrorMsg name="email" component="div" />
 
-          <Label>Enter your password</Label>
-          <FieldInput type={type} name="password" placeholder="Password" />
-          <span onClick={handleToggle}>{icon}</span>
+              <Label>Enter your password</Label>
+              <FieldInput type={type} name="password" placeholder="Password" />
+              <span onClick={handleToggle}>{icon}</span>
 
-          <ErrorMsg name="password" component="div" />
+              <ErrorMsg name="password" component="div" />
 
-          <Label>Repeat password</Label>
-          <FieldInput
-            type={type}
-            name="repeatPassword"
-            placeholder="Repeat password"
-          />
-          <span onClick={handleToggle}>{icon}</span>
+              <Label>Repeat password</Label>
+              <FieldInput
+                type={type}
+                name="repeatPassword"
+                placeholder="Repeat password"
+              />
+              <span onClick={handleToggle}>{icon}</span>
 
-          <ErrorMsg name="repeatPassword" component="div" />
+              <ErrorMsg name="repeatPassword" component="div" />
 
-          <ButtonSbmt type="submit">Sign Up</ButtonSbmt>
-        </FormWrapper>
-      </Formik>
+              <ButtonSbmt type="submit">Sign Up</ButtonSbmt>
+            </FormWrapper>
+          </Formik>
 
-      <div>
-        <StyledLink to="/signIn">Sign in</StyledLink>
-      </div>
+          <div>
+            <StyledLink to="/signIn">Sign in</StyledLink>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

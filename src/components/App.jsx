@@ -12,7 +12,6 @@ import { useAuth } from "Hooks";
 import { useEffect /*lazy*/ } from "react";
 import { refreshUser } from "./redux/auth/operations.js";
 
-
 export const App = () => {
   const dispatch = useDispatch();
   //const { isRefreshing } = useAuth();
