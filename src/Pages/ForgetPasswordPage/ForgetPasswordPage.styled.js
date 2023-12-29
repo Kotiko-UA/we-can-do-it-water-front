@@ -18,6 +18,14 @@ export const Bootle = styled(SingUpSVG)`
     bottom: 250px;
     left: 112px;
   }
+  @media (min-width: 1440px) {
+    width: 916px;
+    height: 680px;
+
+    position: relative;
+    bottom: 250px;
+    left: 10px;
+  }
 `;
 export const Container = styled.div`
   /* min-width: 768px; */
@@ -33,6 +41,7 @@ export const Container = styled.div`
   margin-right: auto;
   background-image: url(${backdroundimage});
   background-size: cover;
+
   @media (min-width: 768px) {
     padding-left: 32px;
     padding-right: 32px;
@@ -47,7 +56,7 @@ export const Container = styled.div`
     display: flex;
     flex-direction: row;
     gap: 81px;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: flex-end;
   }
 `;

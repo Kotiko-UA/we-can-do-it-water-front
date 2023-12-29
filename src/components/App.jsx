@@ -8,7 +8,7 @@ import SignUpPage from '../Pages/SignUpPage/SignUpPage.jsx';
 import { Toaster } from 'react-hot-toast';
 import HomePage from 'Pages/HomePage/HomePage.jsx';
 import { useDispatch } from "react-redux";
-import { useAuth } from "Hooks";
+//import { useAuth } from "Hooks";
 import { useEffect /*lazy*/ } from "react";
 import { refreshUser } from "./redux/auth/operations.js";
 
