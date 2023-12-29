@@ -26,8 +26,9 @@ import {
   WrapTitle,
 } from './DailyNormaModal.styled';
 import { useEffect } from 'react';
-import { useDispatch} from 'react-redux';
+import { useDispatch, useSelector} from 'react-redux';
 import { addDailyNorma } from 'components/redux/auth/operations';
+import { selectDailyNorma } from 'components/redux/auth/selectors';
 
 const DailyNormaSchema = Yup.object().shape({
   weight: Yup.number()
@@ -113,8 +114,10 @@ const dispatch = useDispatch();
           validationSchema={DailyNormaSchema}
           onSubmit={(values, actions) => {
             dispatch(addDailyNorma(values.drink));
+            onClick('edit-daily-norm');
             actions.resetForm();
             console.log(values.drink);
+            // console.log(dailyNormaValue)
           }}
         >
           {({ values }) => (

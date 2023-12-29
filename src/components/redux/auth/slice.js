@@ -5,6 +5,7 @@ import {
   refreshUser,
   logOut,
   addDailyNorma,
+  loadDailyNorma,
 } from './operations';
 
 const initialState = {
@@ -88,10 +89,16 @@ const waterSlice = createSlice({
       .addCase(addDailyNorma.pending, handlePending)
       .addCase(addDailyNorma.fulfilled, (state, action) => {
         state.isLoading = false;
-        // state.error = null;
-        state.user = {dailyNorma: action.payload};
+        state.user.dailyNorma = action.payload;
       })
-      .addCase(addDailyNorma.rejected, handleRejected);
+      .addCase(addDailyNorma.rejected, handleRejected)
+
+      .addCase(loadDailyNorma.pending, handlePending)
+      .addCase(loadDailyNorma.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.user.dailyNorma = action.payload;
+      })
+      .addCase(loadDailyNorma.rejected, handleRejected)
   },
 });
 

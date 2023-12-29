@@ -26,14 +26,27 @@ import imgMobPng from '../../../../../icons/HomePage/main/bottle-mob-1x.png';
 import imgMobPng2x from '../../../../../icons/HomePage/main/bottle-mob-2x.png';
 
 import sprite from '../../../../../icons/HomePage/sprite.svg';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectDailyNorma } from 'components/redux/auth/selectors';
+import { useEffect } from 'react';
+import { loadDailyNorma } from 'components/redux/auth/operations';
 
 export const DailyNorma = ({ onClick }) => {
+const dailyNormaValue =  useSelector(selectDailyNorma);
+const dispatch = useDispatch();
+
+useEffect(() => {
+  dispatch(loadDailyNorma());
+}, [dispatch]);
+console.log(dailyNormaValue);
+
+
   return (
     <Container>
       <DailyNormaContainer>
         <Title>My daily norma</Title>
         <NormaContainer>
-          <Norma>1,5 L</Norma>
+          <Norma>{dailyNormaValue.dailyNorma} L</Norma>
           <NormaBtn onClick={() => onClick('edit-daily-norm')}>Edit</NormaBtn>
         </NormaContainer>
       </DailyNormaContainer>

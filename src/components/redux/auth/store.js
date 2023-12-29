@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { persistStore, persistReducer, REHYDRATE, PAUSE, FLUSH, PERSIST, PURGE, REGISTER} from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import { authReducer } from "../auth/slice.js";
+import { authReducer, waterReducer } from "../auth/slice.js";
 
 
 const authPersistConfig = {
@@ -13,6 +13,7 @@ const authPersistConfig = {
 export const store = configureStore({
     reducer: {
         auth: persistReducer(authPersistConfig, authReducer),
+        water: waterReducer,
 
     },
     middleware: getDefaultMiddleware =>

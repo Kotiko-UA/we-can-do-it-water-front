@@ -81,4 +81,16 @@ export const addDailyNorma = createAsyncThunk(
   }
 );
 
+export const loadDailyNorma = createAsyncThunk(
+  'water/loadDailyNorma',
+  async (_, thunkAPI) => {
+    try {
+      const response = await axios.get('/users/updateDailyNorma');
+      return response.data.dailyNorma; // Припустимо, що ваші дані мають властивість dailyNorma
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 
