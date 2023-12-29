@@ -12,36 +12,39 @@ import {
   NavLi,
   SettingsIcon,
   LogOutIcon,
-  ArrowIcon
+  ArrowIcon,
 } from './HeaderMarkup.styled.js';
+import { Loader } from '../Loader.jsx';
+import { useSelector } from 'react-redux';
 
-const HeaderMarkup = ({toggleSetting, toggleLogOut}) => {
+const HeaderMarkup = ({ toggleSetting, toggleLogOut }) => {
   const { isLoggedIn } = useAuth();
   const { userIcon } = useAuth();
-    // const { user } = useAuth();
-
-    console.log(userIcon)
+  // const { user } = useAuth();
+  const loading = useSelector(state => state.auth.isLoading);
 
   return (
     <>
-      <Container>
-        <Nav>
-          <li>
-            <StyledLinkLogo to="/">
-              <LogoSvg alt="logo" />
-              Tracker <br /> of water
-            </StyledLinkLogo>
-          </li>
+      {loading ? (
+        <Loader />
+      ) : (
+        <Container>
+          <Nav>
+            <li>
+              <StyledLinkLogo to="/">
+                <LogoSvg alt="logo" />
+                Tracker <br /> of water
+              </StyledLinkLogo>
+            </li>
 
-          <li style={{ width: '118px' }}>
-            {isLoggedIn ? (
-              <RightNavWrapper>
-                <StyledLink to="/">
-                  <h3>Hi, user</h3>
-                  <RealUserIcon src={userIcon} alt="user real avatar" />
-                  <ArrowIcon/>
-                </StyledLink>
-
+            <li style={{ width: '118px' }}>
+              {isLoggedIn ? (
+                <RightNavWrapper>
+                  <StyledLink to="/">
+                    <h3>Hi, user</h3>
+                    <RealUserIcon src={userIcon} alt="user real avatar" />
+                    <ArrowIcon />
+                  </StyledLink>
                 <NavMenu className="navMenu">
                   <NavLi>
                     <SettingsIcon />
@@ -66,6 +69,7 @@ const HeaderMarkup = ({toggleSetting, toggleLogOut}) => {
           </li>
         </Nav>
       </Container>
+
     </>
   );
 };

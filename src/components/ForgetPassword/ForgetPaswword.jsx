@@ -1,5 +1,6 @@
 import { useState } from 'react';
-
+import axios from 'axios';
+import { toast } from 'react-hot-toast';
 import {
   Wrap,
   Label,
@@ -8,25 +9,33 @@ import {
   Form,
   StyledLink,
 } from './ForgetPassword.styled';
+axios.defaults.baseURL = 'https://water-p2oh.onrender.com/api';
 
 export const ForgetPassword = () => {
-  const [email, setEmail] = useState();
+  const [email, setEmail] = useState(null);
 
   const handlEmail = event => {
     setEmail(event.target.value);
   };
 
-  const submit = event => {
+  const submit = async event => {
     event.preventDefault();
-    const form = event.currentTarget;
-    const { email } = form.elements;
-    // dispatch(
-    //   register({
-    //     email: email.value,
-    //   })
-    // );
-    form.reset();
+    try {
+      if (!email) {
+        return toast.error('Enter email');
+      }
+      const res = await axios.post('/users/forgetpassword', { email });
+
+      if (res.status === 200) {
+        return toast.success(res.data.message);
+      }
+    } catch (error) {
+      if (error.response.status === 409) {
+        return toast.error(`Email ${email} not registered`);
+      }
+    }
   };
+
   return (
     <Wrap>
       <Form onSubmit={submit}>
@@ -34,8 +43,9 @@ export const ForgetPassword = () => {
           Enter your email
           <Input onChange={handlEmail} type="email" placeholder="Email" />
         </Label>
-        <Button type="button">
-          <StyledLink to="/">Send</StyledLink>
+        <Button type="submit">
+          Send
+          {/* <StyledLink to="/">Send</StyledLink> */}
         </Button>
       </Form>
     </Wrap>
