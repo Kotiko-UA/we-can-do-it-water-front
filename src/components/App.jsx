@@ -8,7 +8,6 @@ import SignUpPage from '../Pages/SignUpPage/SignUpPage.jsx';
 import { Toaster } from 'react-hot-toast';
 import HomePage from 'Pages/HomePage/HomePage.jsx';
 
-
 export const App = () => {
   return (
     <div>
