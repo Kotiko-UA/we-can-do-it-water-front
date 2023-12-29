@@ -1,3 +1,4 @@
+
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import {
@@ -25,6 +26,8 @@ import {
   WrapTitle,
 } from './DailyNormaModal.styled';
 import { useEffect } from 'react';
+import { useDispatch} from 'react-redux';
+import { addDailyNorma } from 'components/redux/auth/operations';
 
 const DailyNormaSchema = Yup.object().shape({
   weight: Yup.number()
@@ -47,6 +50,8 @@ const normaForMan = values => {
 };
 
 export const DailyNormaModal = ({ onClick }) => {
+const dispatch = useDispatch();
+
   useEffect(() => {
     const handleClick = e => {
       if (e.target === e.currentTarget) {
@@ -106,8 +111,10 @@ export const DailyNormaModal = ({ onClick }) => {
             drink: 0,
           }}
           validationSchema={DailyNormaSchema}
-          onSubmit={values => {
-            console.log(values);
+          onSubmit={(values, actions) => {
+            dispatch(addDailyNorma(values.drink));
+            actions.resetForm();
+            console.log(values.drink);
           }}
         >
           {({ values }) => (

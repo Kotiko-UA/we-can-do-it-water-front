@@ -1,13 +1,28 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { signUp, signIn, refreshUser, logOut } from './operations';
+import {
+  signUp,
+  signIn,
+  refreshUser,
+  logOut,
+  addDailyNorma,
+} from './operations';
 
 const initialState = {
-  user: { name: null, email: null },
+  user: { name: null, email: null, dailyNorma: 2 },
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
   icon: null,
+  isLoading: false,
 };
+
+const handlePending = state => {
+  state.isLoading = true;
+};
+// const handleRejected = (state, action) => {
+//   state.isLoading = false;
+//   state.error = action.payload;
+// };
 
 const handleRejected = (state, action) => {
   alert(action.payload);
@@ -58,11 +73,27 @@ const authSlice = createSlice({
       })
       .addCase(logOut.rejected, (state, action) => {
         handleRejected(state, action);
-      })
+      });
   },
 });
 
 console.log(authSlice);
 // console.log(state.icon)
 
+const waterSlice = createSlice({
+  name: 'water',
+  initialState,
+  extraReducers: builder => {
+    builder
+      .addCase(addDailyNorma.pending, handlePending)
+      .addCase(addDailyNorma.fulfilled, (state, action) => {
+        state.isLoading = false;
+        // state.error = null;
+        state.user = {dailyNorma: action.payload};
+      })
+      .addCase(addDailyNorma.rejected, handleRejected);
+  },
+});
+
 export const authReducer = authSlice.reducer;
+export const waterReducer = waterSlice.reducer;
