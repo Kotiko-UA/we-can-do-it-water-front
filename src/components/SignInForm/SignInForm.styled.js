@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { NavLink} from 'react-router-dom';
 import { ReactComponent as EyeSlashSvg } from "../../icons/eye_slash.svg";
 import { ReactComponent as EyeActiveSvg } from "../../icons/eye_active.svg";
-
 import { Field, Form, ErrorMessage } from 'formik';
 
 
@@ -11,9 +10,17 @@ export const EyeSlash = styled(EyeSlashSvg)`
   height: 16px;
   position: relative; 
   bottom: 30px;
-  left: 190px;
+  left: 250px;
   vertical-align: middle; 
   cursor: pointer;
+
+  @media (min-width: 768px) {
+  width: 130px;
+  }
+
+  @media (min-width: 1440px) {
+  width: 240px;  
+}
 `;
 
 export const EyeActive = styled(EyeActiveSvg)`
@@ -21,9 +28,17 @@ export const EyeActive = styled(EyeActiveSvg)`
   height: 16px;
   position: relative; 
   bottom: 30px;
-  left: 190px;
+  left: 250px;
   vertical-align: middle; 
   cursor: pointer;
+
+  @media (min-width: 768px) {
+width: 130px;
+  }
+
+@media (min-width: 1440px) {
+width: 240px;  
+}
 `;
 
 export const StyledLink = styled(NavLink)`
@@ -46,8 +61,18 @@ export const StyledLink = styled(NavLink)`
 
 export const FormWrapper = styled(Form)`
 display: flex;
+width: 280px;
 flex-direction: column;
 align-items: flex-start;
+
+@media (min-width: 768px) {
+width: 336px;
+  }
+
+@media (min-width: 1440px) {
+width: 384px;   
+  }
+
 `;
 
 export const Label = styled.label`
@@ -62,6 +87,8 @@ margin-top: 16px;
 
 export const FieldInput = styled(Field)`
 color: #9EBBFF;
+width: 280px;
+height: auto;
 font-family: Roboto;
 font-size: 16px;
 font-style: normal;
@@ -75,24 +102,19 @@ background: #FFF;
 &:focus{
 color: #407BFF;
 }
+
+@media (min-width: 768px) {
+width: 336px;
+  }
+
+@media (min-width: 1440px) {
+width: 384px;   
+  }
+
+
 `;
 
-export const FieldInputPassword = styled(Field)`
-color: #9EBBFF;
-font-family: Roboto;
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: 20px; 
-padding: 12px 10px;
-border-radius: 6px;
-border: 1px solid #D7E3FF;
-background: #FFF;
 
-&:focus{
-color: #407BFF;
-}
-`;
 
 export const ErrorMsg = styled(ErrorMessage)`
 color: #EF5050;
@@ -125,6 +147,13 @@ font-style: normal;
 font-weight: 500;
 line-height: 20px;
 
+&:hover{
+box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+}
+
+&:focus{
+box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+}
 `;
 
 
