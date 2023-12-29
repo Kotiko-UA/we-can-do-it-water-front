@@ -6,7 +6,7 @@ import {
   updateWater,
   deleteWater,
 } from './operations';
-
+import { LogOut } from 'components/LogOut/LogOut';
 const initialState = {
   items: [],
   isLoading: false,
@@ -72,7 +72,12 @@ const waterSlice = createSlice({
         );
         state.items.splice(index, 1);
       })
-      .addCase(deleteWater.rejected, handleRejected);
+      .addCase(deleteWater.rejected, handleRejected)
+      .addCase(LogOut.fulfilled, state => {
+        state.items = [];
+        state.error = null;
+        state.isLoading = false;
+      });
   },
 });
 

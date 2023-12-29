@@ -15,7 +15,6 @@ import {
   WaterMl,
   ButSave,
   ButValue,
-  ButClosse,
   WaterMlBeg,
   WrapValue,
   WraperTitel,
@@ -43,18 +42,18 @@ export const AddWater = () => {
   const [waterValue, setWaterValue] = useState(250);
 
   const roundedValueWater = value => Math.round(value / 50) * 50;
-  const formattedTime = startDate.toLocaleTimeString('uk', {
+  const time = startDate.toLocaleTimeString('uk', {
     hour: '2-digit',
     minute: '2-digit',
     hour12: false,
   });
 
   const onSubmit = (values, actions) => {
-    const water = values.water;
-    console.log(values.water);
+    const amount = values.water;
+    console.log(amount);
 
-    console.log(formattedTime);
-    const newWater = { water, formattedTime };
+    console.log(time);
+    const newWater = { amount, time };
     dispatch(addWater(newWater));
     actions.resetForm();
   };

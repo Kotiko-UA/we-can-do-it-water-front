@@ -16,11 +16,8 @@ export const Backdrop = styled.div`
   align-items: center;
 `;
 export const BodyModal = styled.div`
-  /* display: inline-flex; */
   padding: 24px 12px;
-  /* flex-direction: column;
-  justify-content: center;
-  align-items: flex-start; */
+
   gap: 24px;
   border-radius: 10px;
   background: #fff;
@@ -63,11 +60,7 @@ export const WraperTitel = styled.div`
     gap: 340px;
   }
 `;
-export const ButClosse = styled.button`
-  width: 24px;
-  height: 24px;
-  background: #fff;
-`;
+
 export const ChoWal = styled.p`
   color: #2f2f2f;
   margin-top: 24px;
