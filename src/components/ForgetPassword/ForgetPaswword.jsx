@@ -1,15 +1,14 @@
 import { useState } from 'react';
-import axios from 'axios';
-import { toast } from 'react-hot-toast';
+import { checkUser } from 'Helpers/ForgotPassFetch';
 import {
   Wrap,
   Label,
   Input,
   Button,
   Form,
-  StyledLink,
+  // StyledLink,
 } from './ForgetPassword.styled';
-axios.defaults.baseURL = 'https://water-p2oh.onrender.com/api';
+
 
 export const ForgetPassword = () => {
   const [email, setEmail] = useState(null);
@@ -20,20 +19,8 @@ export const ForgetPassword = () => {
 
   const submit = async event => {
     event.preventDefault();
-    try {
-      if (!email) {
-        return toast.error('Enter email');
-      }
-      const res = await axios.post('/users/forgetpassword', { email });
-
-      if (res.status === 200) {
-        return toast.success(res.data.message);
-      }
-    } catch (error) {
-      if (error.response.status === 409) {
-        return toast.error(`Email ${email} not registered`);
-      }
-    }
+    checkUser(email);
+    setEmail(null);
   };
 
   return (
