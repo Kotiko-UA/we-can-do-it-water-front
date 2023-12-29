@@ -9,7 +9,7 @@ import {
   Form,
   StyledLink,
 } from './ForgetPassword.styled';
-//axios.defaults.baseURL = 'https://water-p2oh.onrender.com/api';
+axios.defaults.baseURL = 'https://water-p2oh.onrender.com/api';
 
 export const ForgetPassword = () => {
   const [email, setEmail] = useState(null);
