@@ -29,6 +29,8 @@ export const Wrap = styled.div`
   }
   @media (min-width: 1440px) {
     justify-content: flex-end;
+    margin-left: auto;
+    margin-right: 198px;
   }
 `;
 export const Form = styled.form`
