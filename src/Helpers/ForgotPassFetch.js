@@ -14,7 +14,8 @@ export const checkUser = async email => {
       return toast.success(res.data.message);
     }
   } catch (error) {
-    if (error.response.status === 409) {
+    console.log(error);
+    if (error.response.status === 404) {
       return toast.error(`Email ${email} not registered`);
     }
   }

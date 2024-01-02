@@ -23,7 +23,7 @@ export const Bootle = styled(SingUpSVG)`
     height: 680px;
 
     position: relative;
-    bottom: 450px;
+    bottom: 350px;
     left: -10%;
   }
 `;
@@ -68,7 +68,7 @@ export const Title = styled.h1`
   }
   @media (min-width: 1440px) {
     text-align: right;
-    margin-top: 162px;
+    margin-top: 80px;
     margin-right: 338px;
   }
 `;
