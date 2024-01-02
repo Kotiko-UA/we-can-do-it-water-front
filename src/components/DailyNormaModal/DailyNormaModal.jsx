@@ -32,8 +32,7 @@ import { selectDailyNorma } from 'components/redux/auth/selectors';
 
 const DailyNormaSchema = Yup.object().shape({
   weight: Yup.number()
-    .positive('The value must be positive!')
-    .required('You must enter your weight'),
+  .moreThan(-1, 'The value must be positive!'),
   time: Yup.number()
     .max(24, 'The value is too large!')
     .moreThan(-1, 'The value must be positive!'),
@@ -52,6 +51,7 @@ const normaForMan = values => {
 
 export const DailyNormaModal = ({ onClick }) => {
 const dispatch = useDispatch();
+const dailyNormaValue =  useSelector(selectDailyNorma);
 
   useEffect(() => {
     const handleClick = e => {
@@ -117,7 +117,8 @@ const dispatch = useDispatch();
             onClick('edit-daily-norm');
             actions.resetForm();
             console.log(values.drink);
-            // console.log(dailyNormaValue)
+            console.log(dailyNormaValue)
+           
           }}
         >
           {({ values }) => (

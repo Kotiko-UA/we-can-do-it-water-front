@@ -5,16 +5,16 @@ import {
   refreshUser,
   logOut,
   addDailyNorma,
-  loadDailyNorma,
 } from './operations';
 
 const initialState = {
-  user: { name: null, email: null, dailyNorma: 2 },
+  user: { name: null, email: null},
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
   icon: null,
   isLoading: false,
+  dailyNorma: 2,
 };
 
 const handlePending = state => {
@@ -39,12 +39,16 @@ const authSlice = createSlice({
         state.token = action.payload.token;
         state.isLoggedIn = true;
         state.icon = action.payload.avatarURL;
+       
+      
       })
       .addCase(signIn.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
         state.icon = action.payload.avatarURL;
+        state.dailyNorma = action.payload.dailyNorma;
+      
       })
       .addCase(signIn.rejected, (state, action) => {
         handleRejected(state, action);
@@ -89,16 +93,10 @@ const waterSlice = createSlice({
       .addCase(addDailyNorma.pending, handlePending)
       .addCase(addDailyNorma.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.user.dailyNorma = action.payload;
+        state.dailyNorma = action.payload.dailyNorma;
       })
       .addCase(addDailyNorma.rejected, handleRejected)
 
-      .addCase(loadDailyNorma.pending, handlePending)
-      .addCase(loadDailyNorma.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.user.dailyNorma = action.payload;
-      })
-      .addCase(loadDailyNorma.rejected, handleRejected)
   },
 });
 
