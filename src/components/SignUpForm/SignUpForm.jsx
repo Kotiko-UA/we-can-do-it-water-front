@@ -1,5 +1,7 @@
+
 import { useDispatch } from 'react-redux';
 import { useAuth } from 'Hooks/useAuth.js';
+
 import { signUp } from '../redux/auth/operations';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
@@ -61,6 +63,7 @@ export const SignUpForm = () => {
   return (
     <div>
       {isLoading ? (
+
         <Loader />
       ) : (
         <div>
@@ -70,9 +73,11 @@ export const SignUpForm = () => {
               password: '',
               repeatPassword: '',
             }}
+
             validationSchema={SignUpFormSchema}
             onSubmit={(values, actions) => {
               HandleSubmit(values);
+
               actions.resetForm();
             }}
           >
@@ -93,6 +98,7 @@ export const SignUpForm = () => {
                 placeholder="Password"
                 autoComplete="on"
               />
+
               <span onClick={handleToggle}>{icon}</span>
 
               <ErrorMsg name="password" component="div" />

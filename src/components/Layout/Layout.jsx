@@ -11,6 +11,7 @@ import { LogOut } from 'components/LogOut/LogOut.jsx';
 import { Loader } from 'components/Loader.jsx';
 import { useAuth } from 'Hooks/useAuth.js';
 
+
 export const Layout = () => {
   const [modal, setModal] = useState(false);
   const [settingModal, setSettingModal] = useState(false);

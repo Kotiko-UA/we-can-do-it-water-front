@@ -1,5 +1,7 @@
+
 import { useDispatch } from 'react-redux';
 import { useAuth } from 'Hooks/useAuth.js';
+
 import { signIn } from '../redux/auth/operations.js';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
@@ -39,6 +41,7 @@ export const SignInForm = () => {
     }
   };
 
+
   const handleSubmit = values => {
     dispatch(signIn({ email: values.email, password: values.password }));
   };
@@ -49,11 +52,14 @@ export const SignInForm = () => {
   return (
     <div>
       {isLoading ? (
+
         <Loader />
       ) : (
         <div>
           <Formik
+
             initialValues={{ email: '', password: '' }}
+
             validationSchema={SignInFormSchema}
             onSubmit={(values, actions) => {
               handleSubmit(values);
@@ -83,6 +89,7 @@ export const SignInForm = () => {
               <ButtonSbmt type="submit">Sign In</ButtonSbmt>
             </FormWrapper>
           </Formik>
+
           <div>
             <StyledLink to="/signUp">Sign up</StyledLink>
           </div>

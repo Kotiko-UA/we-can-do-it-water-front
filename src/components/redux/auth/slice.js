@@ -79,6 +79,7 @@ const authSlice = createSlice({
       })
       .addMatcher(isRejectedAction, (state, action) => {
         state.isLoading = false;
+
       });
   },
 });
