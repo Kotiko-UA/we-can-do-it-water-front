@@ -7,7 +7,11 @@ export const StyledLink = styled(NavLink)`
   font-style: normal;
   font-weight: 400;
   line-height: 24px;
-  color: #ffffff;
+  color: #407bff;
+  display: flex;
+  align-items: center;
+  margin-top: 16px;
+
   &:hover,
   :focus {
     color: var(--Secondary-color-5, #ff9d43);
