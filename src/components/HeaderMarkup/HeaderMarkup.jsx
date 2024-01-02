@@ -45,7 +45,6 @@ const HeaderMarkup = ({ toggleSetting, toggleLogOut }) => {
                     <RealUserIcon src={userIcon} alt="user real avatar" />
                     <ArrowIcon />
                   </StyledLink>
-
                   <NavMenu className="navMenu">
                     <NavLi>
                       <SettingsIcon />
@@ -70,7 +69,7 @@ const HeaderMarkup = ({ toggleSetting, toggleLogOut }) => {
                   </NavMenu>
                 </RightNavWrapper>
               ) : (
-                <StyledLink to="/signup">
+                <StyledLink to="/signin">
                   Sign in
                   <UserAvatar alt="user default avatar" />
                 </StyledLink>
