@@ -33,7 +33,7 @@ export const App = () => {
               />
             }
           />
-          <Route path="/forget_password" element={<ForgetPasswordPage />} />
+          <Route path="/forgot_password" element={<ForgetPasswordPage />} />
           <Route path="/recovery" element={<RecoveryPasswordPage />} />
         </Route>
       </Routes>
