@@ -1,4 +1,7 @@
-import { useDispatch, useSelector } from 'react-redux';
+
+import { useDispatch } from 'react-redux';
+import { useAuth } from 'Hooks/useAuth.js';
+
 import { signUp } from '../redux/auth/operations';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
@@ -44,7 +47,7 @@ export const SignUpForm = () => {
     }
   };
 
-  const handleSubmit = values => {
+  const HandleSubmit = values => {
     dispatch(
       signUp({
         email: values.email,
@@ -54,11 +57,13 @@ export const SignUpForm = () => {
     );
   };
 
-  const loading = useSelector(state => state.auth.isLoading);
+  //const loading = useSelector(state => state.auth.isLoading);
+  const { isLoading } = useAuth();
 
   return (
     <div>
-      {loading ? (
+      {isLoading ? (
+
         <Loader />
       ) : (
         <div>
@@ -68,20 +73,32 @@ export const SignUpForm = () => {
               password: '',
               repeatPassword: '',
             }}
-            autoComplete="off"
+
             validationSchema={SignUpFormSchema}
             onSubmit={(values, actions) => {
-              handleSubmit(values);
+              HandleSubmit(values);
+
               actions.resetForm();
             }}
           >
             <FormWrapper>
               <Label>Enter your email</Label>
-              <FieldInput type="email" name="email" placeholder="E-mail" />
+              <FieldInput
+                type="email"
+                name="email"
+                placeholder="E-mail"
+                autoComplete="on"
+              />
               <ErrorMsg name="email" component="div" />
 
               <Label>Enter your password</Label>
-              <FieldInput type={type} name="password" placeholder="Password" />
+              <FieldInput
+                type={type}
+                name="password"
+                placeholder="Password"
+                autoComplete="on"
+              />
+
               <span onClick={handleToggle}>{icon}</span>
 
               <ErrorMsg name="password" component="div" />
@@ -108,3 +125,4 @@ export const SignUpForm = () => {
     </div>
   );
 };
+//

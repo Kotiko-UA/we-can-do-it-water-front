@@ -1,4 +1,7 @@
-import { useDispatch, useSelector } from 'react-redux';
+
+import { useDispatch } from 'react-redux';
+import { useAuth } from 'Hooks/useAuth.js';
+
 import { signIn } from '../redux/auth/operations.js';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
@@ -38,24 +41,25 @@ export const SignInForm = () => {
     }
   };
 
+
   const handleSubmit = values => {
     dispatch(signIn({ email: values.email, password: values.password }));
   };
 
-  const loading = useSelector(state => state.auth.isLoading);
+  //const loading = useSelector(state => state.auth.isLoading);
+  const { isLoading } = useAuth();
 
   return (
     <div>
-      {loading ? (
+      {isLoading ? (
+
         <Loader />
       ) : (
         <div>
           <Formik
-            initialValues={{
-              email: '',
-              password: '',
-            }}
-            autoComplete="off"
+
+            initialValues={{ email: '', password: '' }}
+
             validationSchema={SignInFormSchema}
             onSubmit={(values, actions) => {
               handleSubmit(values);
@@ -63,15 +67,23 @@ export const SignInForm = () => {
             }}
           >
             <FormWrapper>
-              <Label>Enter your email</Label>
-              <FieldInput type="email" name="email" placeholder="E-mail" />
+              <Label> Enter your email </Label>
+              <FieldInput
+                autoComplete="on"
+                type="email"
+                name="email"
+                placeholder="E-mail"
+              />
               <ErrorMsg name="email" component="div" />
 
-              <Label>Enter your password</Label>
-
-              <FieldInput type={type} name="password" placeholder="Password" />
+              <Label> Enter your password </Label>
+              <FieldInput
+                type={type}
+                name="password"
+                placeholder="Password"
+                autoComplete="on"
+              />
               <span onClick={handleToggle}>{icon}</span>
-
               <ErrorMsg name="password" component="div" />
 
               <ButtonSbmt type="submit">Sign In</ButtonSbmt>
