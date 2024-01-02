@@ -88,6 +88,9 @@ export const SignInForm = () => {
                 </FormWrapper>
               )}
             </Formik>
+            <div>
+            <StyledLink to="/forget_password">Forgot password?</StyledLink>
+          </div>
           <div>
             <StyledLink to="/signUp">Sign up</StyledLink>
           </div>
