@@ -29,6 +29,10 @@ const Today = () => {
   const dispatch = useDispatch();
   const todayInfo = useSelector(selectWaterItems);
 
+  // useEffect(() => {
+  //   dispatch(findWaterToday());
+  // }, [dispatch]);
+
   // function onDelete(id) {
   //   dispatch(deleteWater(id));
   // }
@@ -40,9 +44,6 @@ const Today = () => {
   //
   //   dispatch(addWater(amount));
   // }
-  // useEffect(() => {
-  //   dispatch(findWaterToday());
-  // }, [dispatch]);
 
   const listRef = useRef(null);
 
