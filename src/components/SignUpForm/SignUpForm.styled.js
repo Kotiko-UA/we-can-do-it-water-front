@@ -104,7 +104,12 @@ background: #FFF;
 
 &:focus{
 color: #407BFF;
-}
+};
+
+&::placeholder{
+  color: #9EBBFF;
+  opacity:1;
+};
 
 @media (min-width: 768px) {
 width: 336px;
