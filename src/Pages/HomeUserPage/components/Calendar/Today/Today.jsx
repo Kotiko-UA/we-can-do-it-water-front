@@ -17,10 +17,32 @@ import { ModalContext } from 'components/helpers/ModalContext';
 
 import css from './Today.module.css';
 import Icons from '../../../../../icons/HomePage/sprite.svg';
-import { DayInfo } from 'FetchExamples/DayInfo';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectWaterItems } from 'components/redux/water/selectors';
+import {
+  addWater,
+  deleteWater,
+  findWaterToday,
+} from 'components/redux/water/operations';
 
 const Today = () => {
-  const toggleModal = useContext(ModalContext);
+  const dispatch = useDispatch();
+  const todayInfo = useSelector(selectWaterItems);
+
+  // function onDelete(id) {
+  //   dispatch(deleteWater(id));
+  // }
+
+  // function onEdite({ id, time, amout }) {
+  // {date: "1, January", norma: "2.0 L", procent: "0%", servings: 0}
+  // }
+  // function onAddWater(amount) {
+  //
+  //   dispatch(addWater(amount));
+  // }
+  // useEffect(() => {
+  //   dispatch(findWaterToday());
+  // }, [dispatch]);
 
   const listRef = useRef(null);
 
@@ -30,8 +52,8 @@ const Today = () => {
       <Viewport ref={listRef}>
         <TableStyled>
           <tbody>
-            {DayInfo.map(data => (
-              <TableRow key={data._id}>
+            {todayInfo.map(data => (
+              <TableRow key={data._id} idWater={data._id}>
                 <TableCell>
                   <ImgCont>
                     <svg className={css.cup} width="26" height="26">
@@ -40,13 +62,7 @@ const Today = () => {
                   </ImgCont>
                 </TableCell>
                 <TextCell>{data.amount} ml</TextCell>
-                <TimeCell>
-                  {new Intl.DateTimeFormat('en', {
-                    hour: 'numeric',
-                    minute: 'numeric',
-                    hour12: true,
-                  }).format(new Date(data.updatedAt))}
-                </TimeCell>
+                <TimeCell>{data.time}</TimeCell>
                 <TableCell>
                   <Button aria-label="Edit notice">
                     <svg className={css.icon_pencil} width="16" height="16">

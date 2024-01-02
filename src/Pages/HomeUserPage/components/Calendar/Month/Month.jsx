@@ -1,9 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
+import axios from 'axios';
+import { selectToken } from 'components/redux/auth/selectors';
 
 import Icons from '../../../../../icons/HomePage/sprite.svg';
-import { Months } from '../../../../../FetchExamples/Calendar.js';
-
-
 
 import {
   ArrowButton,
@@ -14,13 +13,37 @@ import {
   Month,
 } from './Month.styled';
 import DayComponent from './DayComponent/DayComponent';
+import { useSelector } from 'react-redux';
+const instanceWaterMonth = axios.create();
+instanceWaterMonth.defaults.baseURL = 'https://water-p2oh.onrender.com/api';
 
 const Calendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
-  
-  const ref = useRef(null);
+  const [monthData, setMonthData] = useState([]);
+  const token = useSelector(selectToken);
+  const month = currentDate.getMonth() + 1;
+  const year = currentDate.getFullYear();
 
-  
+  useEffect(() => {
+    const getMonthData = async () => {
+      try {
+        const resp = await instanceWaterMonth.get(
+          `/waternotes?month=${month}&year=${year}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+        const monthDataResp = resp.data;
+        setMonthData(monthDataResp);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    getMonthData();
+  }, [currentDate, token, month, year]);
+
+  const ref = useRef(null);
 
   const handleNextMonth = () => {
     setCurrentDate(
@@ -45,12 +68,11 @@ const Calendar = () => {
   const renderDays = () => {
     const daysInMonth = getDaysInMonth();
     const days = Array.from({ length: daysInMonth }, (_, index) => index + 1);
-   
+
     return days.map(day => {
-      const waterPercentage = Months?.find(item => {
+      const waterPercentage = monthData?.find(item => {
         return Number(item.date.split(',')[0]) === day;
       });
-     
 
       return (
         <DayComponent
@@ -74,9 +96,10 @@ const Calendar = () => {
             </svg>
           </ArrowButton>
           <Month>
-            {new Intl.DateTimeFormat('en-US', { month: 'long' }).format(
-              currentDate
-            )}
+            {new Intl.DateTimeFormat('en-US', {
+              month: 'long',
+              year: 'numeric',
+            }).format(currentDate)}
           </Month>
           <ArrowButton aria-label="Previous month" onClick={handleNextMonth}>
             <svg width="14" height="14">

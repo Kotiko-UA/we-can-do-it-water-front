@@ -72,6 +72,7 @@ width: 336px;
 @media (min-width: 1440px) {
 width: 384px;   
   }
+
 `;
 
 export const Label = styled.label`
@@ -83,7 +84,6 @@ font-weight: 400;
 line-height: 24px;
 margin-top: 16px;
 `;
-
 
 export const FieldInput = styled(Field)`
 color: #9EBBFF;
@@ -99,14 +99,9 @@ border-radius: 6px;
 border: 1px solid #D7E3FF;
 background: #FFF;
 
-&::placeholder{
-  color: #9EBBFF;
-  opacity:1;
-}
-
 &:focus{
 color: #407BFF;
-};
+}
 
 @media (min-width: 768px) {
 width: 336px;
@@ -115,7 +110,10 @@ width: 336px;
 @media (min-width: 1440px) {
 width: 384px;   
   }
+
+
 `;
+
 
 
 export const ErrorMsg = styled(ErrorMessage)`
@@ -157,7 +155,6 @@ box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
 box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
 }
 `;
-
 
 
 
