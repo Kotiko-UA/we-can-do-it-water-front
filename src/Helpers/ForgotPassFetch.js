@@ -11,12 +11,12 @@ export const checkUser = async email => {
     const res = await axios.post('/users/forgetpassword', { email });
 
     if (res.status === 200) {
-      return toast.success(res.data.message);
+      toast.success(`New password send to email, check your emailBox`);
     }
   } catch (error) {
-    console.log(error);
-    if (error.response.status === 404) {
-      return toast.error(`Email ${email} not registered`);
+    if (error.response.status !== 404) {
+      return toast.error(`Email ${email} not correct`);
     }
+    toast.error(`Email ${email} not registered`);
   }
 };
