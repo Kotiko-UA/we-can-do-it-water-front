@@ -1,8 +1,6 @@
 import { useEffect } from "react";
-import { VscChromeClose } from "react-icons/vsc";
-import { PiUploadSimpleThin } from "react-icons/pi";
 
-import { Avatar, AvatarContainer, Container, GenderLabel, InputFile, Label, MainContainer, Modal, DataContainer, Overlay, SettingContainer, SettingText, DataLabel, PasswordLabel, CommonInput, YourPhoto, Text, SaveButton, PasswordInputContainer, PasswordContainer, GenderRadio, CloseButton, InfoContainer, CommonInfoContainer, AvatarOutContainer } from "./Setting.styled";
+import { Avatar, AvatarContainer, Container, GenderLabel, InputFile, Label, MainContainer, Modal, DataContainer, Overlay, SettingContainer, SettingText, DataLabel, PasswordLabel, CommonInput, YourPhoto, Text, SaveButton, PasswordInputContainer, PasswordContainer, GenderRadio, CloseButton, InfoContainer, CommonInfoContainer, AvatarOutContainer, Close, UploadSvg } from "./Setting.styled";
 import { PasswordInput } from "components/PasswordInput/PasswordInput";
 
 export const Setting = ({ backdropClick, close }) => {
@@ -13,21 +11,19 @@ export const Setting = ({ backdropClick, close }) => {
         close()
       }
     }
-
     window.addEventListener('keydown', handleKeydown)
-    
     return () => {
     window.removeEventListener('keydown', handleKeydown)
     }
 }, [close])
 
     return (
-        <Overlay onClick={backdropClick}>
+        <Overlay id="settings" onClick={backdropClick}>
             <Modal>
                 <Container>
                 <SettingContainer>
                     <SettingText>Setting</SettingText>
-                    <CloseButton type="button" onClick={close}><VscChromeClose /></CloseButton>
+                    <CloseButton type="button" onClick={close}><Close /></CloseButton>
                 </SettingContainer>
                     <MainContainer>
                         <div>
@@ -36,7 +32,7 @@ export const Setting = ({ backdropClick, close }) => {
                         <AvatarContainer>
                             <Avatar></Avatar>
                             <InputFile type="file" name="file" id="file" />
-                            <Label label for="file"><PiUploadSimpleThin size="14" /> Upload a photo</Label>
+                            <Label label for="file"><UploadSvg /> Upload a photo</Label>
                             </AvatarContainer>
                             </AvatarOutContainer>
                         </div>
