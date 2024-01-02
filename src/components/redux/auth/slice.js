@@ -12,6 +12,7 @@ const initialState = {
 
 const handleRejected = (state, action) => {
   alert(action.payload);
+  state.isLoading = false;
 };
 
 function isPendingAction(action) {

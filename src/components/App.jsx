@@ -26,7 +26,6 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="/" index element={<HomePage />}></Route>
-
           <Route path="/signUp" element={<RestrictedRoute redirectTo="/" component={<SignUpPage />} />}/>
           <Route path="/signIn" element={<RestrictedRoute redirectTo="/" component={<SignInPage />} />}/>
           <Route path="/forget_password" element={<ForgetPasswordPage />} />
