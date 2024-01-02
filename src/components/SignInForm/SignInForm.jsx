@@ -45,7 +45,6 @@ export const SignInForm = () => {
 
   //const loading = useSelector(state => state.auth.isLoading);
   const { isLoading } = useAuth();
-  
 
   return (
     <div>
@@ -53,30 +52,37 @@ export const SignInForm = () => {
         <Loader />
       ) : (
         <div>
-            <Formik
-                initialValues={{email: '', password: '',}}
+          <Formik
+            initialValues={{ email: '', password: '' }}
+            validationSchema={SignInFormSchema}
+            onSubmit={(values, actions) => {
+              handleSubmit(values);
+              actions.resetForm();
+            }}
+          >
+            <FormWrapper>
+              <Label> Enter your email </Label>
+              <FieldInput
                 autoComplete="on"
-                validationSchema={SignInFormSchema}
-                onSubmit={(values, actions) => {
-                    handleSubmit(values);
-                    actions.resetForm();
-                }}
-            >
-                <FormWrapper>
-                        <Label> Enter your email </Label>
-                        <FieldInput
-                            type="email" name="email" placeholder="E-mail"/> 
-                        <ErrorMsg name="email" component="div" />
-                    
-                        <Label> Enter your password </Label>
-                        <FieldInput
-                            type={type} name="password" placeholder="Password"/>
-                            <span onClick={handleToggle}>{icon}</span>
-                        <ErrorMsg name="password" component="div" />
-                        
-                        <ButtonSbmt type="submit">Sign In</ButtonSbmt>
-                </FormWrapper>
-            </Formik>
+                type="email"
+                name="email"
+                placeholder="E-mail"
+              />
+              <ErrorMsg name="email" component="div" />
+
+              <Label> Enter your password </Label>
+              <FieldInput
+                type={type}
+                name="password"
+                placeholder="Password"
+                autoComplete="on"
+              />
+              <span onClick={handleToggle}>{icon}</span>
+              <ErrorMsg name="password" component="div" />
+
+              <ButtonSbmt type="submit">Sign In</ButtonSbmt>
+            </FormWrapper>
+          </Formik>
           <div>
             <StyledLink to="/signUp">Sign up</StyledLink>
           </div>

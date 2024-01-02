@@ -70,7 +70,6 @@ export const SignUpForm = () => {
               password: '',
               repeatPassword: '',
             }}
-            autoComplete="on"
             validationSchema={SignUpFormSchema}
             onSubmit={(values, actions) => {
               HandleSubmit(values);
@@ -79,11 +78,21 @@ export const SignUpForm = () => {
           >
             <FormWrapper>
               <Label>Enter your email</Label>
-              <FieldInput type="email" name="email" placeholder="E-mail" />
+              <FieldInput
+                type="email"
+                name="email"
+                placeholder="E-mail"
+                autoComplete="on"
+              />
               <ErrorMsg name="email" component="div" />
 
               <Label>Enter your password</Label>
-              <FieldInput type={type} name="password" placeholder="Password" />
+              <FieldInput
+                type={type}
+                name="password"
+                placeholder="Password"
+                autoComplete="on"
+              />
               <span onClick={handleToggle}>{icon}</span>
 
               <ErrorMsg name="password" component="div" />
