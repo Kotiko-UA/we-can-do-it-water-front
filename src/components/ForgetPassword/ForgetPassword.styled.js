@@ -24,9 +24,13 @@ export const Wrap = styled.div`
 
   @media (min-width: 768px) {
     width: 336px;
-
     flex-direction: row;
     justify-content: flex-start;
+  }
+  @media (min-width: 1440px) {
+    justify-content: flex-end;
+    margin-left: auto;
+    margin-right: 198px;
   }
 `;
 export const Form = styled.form`

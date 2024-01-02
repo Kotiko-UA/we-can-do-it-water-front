@@ -1,32 +1,28 @@
 import { useState } from 'react';
 
+import { checkUser } from 'Helpers/ForgotPassFetch';
 import {
   Wrap,
   Label,
   Input,
   Button,
   Form,
-  StyledLink,
+  // StyledLink,
 } from './ForgetPassword.styled';
 
 export const ForgetPassword = () => {
-  const [email, setEmail] = useState();
+  const [email, setEmail] = useState(null);
 
   const handlEmail = event => {
     setEmail(event.target.value);
   };
 
-  const submit = event => {
+  const submit = async event => {
     event.preventDefault();
-    const form = event.currentTarget;
-    const { email } = form.elements;
-    // dispatch(
-    //   register({
-    //     email: email.value,
-    //   })
-    // );
-    form.reset();
+    checkUser(email);
+    setEmail(null);
   };
+
   return (
     <Wrap>
       <Form onSubmit={submit}>
@@ -34,8 +30,9 @@ export const ForgetPassword = () => {
           Enter your email
           <Input onChange={handlEmail} type="email" placeholder="Email" />
         </Label>
-        <Button type="button">
-          <StyledLink to="/">Send</StyledLink>
+        <Button type="submit">
+          Send
+          {/* <StyledLink to="/">Send</StyledLink> */}
         </Button>
       </Form>
     </Wrap>

@@ -7,11 +7,23 @@ const initialState = {
   isLoggedIn: false,
   isRefreshing: false,
   icon: null,
+  isLoading: false,
 };
 
 const handleRejected = (state, action) => {
   alert(action.payload);
+  state.isLoading = false;
 };
+
+function isPendingAction(action) {
+  return typeof action.type === 'string' && action.type.endsWith('/pending');
+}
+function isFulfilledAction(action) {
+  return typeof action.type === 'string' && action.type.endsWith('/fulfilled');
+}
+function isRejectedAction(action) {
+  return typeof action.type === 'string' && action.type.endsWith('/rejected');
+}
 
 const authSlice = createSlice({
   name: 'auth',
@@ -59,10 +71,17 @@ const authSlice = createSlice({
       .addCase(logOut.rejected, (state, action) => {
         handleRejected(state, action);
       })
+      .addMatcher(isPendingAction, (state, action) => {
+        state.isLoading = true;
+      })
+      .addMatcher(isFulfilledAction, (state, action) => {
+        state.isLoading = false;
+      })
+      .addMatcher(isRejectedAction, (state, action) => {
+        state.isLoading = false;
+
+      });
   },
 });
-
-console.log(authSlice);
-// console.log(state.icon)
 
 export const authReducer = authSlice.reducer;
