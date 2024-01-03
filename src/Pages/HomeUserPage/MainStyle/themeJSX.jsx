@@ -14,9 +14,7 @@ const theme = Object.freeze({
     medium: '18px',
   },
 
-  animation: {
-    cubicBezier: '0.25s cubic-bezier(0.7, 0.98, 0.86, 0.98)',
-  },
+  animation: {},
 });
 
 export default theme;
