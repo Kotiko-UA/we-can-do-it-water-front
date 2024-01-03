@@ -13,8 +13,11 @@ import {
   EyeSlash,
   EyeActive,
 } from './SignInForm.styled.js';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Loader } from '../../components/Loader.jsx';
+import toast from 'react-hot-toast';
+
+
 
 const SignInFormSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
@@ -43,8 +46,13 @@ export const SignInForm = () => {
     dispatch(signIn({ email: values.email, password: values.password }));
   };
 
-  //const loading = useSelector(state => state.auth.isLoading);
-  const { isLoading } = useAuth();
+  const { isLoading, error } = useAuth();
+  
+  useEffect(() => {
+    if (error) {
+      toast.error(error);
+   };
+  }, [error]);
   
 
   return (
@@ -67,16 +75,16 @@ export const SignInForm = () => {
                 <FormWrapper>
                   <Label> Enter your email </Label>
                   <FieldInput
-			autoComplete="on"
+			              autoComplete="on"
                     type="email"
                     name="email"
                     placeholder="E-mail"
-                  style = {(errors.email && touched.email) ? {borderColor:"#EF5050", color:"#EF5050"} : null}/>
+                    style={(errors.email && touched.email) ? {borderColor:"#EF5050", color:"#EF5050"} : null}/>
                   <ErrorMsg name="email" component="div" />
                     
                   <Label> Enter your password </Label>
                   <FieldInput
-			autoComplete="on"
+			              autoComplete="on"
                     type={type}
                     name="password"
                     placeholder="Password"
