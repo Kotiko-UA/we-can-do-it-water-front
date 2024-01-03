@@ -3,7 +3,7 @@ import { useAuth } from 'Hooks/useAuth.js';
 import { signUp } from '../redux/auth/operations';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   StyledLink,
   FormWrapper,
@@ -15,7 +15,7 @@ import {
   EyeActive,
 } from './SignUpForm.styled.js';
 import { Loader } from '../../components/Loader.jsx';
-
+import toast from 'react-hot-toast';
 
 
 const SignUpFormSchema = Yup.object().shape({
@@ -52,14 +52,20 @@ export const SignUpForm = () => {
       signUp({
         email: values.email,
         password: values.password,
-        repeatPassword: values.repeatPassword,
       })
     );
   };
 
-  //const loading = useSelector(state => state.auth.isLoading);
-  const { isLoading } = useAuth();
 
+ const { isLoading, error } = useAuth();
+  
+  useEffect(() => {
+    if (error) {
+      toast.error(error);
+   };
+  }, [error]);
+
+  
   return (
     <div>
       {isLoading ? (
