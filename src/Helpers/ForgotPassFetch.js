@@ -8,7 +8,7 @@ export const checkUser = async email => {
     if (!email) {
       return toast.error('Enter email');
     }
-    const res = await axios.post('/users/forgetpassword', { email });
+    const res = await axios.post('/users/forgotpassword', { email });
 
     if (res.status === 200) {
       toast.success(`New password send to email, check your emailBox`);
