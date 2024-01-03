@@ -1,33 +1,29 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {
-  signUp,
-  signIn,
-  refreshUser,
-  logOut,
-  addDailyNorma,
-} from './operations';
+import { signUp, signIn, refreshUser, logOut } from './operations';
 
 const initialState = {
-  user: { name: null, email: null},
+  user: { name: null, email: null },
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
   icon: null,
   isLoading: false,
-  dailyNorma: 2,
 };
-
-const handlePending = state => {
-  state.isLoading = true;
-};
-// const handleRejected = (state, action) => {
-//   state.isLoading = false;
-//   state.error = action.payload;
-// };
 
 const handleRejected = (state, action) => {
   alert(action.payload);
+  state.isLoading = false;
 };
+
+function isPendingAction(action) {
+  return typeof action.type === 'string' && action.type.endsWith('/pending');
+}
+function isFulfilledAction(action) {
+  return typeof action.type === 'string' && action.type.endsWith('/fulfilled');
+}
+function isRejectedAction(action) {
+  return typeof action.type === 'string' && action.type.endsWith('/rejected');
+}
 
 const authSlice = createSlice({
   name: 'auth',
@@ -39,16 +35,12 @@ const authSlice = createSlice({
         state.token = action.payload.token;
         state.isLoggedIn = true;
         state.icon = action.payload.avatarURL;
-       
-      
       })
       .addCase(signIn.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
         state.icon = action.payload.avatarURL;
-        state.dailyNorma = action.payload.dailyNorma;
-      
       })
       .addCase(signIn.rejected, (state, action) => {
         handleRejected(state, action);
@@ -78,27 +70,18 @@ const authSlice = createSlice({
       })
       .addCase(logOut.rejected, (state, action) => {
         handleRejected(state, action);
+      })
+      .addMatcher(isPendingAction, (state, action) => {
+        state.isLoading = true;
+      })
+      .addMatcher(isFulfilledAction, (state, action) => {
+        state.isLoading = false;
+      })
+      .addMatcher(isRejectedAction, (state, action) => {
+        state.isLoading = false;
+
       });
   },
 });
 
-console.log(authSlice);
-// console.log(state.icon)
-
-const waterSlice = createSlice({
-  name: 'water',
-  initialState,
-  extraReducers: builder => {
-    builder
-      .addCase(addDailyNorma.pending, handlePending)
-      .addCase(addDailyNorma.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.dailyNorma = action.payload.dailyNorma;
-      })
-      .addCase(addDailyNorma.rejected, handleRejected)
-
-  },
-});
-
 export const authReducer = authSlice.reducer;
-export const waterReducer = waterSlice.reducer;
