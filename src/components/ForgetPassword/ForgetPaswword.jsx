@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import axios from 'axios';
-import { toast } from 'react-hot-toast';
+
+import { checkUser } from 'Helpers/ForgotPassFetch';
 import {
   Wrap,
   Label,
@@ -9,10 +9,9 @@ import {
   Form,
   StyledLink,
 } from './ForgetPassword.styled';
-axios.defaults.baseURL = 'http://localhost:8000/api';
 
 export const ForgetPassword = () => {
-  const [email, setEmail] = useState(null);
+  const [email, setEmail] = useState(' ');
 
   const handlEmail = event => {
     setEmail(event.target.value);
@@ -20,20 +19,8 @@ export const ForgetPassword = () => {
 
   const submit = async event => {
     event.preventDefault();
-    try {
-      if (!email) {
-        return toast.error('Enter email');
-      }
-      const res = await axios.post('/users/forgetpassword', { email });
-
-      if (res.status === 200) {
-        return toast.success(res.data.message);
-      }
-    } catch (error) {
-      if (error.response.status === 409) {
-        return toast.error(`Email ${email} not registered`);
-      }
-    }
+    checkUser(email);
+    setEmail('');
   };
 
   return (
@@ -41,12 +28,16 @@ export const ForgetPassword = () => {
       <Form onSubmit={submit}>
         <Label>
           Enter your email
-          <Input onChange={handlEmail} type="email" placeholder="Email" />
+          <Input
+            onChange={handlEmail}
+            type="email"
+            placeholder="Email"
+            value={email}
+            pattern="/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/"
+          />
         </Label>
-        <Button type="submit">
-          Send
-          {/* <StyledLink to="/">Send</StyledLink> */}
-        </Button>
+        <Button type="submit">Send</Button>
+        <StyledLink to="/signIn">Sing In</StyledLink>
       </Form>
     </Wrap>
   );
