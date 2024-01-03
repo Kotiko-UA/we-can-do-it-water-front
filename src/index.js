@@ -36,4 +36,4 @@ root.render(
   </React.StrictMode>
 );
 
-// <ThemeProvider theme={colors}>
+/* <ThemeProvider theme={colors}> */

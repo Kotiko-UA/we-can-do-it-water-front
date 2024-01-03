@@ -1,13 +1,13 @@
 import styled from 'styled-components';
-import theme from '../../../MainStyle/themeJSX';
-
 export const DailyNormaContainer = styled.div`
   display: inline-block;
   border-radius: 10px;
-  border: 1px solid ${theme.colors.secondaryLight};
+
+  border: 1px solid ${({ theme }) => theme.secondaryGrey};
+
   background: #fff;
   box-shadow: 0px 4px 8px 0px rgba(158, 187, 255, 0.12);
-  
+
   padding: 8px 20px;
   margin-bottom: 8px;
 
@@ -18,7 +18,7 @@ export const DailyNormaContainer = styled.div`
   }
 `;
 export const Title = styled.h2`
-  font-size: ${theme.fontSizes.medium};
+  font-size: 18px;
   font-weight: 500;
   line-height: calc(24 / 18);
   margin-bottom: 12px;
@@ -28,7 +28,8 @@ export const Norma = styled.p`
   font-size: 22px;
   font-weight: 700;
   line-height: 22px;
-  color: ${theme.colors.primaryAccent};
+
+  color: ${({ theme }) => theme.primaryBlue};
 
   @media only screen and (min-width: 768px) {
     font-size: 24px;
@@ -43,11 +44,11 @@ export const NormaContainer = styled.div`
 `;
 
 export const HoverBtnStyled = styled.button`
-  transition: color ${theme.animation.cubicBezier};
+  transition: color ${({ theme }) => theme.cubicBezier};
 
   position: relative;
   &:hover {
-    color: ${theme.colors.secondaryYellow};
+    color: ${({ theme }) => theme.secondaryOrange};
   }
   &:before {
     content: '';
@@ -56,7 +57,9 @@ export const HoverBtnStyled = styled.button`
     left: 0;
     width: 0;
     height: 1px;
-    background-color: ${theme.colors.secondaryYellow};
+
+    background-color: ${({ theme }) => theme.secondaryOrange};
+
     transition: width 0.3s ease;
   }
   &:hover:before {
@@ -74,17 +77,21 @@ export const Button = styled.button`
   line-height: calc(20 / 16);
   font-weight: 500;
   text-align: center;
-  color: ${theme.colors.primaryLight};
+  color: ${({ theme }) => theme.primaryWhite};
+
   width: 100%;
   padding: 8px 30px;
 
   outline: none;
   border: none;
   border-radius: 10px;
-  background-color: ${theme.colors.primaryAccent};
+
+  background-color: ${({ theme }) => theme.primaryBlue};
+
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
 
-  transition: all ${theme.animation.cubicBezier};
+  transition: all ${({ theme }) => theme.cubicBezier};
+
   cursor: pointer;
 
   &:hover {
@@ -94,7 +101,8 @@ export const Button = styled.button`
     box-shadow: none;
   }
   &:disabled {
-    background-color: ${theme.colors.secondaryBlue};
+    background-color: ${({ theme }) => theme.secondaryBlue};
+
     cursor: not-allowed;
   }
   @media screen and (min-width: 768px) {
@@ -110,20 +118,22 @@ export const Button = styled.button`
     width: 24px;
     height: 24px;
     fill: none;
-    stroke: ${theme.colors.primaryLight};
+
+    stroke: ${({ theme }) => theme.primaryWhite};
   }
 `;
 
 export const NormaBtn = styled(HoverBtnStyled)`
-  font-size: ${theme.fontSizes.small};
+  font-size: 16px;
   line-height: calc(20 / 16);
   background-color: transparent;
-  color: ${theme.colors.secondaryBlue};
+
+  color: ${({ theme }) => theme.secondaryBlue};
 `;
 
 export const Container = styled.div`
   position: relative;
- 
+
   width: 100%;
   img {
     margin: 0 auto;
@@ -176,9 +186,10 @@ export const WaterStatus = styled.div`
   gap: 19px;
   width: 100%;
   p {
-    color: ${theme.colors.primaryAccent};
+    color: ${({ theme }) => theme.primaryBlue};
+
     font-weight: 400;
-    font-size: ${theme.fontSizes.medium};
+    font-size: 18px;
     line-height: calc(24 / 18);
   }
   @media screen and (min-width: 768px) {
@@ -192,7 +203,9 @@ export const WaterStatus = styled.div`
 export const WaterMeter = styled.div`
   position: relative;
   height: 8px;
-  background-color: ${theme.colors.secondaryLightBlue};
+
+  background-color: ${({ theme }) => theme.secondaryLightBlue};
+
   width: calc(100% - 31px);
   padding: 0 20px 0 11px;
   border-radius: 10px;
@@ -210,8 +223,10 @@ export const WaterMeter = styled.div`
     transform: translate(-50%, -50%);
     width: 14px;
     height: 14px;
-    background-color: ${theme.colors.primaryLight};
-    border: 1px solid ${theme.colors.primaryAccent};
+    background-color: ${({ theme }) => theme.primaryWhite};
+
+    border: 1px solid ${({ theme }) => theme.primaryBlue};
+
     border-radius: 100%;
   }
   div {
@@ -228,7 +243,8 @@ export const WaterMeter = styled.div`
       return props.$filled + '%';
     }};
     height: 100%;
-    background-color: ${theme.colors.secondaryBlue};
+
+    background-color: ${({ theme }) => theme.secondaryBlue};
   }
 `;
 
@@ -237,8 +253,10 @@ export const WaterInfo = styled.div`
   justify-content: space-between;
   position: relative;
   span {
-    color: ${theme.colors.primaryAccent};
-    font-size: ${theme.fontSizes.tiny};
+    color: ${({ theme }) => theme.primaryBlue};
+
+    font-size: 12px;
+
     line-height: calc(16 / 12);
     position: relative;
     &::before {
@@ -246,7 +264,9 @@ export const WaterInfo = styled.div`
       display: block;
       width: 1px;
       height: 8px;
-      background-color: ${theme.colors.secondaryLightBlue};
+
+      background-color: ${({ theme }) => theme.secondaryLightBlue};
+
       position: absolute;
       top: -12px;
       left: 50%;
@@ -256,7 +276,8 @@ export const WaterInfo = styled.div`
       margin-left: 11px;
     }
     &:nth-child(2) {
-      font-size: ${theme.fontSizes.small};
+      font-size: 16px;
+
       line-height: calc(20 / 16);
       font-weight: 500;
       position: absolute;
