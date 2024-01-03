@@ -73,3 +73,15 @@ export const logOut = createAsyncThunk(
     }
   }
 );
+
+export const addDailyNorma = createAsyncThunk(
+  'auth/addDailyNorma',
+  async (drinkValue, thunkAPI) => {
+    try {
+      const response = await axios.patch('/users/dailynorma', { dailyNorma: String(drinkValue) });
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

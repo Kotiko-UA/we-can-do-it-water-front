@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { signUp, signIn, refreshUser, logOut } from './operations';
+import { signUp, signIn, refreshUser, logOut, addDailyNorma } from './operations';
 
 const initialState = {
   user: { name: null, email: null },
@@ -8,6 +8,7 @@ const initialState = {
   isRefreshing: false,
   icon: null,
   isLoading: false,
+  dailyNorma: 2,
 };
 
 const handleRejected = (state, action) => {
@@ -41,6 +42,7 @@ const authSlice = createSlice({
         state.token = action.payload.token;
         state.isLoggedIn = true;
         state.icon = action.payload.avatarURL;
+        state.dailyNorma = action.payload.dailyNorma;
       })
       .addCase(signIn.rejected, (state, action) => {
         handleRejected(state, action);
@@ -71,6 +73,16 @@ const authSlice = createSlice({
       .addCase(logOut.rejected, (state, action) => {
         handleRejected(state, action);
       })
+
+      .addCase(addDailyNorma.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(addDailyNorma.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.dailyNorma = action.payload.dailyNorma;
+      })
+      .addCase(addDailyNorma.rejected, handleRejected)
+
       .addMatcher(isPendingAction, (state, action) => {
         state.isLoading = true;
       })
@@ -80,7 +92,7 @@ const authSlice = createSlice({
       .addMatcher(isRejectedAction, (state, action) => {
         state.isLoading = false;
 
-      });
+      })
   },
 });
 
