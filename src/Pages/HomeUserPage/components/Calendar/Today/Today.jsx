@@ -28,6 +28,7 @@ import {
 const Today = () => {
   const dispatch = useDispatch();
   const todayInfo = useSelector(selectWaterItems);
+  const listRef = useRef(null);
 
   // useEffect(() => {
   //   dispatch(findWaterToday());
@@ -44,8 +45,6 @@ const Today = () => {
   //
   //   dispatch(addWater(amount));
   // }
-
-  const listRef = useRef(null);
 
   return (
     <Container>
