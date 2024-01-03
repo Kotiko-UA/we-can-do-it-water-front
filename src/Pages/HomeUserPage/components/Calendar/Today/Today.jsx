@@ -34,16 +34,16 @@ const Today = () => {
   //   dispatch(findWaterToday());
   // }, [dispatch]);
 
-  // function onDelete(id) {
-  //   dispatch(deleteWater(id));
+  // function onAddWater(amount) {
+  //   dispatch(addWater(data));
   // }
 
   // function onEdite({ id, time, amout }) {
   // {date: "1, January", norma: "2.0 L", procent: "0%", servings: 0}
   // }
-  // function onAddWater(amount) {
-  //
-  //   dispatch(addWater(amount));
+
+  // function onDelete(id) {
+  //   dispatch(deleteWater(id));
   // }
 
   return (
