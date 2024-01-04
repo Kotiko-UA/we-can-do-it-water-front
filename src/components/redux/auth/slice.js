@@ -20,7 +20,6 @@ const initialState = {
 };
 
 const handleRejected = (state, action) => {
-  //alert(action.payload);
   state.error = action.payload;
   state.isLoading = false;
 };
@@ -101,19 +100,19 @@ const authSlice = createSlice({
       })
       .addCase(updateAvatar.rejected, (state, action) => {
         handleRejected(state, action);
-      });
+      })
 
-    // .addMatcher(isPendingAction, (state, action) => {
-    //   state.isLoading = true;
-    //   state.error = null;
-    // })
-    // .addCase(addDailyNorma.fulfilled, (state, action) => {
-    //   state.isLoading = false;
-    //   state.error = null;
-    // })
-    // .addMatcher(isRejectedAction, (state, action) => {
-    //   state.isLoading = false;
-    // });
+      .addMatcher(isPendingAction, (state, action) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(addDailyNorma.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addMatcher(isRejectedAction, (state, action) => {
+        state.isLoading = false;
+      });
   },
 });
 

@@ -89,20 +89,6 @@ export const addDailyNorma = createAsyncThunk(
   }
 );
 
-// export const addDailyNorma = createAsyncThunk(
-//   'auth/addDailyNorma',
-//   async (drinkValue, thunkAPI) => {
-//     try {
-//       const response = await axios.patch('/users/dailynorma', {
-//         dailyNorma: String(drinkValue),
-//       });
-//       return response.data;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );
-
 export const updateAvatar = createAsyncThunk(
   'auth/avatars',
   async (file, thunkAPI) => {

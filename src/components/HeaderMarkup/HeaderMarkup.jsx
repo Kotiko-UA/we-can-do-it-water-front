@@ -27,59 +27,55 @@ const HeaderMarkup = ({ onClickSetting, onClickLogout }) => {
 
   return (
     <>
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <Container>
-          <Nav>
-            <li>
-              <StyledLinkLogo to="/">
-                <LogoSvg alt="logo" />
-                Tracker <br /> of water
-              </StyledLinkLogo>
-            </li>
+      <Container>
+        <Nav>
+          <li>
+            <StyledLinkLogo to="/">
+              <LogoSvg alt="logo" />
+              Tracker <br /> of water
+            </StyledLinkLogo>
+          </li>
 
-            <li style={{ width: '118px' }}>
-              {isLoggedIn ? (
-                <RightNavWrapper>
-                  <StyledLink to="/">
-                    <h3>Hi, user</h3>
-                    <RealUserIcon src={userIcon} alt="user real avatar" />
-                    <ArrowIcon />
-                  </StyledLink>
-                  <NavMenu className="navMenu">
-                    <NavLi>
-                      <SettingsIcon />
-                      <a
-                        href="#settings"
-                        style={{ color: '#407bff' }}
-                        onClick={onClickSetting}
-                      >
-                        Settings
-                      </a>
-                    </NavLi>
-                    <NavLi>
-                      <LogOutIcon />
-                      <a
-                        href="#logout"
-                        style={{ color: '#407bff' }}
-                        onClick={onClickLogout}
-                      >
-                        Log out
-                      </a>
-                    </NavLi>
-                  </NavMenu>
-                </RightNavWrapper>
-              ) : (
-                <StyledLink to="/signin">
-                  Sign in
-                  <UserAvatar alt="user default avatar" />
+          <li style={{ width: '118px' }}>
+            {isLoggedIn ? (
+              <RightNavWrapper>
+                <StyledLink to="/">
+                  <h3>Hi, user</h3>
+                  <RealUserIcon src={userIcon} alt="user real avatar" />
+                  <ArrowIcon />
                 </StyledLink>
-              )}
-            </li>
-          </Nav>
-        </Container>
-      )}
+                <NavMenu className="navMenu">
+                  <NavLi>
+                    <SettingsIcon />
+                    <a
+                      href="#settings"
+                      style={{ color: '#407bff' }}
+                      onClick={onClickSetting}
+                    >
+                      Settings
+                    </a>
+                  </NavLi>
+                  <NavLi>
+                    <LogOutIcon />
+                    <a
+                      href="#logout"
+                      style={{ color: '#407bff' }}
+                      onClick={onClickLogout}
+                    >
+                      Log out
+                    </a>
+                  </NavLi>
+                </NavMenu>
+              </RightNavWrapper>
+            ) : (
+              <StyledLink to="/signin">
+                Sign in
+                <UserAvatar alt="user default avatar" />
+              </StyledLink>
+            )}
+          </li>
+        </Nav>
+      </Container>
     </>
   );
 };
