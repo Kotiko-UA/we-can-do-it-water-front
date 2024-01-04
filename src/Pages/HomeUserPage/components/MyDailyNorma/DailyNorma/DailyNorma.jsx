@@ -35,13 +35,14 @@ import { useState } from 'react';
 import { DailyNormaModal } from 'components/DailyNormaModal/DailyNormaModal';
 import { Modalochka } from 'components/Modal/Modal';
 import { selectWaterItems } from 'components/redux/water/selectors';
+import { AddWater } from 'components/AddWater/addWater';
 
-export const DailyNorma = ({ onClick }) => {
+export const DailyNorma = () => {
   const { norma, procent } = useSelector(selectWaterItems);
   const [isOpen, setIsOpen] = useState(false);
-  const toggleModal = () => {
-    setIsOpen(prevstate => !prevstate);
-  };
+  // const toggleModal = () => {
+  //   setIsOpen(prevstate => !prevstate);
+  // };
 
   return (
     <Container>
@@ -49,15 +50,19 @@ export const DailyNorma = ({ onClick }) => {
         <Title>My daily norma</Title>
         <NormaContainer>
           <Norma>{norma} L</Norma>
-          <NormaBtn onClick={toggleModal}>Edit</NormaBtn>
+          <NormaBtn
+          // onClick={toggleModal}
+          >
+            Edit
+          </NormaBtn>
         </NormaContainer>
       </DailyNormaContainer>
 
-      {isOpen && (
+      {/* {isOpen && (
         <Modalochka toggleModal={toggleModal} title={'edit-daily-norm'}>
           <DailyNormaModal />
         </Modalochka>
-      )}
+      )} */}
 
       <picture>
         <source
@@ -104,12 +109,19 @@ export const DailyNorma = ({ onClick }) => {
             <span>100%</span>
           </WaterInfo>
         </WaterStatus>
-        <Button>
+        <Button
+          type="button"
+          onClick={
+            console.log(777)
+            // setIsOpen(!isOpen)
+          }
+        >
           <svg>
             <use href={sprite + '#plus-circle'} />
           </svg>
           Add water
         </Button>
+        {isOpen && <AddWater />}
       </StatusContainer>
     </Container>
   );
