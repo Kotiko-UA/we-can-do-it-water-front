@@ -55,15 +55,15 @@ export const EditingWater = ({ id }) => {
       setWaterValue(oldWaterValue.amount);
     }
   }, [id, oldWaterValue]);
-  // const storedValue = localStorage.getItem({id});
-  // const oldValue = JSON.parse(storedValue);
+
   const roundedValueWater = value => Math.round(value / 50) * 50;
   const time = startDate.toLocaleTimeString('uk', {
     hour: '2-digit',
     minute: '2-digit',
     hour12: false,
   });
-
+  // const storedValue = localStorage.getItem({id});
+  // const oldValue = JSON.parse(storedValue);
   const onSubmit = (values, actions) => {
     const amount = values.water;
     console.log(amount);
