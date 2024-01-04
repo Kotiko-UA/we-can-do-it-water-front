@@ -20,26 +20,6 @@ export const Layout = () => {
   const { isLoading } = useAuth();
   const { isLoadingWater } = useAuth();
 
-  // const changeSetting = () => {
-  //     settingModal ? setSettingModal(false) : setSettingModal(true);
-  //   };
-
-  //   const changeLogOut = () => {
-  //     // logOutModal ? setLogOutModal(false) : setLogOutModal(true);
-  //     logOutModal ? setLogOutModal(false) : setLogOutModal(true);
-  //   };
-
-  //   const handleBackdropClickSetting = evt => {
-  //     if (evt.target === evt.currentTarget) {
-  //       setSettingModal(false);
-  //     }
-  //   };
-
-  //   const handleBackdropClickLogOut = evt => {
-  //     if (evt.target === evt.currentTarget) {
-  //       setLogOutModal(false);
-  //     }
-  //   };
 
   const onClickPaskal = () => {
     setModal(prevState => !prevState);
@@ -78,7 +58,9 @@ export const Layout = () => {
       <main>
         <Outlet />
         {isOpen && (
-          <Modalochka toggleModal={toggleModal}>
+
+          <Modalochka toggleModal={toggleModal} title={settingModal ? "Setting" : "Log out"}>
+
             {settingModal && <Setting close={close} />}
             {logOutModal && <LogOut close={close} />}
           </Modalochka>

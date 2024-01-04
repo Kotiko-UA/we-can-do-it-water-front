@@ -1,58 +1,14 @@
 import styled from 'styled-components';
 
-import { ReactComponent as CloseSvg } from '../../icons/close.svg';
 import { ReactComponent as ArrowUpSvg } from '../../icons/arrow-up.svg';
 
-export const Overlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0) 100%);
-  -webkit-backdrop-filter: blur(11px);
-  backdrop-filter: blur(11px);
-  z-index: 999;
-`;
-
-export const Modal = styled.div`
-  border-radius: 10px;
-  padding: 32px 12px;
-  background-color: ${props => props.theme.primaryWhite};
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-
-  @media (min-width: 768px) {
-    padding: 32px 24px;
-  }
-`;
-
-export const Container = styled.div`
+export const MainSettingContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+
+  @media (min-width: 1440px) {
       width: 1008px;
   }
-`;
-
-export const SettingContainer = styled.div`
-  width: 1008px;
-  display: flex;
-  margin-bottom: 24px;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-export const CloseButton = styled.button`
-  color: ${props => props.theme.primaryBlue};
-  background-color: transparent;
-`;
-
-export const Close = styled(CloseSvg)`
-  color: ${props => props.theme.primaryBlue};
-  width: 18px;
-  height: 18px;
 `;
 
 export const SettingText = styled.p`
@@ -62,7 +18,7 @@ export const SettingText = styled.p`
   line-height: 1.23;
 `;
 
-export const MainContainer = styled.div`
+export const MainContainer = styled.form`
   display: flex;
   flex-wrap: wrap;
   @media (min-width: 1440px) {
@@ -135,7 +91,33 @@ export const Text = styled(GeneralText)`
 `;
 
 export const GenderRadio = styled.input`
-  /* visibility: hidden; */
+  position: relative;
+  appearance: none;
+  box-sizing: content-box;
+  width: 14px; 
+  height: 14px; 
+  border: 1px solid ${({theme}) => theme.primaryBlue}; 
+  border-radius: 50%; 
+  cursor: pointer;
+
+  &::before {
+    /* box-sizing: content-box; */
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 7px; 
+    height: 7px; 
+    background-color: transparent; 
+    border-radius: 50%; 
+  }
+
+  &:checked {
+    &::before {
+      background-color: ${({theme}) => theme.primaryBlue};
+    }
+  }
 `;
 
 export const GenderLabel = styled.label`
@@ -147,21 +129,6 @@ export const GenderLabel = styled.label`
   margin-left: 6px;
 `;
 
-// export const CustomRadio = styled.span`
-//   width: 14px;
-//   height: 14px;
-//   border: 1px solid rgba(64, 123, 255, 1);
-//   border-radius: 50%;
-//   display: inline-block;
-
-//   ::after {
-//     content: '';
-//   width: 12px;
-//   height: 12px;
-//   background-color: #f4b400;
-//   border-radius: 50%;
-//   }
-// `
 
 export const InfoContainer = styled.div`
   display: flex;
@@ -212,6 +179,7 @@ export const CommonInput = styled.input`
   &::placeholder {
     color: rgba(158, 187, 255, 1);
   }
+  
 
   @media (min-width: 768px) {
     width: 392px;
