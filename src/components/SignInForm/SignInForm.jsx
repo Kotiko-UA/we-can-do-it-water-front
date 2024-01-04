@@ -1,11 +1,9 @@
 import { useDispatch } from 'react-redux';
 import { useAuth } from 'Hooks/useAuth.js';
-
 import { signIn } from '../redux/auth/operations.js';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
-import {
-  InputWrapper,
+import {InputWrapper,
   StyledLink,
   FormWrapper,
   Label,
@@ -19,9 +17,11 @@ import React, { useEffect, useState } from 'react';
 import { Loader } from '../../components/Loader.jsx';
 import toast from 'react-hot-toast';
 
+
+
 const SignInFormSchema = Yup.object().shape({
-  email: Yup.string().required('Required'),
-  password: Yup.string().required('Required'),
+  email: Yup.string().email('Invalid email').required('Required'),
+  password: Yup.string().min(8, 'Too short! At least 8').required('Required'),
 });
 
 export const SignInForm = () => {
@@ -47,12 +47,13 @@ export const SignInForm = () => {
   };
 
   const { isLoading, error } = useAuth();
-
+  
   useEffect(() => {
     if (error) {
       toast.error(error);
-    }
+   };
   }, [error]);
+  
 
   return (
     <div>
@@ -60,53 +61,47 @@ export const SignInForm = () => {
         <Loader />
       ) : (
         <div>
-          <Formik
-            initialValues={{ email: '', password: '' }}
-            validationSchema={SignInFormSchema}
-            onSubmit={(values, actions) => {
-              handleSubmit(values);
-              actions.resetForm();
-            }}
-          >
-            {({ errors, touched }) => (
-              <FormWrapper>
-                <Label> Enter your email </Label>
-                <FieldInput
-                  autoComplete="on"
-                  type="email"
-                  name="email"
-                  placeholder="E-mail"
-                  style={
-                    errors.email && touched.email
-                      ? { borderColor: '#EF5050', color: '#EF5050' }
-                      : null
-                  }
-                />
-                <ErrorMsg name="email" component="div" />
-
-                <Label> Enter your password </Label>
-                <InputWrapper>
+            <Formik
+                initialValues={{email: '', password: '',}}
+                
+                validationSchema={SignInFormSchema}
+                onSubmit={(values, actions) => {
+                    handleSubmit(values);
+                    actions.resetForm();
+                }}
+            >
+              {({ errors, touched }) => (
+            
+                <FormWrapper>
+                  <Label> Enter your email </Label>
                   <FieldInput
-                    autoComplete="on"
+			              autoComplete="on"
+                    type="email"
+                    name="email"
+                    placeholder="E-mail"
+                    style={(errors.email && touched.email) ? {borderColor:"#EF5050", color:"#EF5050"} : null}/>
+                  <ErrorMsg name="email" component="div" />
+                  
+                    
+                  <Label> Enter your password </Label>
+                  <InputWrapper>
+                  <FieldInput
+			              autoComplete="on"
                     type={type}
                     name="password"
                     placeholder="Password"
-                    style={
-                      errors.password && touched.password
-                        ? { borderColor: '#EF5050', color: '#EF5050' }
-                        : null
-                    }
-                  />
+                  style = {(errors.password && touched.password) ? {borderColor:"#EF5050", color:"#EF5050"} : null}/>
                   <span onClick={handleToggle}>{icon}</span>
-                </InputWrapper>
-
-                <ErrorMsg name="password" component="div" />
-
-                <ButtonSbmt type="submit">Sign In</ButtonSbmt>
-              </FormWrapper>
-            )}
-          </Formik>
-          <div>
+                  </InputWrapper>
+                  
+                  <ErrorMsg name="password" component="div" />
+                  
+                        
+                  <ButtonSbmt type="submit">Sign In</ButtonSbmt>
+                </FormWrapper>
+              )}
+            </Formik>
+            <div>
             <StyledLink to="/forget_password">Forgot password?</StyledLink>
           </div>
           <div>

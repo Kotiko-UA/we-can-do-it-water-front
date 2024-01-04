@@ -66,9 +66,6 @@ export const EditingWater = ({ id }) => {
   // const oldValue = JSON.parse(storedValue);
   const onSubmit = (values, actions) => {
     const amount = values.water;
-    console.log(amount);
-
-    console.log(time);
     const updatedWater = { amount, time };
     dispatch(updateWater(id, updatedWater));
     actions.resetForm();

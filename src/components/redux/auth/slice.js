@@ -5,6 +5,7 @@ import {
   refreshUser,
   logOut,
   addDailyNorma,
+  updateAvatar,
 } from './operations';
 
 const initialState = {
@@ -90,19 +91,29 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.dailyNorma = action.payload.dailyNorma;
       })
-      .addCase(addDailyNorma.rejected, handleRejected);
+      .addCase(addDailyNorma.rejected, handleRejected)
 
-    // .addMatcher(isPendingAction, (state, action) => {
-    //   state.isLoading = true;
-    //   state.error = null;
-    // })
-    // .addMatcher(isFulfilledAction, (state, action) => {
-    //   state.isLoading = false;
-    //   state.error = null;
-    // })
-    // .addMatcher(isRejectedAction, (state, action) => {
-    //   state.isLoading = false;
-    // });
+      .addCase(updateAvatar.pending, (state, action) => {
+        state.isRefreshing = true;
+      })
+      .addCase(updateAvatar.fulfilled, (state, action) => {
+        state.icon = action.payload.avatarURL;
+      })
+      .addCase(updateAvatar.rejected, (state, action) => {
+        handleRejected(state, action);
+      })
+
+      .addMatcher(isPendingAction, (state, action) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(addDailyNorma.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addMatcher(isRejectedAction, (state, action) => {
+        state.isLoading = false;
+      });
   },
 });
 

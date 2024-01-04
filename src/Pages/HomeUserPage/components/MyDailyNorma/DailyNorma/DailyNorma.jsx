@@ -28,6 +28,11 @@ import imgMobPng from '../../../../../icons/HomePage/main/bottle-mob-1x.png';
 import imgMobPng2x from '../../../../../icons/HomePage/main/bottle-mob-2x.png';
 
 import sprite from '../../../../../icons/HomePage/sprite.svg';
+import { useSelector } from 'react-redux';
+import { selectDailyNorma } from 'components/redux/auth/selectors';
+import { useState } from 'react';
+import { DailyNormaModal } from 'components/DailyNormaModal/DailyNormaModal';
+import { Modalochka } from 'components/Modal/Modal';
 
 // import { selectDailyNorma } from 'components/redux/auth/selectors';
 import { useState } from 'react';
@@ -47,8 +52,8 @@ export const DailyNorma = ({ onClick }) => {
       <DailyNormaContainer>
         <Title>My daily norma</Title>
         <NormaContainer>
-          <Norma>{norma} L</Norma>
-          <NormaBtn onClick={() => onClick('edit-daily-norm')}>Edit</NormaBtn>
+          <Norma>{dailyNormaValue} L</Norma>
+          <NormaBtn onClick={toggleModal}>Edit</NormaBtn>
         </NormaContainer>
       </DailyNormaContainer>
 
