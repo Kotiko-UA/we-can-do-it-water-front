@@ -28,14 +28,15 @@ import imgMobPng from '../../../../../icons/HomePage/main/bottle-mob-1x.png';
 import imgMobPng2x from '../../../../../icons/HomePage/main/bottle-mob-2x.png';
 
 import sprite from '../../../../../icons/HomePage/sprite.svg';
-import { useSelector } from 'react-redux';
-import { selectDailyNorma } from 'components/redux/auth/selectors';
+
+// import { selectDailyNorma } from 'components/redux/auth/selectors';
 import { useState } from 'react';
 import { DailyNormaModal } from 'components/DailyNormaModal/DailyNormaModal';
 import { Modalochka } from 'components/Modal/Modal';
+import { selectWaterItems } from 'components/redux/water/selectors';
 
 export const DailyNorma = ({ onClick }) => {
-  const dailyNormaValue = useSelector(selectDailyNorma);
+  const { norma, procent } = useSelector(selectWaterItems);
   const [isOpen, setIsOpen] = useState(false);
   const toggleModal = () => {
     setIsOpen(prevstate => !prevstate);

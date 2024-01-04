@@ -90,19 +90,19 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.dailyNorma = action.payload.dailyNorma;
       })
-      .addCase(addDailyNorma.rejected, handleRejected)
+      .addCase(addDailyNorma.rejected, handleRejected);
 
-      .addMatcher(isPendingAction, (state, action) => {
-        state.isLoading = true;
-        state.error = null;
-      })
-      .addMatcher(isFulfilledAction, (state, action) => {
-        state.isLoading = false;
-        state.error = null;
-      })
-      .addMatcher(isRejectedAction, (state, action) => {
-        state.isLoading = false;
-      });
+    // .addMatcher(isPendingAction, (state, action) => {
+    //   state.isLoading = true;
+    //   state.error = null;
+    // })
+    // .addMatcher(isFulfilledAction, (state, action) => {
+    //   state.isLoading = false;
+    //   state.error = null;
+    // })
+    // .addMatcher(isRejectedAction, (state, action) => {
+    //   state.isLoading = false;
+    // });
   },
 });
 
