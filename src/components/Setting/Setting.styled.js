@@ -62,7 +62,7 @@ export const SettingText = styled.p`
   line-height: 1.23;
 `;
 
-export const MainContainer = styled.div`
+export const MainContainer = styled.form`
   display: flex;
   flex-wrap: wrap;
   @media (min-width: 1440px) {
