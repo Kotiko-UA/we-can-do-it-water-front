@@ -2,7 +2,13 @@ import { RotatingLines } from 'react-loader-spinner';
 export const Loader = () => {
   return (
     <div
-      style={{ display: 'flex', justifyContent: 'center', marginTop: '300px' }}
+      style={{
+        position: 'fixed',
+        zIndex: '999',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%,-50%)',
+      }}
     >
       <RotatingLines
         strokeColor="blue"
