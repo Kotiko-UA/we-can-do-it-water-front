@@ -3,7 +3,7 @@ import { useAuth } from 'Hooks/useAuth.js';
 import { signIn } from '../redux/auth/operations.js';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
-import {
+import {InputWrapper,
   StyledLink,
   FormWrapper,
   Label,
@@ -81,8 +81,10 @@ export const SignInForm = () => {
                     placeholder="E-mail"
                     style={(errors.email && touched.email) ? {borderColor:"#EF5050", color:"#EF5050"} : null}/>
                   <ErrorMsg name="email" component="div" />
+                  
                     
                   <Label> Enter your password </Label>
+                  <InputWrapper>
                   <FieldInput
 			              autoComplete="on"
                     type={type}
@@ -90,7 +92,10 @@ export const SignInForm = () => {
                     placeholder="Password"
                   style = {(errors.password && touched.password) ? {borderColor:"#EF5050", color:"#EF5050"} : null}/>
                   <span onClick={handleToggle}>{icon}</span>
+                  </InputWrapper>
+                  
                   <ErrorMsg name="password" component="div" />
+                  
                         
                   <ButtonSbmt type="submit">Sign In</ButtonSbmt>
                 </FormWrapper>

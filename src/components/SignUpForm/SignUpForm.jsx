@@ -4,7 +4,7 @@ import { signUp } from '../redux/auth/operations';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import React, { useState, useEffect } from 'react';
-import {
+import {InputWrapper,
   StyledLink,
   FormWrapper,
   Label,
@@ -97,18 +97,21 @@ export const SignUpForm = () => {
                   <ErrorMsg name="email" component="div" />
 
                   <Label>Enter your password</Label>
-                  <FieldInput
+                  <InputWrapper>
+                    <FieldInput
 		                autoComplete="on"
                     type={type}
                     name="password"
                     placeholder="Password"
                   style = {(errors.password && touched.password) ? {borderColor:"#EF5050", color:"#EF5050"} : null}/>
                   <span onClick={handleToggle}>{icon}</span>
+                  </InputWrapper>
 
                   <ErrorMsg name="password" component="div" />
 
                   <Label>Repeat password</Label>
-                  <FieldInput
+                  <InputWrapper>
+                    <FieldInput
 		                autoComplete="on"
                     type={type}
                     name="repeatPassword"
@@ -116,7 +119,8 @@ export const SignUpForm = () => {
                     style = {(errors.repeatPassword && touched.repeatPassword) ? {borderColor:"#EF5050", color:"#EF5050"} : null}
                   />
                   <span onClick={handleToggle}>{icon}</span>
-
+                  </InputWrapper>
+                  
                   <ErrorMsg name="repeatPassword" component="div" />
 
                   <ButtonSbmt type="submit">Sign Up</ButtonSbmt>
