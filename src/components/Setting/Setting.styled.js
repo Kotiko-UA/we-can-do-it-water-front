@@ -1,58 +1,14 @@
 import styled from 'styled-components';
 
-import { ReactComponent as CloseSvg } from '../../icons/close.svg';
 import { ReactComponent as ArrowUpSvg } from '../../icons/arrow-up.svg';
 
-export const Overlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0) 100%);
-  -webkit-backdrop-filter: blur(11px);
-  backdrop-filter: blur(11px);
-  z-index: 999;
-`;
-
-export const Modal = styled.div`
-  border-radius: 10px;
-  padding: 32px 12px;
-  background-color: ${props => props.theme.primaryWhite};
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-
-  @media (min-width: 768px) {
-    padding: 32px 24px;
-  }
-`;
-
-export const Container = styled.div`
+export const MainSettingContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+
+  @media (min-width: 1440px) {
       width: 1008px;
   }
-`;
-
-export const SettingContainer = styled.div`
-  width: 1008px;
-  display: flex;
-  margin-bottom: 24px;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-export const CloseButton = styled.button`
-  color: ${props => props.theme.primaryBlue};
-  background-color: transparent;
-`;
-
-export const Close = styled(CloseSvg)`
-  color: ${props => props.theme.primaryBlue};
-  width: 18px;
-  height: 18px;
 `;
 
 export const SettingText = styled.p`

@@ -23,7 +23,7 @@ export const ButtonClose = styled.button`
 `;
 export const TitleModal = styled.h1`
   color: #2f2f2f;
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 26px;
   font-style: normal;
   font-weight: 500;
@@ -35,15 +35,15 @@ export const TitleModal = styled.h1`
 export const Modal = styled.div`
   padding: 24px 12px;
   position: absolute;
-  min-width: 280px;
+  max-width: 280px;
   background-color: #ffffff;
   border-radius: 10px;
   @media (min-width: 768px) {
     padding: 32px 24px;
-    min-width: 704px;
+    max-width: 704px;
   }
   @media (min-width: 1440px) {
-    min-width: 592px;
+    max-width: 1008px;
   }
 `;
 export const Svg = styled.svg`
@@ -55,7 +55,7 @@ export const ButtonSave = styled.button`
   width: 100%;
   color: #ffffff;
   text-align: center;
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 16px;
   font-style: normal;
   font-weight: 500;

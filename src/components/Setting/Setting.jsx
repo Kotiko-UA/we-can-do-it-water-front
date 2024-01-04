@@ -1,13 +1,11 @@
 import {
   AvatarContainer,
-  Container,
+  MainSettingContainer,
   GenderLabel,
   InputFile,
   Label,
   MainContainer,
   DataContainer,
-  SettingContainer,
-  SettingText,
   DataLabel,
   PasswordLabel,
   CommonInput,
@@ -48,10 +46,7 @@ export const Setting = ({ close }) => {
   }
 
   return (
-    <Container>
-      <SettingContainer>
-        <SettingText>Setting</SettingText>
-      </SettingContainer>
+    <MainSettingContainer>
       <MainContainer>
         <div>
           <AvatarOutContainer>
@@ -128,6 +123,6 @@ export const Setting = ({ close }) => {
           Save
         </SaveButton>
       </MainContainer>
-    </Container>
+    </MainSettingContainer>
   );
 };
