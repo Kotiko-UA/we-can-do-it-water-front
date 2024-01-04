@@ -18,27 +18,6 @@ export const Layout = () => {
   const [settingModal, setSettingModal] = useState(false);
   const [logOutModal, setLogOutModal] = useState(false);
 
-  // const changeSetting = () => {
-  //     settingModal ? setSettingModal(false) : setSettingModal(true);
-  //   };
-
-  //   const changeLogOut = () => {
-  //     // logOutModal ? setLogOutModal(false) : setLogOutModal(true);
-  //     logOutModal ? setLogOutModal(false) : setLogOutModal(true);
-  //   };
-
-  //   const handleBackdropClickSetting = evt => {
-  //     if (evt.target === evt.currentTarget) {
-  //       setSettingModal(false);
-  //     }
-  //   };
-
-  //   const handleBackdropClickLogOut = evt => {
-  //     if (evt.target === evt.currentTarget) {
-  //       setLogOutModal(false);
-  //     }
-  //   };
-
   const onClickPaskal = () => {
     setModal(prevState => !prevState);
   };

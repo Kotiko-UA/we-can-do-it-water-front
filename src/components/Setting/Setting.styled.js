@@ -95,11 +95,10 @@ export const AvatarOutContainer = styled.div`
   }
 `;
 
-export const Avatar = styled.div`
+export const Avatar = styled.img`
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background-color: ${props => props.theme.primaryBlack};
 `;
 
 export const InputFile = styled.input`
@@ -134,7 +133,33 @@ export const Text = styled(GeneralText)`
 `;
 
 export const GenderRadio = styled.input`
-  /* visibility: hidden; */
+  position: relative;
+  appearance: none;
+  box-sizing: content-box;
+  width: 14px; 
+  height: 14px; 
+  border: 1px solid ${({theme}) => theme.primaryBlue}; 
+  border-radius: 50%; 
+  cursor: pointer;
+
+  &::before {
+    /* box-sizing: content-box; */
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 7px; 
+    height: 7px; 
+    background-color: transparent; 
+    border-radius: 50%; 
+  }
+
+  &:checked {
+    &::before {
+      background-color: ${({theme}) => theme.primaryBlue};
+    }
+  }
 `;
 
 export const GenderLabel = styled.label`
@@ -146,21 +171,6 @@ export const GenderLabel = styled.label`
   margin-left: 6px;
 `;
 
-// export const CustomRadio = styled.span`
-//   width: 14px;
-//   height: 14px;
-//   border: 1px solid rgba(64, 123, 255, 1);
-//   border-radius: 50%;
-//   display: inline-block;
-
-//   ::after {
-//     content: '';
-//   width: 12px;
-//   height: 12px;
-//   background-color: #f4b400;
-//   border-radius: 50%;
-//   }
-// `
 
 export const InfoContainer = styled.div`
   display: flex;
@@ -211,6 +221,7 @@ export const CommonInput = styled.input`
   &::placeholder {
     color: rgba(158, 187, 255, 1);
   }
+  
 
   @media (min-width: 768px) {
     width: 392px;
