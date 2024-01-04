@@ -23,18 +23,20 @@ import {
 } from './Setting.styled';
 import { PasswordInput } from 'components/PasswordInput/PasswordInput';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { selectIcon, selectUser } from 'components/redux/auth/selectors';
 import { updateAvatar } from 'components/redux/auth/operations';
 import { useState } from 'react';
 
 export const Setting = ({ close }) => {
-  
+
   const currentUser = useSelector(selectUser);
   const avatar = useSelector(selectIcon);
   const splitName = currentUser.email.split('@');
 
   const [nameValue, setNameValue] = useState(splitName[0])
   const [emailValue, setEmailValue] = useState(currentUser.email);
+
 
   const dispatch = useDispatch();
 
