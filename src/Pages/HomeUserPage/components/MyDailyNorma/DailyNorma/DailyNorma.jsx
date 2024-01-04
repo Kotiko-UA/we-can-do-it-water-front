@@ -49,7 +49,6 @@ export const DailyNorma = () => {
       <DailyNormaContainer>
         <Title>My daily norma</Title>
         <NormaContainer>
-
           <Norma>{norma} L</Norma>
           <NormaBtn
           // onClick={toggleModal}
@@ -64,7 +63,6 @@ export const DailyNorma = () => {
           <DailyNormaModal />
         </Modalochka>
       )} */}
-
 
       <picture>
         <source
@@ -113,10 +111,9 @@ export const DailyNorma = () => {
         </WaterStatus>
         <Button
           type="button"
-          onClick={
-            console.log(777)
-            // setIsOpen(!isOpen)
-          }
+          onClick={() => {
+            setIsOpen(!isOpen);
+          }}
         >
           <svg>
             <use href={sprite + '#plus-circle'} />
