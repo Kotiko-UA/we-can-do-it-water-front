@@ -36,8 +36,6 @@ export const Modal = styled.div`
   padding: 24px 12px;
   position: absolute;
   width: 280px;
-  height: 500px;
-  /* высоту убрать когда будет наполнение */
   background-color: #ffffff;
   border-radius: 10px;
   @media (min-width: 768px) {
