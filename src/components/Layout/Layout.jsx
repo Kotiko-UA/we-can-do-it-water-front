@@ -48,13 +48,13 @@ export const Layout = () => {
   };
 
   function onClickSetting() {
-    setSettingModal(true);
     setLogOutModal(false);
+    setSettingModal(true);
     toggleModal();
   }
   function onClickLogout() {
-    setLogOutModal(true);
     setSettingModal(false);
+    setLogOutModal(true);
     toggleModal();
   }
 
