@@ -49,6 +49,7 @@ export const DailyNorma = () => {
       <DailyNormaContainer>
         <Title>My daily norma</Title>
         <NormaContainer>
+
           <Norma>{norma} L</Norma>
           <NormaBtn
           // onClick={toggleModal}
@@ -63,6 +64,7 @@ export const DailyNorma = () => {
           <DailyNormaModal />
         </Modalochka>
       )} */}
+
 
       <picture>
         <source

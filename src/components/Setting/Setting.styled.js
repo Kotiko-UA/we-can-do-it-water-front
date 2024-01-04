@@ -100,6 +100,7 @@ export const Avatar = styled.img`
   height: 80px;
   border-radius: 50%;
   background-color: ${props => props.theme.primaryBlack};
+
 `;
 
 export const InputFile = styled.input`
