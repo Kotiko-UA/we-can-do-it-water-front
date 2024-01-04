@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
-  fetchWater,
   findWaterToday,
   addWater,
   updateWater,
@@ -22,15 +21,6 @@ const waterSlice = createSlice({
   initialState,
   extraReducers: builder => {
     builder
-      .addCase(fetchWater.pending, state => {
-        state.isLoading = true;
-      })
-      .addCase(fetchWater.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.error = null;
-        state.items = action.payload;
-      })
-      .addCase(fetchWater.rejected, handleRejected)
       .addCase(findWaterToday.pending, state => {
         state.isLoading = true;
       })
