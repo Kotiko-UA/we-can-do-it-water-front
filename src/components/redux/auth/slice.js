@@ -9,10 +9,12 @@ const initialState = {
   icon: null,
   isLoading: false,
   dailyNorma: 2,
+  error: null,
 };
 
 const handleRejected = (state, action) => {
-  alert(action.payload);
+  //alert(action.payload);
+  state.error = action.payload;
   state.isLoading = false;
 };
 
@@ -85,9 +87,11 @@ const authSlice = createSlice({
 
       .addMatcher(isPendingAction, (state, action) => {
         state.isLoading = true;
+        state.error = null;
       })
       .addMatcher(isFulfilledAction, (state, action) => {
         state.isLoading = false;
+        state.error = null;
       })
       .addMatcher(isRejectedAction, (state, action) => {
         state.isLoading = false;

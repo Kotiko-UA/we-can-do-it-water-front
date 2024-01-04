@@ -9,36 +9,20 @@ export const EyeSlash = styled(EyeSlashSvg)`
   width: 16px;
   height: 16px;
   position: relative; 
-  bottom: 30px;
-  left: 250px;
+  top: 15px;
+  right: 25px;
   vertical-align: middle; 
   cursor: pointer;
-
-  @media (min-width: 768px) {
-  width: 130px;
-  }
-
-  @media (min-width: 1440px) {
-  width: 240px;  
-}
 `;
 
 export const EyeActive = styled(EyeActiveSvg)`
   width: 16px;
   height: 16px;
   position: relative; 
-  bottom: 30px;
-  left: 250px;
+  top: 15px;
+  right: 25px;
   vertical-align: middle; 
   cursor: pointer;
-
-  @media (min-width: 768px) {
-width: 130px;
-  }
-
-@media (min-width: 1440px) {
-width: 240px;  
-}
 `;
 
 export const StyledLink = styled(NavLink)`
@@ -84,6 +68,9 @@ line-height: 24px;
 margin-top: 16px;
 `;
 
+export const InputWrapper = styled.div`
+display:flex;
+`;
 
 export const FieldInput = styled(Field)`
 color: #9EBBFF;
@@ -106,7 +93,8 @@ background: #FFF;
 
 &:focus{
 color: #407BFF;
-};
+}
+
 
 @media (min-width: 768px) {
 width: 336px;
@@ -129,6 +117,7 @@ line-height: 18px;
 
 
 export const ButtonSbmt = styled.button`
+margin-top:16px;
 margin-right: auto;
 margin-left: auto;
 width: 100%;

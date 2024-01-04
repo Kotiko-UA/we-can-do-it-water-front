@@ -3,6 +3,7 @@ import { toast } from 'react-hot-toast';
 
 axios.defaults.baseURL = 'https://water-p2oh.onrender.com/api';
 
+
 export const checkUser = async email => {
   try {
     if (!email) {

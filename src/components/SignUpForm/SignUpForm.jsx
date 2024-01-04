@@ -3,8 +3,8 @@ import { useAuth } from 'Hooks/useAuth.js';
 import { signUp } from '../redux/auth/operations';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
-import React, { useState } from 'react';
-import {
+import React, { useState, useEffect } from 'react';
+import {InputWrapper,
   StyledLink,
   FormWrapper,
   Label,
@@ -15,7 +15,7 @@ import {
   EyeActive,
 } from './SignUpForm.styled.js';
 import { Loader } from '../../components/Loader.jsx';
-
+import toast from 'react-hot-toast';
 
 
 const SignUpFormSchema = Yup.object().shape({
@@ -52,14 +52,20 @@ export const SignUpForm = () => {
       signUp({
         email: values.email,
         password: values.password,
-        repeatPassword: values.repeatPassword,
       })
     );
   };
 
-  //const loading = useSelector(state => state.auth.isLoading);
-  const { isLoading } = useAuth();
 
+ const { isLoading, error } = useAuth();
+  
+  useEffect(() => {
+    if (error) {
+      toast.error(error);
+   };
+  }, [error]);
+
+  
   return (
     <div>
       {isLoading ? (
@@ -91,18 +97,21 @@ export const SignUpForm = () => {
                   <ErrorMsg name="email" component="div" />
 
                   <Label>Enter your password</Label>
-                  <FieldInput
+                  <InputWrapper>
+                    <FieldInput
 		                autoComplete="on"
                     type={type}
                     name="password"
                     placeholder="Password"
                   style = {(errors.password && touched.password) ? {borderColor:"#EF5050", color:"#EF5050"} : null}/>
                   <span onClick={handleToggle}>{icon}</span>
+                  </InputWrapper>
 
                   <ErrorMsg name="password" component="div" />
 
                   <Label>Repeat password</Label>
-                  <FieldInput
+                  <InputWrapper>
+                    <FieldInput
 		                autoComplete="on"
                     type={type}
                     name="repeatPassword"
@@ -110,7 +119,8 @@ export const SignUpForm = () => {
                     style = {(errors.repeatPassword && touched.repeatPassword) ? {borderColor:"#EF5050", color:"#EF5050"} : null}
                   />
                   <span onClick={handleToggle}>{icon}</span>
-
+                  </InputWrapper>
+                  
                   <ErrorMsg name="repeatPassword" component="div" />
 
                   <ButtonSbmt type="submit">Sign Up</ButtonSbmt>
