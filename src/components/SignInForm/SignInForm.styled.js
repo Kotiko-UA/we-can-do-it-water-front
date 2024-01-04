@@ -9,36 +9,20 @@ export const EyeSlash = styled(EyeSlashSvg)`
   width: 16px;
   height: 16px;
   position: relative; 
-  bottom: 30px;
-  left: 250px;
+  top: 15px;
+  right: 25px;
   vertical-align: middle; 
   cursor: pointer;
-
-  @media (min-width: 768px) {
-  width: 130px;
-  }
-
-  @media (min-width: 1440px) {
-  width: 240px;  
-}
 `;
 
 export const EyeActive = styled(EyeActiveSvg)`
   width: 16px;
   height: 16px;
   position: relative; 
-  bottom: 30px;
-  left: 250px;
+  top: 15px;
+  right: 25px;
   vertical-align: middle; 
   cursor: pointer;
-
-  @media (min-width: 768px) {
-width: 130px;
-  }
-
-@media (min-width: 1440px) {
-width: 240px;  
-}
 `;
 
 export const StyledLink = styled(NavLink)`
@@ -72,7 +56,6 @@ width: 336px;
 @media (min-width: 1440px) {
 width: 384px;   
   }
-
 `;
 
 export const Label = styled.label`
@@ -83,6 +66,10 @@ font-style: normal;
 font-weight: 400;
 line-height: 24px;
 margin-top: 16px;
+`;
+
+export const InputWrapper = styled.div`
+display:flex;
 `;
 
 export const FieldInput = styled(Field)`
@@ -99,9 +86,15 @@ border-radius: 6px;
 border: 1px solid #D7E3FF;
 background: #FFF;
 
+&::placeholder{
+  color: #9EBBFF;
+  opacity:1;
+}
+
 &:focus{
 color: #407BFF;
 }
+
 
 @media (min-width: 768px) {
 width: 336px;
@@ -110,10 +103,7 @@ width: 336px;
 @media (min-width: 1440px) {
 width: 384px;   
   }
-
-
 `;
-
 
 
 export const ErrorMsg = styled(ErrorMessage)`
@@ -127,6 +117,7 @@ line-height: 18px;
 
 
 export const ButtonSbmt = styled.button`
+margin-top:16px;
 margin-right: auto;
 margin-left: auto;
 width: 100%;
@@ -155,6 +146,7 @@ box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
 box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
 }
 `;
+
 
 
 

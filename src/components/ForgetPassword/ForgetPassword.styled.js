@@ -7,7 +7,11 @@ export const StyledLink = styled(NavLink)`
   font-style: normal;
   font-weight: 400;
   line-height: 24px;
-  color: #ffffff;
+  color: #407bff;
+  display: flex;
+  align-items: center;
+  margin-top: 16px;
+
   &:hover,
   :focus {
     color: var(--Secondary-color-5, #ff9d43);
@@ -29,6 +33,8 @@ export const Wrap = styled.div`
   }
   @media (min-width: 1440px) {
     justify-content: flex-end;
+    margin-left: auto;
+    margin-right: 198px;
   }
 `;
 export const Form = styled.form`

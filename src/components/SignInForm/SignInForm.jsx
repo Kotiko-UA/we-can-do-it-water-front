@@ -1,8 +1,9 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { useAuth } from 'Hooks/useAuth.js';
 import { signIn } from '../redux/auth/operations.js';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
-import {
+import {InputWrapper,
   StyledLink,
   FormWrapper,
   Label,
@@ -12,12 +13,15 @@ import {
   EyeSlash,
   EyeActive,
 } from './SignInForm.styled.js';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Loader } from '../../components/Loader.jsx';
+import toast from 'react-hot-toast';
+
+
 
 const SignInFormSchema = Yup.object().shape({
-  email: Yup.string().required('Required'),
-  password: Yup.string().required('Required'),
+  email: Yup.string().email('Invalid email').required('Required'),
+  password: Yup.string().min(8, 'Too short! At least 8').required('Required'),
 });
 
 export const SignInForm = () => {
@@ -42,42 +46,64 @@ export const SignInForm = () => {
     dispatch(signIn({ email: values.email, password: values.password }));
   };
 
-  const loading = useSelector(state => state.auth.isLoading);
+  const { isLoading, error } = useAuth();
+  
+  useEffect(() => {
+    if (error) {
+      toast.error(error);
+   };
+  }, [error]);
+  
 
   return (
     <div>
-      {loading ? (
+      {isLoading ? (
         <Loader />
       ) : (
         <div>
-          <Formik
-            initialValues={{
-              email: '',
-              password: '',
-            }}
-            autoComplete="off"
-            validationSchema={SignInFormSchema}
-            onSubmit={(values, actions) => {
-              handleSubmit(values);
-              actions.resetForm();
-            }}
-          >
-            <FormWrapper>
-              <Label>Enter your email</Label>
-              <FieldInput type="email" name="email" placeholder="E-mail" />
-              <ErrorMsg name="email" component="div" />
-
-              <Label>Enter your password</Label>
-
-              <FieldInput type={type} name="password" placeholder="Password" />
-              <span onClick={handleToggle}>{icon}</span>
-
-              <ErrorMsg name="password" component="div" />
-
-              <ButtonSbmt type="submit">Sign In</ButtonSbmt>
-            </FormWrapper>
-          </Formik>
-
+            <Formik
+                initialValues={{email: '', password: '',}}
+                
+                validationSchema={SignInFormSchema}
+                onSubmit={(values, actions) => {
+                    handleSubmit(values);
+                    actions.resetForm();
+                }}
+            >
+              {({ errors, touched }) => (
+            
+                <FormWrapper>
+                  <Label> Enter your email </Label>
+                  <FieldInput
+			              autoComplete="on"
+                    type="email"
+                    name="email"
+                    placeholder="E-mail"
+                    style={(errors.email && touched.email) ? {borderColor:"#EF5050", color:"#EF5050"} : null}/>
+                  <ErrorMsg name="email" component="div" />
+                  
+                    
+                  <Label> Enter your password </Label>
+                  <InputWrapper>
+                  <FieldInput
+			              autoComplete="on"
+                    type={type}
+                    name="password"
+                    placeholder="Password"
+                  style = {(errors.password && touched.password) ? {borderColor:"#EF5050", color:"#EF5050"} : null}/>
+                  <span onClick={handleToggle}>{icon}</span>
+                  </InputWrapper>
+                  
+                  <ErrorMsg name="password" component="div" />
+                  
+                        
+                  <ButtonSbmt type="submit">Sign In</ButtonSbmt>
+                </FormWrapper>
+              )}
+            </Formik>
+            <div>
+            <StyledLink to="/forget_password">Forgot password?</StyledLink>
+          </div>
           <div>
             <StyledLink to="/signUp">Sign up</StyledLink>
           </div>

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { signUp, signIn, refreshUser, logOut } from './operations';
+import { signUp, signIn, refreshUser, logOut, addDailyNorma } from './operations';
 
 const initialState = {
   user: { name: null, email: null },
@@ -8,10 +8,13 @@ const initialState = {
   isRefreshing: false,
   icon: null,
   isLoading: false,
+  dailyNorma: 2,
+  error: null,
 };
 
 const handleRejected = (state, action) => {
-  alert(action.payload);
+  //alert(action.payload);
+  state.error = action.payload;
   state.isLoading = false;
 };
 
@@ -20,6 +23,9 @@ function isPendingAction(action) {
 }
 function isFulfilledAction(action) {
   return typeof action.type === 'string' && action.type.endsWith('/fulfilled');
+}
+function isRejectedAction(action) {
+  return typeof action.type === 'string' && action.type.endsWith('/rejected');
 }
 
 const authSlice = createSlice({
@@ -38,6 +44,7 @@ const authSlice = createSlice({
         state.token = action.payload.token;
         state.isLoggedIn = true;
         state.icon = action.payload.avatarURL;
+        state.dailyNorma = action.payload.dailyNorma;
       })
       .addCase(signIn.rejected, (state, action) => {
         handleRejected(state, action);
@@ -68,12 +75,28 @@ const authSlice = createSlice({
       .addCase(logOut.rejected, (state, action) => {
         handleRejected(state, action);
       })
+
+      .addCase(addDailyNorma.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(addDailyNorma.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.dailyNorma = action.payload.dailyNorma;
+      })
+      .addCase(addDailyNorma.rejected, handleRejected)
+
       .addMatcher(isPendingAction, (state, action) => {
         state.isLoading = true;
+        state.error = null;
       })
       .addMatcher(isFulfilledAction, (state, action) => {
         state.isLoading = false;
-      });
+        state.error = null;
+      })
+      .addMatcher(isRejectedAction, (state, action) => {
+        state.isLoading = false;
+
+      })
   },
 });
 

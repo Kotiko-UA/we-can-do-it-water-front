@@ -3,6 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://water-p2oh.onrender.com/api';
 
+
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
@@ -13,13 +14,18 @@ const clearAuthHeader = () => {
 
 export const signUp = createAsyncThunk(
   'auth/signup',
-  async (credentiials, thunkAPI) => {
+  async (credentials, thunkAPI) => {
     try {
-      const res = await axios.post('/users/register', credentiials);
-      setAuthHeader(res.data.token);
+      let res = await axios.post('/users/register', credentials);
+
+      if (res.status === 201) {
+        res = await axios.post('/users/login', { email: credentials.email, password: credentials.password });
+        setAuthHeader(res.data.token);
+      }
+
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );
@@ -33,7 +39,8 @@ export const signIn = createAsyncThunk(
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      console.log(error);
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );
@@ -65,6 +72,18 @@ export const logOut = createAsyncThunk(
     clearAuthHeader();
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const addDailyNorma = createAsyncThunk(
+  'auth/addDailyNorma',
+  async (drinkValue, thunkAPI) => {
+    try {
+      const response = await axios.patch('/users/dailynorma', { dailyNorma: String(drinkValue) });
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );

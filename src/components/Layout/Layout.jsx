@@ -7,8 +7,10 @@ import { Paskal } from 'components/pascal/paskal.jsx';
 import { TeamModal } from 'components/teams/TeamModal.jsx';
 import { Setting } from 'components/Setting/Setting.jsx';
 import { LogOut } from 'components/LogOut/LogOut.jsx';
-import { useSelector } from 'react-redux';
+//import { useSelector } from 'react-redux';
 import { Loader } from 'components/Loader.jsx';
+import { useAuth } from 'Hooks/useAuth.js';
+
 
 export const Layout = () => {
   const [modal, setModal] = useState(false);
@@ -48,11 +50,12 @@ export const Layout = () => {
   };
 
   // не працює, треба не через редакс
-  const loading = useSelector(state => state.auth.isLoading);
+  //const loading = useSelector(state => state.auth.isLoading);
+  const { isLoading } = useAuth();
 
   return (
     <>
-      {loading ? (
+      {isLoading ? (
         <Loader />
       ) : (
         <div>
