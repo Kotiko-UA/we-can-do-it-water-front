@@ -35,15 +35,15 @@ export const TitleModal = styled.h1`
 export const Modal = styled.div`
   padding: 24px 12px;
   position: absolute;
-  width: 280px;
+  min-width: 280px;
   background-color: #ffffff;
   border-radius: 10px;
   @media (min-width: 768px) {
     padding: 32px 24px;
-    width: 704px;
+    min-width: 704px;
   }
   @media (min-width: 1440px) {
-    width: 592px;
+    min-width: 592px;
   }
 `;
 export const Svg = styled.svg`
