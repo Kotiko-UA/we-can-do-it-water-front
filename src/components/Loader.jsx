@@ -4,10 +4,19 @@ export const Loader = () => {
     <div
       style={{
         position: 'fixed',
+        display: 'flex',
+        justifyContent: 'center',
+        // top: '50%',
+        // left: '50%',
+        // transform: 'translate(-50%,-50%)',
+        top: '0',
+        left: '0',
+        width: '100%',
+        height: '100%',
+        background: 'linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0) 100%)',
+        WebkitBackdropFilter: 'blur(11px)',
+        backdropFilter: 'blur(11px)',
         zIndex: '999',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%,-50%)',
       }}
     >
       <RotatingLines

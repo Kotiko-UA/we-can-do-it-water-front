@@ -20,7 +20,6 @@ const initialState = {
 };
 
 const handleRejected = (state, action) => {
-  //alert(action.payload);
   state.error = action.payload;
   state.isLoading = false;
 };

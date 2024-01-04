@@ -18,6 +18,7 @@ export const Layout = () => {
   const [settingModal, setSettingModal] = useState(false);
   const [logOutModal, setLogOutModal] = useState(false);
   const { isLoading } = useAuth();
+  const { isLoadingWater } = useAuth();
 
   // const changeSetting = () => {
   //     settingModal ? setSettingModal(false) : setSettingModal(true);
@@ -87,7 +88,7 @@ export const Layout = () => {
         {/* </Suspense> */}
         {modal && <TeamModal onClick={onClickPaskal} />}
         <Paskal onClick={onClickPaskal} />
-        {isLoading && <Loader />}
+        {(isLoading || isLoadingWater) && <Loader />}
       </main>
     </div>
   );
