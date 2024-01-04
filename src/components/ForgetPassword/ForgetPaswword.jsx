@@ -37,7 +37,7 @@ export const ForgetPassword = () => {
           />
         </Label>
         <Button type="submit">Send</Button>
-        <StyledLink to="/signIn">SingIn</StyledLink>
+        <StyledLink to="/signIn">Sing In</StyledLink>
       </Form>
     </Wrap>
   );
