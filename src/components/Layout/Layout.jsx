@@ -81,7 +81,7 @@ export const Layout = () => {
           <main>
             <Outlet />
             {isOpen && (
-              <Modalochka title={'setting'} toggleModal={toggleModal}>
+              <Modalochka toggleModal={toggleModal}>
                 {settingModal && <Setting close={close} />}
                 {logOutModal && <LogOut close={close} />}
               </Modalochka>

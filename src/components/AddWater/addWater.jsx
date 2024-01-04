@@ -52,9 +52,6 @@ export const AddWater = () => {
 
   const onSubmit = (values, actions) => {
     const amount = values.water;
-    console.log(amount);
-
-    console.log(time);
     const newWater = { amount, time };
     // const serializedNewWater = JSON.stringify(newWater);
     // localStorage.setItem('id', serializedNewWater);

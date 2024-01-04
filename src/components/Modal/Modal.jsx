@@ -69,10 +69,6 @@ export const Modalochka = ({ children, title, toggleModal }) => {
             </Svg>
           </ButtonClose>
         </Div>
-        <h2>
-          сдесь вставляете свой контент ввиде комонента и его стилизируете этот
-          н2 убираете
-        </h2>
         {children}
         <ButtonSave onClick={toggleModal}>Save</ButtonSave>
       </Modal>
