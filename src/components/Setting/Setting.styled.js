@@ -95,11 +95,11 @@ export const AvatarOutContainer = styled.div`
   }
 `;
 
-export const Avatar = styled.div`
+export const Avatar = styled.img`
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background-color: ${props => props.theme.primaryBlack};
+  /* background-color: ${props => props.theme.primaryBlack}; */
 `;
 
 export const InputFile = styled.input`

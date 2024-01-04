@@ -5,9 +5,7 @@ import {
   InputFile,
   Label,
   MainContainer,
-  Modal,
   DataContainer,
-  Overlay,
   SettingContainer,
   SettingText,
   DataLabel,
@@ -27,18 +25,19 @@ import {
 } from './Setting.styled';
 import { PasswordInput } from 'components/PasswordInput/PasswordInput';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectUser } from 'components/redux/auth/selectors';
+import { selectIcon } from 'components/redux/auth/selectors';
 import { updateAvatar } from 'components/redux/auth/operations';
 
 export const Setting = ({ close }) => {
-  const currentUser = useSelector(selectUser);
-  const avatar = currentUser.avatarURL;
+  const avatar = useSelector(selectIcon);
 
   const dispatch = useDispatch();
 
   function changeAvatar(evt) {
     const file = evt.target.files[0];
-    dispatch(updateAvatar(file));
+    const formData = new FormData();
+    formData.append('avatar', file);
+    dispatch(updateAvatar(formData));
   }
 
   return (
