@@ -3,6 +3,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { ReactComponent as Close } from '../../icons/close.svg';
 import { ReactComponent as Minus } from '../../icons/minus-small.svg';
 import { ReactComponent as Plus } from '../../icons/plus-small.svg';
+import { ReactComponent as Glass } from '../../icons/glass_icon.svg';
 export const Backdrop = styled.div`
   position: fixed;
   top: 0;
@@ -24,16 +25,49 @@ export const BodyModal = styled.div`
   border-radius: 10px;
   background: #fff;
   width: 280px;
-  height: 540px;
+  height: 648px;
   margin: auto;
   @media (min-width: 768px) {
     width: 704px;
     padding: 32px 24px;
-    height: 504px;
+    height: 580px;
   }
   @media (min-width: 1440px) {
     width: 592px;
   }
+`;
+export const SaveTime = styled.div`
+  color: #2f2f2f;
+
+  font-family: Roboto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+`;
+export const GlassSvg = styled(Glass)``;
+export const OldWaterState = styled.div`
+  display: flex;
+  padding: 8px 24px;
+  align-items: center;
+  gap: 12px;
+  height: 52px;
+  border-radius: 10px;
+  background: var(--Secondary-color-2, #ecf2ff);
+  margin-top: 24px;
+  margin-bottom: 24px;
+  @media (min-width: 768px) {
+    width: 254px;
+  }
+`;
+export const OldWaterMlBeg = styled.div`
+  color: #407bff;
+
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
 `;
 export const ButClose = styled(Close)`
   width: 24px;
@@ -41,25 +75,26 @@ export const ButClose = styled(Close)`
 `;
 export const Tilel = styled.p`
   color: #2f2f2f;
-  width: 128px;
+  width: 200px;
   font-family: Roboto;
   font-size: 26px;
   font-style: normal;
   font-weight: 500;
   line-height: 32px;
+
   @media (min-width: 768px) {
-    width: 180px;
+    width: 384px;
   }
 `;
 export const WraperTitel = styled.div`
   display: flex;
-  align-items: center;
-  gap: 104px;
+
+  gap: 32px;
   @media (min-width: 768px) {
-    gap: 452px;
+    gap: 248px;
   }
   @media (min-width: 1440px) {
-    gap: 340px;
+    gap: 136px;
   }
 `;
 
