@@ -7,11 +7,14 @@ import SignInPage from '../Pages/SignInPage/SignInPage';
 import SignUpPage from '../Pages/SignUpPage/SignUpPage.jsx';
 import { Toaster } from 'react-hot-toast';
 import HomePage from 'Pages/HomePage/HomePage.jsx';
+import { EditingWater } from './EditingWater/EditingWater.jsx';
+import { DeleteWater } from './DeleteWater/DeleteWater.jsx';
+import { AddWater } from './AddWater/AddWater.jsx';
 
 export const App = () => {
   return (
     <div>
-      <Routes>
+      {/* <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="/" index element={<HomePage />}></Route>
           <Route path="/signup" element={<SignUpPage />}></Route>
@@ -37,7 +40,8 @@ export const App = () => {
           <Route path="/recovery" element={<RecoveryPasswordPage />} />
         </Route>
       </Routes>
-      <Toaster />
+      <Toaster /> */}
+      <AddWater />
     </div>
   );
 };

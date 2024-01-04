@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import 'react-datepicker/dist/react-datepicker.css';
 import { ReactComponent as Close } from '../../icons/close.svg';
+import { ReactComponent as Minus } from '../../icons/minus-small.svg';
+import { ReactComponent as Plus } from '../../icons/plus-small.svg';
 export const Backdrop = styled.div`
   position: fixed;
   top: 0;
@@ -131,12 +133,13 @@ export const WaterMlBeg = styled.div`
   font-weight: 700;
   line-height: 24px;
 `;
+export const ButMinus = styled(Minus)``;
 export const ButValue = styled.button`
   display: flex;
   padding: 10px;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  margin: 0px;
   border-radius: 30px;
   border: 1px solid #9ebbff;
 
@@ -144,6 +147,7 @@ export const ButValue = styled.button`
 
   box-shadow: 0px 2px 4px 0px rgba(64, 123, 255, 0.2);
 `;
+export const ButPlus = styled(Plus)``;
 export const WrapValue = styled.div`
   display: flex;
   height: 44px;

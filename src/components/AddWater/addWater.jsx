@@ -14,7 +14,9 @@ import {
   ValueWater,
   WaterMl,
   ButSave,
+  ButMinus,
   ButValue,
+  ButPlus,
   WaterMlBeg,
   WrapValue,
   WraperTitel,
@@ -39,7 +41,7 @@ export const AddWater = () => {
   registerLocale('uk', uk);
   const dispatch = useDispatch();
   const [startDate, setStartDate] = useState(new Date());
-  const [waterValue, setWaterValue] = useState(250);
+  const [waterValue, setWaterValue] = useState(0);
 
   const roundedValueWater = value => Math.round(value / 50) * 50;
   const time = startDate.toLocaleTimeString('uk', {
@@ -54,14 +56,24 @@ export const AddWater = () => {
 
     console.log(time);
     const newWater = { amount, time };
-    dispatch(addWater(newWater));
-    actions.resetForm();
+    // const serializedNewWater = JSON.stringify(newWater);
+    // localStorage.setItem('id', serializedNewWater);
+    dispatch(addWater(newWater)).then(() => {
+      setWaterValue(0);
+      setStartDate(new Date());
+      actions.resetForm();
+    });
   };
+
   //захист щоб користувач не міг видалити весь час з DatePicker та зламати код + стилізація
   const CustomInput = React.forwardRef(({ value, onClick }, ref) => (
-    <div onClick={onClick}>
-      <StyledDatePicker type="text" value={value} readOnly ref={ref} />
-    </div>
+    <StyledDatePicker
+      type="text"
+      value={value}
+      readOnly
+      ref={ref}
+      onClick={onClick}
+    />
   ));
   return (
     <Backdrop>
@@ -88,7 +100,7 @@ export const AddWater = () => {
                     setFieldValue('water', newValue);
                   }}
                 >
-                  -
+                  <ButMinus />
                 </ButValue>
                 <WaterMlBeg>{waterValue}ml</WaterMlBeg>
                 <ButValue
@@ -100,7 +112,8 @@ export const AddWater = () => {
                     setFieldValue('water', newValue);
                   }}
                 >
-                  +
+                  {' '}
+                  <ButPlus />
                 </ButValue>
               </WrapValue>
               <Time>Recording time:</Time>
