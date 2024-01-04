@@ -12,8 +12,6 @@ import {
   Button,
 } from './DailyNorma.styled';
 
-import { useSelector } from 'react-redux';
-
 import imgDesk from '../../../../../icons/HomePage/main/bottle-desk-1x.webp';
 import imgDesk2x from '../../../../../icons/HomePage/main/bottle-desk-2x.webp';
 import imgTablet from '../../../../../icons/HomePage/main/bottle-tab-1x.webp';
@@ -29,13 +27,11 @@ import imgMobPng2x from '../../../../../icons/HomePage/main/bottle-mob-2x.png';
 
 import sprite from '../../../../../icons/HomePage/sprite.svg';
 import { useSelector } from 'react-redux';
-import { selectDailyNorma } from 'components/redux/auth/selectors';
-import { useState } from 'react';
-import { DailyNormaModal } from 'components/DailyNormaModal/DailyNormaModal';
-import { Modalochka } from 'components/Modal/Modal';
-
 // import { selectDailyNorma } from 'components/redux/auth/selectors';
 import { useState } from 'react';
+
+// import { selectDailyNorma } from 'components/redux/auth/selectors';
+
 import { DailyNormaModal } from 'components/DailyNormaModal/DailyNormaModal';
 import { Modalochka } from 'components/Modal/Modal';
 import { selectWaterItems } from 'components/redux/water/selectors';
@@ -52,7 +48,7 @@ export const DailyNorma = ({ onClick }) => {
       <DailyNormaContainer>
         <Title>My daily norma</Title>
         <NormaContainer>
-          <Norma>{dailyNormaValue} L</Norma>
+          <Norma>{norma} L</Norma>
           <NormaBtn onClick={toggleModal}>Edit</NormaBtn>
         </NormaContainer>
       </DailyNormaContainer>
