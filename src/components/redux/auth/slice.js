@@ -70,17 +70,16 @@ const authSlice = createSlice({
       })
       .addCase(logOut.rejected, (state, action) => {
         handleRejected(state, action);
-      })
-      .addMatcher(isPendingAction, (state, action) => {
-        state.isLoading = true;
-      })
-      .addMatcher(isFulfilledAction, (state, action) => {
-        state.isLoading = false;
-      })
-      .addMatcher(isRejectedAction, (state, action) => {
-        state.isLoading = false;
-
       });
+    // .addMatcher(isPendingAction, (state, action) => {
+    //   state.isLoading = true;
+    // })
+    // .addMatcher(isFulfilledAction, (state, action) => {
+    //   state.isLoading = false;
+    // })
+    // .addMatcher(isRejectedAction, (state, action) => {
+    //   state.isLoading = false;
+    // });
   },
 });
 

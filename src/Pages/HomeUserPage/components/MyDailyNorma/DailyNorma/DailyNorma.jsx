@@ -12,6 +12,8 @@ import {
   Button,
 } from './DailyNorma.styled';
 
+import { useSelector } from 'react-redux';
+
 import imgDesk from '../../../../../icons/HomePage/main/bottle-desk-1x.webp';
 import imgDesk2x from '../../../../../icons/HomePage/main/bottle-desk-2x.webp';
 import imgTablet from '../../../../../icons/HomePage/main/bottle-tab-1x.webp';
@@ -26,14 +28,18 @@ import imgMobPng from '../../../../../icons/HomePage/main/bottle-mob-1x.png';
 import imgMobPng2x from '../../../../../icons/HomePage/main/bottle-mob-2x.png';
 
 import sprite from '../../../../../icons/HomePage/sprite.svg';
+import { selectWaterItems } from 'components/redux/water/selectors';
 
 export const DailyNorma = ({ onClick }) => {
+  const { norma, procent = 40 } = useSelector(selectWaterItems);
+  // console.log(todayInfo.norma);
+  // console.log(todayInfo.procent);
   return (
     <Container>
       <DailyNormaContainer>
         <Title>My daily norma</Title>
         <NormaContainer>
-          <Norma>1,5 L</Norma>
+          <Norma>{norma} L</Norma>
           <NormaBtn onClick={() => onClick('edit-daily-norm')}>Edit</NormaBtn>
         </NormaContainer>
       </DailyNormaContainer>
@@ -73,7 +79,7 @@ export const DailyNorma = ({ onClick }) => {
       <StatusContainer>
         <WaterStatus>
           <p>Today</p>
-          <WaterMeter $filled={40}>
+          <WaterMeter $filled={procent}>
             <div />
           </WaterMeter>
           <WaterInfo>

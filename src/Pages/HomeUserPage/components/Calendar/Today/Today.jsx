@@ -27,12 +27,12 @@ import {
 
 const Today = () => {
   const dispatch = useDispatch();
-  const todayInfo = useSelector(selectWaterItems);
+  const { notes = [] } = useSelector(selectWaterItems);
   const listRef = useRef(null);
 
-  // useEffect(() => {
-  //   dispatch(findWaterToday());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(findWaterToday());
+  }, [dispatch]);
 
   // function onAddWater(amount) {
   //   dispatch(addWater(data));
@@ -52,7 +52,7 @@ const Today = () => {
       <Viewport ref={listRef}>
         <TableStyled>
           <tbody>
-            {todayInfo.map(data => (
+            {notes.map(data => (
               <TableRow key={data._id} idWater={data._id}>
                 <TableCell>
                   <ImgCont>
