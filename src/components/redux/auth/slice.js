@@ -60,6 +60,7 @@ const authSlice = createSlice({
         state.user = action.payload;
         state.isLoggedIn = true;
         state.isRefreshing = false;
+        state.icon = action.payload.avatarURL;
       })
       .addCase(refreshUser.rejected, (state, action) => {
         state.isRefreshing = false;
