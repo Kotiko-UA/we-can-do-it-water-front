@@ -17,6 +17,8 @@ export const Layout = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [settingModal, setSettingModal] = useState(false);
   const [logOutModal, setLogOutModal] = useState(false);
+  const { isLoading } = useAuth();
+  const { isLoadingWater } = useAuth();
 
   const onClickPaskal = () => {
     setModal(prevState => !prevState);
@@ -43,36 +45,30 @@ export const Layout = () => {
 
   // не працює, треба не через редакс
   //const loading = useSelector(state => state.auth.isLoading);
-  const { isLoading } = useAuth();
 
   return (
-    <>
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <div>
-          <Header>
-            <HeaderMarkup
-              onClickSetting={onClickSetting}
-              onClickLogout={onClickLogout}
-            />
-          </Header>
-          <main>
-            <Outlet />
-            {isOpen && (
-              <Modalochka toggleModal={toggleModal}>
-                {settingModal && <Setting close={close} />}
-                {logOutModal && <LogOut close={close} />}
-              </Modalochka>
-            )}
-            {/* <Suspense> */}
+    <div>
+      <Header>
+        <HeaderMarkup
+          onClickSetting={onClickSetting}
+          onClickLogout={onClickLogout}
+        />
+      </Header>
+      <main>
+        <Outlet />
+        {isOpen && (
+          <Modalochka toggleModal={toggleModal}>
+            {settingModal && <Setting close={close} />}
+            {logOutModal && <LogOut close={close} />}
+          </Modalochka>
+        )}
+        {/* <Suspense> */}
 
-            {/* </Suspense> */}
-            {modal && <TeamModal onClick={onClickPaskal} />}
-            <Paskal onClick={onClickPaskal} />
-          </main>
-        </div>
-      )}
-    </>
+        {/* </Suspense> */}
+        {modal && <TeamModal onClick={onClickPaskal} />}
+        <Paskal onClick={onClickPaskal} />
+        {(isLoading || isLoadingWater) && <Loader />}
+      </main>
+    </div>
   );
 };

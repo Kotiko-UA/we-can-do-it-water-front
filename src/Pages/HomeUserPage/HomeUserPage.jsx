@@ -23,7 +23,6 @@ const HomeUserPage = () => {
   return (
     <Container>
       <WrapperHomePage>
-        {/* {isLoading && <Loader />} */}
         <DailyNorma onClick={onClick} />
         <Calendar />
       </WrapperHomePage>

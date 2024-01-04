@@ -27,34 +27,42 @@ import imgMobPng2x from '../../../../../icons/HomePage/main/bottle-mob-2x.png';
 
 import sprite from '../../../../../icons/HomePage/sprite.svg';
 import { useSelector } from 'react-redux';
-import { selectDailyNorma } from 'components/redux/auth/selectors';
+// import { selectDailyNorma } from 'components/redux/auth/selectors';
 import { useState } from 'react';
+
+// import { selectDailyNorma } from 'components/redux/auth/selectors';
+
 import { DailyNormaModal } from 'components/DailyNormaModal/DailyNormaModal';
 import { Modalochka } from 'components/Modal/Modal';
+import { selectWaterItems } from 'components/redux/water/selectors';
+import { AddWater } from 'components/AddWater/addWater';
 
-export const DailyNorma = ({ onClick }) => {
-const dailyNormaValue =  useSelector(selectDailyNorma);
-const [isOpen, setIsOpen] = useState(false);
-const toggleModal = () => {
-    setIsOpen(prevstate => !prevstate);
-  };
-
+export const DailyNorma = () => {
+  const { norma, procent } = useSelector(selectWaterItems);
+  const [isOpen, setIsOpen] = useState(false);
+  // const toggleModal = () => {
+  //   setIsOpen(prevstate => !prevstate);
+  // };
 
   return (
     <Container>
       <DailyNormaContainer>
         <Title>My daily norma</Title>
         <NormaContainer>
-          <Norma>{dailyNormaValue} L</Norma>
-          <NormaBtn onClick={toggleModal}>Edit</NormaBtn>
+          <Norma>{norma} L</Norma>
+          <NormaBtn
+          // onClick={toggleModal}
+          >
+            Edit
+          </NormaBtn>
         </NormaContainer>
       </DailyNormaContainer>
 
-      {isOpen && (
+      {/* {isOpen && (
         <Modalochka toggleModal={toggleModal} title={'edit-daily-norm'}>
           <DailyNormaModal />
         </Modalochka>
-      )}
+      )} */}
 
       <picture>
         <source
@@ -92,7 +100,7 @@ const toggleModal = () => {
       <StatusContainer>
         <WaterStatus>
           <p>Today</p>
-          <WaterMeter $filled={40}>
+          <WaterMeter $filled={procent}>
             <div />
           </WaterMeter>
           <WaterInfo>
@@ -101,12 +109,18 @@ const toggleModal = () => {
             <span>100%</span>
           </WaterInfo>
         </WaterStatus>
-        <Button>
+        <Button
+          type="button"
+          onClick={() => {
+            setIsOpen(!isOpen);
+          }}
+        >
           <svg>
             <use href={sprite + '#plus-circle'} />
           </svg>
           Add water
         </Button>
+        {isOpen && <AddWater />}
       </StatusContainer>
     </Container>
   );
