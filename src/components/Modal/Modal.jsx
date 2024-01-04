@@ -70,7 +70,6 @@ export const Modalochka = ({ children, title, toggleModal }) => {
           </ButtonClose>
         </Div>
         {children}
-        <ButtonSave onClick={toggleModal}>Save</ButtonSave>
       </Modal>
     </OverLay>,
     modalElement
