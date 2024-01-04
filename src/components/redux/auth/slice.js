@@ -1,5 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { signUp, signIn, refreshUser, logOut, addDailyNorma } from './operations';
+import {
+  signUp,
+  signIn,
+  refreshUser,
+  logOut,
+  addDailyNorma,
+  updateAvatar,
+} from './operations';
 
 const initialState = {
   user: { name: null, email: null },
@@ -106,8 +113,7 @@ const authSlice = createSlice({
       })
       .addMatcher(isRejectedAction, (state, action) => {
         state.isLoading = false;
-
-      })
+      });
   },
 });
 

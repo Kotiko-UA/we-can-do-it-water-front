@@ -29,7 +29,7 @@ const modalElement = document.getElementById('portal');
 
 export const Modalochka = ({ children, title, toggleModal }) => {
   const onClickBackdrop = e => {
-    if (e.currentTarget === e.target) {
+    if (e.target === e.currentTarget) {
       toggleModal();
     }
   };
@@ -62,9 +62,9 @@ export const Modalochka = ({ children, title, toggleModal }) => {
               <path
                 d="M6 18L18 6M6 6L18 18"
                 stroke="#407BFF"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </Svg>
           </ButtonClose>

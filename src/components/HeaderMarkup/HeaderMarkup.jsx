@@ -15,9 +15,10 @@ import {
   ArrowIcon,
 } from './HeaderMarkup.styled.js';
 import { Loader } from '../Loader.jsx';
+
 //import { useSelector } from 'react-redux';
 
-const HeaderMarkup = ({ toggleModal }) => {
+const HeaderMarkup = ({ onClickSetting, onClickLogout }) => {
   const { isLoggedIn } = useAuth();
   const { userIcon } = useAuth();
   // const { user } = useAuth();
@@ -52,7 +53,7 @@ const HeaderMarkup = ({ toggleModal }) => {
                       <a
                         href="#settings"
                         style={{ color: '#407bff' }}
-                        onClick={() => toggleModal()}
+                        onClick={onClickSetting}
                       >
                         Settings
                       </a>
@@ -62,7 +63,7 @@ const HeaderMarkup = ({ toggleModal }) => {
                       <a
                         href="#logout"
                         style={{ color: '#407bff' }}
-                        onClick={() => toggleModal()}
+                        onClick={onClickLogout}
                       >
                         Log out
                       </a>
