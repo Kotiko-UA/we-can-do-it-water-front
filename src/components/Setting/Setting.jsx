@@ -1,25 +1,24 @@
-import { useEffect } from "react";
-
-import { Avatar, AvatarContainer, Container, GenderLabel, InputFile, Label, MainContainer, Modal, DataContainer, Overlay, SettingContainer, SettingText, DataLabel, PasswordLabel, CommonInput, YourPhoto, Text, SaveButton, PasswordInputContainer, PasswordContainer, GenderRadio, CloseButton, InfoContainer, CommonInfoContainer, AvatarOutContainer, Close, UploadSvg } from "./Setting.styled";
+import { AvatarContainer, Container, GenderLabel, InputFile, Label, MainContainer, Modal, DataContainer, Overlay, SettingContainer, SettingText, DataLabel, PasswordLabel, CommonInput, YourPhoto, Text, SaveButton, PasswordInputContainer, PasswordContainer, GenderRadio, CloseButton, InfoContainer, CommonInfoContainer, AvatarOutContainer, Close, UploadSvg, Avatar } from "./Setting.styled";
 import { PasswordInput } from "components/PasswordInput/PasswordInput";
+import { useDispatch, useSelector } from "react-redux";
+import { selectUser } from "components/redux/auth/selectors";
+import { updateAvatar } from "components/redux/auth/operations";
 
-export const Setting = ({ backdropClick, close }) => {
+export const Setting = ({ toggleModal, close }) => {
+    const currentUser = useSelector(selectUser);
+    const avatar = currentUser.avatarURL;
+    console.log(currentUser)
 
-    useEffect(() => {
-  const handleKeydown = e => {
-    if (e.code === 'Escape') {
-        close()
-      }
+    const dispatch = useDispatch();
+
+    function changeAvatar(evt) {
+        const file = evt.target.files[0]
+        dispatch(updateAvatar(file))
     }
-    window.addEventListener('keydown', handleKeydown)
-    return () => {
-    window.removeEventListener('keydown', handleKeydown)
-    }
-}, [close])
 
     return (
-        <Overlay id="settings" onClick={backdropClick}>
-            <Modal>
+        <Overlay id="settings">
+            <Modal onClick={toggleModal}>
                 <Container>
                 <SettingContainer>
                     <SettingText>Setting</SettingText>
@@ -30,8 +29,10 @@ export const Setting = ({ backdropClick, close }) => {
                         <AvatarOutContainer>
                         <YourPhoto>Your photo</YourPhoto>
                         <AvatarContainer>
-                            <Avatar></Avatar>
-                            <InputFile type="file" name="file" id="file" />
+                            <Avatar src={avatar} alt="avatar" />
+                                    <InputFile type="file" name="file" id="file" accept="image/*"
+                                        onChange={(evt) => changeAvatar(evt)}
+                                    />
                             <Label label for="file"><UploadSvg /> Upload a photo</Label>
                             </AvatarContainer>
                             </AvatarOutContainer>

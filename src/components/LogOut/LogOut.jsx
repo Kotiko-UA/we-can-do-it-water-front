@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { CancelButton, Container, LogOutButton, LogOutContainer, LogOutText, Modal, Overlay, SecondaryText, MediaButtonsContainer, CloseButton, Close } from "./LogOut.styled";
 import { logOut } from "components/redux/auth/operations";
 
-export const LogOut = ({ backdropClick, close }) => {
+export const LogOut = ({ toggleModal, close }) => {
 
     const dispatch = useDispatch();
     
@@ -23,7 +23,7 @@ export const LogOut = ({ backdropClick, close }) => {
 }, [close])
 
     return (
-        <Overlay id="logout" onClick={backdropClick}>
+        <Overlay id="logout" onClick={toggleModal}>
             <Modal>
                 <Container>
                 <LogOutContainer>

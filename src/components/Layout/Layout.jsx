@@ -10,43 +10,46 @@ import { LogOut } from 'components/LogOut/LogOut.jsx';
 //import { useSelector } from 'react-redux';
 import { Loader } from 'components/Loader.jsx';
 import { useAuth } from 'Hooks/useAuth.js';
+import { Modalochka } from 'components/Modal/Modal.jsx';
 
 
 export const Layout = () => {
-  const [modal, setModal] = useState(false);
-  const [settingModal, setSettingModal] = useState(false);
-  const [logOutModal, setLogOutModal] = useState(false);
+  // const [modal, setModal] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  // const [settingModal, setSettingModal] = useState(false);
+  // const [logOutModal, setLogOutModal] = useState(false);
 
-  const onClick = () => {
-    setModal(!modal);
+// const changeSetting = () => {
+//     settingModal ? setSettingModal(false) : setSettingModal(true);
+//   };
+
+//   const changeLogOut = () => {
+//     // logOutModal ? setLogOutModal(false) : setLogOutModal(true);
+//     logOutModal ? setLogOutModal(false) : setLogOutModal(true);
+//   };
+
+//   const handleBackdropClickSetting = evt => {
+//     if (evt.target === evt.currentTarget) {
+//       setSettingModal(false);
+//     }
+//   };
+
+//   const handleBackdropClickLogOut = evt => {
+//     if (evt.target === evt.currentTarget) {
+//       setLogOutModal(false);
+//     }
+//   };
+
+  // const onClick = () => {
+  //   setModal(!modal);
+  // };
+
+  const toggleModal = () => {
+    setIsOpen(prevstate => !prevstate);
   };
 
-  const changeSetting = () => {
-    settingModal ? setSettingModal(false) : setSettingModal(true);
-  };
-
-  const changeLogOut = () => {
-    logOutModal ? setLogOutModal(false) : setLogOutModal(true);
-  };
-
-  const handleBackdropClickSetting = evt => {
-    if (evt.target === evt.currentTarget) {
-      setSettingModal(false);
-    }
-  };
-
-  const closeSetting = () => {
-    setSettingModal(false);
-  };
-
-  const handleBackdropClickLogOut = evt => {
-    if (evt.target === evt.currentTarget) {
-      setLogOutModal(false);
-    }
-  };
-
-  const closeLogOut = () => {
-    setLogOutModal(false);
+  const close = () => {
+    setIsOpen(false);
   };
 
   // не працює, треба не через редакс
@@ -60,25 +63,16 @@ export const Layout = () => {
       ) : (
         <div>
           <Header>
-            <HeaderMarkup
-              toggleSetting={changeSetting}
-              toggleLogOut={changeLogOut}
-            />
+            <HeaderMarkup toggleModal={toggleModal}/>
           </Header>
           <main>
-            <Outlet />
-            {settingModal && (
-              <Setting
-                backdropClick={handleBackdropClickSetting}
-                close={closeSetting}
-              />
-            )}
-            {logOutModal && (
-              <LogOut
-                backdropClick={handleBackdropClickLogOut}
-                close={closeLogOut}
-              />
-            )}
+              <Outlet />
+              {isOpen && <Modalochka title={Setting} toggleModal={toggleModal}><Setting 
+                close={close}
+              /></Modalochka>}
+              {/* {isOpen && <Modalochka title={LogOut} toggleModal={toggleModal}><LogOut
+                close={close}
+              /></Modalochka>} */}
             {/* <Suspense> */}
 
             {/* </Suspense> */}

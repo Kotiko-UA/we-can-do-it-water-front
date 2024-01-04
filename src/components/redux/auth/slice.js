@@ -86,6 +86,16 @@ const authSlice = createSlice({
       })
       .addCase(addDailyNorma.rejected, handleRejected)
 
+      .addCase(updateAvatar.pending, (state, action) => {
+        state.isRefreshing = true;
+      })
+      .addCase(updateAvatar.fulfilled, (state, action) => {
+        state.icon = action.payload.avatarURL;
+      })
+      .addCase(updateAvatar.rejected, (state, action) => {
+        handleRejected(state, action);
+      })
+
       .addMatcher(isPendingAction, (state, action) => {
         state.isLoading = true;
         state.error = null;

@@ -17,7 +17,7 @@ import {
 import { Loader } from '../Loader.jsx';
 //import { useSelector } from 'react-redux';
 
-const HeaderMarkup = ({ toggleSetting, toggleLogOut }) => {
+const HeaderMarkup = ({ toggleModal }) => {
   const { isLoggedIn } = useAuth();
   const { userIcon } = useAuth();
   // const { user } = useAuth();
@@ -52,7 +52,7 @@ const HeaderMarkup = ({ toggleSetting, toggleLogOut }) => {
                       <a
                         href="#settings"
                         style={{ color: '#407bff' }}
-                        onClick={() => toggleSetting()}
+                        onClick={() => toggleModal()}
                       >
                         Settings
                       </a>
@@ -62,7 +62,7 @@ const HeaderMarkup = ({ toggleSetting, toggleLogOut }) => {
                       <a
                         href="#logout"
                         style={{ color: '#407bff' }}
-                        onClick={() => toggleLogOut()}
+                        onClick={() => toggleModal()}
                       >
                         Log out
                       </a>
