@@ -3,12 +3,13 @@ import { toast } from 'react-hot-toast';
 
 axios.defaults.baseURL = 'https://water-p2oh.onrender.com/api';
 
+
 export const checkUser = async email => {
   try {
     if (!email) {
       return toast.error('Enter email');
     }
-    const res = await axios.post('/users/forgetpassword', { email });
+    const res = await axios.post('/users/forgotpassword', { email });
 
     if (res.status === 200) {
       return toast.success(res.data.message);

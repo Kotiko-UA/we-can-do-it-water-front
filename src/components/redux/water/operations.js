@@ -2,6 +2,18 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 axios.defaults.baseURL = 'https://water-p2oh.onrender.com/api';
 
+export const fetchWater = createAsyncThunk(
+  'water/fetchAll',
+  async (_, thunkAPI) => {
+    try {
+      const response = await axios.get('/waternotes');
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const findWaterToday = createAsyncThunk(
   'water/today',
   async (_, thunkAPI) => {

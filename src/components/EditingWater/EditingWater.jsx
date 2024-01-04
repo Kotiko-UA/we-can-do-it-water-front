@@ -1,6 +1,6 @@
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import { uk } from 'date-fns/locale/uk';
 
@@ -25,9 +25,13 @@ import {
   WrapSave,
   StileSave,
   ButClose,
-} from './addWater.styled';
-import { useDispatch } from 'react-redux';
-import { addWater } from 'components/redux/water/operations';
+  SaveTime,
+  OldWaterState,
+  OldWaterMlBeg,
+  GlassSvg,
+} from './EditingWater.styled';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateWater } from 'components/redux/water/operations';
 // необхідно додати  "date-fns": "^3.0.6", "react-datepicker": "^4.25.0",
 const waterValidationSchema = Yup.object().shape({
   water: Yup.number()
@@ -37,11 +41,20 @@ const waterValidationSchema = Yup.object().shape({
     .required('Please enter a valid number between 1 and 999'),
 });
 
-export const AddWater = () => {
+export const EditingWater = ({ id }) => {
   registerLocale('uk', uk);
   const dispatch = useDispatch();
   const [startDate, setStartDate] = useState(new Date());
-  const [waterValue, setWaterValue] = useState(0);
+  const [waterValue, setWaterValue] = useState(250);
+  const oldWaterValue = useSelector(state =>
+    state.water.entries.find(entry => entry.id === id)
+  );
+  useEffect(() => {
+    if (oldWaterValue) {
+      setStartDate(new Date(oldWaterValue.time));
+      setWaterValue(oldWaterValue.amount);
+    }
+  }, [id, oldWaterValue]);
 
   const roundedValueWater = value => Math.round(value / 50) * 50;
   const time = startDate.toLocaleTimeString('uk', {
@@ -49,22 +62,17 @@ export const AddWater = () => {
     minute: '2-digit',
     hour12: false,
   });
-
+  // const storedValue = localStorage.getItem({id});
+  // const oldValue = JSON.parse(storedValue);
   const onSubmit = (values, actions) => {
     const amount = values.water;
     console.log(amount);
 
     console.log(time);
-    const newWater = { amount, time };
-    // const serializedNewWater = JSON.stringify(newWater);
-    // localStorage.setItem('id', serializedNewWater);
-    dispatch(addWater(newWater)).then(() => {
-      setWaterValue(0);
-      setStartDate(new Date());
-      actions.resetForm();
-    });
+    const updatedWater = { amount, time };
+    dispatch(updateWater(id, updatedWater));
+    actions.resetForm();
   };
-
   //захист щоб користувач не міг видалити весь час з DatePicker та зламати код + стилізація
   const CustomInput = React.forwardRef(({ value, onClick }, ref) => (
     <StyledDatePicker
@@ -86,8 +94,14 @@ export const AddWater = () => {
           {({ values, setFieldValue }) => (
             <Form>
               <WraperTitel>
-                <Tilel>Add water</Tilel> <ButClose></ButClose>
+                <Tilel>Edit the entered amount of water</Tilel>
+                <ButClose></ButClose>
               </WraperTitel>
+              <OldWaterState>
+                <GlassSvg></GlassSvg>
+                <OldWaterMlBeg>{oldWaterValue.amount}ml</OldWaterMlBeg>
+                <SaveTime>{oldWaterValue.time}</SaveTime>
+              </OldWaterState>
               <ChoWal>Choose a value:</ChoWal>
               <AmoWate>Amount of water:</AmoWate>
               <WrapValue>
@@ -112,7 +126,6 @@ export const AddWater = () => {
                     setFieldValue('water', newValue);
                   }}
                 >
-                  {' '}
                   <ButPlus />
                 </ButValue>
               </WrapValue>

@@ -28,12 +28,19 @@ import imgMobPng from '../../../../../icons/HomePage/main/bottle-mob-1x.png';
 import imgMobPng2x from '../../../../../icons/HomePage/main/bottle-mob-2x.png';
 
 import sprite from '../../../../../icons/HomePage/sprite.svg';
-import { selectWaterItems } from 'components/redux/water/selectors';
+import { useSelector } from 'react-redux';
+import { selectDailyNorma } from 'components/redux/auth/selectors';
+import { useState } from 'react';
+import { DailyNormaModal } from 'components/DailyNormaModal/DailyNormaModal';
+import { Modalochka } from 'components/Modal/Modal';
 
 export const DailyNorma = ({ onClick }) => {
-  const { norma, procent = 40 } = useSelector(selectWaterItems);
-  // console.log(todayInfo.norma);
-  // console.log(todayInfo.procent);
+  const dailyNormaValue = useSelector(selectDailyNorma);
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleModal = () => {
+    setIsOpen(prevstate => !prevstate);
+  };
+
   return (
     <Container>
       <DailyNormaContainer>
@@ -43,6 +50,13 @@ export const DailyNorma = ({ onClick }) => {
           <NormaBtn onClick={() => onClick('edit-daily-norm')}>Edit</NormaBtn>
         </NormaContainer>
       </DailyNormaContainer>
+
+      {isOpen && (
+        <Modalochka toggleModal={toggleModal} title={'edit-daily-norm'}>
+          <DailyNormaModal />
+        </Modalochka>
+      )}
+
       <picture>
         <source
           media="(min-width: 1440px)"
