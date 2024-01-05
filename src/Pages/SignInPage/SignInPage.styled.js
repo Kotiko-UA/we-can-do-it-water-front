@@ -7,7 +7,7 @@ import bcgSignInBottleMob from "../../icons/SignInBotleMob.svg";
 import bcgSignInBottleDesk from "../../icons/SignInBottleTab.svg";
 
 export const Title = styled.h1`
-color: #2F2F2F;
+color: ${props => props.theme.primaryBlack};
 font-family: Roboto;
 font-size: 26px;
 font-style: normal;

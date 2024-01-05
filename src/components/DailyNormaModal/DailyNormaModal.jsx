@@ -21,6 +21,7 @@ import {
   WrapTitle,
 } from './DailyNormaModal.styled';
 import { useDispatch } from 'react-redux';
+
 import { addDailyNorma } from 'components/redux/auth/operations';
 
 const DailyNormaSchema = Yup.object().shape({
@@ -49,6 +50,7 @@ export const DailyNormaModal = ({ closeModal }) => {
     actions.resetForm();
     closeModal(); 
   };
+
 
   const dailyNormaCounter = values =>
     values.picked === 'For girl'
@@ -87,6 +89,7 @@ export const DailyNormaModal = ({ closeModal }) => {
           }}
           validationSchema={DailyNormaSchema}
           onSubmit={(values, actions) => handleSave(values, actions)}
+
         >
           {({ values }) => (
             <FormStyled>

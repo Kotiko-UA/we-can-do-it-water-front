@@ -86,6 +86,7 @@ const authSlice = createSlice({
       .addCase(addDailyNorma.pending, (state, action) => {
         state.isRefreshing = true;
       })
+
       .addCase(addDailyNorma.fulfilled, (state, action) => {
         state.dailyNorma = action.payload.dailyNorma;
       })

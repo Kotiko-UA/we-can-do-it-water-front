@@ -28,7 +28,6 @@ import imgMobPng2x from '../../../../../icons/HomePage/main/bottle-mob-2x.png';
 import sprite from '../../../../../icons/HomePage/sprite.svg';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
-
 import { DailyNormaModal } from 'components/DailyNormaModal/DailyNormaModal.jsx';
 import { Modalochka } from 'components/Modal/Modal';
 import { selectWaterItems } from 'components/redux/water/selectors';
@@ -40,7 +39,6 @@ export const DailyNorma = () => {
   const dailyNormaValue = useSelector(selectDailyNorma);
   const [dailyNormaModal, setDailyNormaModal] = useState(false);
   const [addWaterModal, setaddWaterModal] = useState(false);
-
   const [isOpen, setIsOpen] = useState(false);
   const toggleModal = () => {
     setIsOpen(prevstate => !prevstate);
@@ -60,6 +58,7 @@ export const DailyNorma = () => {
     setIsOpen(false);
   };
 
+
   return (
     <Container>
       <DailyNormaContainer>
@@ -74,6 +73,7 @@ export const DailyNorma = () => {
         <Modalochka toggleModal={toggleModal}>
           {dailyNormaModal && <AddWater close={close} />}
           {addWaterModal && <DailyNormaModal close={close} closeModal={toggleModal} />}
+
         </Modalochka>
       )} */}
 
