@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import theme from '../../../MainStyle/themeJSX';
 import { motion } from 'framer-motion';
 
 export const CalendarModalStyled = styled(motion.div)`
@@ -36,17 +35,17 @@ export const CalendarModalStyled = styled(motion.div)`
   }
 
   h3 {
-    color: ${theme.colors.primaryAccent};
-    font-size: ${theme.fontSizes.small};
+    color: ${({ theme }) => theme.primaryBlue};
+    font-size: 16px;
     line-height: calc(20 / 16);
   }
   p {
-    color: ${theme.colors.primaryDark};
-    font-size: ${theme.fontSizes.small};
+    color: ${({ theme }) => theme.primaryBlack};
+    font-size: 16px;
     line-height: calc(20 / 16);
     span {
-      color: ${theme.colors.primaryAccent};
-      font-size: ${theme.fontSizes.medium};
+      color: ${({ theme }) => theme.primaryBlue};
+      font-size: 18px;
       font-weight: 500;
       line-height: calc(24 / 18);
     }

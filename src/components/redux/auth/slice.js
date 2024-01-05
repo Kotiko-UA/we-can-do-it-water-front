@@ -20,7 +20,6 @@ const initialState = {
 };
 
 const handleRejected = (state, action) => {
-  //alert(action.payload);
   state.error = action.payload;
   state.isLoading = false;
 };
@@ -84,11 +83,7 @@ const authSlice = createSlice({
         handleRejected(state, action);
       })
 
-      .addCase(addDailyNorma.pending, (state, action) => {
-        state.isLoading = true;
-      })
       .addCase(addDailyNorma.fulfilled, (state, action) => {
-        state.isLoading = false;
         state.dailyNorma = action.payload.dailyNorma;
       })
       .addCase(addDailyNorma.rejected, handleRejected)

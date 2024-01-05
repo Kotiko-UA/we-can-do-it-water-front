@@ -1,4 +1,3 @@
-import theme from 'Pages/HomeUserPage/MainStyle/themeJSX';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -123,11 +122,11 @@ export const Button = styled.button`
 `;
 
 export const HoverBtnStyled = styled.button`
-  transition: color ${theme.animation.cubicBezier};
+  transition: color ${({ theme }) => theme.cubicBezier};
 
   position: relative;
   &:hover {
-    color: ${theme.colors.secondaryYellow};
+    color: ${({ theme }) => theme.secondaryOrange};
   }
   &:before {
     content: '';
@@ -136,7 +135,7 @@ export const HoverBtnStyled = styled.button`
     left: 0;
     width: 0;
     height: 1px;
-    background-color: ${theme.colors.secondaryYellow};
+    background-color: ${({ theme }) => theme.secondaryOrange};
     transition: width 0.3s ease;
   }
   &:hover:before {

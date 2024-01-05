@@ -17,27 +17,8 @@ export const Layout = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [settingModal, setSettingModal] = useState(false);
   const [logOutModal, setLogOutModal] = useState(false);
-
-  // const changeSetting = () => {
-  //     settingModal ? setSettingModal(false) : setSettingModal(true);
-  //   };
-
-  //   const changeLogOut = () => {
-  //     // logOutModal ? setLogOutModal(false) : setLogOutModal(true);
-  //     logOutModal ? setLogOutModal(false) : setLogOutModal(true);
-  //   };
-
-  //   const handleBackdropClickSetting = evt => {
-  //     if (evt.target === evt.currentTarget) {
-  //       setSettingModal(false);
-  //     }
-  //   };
-
-  //   const handleBackdropClickLogOut = evt => {
-  //     if (evt.target === evt.currentTarget) {
-  //       setLogOutModal(false);
-  //     }
-  //   };
+  const { isLoading } = useAuth();
+  const { isLoadingWater } = useAuth();
 
   const onClickPaskal = () => {
     setModal(prevState => !prevState);
@@ -63,37 +44,29 @@ export const Layout = () => {
   };
 
 
-  const { isLoading } = useAuth();
-
-
   return (
-    <>
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <div>
-          <Header>
-            <HeaderMarkup
-              onClickSetting={onClickSetting}
-              onClickLogout={onClickLogout}
-            />
-          </Header>
-          <main>
-            <Outlet />
-            {isOpen && (
-              <Modalochka toggleModal={toggleModal}>
-                {settingModal && <Setting close={close} />}
-                {logOutModal && <LogOut close={close} />}
-              </Modalochka>
-            )}
-            {/* <Suspense> */}
+    <div>
+      <Header>
+        <HeaderMarkup
+          onClickSetting={onClickSetting}
+          onClickLogout={onClickLogout}
+        />
+      </Header>
+      <main>
+        <Outlet />
+        {isOpen && (
+          <Modalochka toggleModal={toggleModal}>
+            {settingModal && <Setting close={close} />}
+            {logOutModal && <LogOut close={close} />}
+          </Modalochka>
+        )}
+        {/* <Suspense> */}
 
-            {/* </Suspense> */}
-            {modal && <TeamModal onClick={onClickPaskal} />}
-            <Paskal onClick={onClickPaskal} />
-          </main>
-        </div>
-      )}
-    </>
+        {/* </Suspense> */}
+        {modal && <TeamModal onClick={onClickPaskal} />}
+        <Paskal onClick={onClickPaskal} />
+        {(isLoading || isLoadingWater) && <Loader />}
+      </main>
+    </div>
   );
 };

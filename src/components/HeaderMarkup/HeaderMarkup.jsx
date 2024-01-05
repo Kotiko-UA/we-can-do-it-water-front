@@ -53,10 +53,10 @@ const HeaderMarkup = ({ onClickSetting, onClickLogout }) => {
             >
               {isLoggedIn ? (
                 <RightNavWrapper
-                  // onClick={() => {
-                  //   console.log('ckick');
-                  //   setOpen(!isOpen);
-                  // }}
+                // onClick={() => {
+                //   console.log('ckick');
+                //   setOpen(!isOpen);
+                // }}
                 >
                   <StyledLink to="/">
                     <h3>{userNameFromEmail}</h3>
@@ -64,8 +64,9 @@ const HeaderMarkup = ({ onClickSetting, onClickLogout }) => {
                     <ArrowIcon />
                   </StyledLink>
 
-                  <NavMenu className='navMenu'
-                  // {`${isOpen ? 'open' : ''}`}
+                  <NavMenu
+                    className="navMenu"
+                    // {`${isOpen ? 'open' : ''}`}
                   >
                     <NavLi>
                       <SettingsIcon />

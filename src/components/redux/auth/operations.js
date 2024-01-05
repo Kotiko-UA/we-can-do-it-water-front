@@ -3,13 +3,12 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://water-p2oh.onrender.com/api';
 
-
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
 const clearAuthHeader = () => {
-    axios.defaults.headers.common.Authorization = "";
+  axios.defaults.headers.common.Authorization = '';
 };
 
 export const signUp = createAsyncThunk(
@@ -19,7 +18,10 @@ export const signUp = createAsyncThunk(
       let res = await axios.post('/users/register', credentials);
 
       if (res.status === 201) {
-        res = await axios.post('/users/login', { email: credentials.email, password: credentials.password });
+        res = await axios.post('/users/login', {
+          email: credentials.email,
+          password: credentials.password,
+        });
         setAuthHeader(res.data.token);
       }
 
@@ -64,23 +66,22 @@ export const refreshUser = createAsyncThunk(
   }
 );
 
-export const logOut = createAsyncThunk(
-  'auth/logout',
-  async (_, thunkAPI) => {
+export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     await axios.post('/users/logout');
     clearAuthHeader();
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
-    }
   }
-);
+});
 
 export const addDailyNorma = createAsyncThunk(
   'auth/addDailyNorma',
   async (drinkValue, thunkAPI) => {
     try {
-      const response = await axios.patch('/users/dailynorma', { dailyNorma: String(drinkValue) });
+      const response = await axios.patch('/users/dailynorma', {
+        dailyNorma: String(drinkValue),
+      });
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -90,11 +91,9 @@ export const addDailyNorma = createAsyncThunk(
 
 export const updateAvatar = createAsyncThunk(
   'auth/avatars',
-  async (file, thunkAPI) => {
+  async (data, thunkAPI) => {
     try {
-      const formData = new FormData();
-      formData.append('avatar', file);
-      const res = await axios.patch('/users/avatars');
+      const res = await axios.patch('/users/avatars', data);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
