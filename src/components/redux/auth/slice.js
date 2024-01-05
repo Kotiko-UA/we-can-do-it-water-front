@@ -6,10 +6,11 @@ import {
   logOut,
   addDailyNorma,
   updateAvatar,
+  changeSettings,
 } from './operations';
 
 const initialState = {
-  user: { name: null, email: null },
+  user: { name: null, email: null},
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
@@ -95,6 +96,17 @@ const authSlice = createSlice({
         state.icon = action.payload.avatarURL;
       })
       .addCase(updateAvatar.rejected, (state, action) => {
+        handleRejected(state, action);
+      })
+
+      .addCase(changeSettings.pending, (state, action) => {
+        state.isRefreshing = true;
+      })
+      .addCase(changeSettings.fulfilled, (state, action) => {
+        state.user = action.payload.user;
+        // console.log(state.user)
+      })
+      .addCase(changeSettings.rejected, (state, action) => {
         handleRejected(state, action);
       })
 

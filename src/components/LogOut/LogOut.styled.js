@@ -5,14 +5,12 @@ display: flex;
 flex-wrap: wrap;
 `;
 
-export const LogOutContainer = styled.div`
-width: 100%;
-display: flex;
-margin-bottom: 24px;
-justify-content: space-between;
-align-items: center;
+export const LogOutText = styled.p`
+font-family: 'Roboto';
+font-size: 26px;
+font-weight: 500;
+line-height: 1.23;
 `;
-
 
 export const SecondaryText = styled.p`
 font-family: 'Roboto';

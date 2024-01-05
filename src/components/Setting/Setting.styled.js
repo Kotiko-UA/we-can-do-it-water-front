@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Field, Form, ErrorMessage } from 'formik';
 
 import { ReactComponent as ArrowUpSvg } from '../../icons/arrow-up.svg';
 
@@ -18,7 +19,7 @@ export const SettingText = styled.p`
   line-height: 1.23;
 `;
 
-export const MainContainer = styled.form`
+export const MainContainer = styled(Form)`
   display: flex;
   flex-wrap: wrap;
   @media (min-width: 1440px) {
@@ -59,7 +60,7 @@ export const Avatar = styled.img`
 
 `;
 
-export const InputFile = styled.input`
+export const InputFile = styled(Field)`
   width: 0.1px;
   height: 0.1px;
   opacity: 0;
@@ -90,7 +91,7 @@ export const Text = styled(GeneralText)`
   margin-bottom: 12px;
 `;
 
-export const GenderRadio = styled.input`
+export const GenderRadio = styled(Field)`
   position: relative;
   appearance: none;
   box-sizing: content-box;
@@ -129,6 +130,15 @@ export const GenderLabel = styled.label`
   margin-left: 6px;
 `;
 
+export const ErrorMsg = styled(ErrorMessage)`
+color: #EF5050;
+font-family: Roboto;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 18px;
+`;
+
 
 export const InfoContainer = styled.div`
   display: flex;
@@ -164,7 +174,7 @@ export const DataLabel = styled.label`
   line-height: 1.11;
   margin-bottom: 8px;
 `;
-export const CommonInput = styled.input`
+export const CommonInput = styled(Field)`
   width: 256px;
   padding: 12px 10px;
   border-radius: 6px;
