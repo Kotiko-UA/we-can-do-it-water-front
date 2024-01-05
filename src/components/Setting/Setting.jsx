@@ -1,15 +1,11 @@
 import {
   AvatarContainer,
-  Container,
+  MainSettingContainer,
   GenderLabel,
   InputFile,
   Label,
   MainContainer,
-  Modal,
   DataContainer,
-  Overlay,
-  SettingContainer,
-  SettingText,
   DataLabel,
   PasswordLabel,
   CommonInput,
@@ -27,25 +23,32 @@ import {
 } from './Setting.styled';
 import { PasswordInput } from 'components/PasswordInput/PasswordInput';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectUser } from 'components/redux/auth/selectors';
+
+import { selectIcon, selectUser } from 'components/redux/auth/selectors';
 import { updateAvatar } from 'components/redux/auth/operations';
+import { useState } from 'react';
 
 export const Setting = ({ close }) => {
+
   const currentUser = useSelector(selectUser);
-  const avatar = currentUser.avatarURL;
+  const avatar = useSelector(selectIcon);
+  const splitName = currentUser.email.split('@');
+
+  const [nameValue, setNameValue] = useState(splitName[0])
+  const [emailValue, setEmailValue] = useState(currentUser.email);
+
 
   const dispatch = useDispatch();
 
   function changeAvatar(evt) {
     const file = evt.target.files[0];
-    dispatch(updateAvatar(file));
+    const formData = new FormData();
+    formData.append('avatar', file);
+    dispatch(updateAvatar(formData));
   }
 
   return (
-    <Container>
-      <SettingContainer>
-        <SettingText>Setting</SettingText>
-      </SettingContainer>
+    <MainSettingContainer>
       <MainContainer>
         <div>
           <AvatarOutContainer>
@@ -76,20 +79,20 @@ export const Setting = ({ close }) => {
                 name="gender"
                 required
               />
-              {/* <CustomRadio/> */}
-              <GenderLabel htmlFor="girl">Girl</GenderLabel>
+              <GenderLabel className="gender-label" htmlFor="girl">Girl</GenderLabel>
               <GenderRadio id="man" type="radio" value="man" name="gender" />
-              {/* <CustomRadio/> */}
               <GenderLabel htmlFor="man">Man</GenderLabel>
             </div>
             <DataContainer>
-              <DataLabel htmlFor="name">Your name</DataLabel>
+              <DataLabel className="gender-label" htmlFor="name">Your name</DataLabel>
               <CommonInput
                 id="name"
                 type="text"
                 name="name"
                 placeholder="Name"
                 maxLength={32}
+                value={nameValue}
+                onChange={evt => setNameValue(evt.target.value)}
               />
               <DataLabel htmlFor="email">E-mail</DataLabel>
               <CommonInput
@@ -97,6 +100,8 @@ export const Setting = ({ close }) => {
                 type="text"
                 name="email"
                 placeholder="E-mail"
+                value={emailValue}
+                onChange={evt => setEmailValue(evt.target.value)}
               />
             </DataContainer>
           </InfoContainer>
@@ -120,6 +125,6 @@ export const Setting = ({ close }) => {
           Save
         </SaveButton>
       </MainContainer>
-    </Container>
+    </MainSettingContainer>
   );
 };

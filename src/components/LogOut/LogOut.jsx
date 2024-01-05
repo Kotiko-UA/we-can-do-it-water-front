@@ -4,8 +4,6 @@ import {
   CancelButton,
   Container,
   LogOutButton,
-  LogOutContainer,
-  LogOutText,
   SecondaryText,
   MediaButtonsContainer,
 } from './LogOut.styled';
@@ -16,9 +14,6 @@ export const LogOut = ({ close }) => {
 
   return (
     <Container>
-      <LogOutContainer>
-        <LogOutText>Log out</LogOutText>
-      </LogOutContainer>
       <SecondaryText>Do you really want to leave?</SecondaryText>
       <MediaButtonsContainer>
         <LogOutButton

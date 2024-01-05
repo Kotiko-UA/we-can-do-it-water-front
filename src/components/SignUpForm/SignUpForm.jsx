@@ -111,23 +111,7 @@ export const SignUpForm = () => {
                 <span onClick={handleToggle}>{icon}</span>
               </InputWrapper>
 
-              <Label>Repeat password</Label>
-              <InputWrapper>
-                <FieldInput
-                  autoComplete="on"
-                  type={type}
-                  name="repeatPassword"
-                  placeholder="Repeat password"
-                  style={
-                    errors.repeatPassword && touched.repeatPassword
-                      ? { borderColor: '#EF5050', color: '#EF5050' }
-                      : null
-                  }
-                />
-                <span onClick={handleToggle}>{icon}</span>
-              </InputWrapper>
-
-              <ErrorMsg name="repeatPassword" component="div" />
+              <ErrorMsg name="password" component="div" />
 
               <Label>Repeat password</Label>
               <InputWrapper>

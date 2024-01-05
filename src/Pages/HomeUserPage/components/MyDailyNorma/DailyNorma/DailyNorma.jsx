@@ -111,10 +111,9 @@ export const DailyNorma = () => {
         </WaterStatus>
         <Button
           type="button"
-          onClick={
-            console.log(777)
-            // setIsOpen(!isOpen)
-          }
+          onClick={() => {
+            setIsOpen(!isOpen);
+          }}
         >
           <svg>
             <use href={sprite + '#plus-circle'} />

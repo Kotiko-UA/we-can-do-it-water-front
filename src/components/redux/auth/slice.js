@@ -83,11 +83,7 @@ const authSlice = createSlice({
         handleRejected(state, action);
       })
 
-      .addCase(addDailyNorma.pending, (state, action) => {
-        state.isLoading = true;
-      })
       .addCase(addDailyNorma.fulfilled, (state, action) => {
-        state.isLoading = false;
         state.dailyNorma = action.payload.dailyNorma;
       })
       .addCase(addDailyNorma.rejected, handleRejected)
@@ -100,19 +96,19 @@ const authSlice = createSlice({
       })
       .addCase(updateAvatar.rejected, (state, action) => {
         handleRejected(state, action);
-      });
+      })
 
-    // .addMatcher(isPendingAction, (state, action) => {
-    //   state.isLoading = true;
-    //   state.error = null;
-    // })
-    // .addCase(addDailyNorma.fulfilled, (state, action) => {
-    //   state.isLoading = false;
-    //   state.error = null;
-    // })
-    // .addMatcher(isRejectedAction, (state, action) => {
-    //   state.isLoading = false;
-    // });
+      .addMatcher(isPendingAction, (state, action) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addMatcher(isFulfilledAction, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addMatcher(isRejectedAction, (state, action) => {
+        state.isLoading = false;
+      });
   },
 });
 
