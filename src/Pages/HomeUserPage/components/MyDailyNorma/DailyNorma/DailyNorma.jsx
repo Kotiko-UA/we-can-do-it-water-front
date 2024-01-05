@@ -128,7 +128,6 @@ export const DailyNorma = () => {
           </svg>
           Add water
         </Button>
-        {isOpen && <AddWater />}
       </StatusContainer>
     </Container>
   );
