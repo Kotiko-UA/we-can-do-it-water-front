@@ -43,15 +43,14 @@ const normaForMan = values => {
   return values.weight * 0.04 + values.time * 0.6;
 };
 
-export const DailyNormaModal = ({ closeModal }) => {
+export const DailyNormaModal = ({ close }) => {
   const dispatch = useDispatch();
 
   const handleSave = (values, actions) => {
     dispatch(addDailyNorma(values.drink));
     actions.resetForm();
-    closeModal(); 
+    close();
   };
-
 
   const dailyNormaCounter = values =>
     values.picked === 'For girl'
@@ -61,81 +60,76 @@ export const DailyNormaModal = ({ closeModal }) => {
       : 0;
 
   return (
-      <ModalWin>
-        <WrapTitle>
-          <Title>My daily norma</Title>
-        </WrapTitle>
-        <div>
-          <TextWrap>
-            <p>
-              For girl: <Formula>V=(M*0,03) + (T*0,4)</Formula>
-            </p>
-            <p>
-              For man: <Formula>V=(M*0,04) + (T*0,6)</Formula>
-            </p>
-          </TextWrap>
-          <WrapInfo>
-            <SpanStar>*</SpanStar> V is the volume of the water norm in liters
-            per day, M is your body weight, T is the time of active sports, or
-            another type of activity commensurate in terms of loads (in the
-            absence of these, you must set 0)
-          </WrapInfo>
-        </div>
-        <Formik
-          initialValues={{
-            picked: '', // Взяти із Setting
-            weight: 0,
-            time: 0,
-            drink: 0,
-          }}
-          validationSchema={DailyNormaSchema}
-          onSubmit={(values, actions) => handleSave(values, actions)}
+    <ModalWin>
+      <WrapTitle>
+        <Title>My daily norma</Title>
+      </WrapTitle>
+      <div>
+        <TextWrap>
+          <p>
+            For girl: <Formula>V=(M*0,03) + (T*0,4)</Formula>
+          </p>
+          <p>
+            For man: <Formula>V=(M*0,04) + (T*0,6)</Formula>
+          </p>
+        </TextWrap>
+        <WrapInfo>
+          <SpanStar>*</SpanStar> V is the volume of the water norm in liters per
+          day, M is your body weight, T is the time of active sports, or another
+          type of activity commensurate in terms of loads (in the absence of
+          these, you must set 0)
+        </WrapInfo>
+      </div>
+      <Formik
+        initialValues={{
+          picked: '', // Взяти із Setting
+          weight: 0,
+          time: 0,
+          drink: 0,
+        }}
+        validationSchema={DailyNormaSchema}
+        onSubmit={(values, actions) => handleSave(values, actions)}
+      >
+        {({ values }) => (
+          <FormStyled>
+            <FormCalculateWrap>
+              <Subtitle>Calculate your rate:</Subtitle>
+              <RadioWrap role="group" aria-labelledby="my-radio-group">
+                <RadioBtnLabel>
+                  <RadioBtnField type="radio" name="picked" value="For girl" />
+                  For girl
+                </RadioBtnLabel>
+                <RadioBtnLabel>
+                  <RadioBtnField type="radio" name="picked" value="For man" />
+                  For man
+                </RadioBtnLabel>
+              </RadioWrap>
 
-        >
-          {({ values }) => (
-            <FormStyled>
-              <FormCalculateWrap>
-                <Subtitle>Calculate your rate:</Subtitle>
-                <RadioWrap role="group" aria-labelledby="my-radio-group">
-                  <RadioBtnLabel>
-                    <RadioBtnField
-                      type="radio"
-                      name="picked"
-                      value="For girl"
-                    />
-                    For girl
-                  </RadioBtnLabel>
-                  <RadioBtnLabel>
-                    <RadioBtnField type="radio" name="picked" value="For man" />
-                    For man
-                  </RadioBtnLabel>
-                </RadioWrap>
-
-                <label>
-                  Your weight in kilograms:
-                  <FieldForm id="weight" name="weight" type="number" />
-                  <ErrMsg name="weight" component="div" />
-                </label>
-                <label>
-                  The time of active participation in sports or other activities
-                  with a high physical load:
-                  <FieldForm id="time " name="time" type="number" />
-                  <ErrMsg name="time" component="div" />
-                </label>
-                <NormaWrap>
-                  <p>The required amount of water in liters per day:</p>
-                  <TextNorma>{dailyNormaCounter(values)} </TextNorma>
-                </NormaWrap>
-                <LabelFormNorma>
-                  Write down how much water you will drink:
-                  <FieldForm id="drink " name="drink" type="number" />
-                  <ErrMsg name="drink" component="div" />
-                </LabelFormNorma>
-              </FormCalculateWrap>
-              <ButtonSave type="submit">Save</ButtonSave>
-            </FormStyled>
-          )}
-        </Formik>
-      </ModalWin>
+              <label>
+                Your weight in kilograms:
+                <FieldForm id="weight" name="weight" type="number" />
+                <ErrMsg name="weight" component="div" />
+              </label>
+              <label>
+                The time of active participation in sports or other activities
+                with a high physical load:
+                <FieldForm id="time " name="time" type="number" />
+                <ErrMsg name="time" component="div" />
+              </label>
+              <NormaWrap>
+                <p>The required amount of water in liters per day:</p>
+                <TextNorma>{dailyNormaCounter(values)} </TextNorma>
+              </NormaWrap>
+              <LabelFormNorma>
+                Write down how much water you will drink:
+                <FieldForm id="drink " name="drink" type="number" />
+                <ErrMsg name="drink" component="div" />
+              </LabelFormNorma>
+            </FormCalculateWrap>
+            <ButtonSave type="submit">Save</ButtonSave>
+          </FormStyled>
+        )}
+      </Formik>
+    </ModalWin>
   );
 };

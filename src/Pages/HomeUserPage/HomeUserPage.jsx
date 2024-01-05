@@ -10,7 +10,7 @@ import { EditingWater } from 'components/EditingWater/EditingWater';
 import { DeleteWater } from 'components/DeleteWater/DeleteWater';
 
 const HomeUserPage = () => {
-  const [dailyNormaModal, setDailyNormaModal] = useState(false);
+  // const [dailyNormaModal, setDailyNormaModal] = useState(false);
   // const [addWaterModal, setAddWaterModal] = useState(false);
   // const [correctWaterModal, setCorrectWaterModal] = useState(false);
   // const [delWaterModal, setDelWaterModal] = useState(false);
@@ -58,20 +58,24 @@ const HomeUserPage = () => {
   const close = () => {
     setIsOpen(false);
   };
-  const onClick = modal => {
-    switch (modal) {
-      case 'edit-daily-norm':
-        setDailyNormaModal(!dailyNormaModal);
-        return;
+  // const onClick = modal => {
+  //   switch (modal) {
+  //     case 'edit-daily-norm':
+  //       setDailyNormaModal(!dailyNormaModal);
+  //       return;
 
-      default:
-        return;
-    }
-  };
+  //     default:
+  //       return;
+  //   }
+  // };
   return (
     <Container>
       <WrapperHomePage>
-        <DailyNorma onClick={onClick} onAddWater={onAddWater} />
+        <DailyNorma
+          // onClick={onClick}
+          onDailyNorma={onDailyNorma}
+          onAddWater={onAddWater}
+        />
         <Calendar
           onDeleteWater={onDeleteWater}
           onEditingWater={onEditingWater}
@@ -86,7 +90,7 @@ const HomeUserPage = () => {
           {dailyNorma && <DailyNormaModal close={close} />}
         </Modalochka>
       )}
-      {dailyNormaModal && <DailyNormaModal onClick={onClick} />}
+      {/* {dailyNormaModal && <DailyNormaModal onClick={onClick} />} */}
     </Container>
   );
 };
