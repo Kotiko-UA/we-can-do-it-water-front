@@ -62,9 +62,9 @@ export const Layout = () => {
     setIsOpen(false);
   };
 
-  // не працює, треба не через редакс
-  //const loading = useSelector(state => state.auth.isLoading);
+
   const { isLoading } = useAuth();
+
 
   return (
     <>
