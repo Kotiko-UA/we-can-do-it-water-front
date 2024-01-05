@@ -31,15 +31,15 @@ export const StyledLink = styled(NavLink)`
   font-style: normal;
   font-weight: 400;
   line-height: 24px;
-  color: #407bff;
-
+  color: ${props => props.theme.primaryBlue};
+  
   display: flex;
   align-items: center;
   margin-top:16px;
 
   &:hover,
   :focus{
-    color: var(--Secondary-color-5, #FF9D43);
+    color: ${props => props.theme.secondaryOrange};
   }
 `;
 
@@ -59,7 +59,7 @@ width: 384px;
 `;
 
 export const Label = styled.label`
-color: #2F2F2F;
+color: ${props => props.theme.primaryBlack};
 font-family: Roboto;
 font-size: 18px;
 font-style: normal;
@@ -73,7 +73,7 @@ display:flex;
 `;
 
 export const FieldInput = styled(Field)`
-color: #9EBBFF;
+color: ${props => props.theme.secondaryBlue};
 width: 280px;
 height: auto;
 font-family: Roboto;
@@ -83,16 +83,16 @@ font-weight: 400;
 line-height: 20px; 
 padding: 12px 10px;
 border-radius: 6px;
-border: 1px solid #D7E3FF;
-background: #FFF;
+border: 1px solid ${props => props.theme.secondaryLightBlue};
+background: ${props => props.theme.primaryWhite};
 
 &::placeholder{
-  color: #9EBBFF;
+  color: ${props => props.theme.secondaryBlue};
   opacity:1;
 }
 
 &:focus{
-color: #407BFF;
+color: ${props => props.theme.primaryBlue};
 }
 
 
@@ -107,7 +107,7 @@ width: 384px;
 
 
 export const ErrorMsg = styled(ErrorMessage)`
-color: #EF5050;
+color: ${props => props.theme.secondaryRed};
 font-family: Roboto;
 font-size: 14px;
 font-style: normal;
@@ -127,10 +127,10 @@ justify-content: center;
 align-items: center;
 align-self: center;
 border-radius: 10px;
-background-color: var(--Primery-Color-Blue, #407BFF);
+background-color: ${props => props.theme.primaryBlue};
 box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
 
-color: #FFFFFF;
+color: ${props => props.theme.primaryWhite};
 text-align: center;
 font-family: Roboto;
 font-size: 16px;
