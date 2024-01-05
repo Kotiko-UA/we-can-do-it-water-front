@@ -15,7 +15,6 @@ import {
   EyeActive,
 } from './SignInForm.styled.js';
 import React, { useEffect, useState } from 'react';
-import { Loader } from '../../components/Loader.jsx';
 import toast from 'react-hot-toast';
 
 const SignInFormSchema = Yup.object().shape({
@@ -46,6 +45,7 @@ export const SignInForm = () => {
   };
 
   const { isLoading, error } = useAuth();
+
 
   useEffect(() => {
     if (error) {
