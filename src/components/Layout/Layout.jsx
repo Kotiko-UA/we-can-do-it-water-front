@@ -42,8 +42,6 @@ export const Layout = () => {
   const close = () => {
     setIsOpen(false);
   };
-
-
   return (
     <div>
       <Header>
