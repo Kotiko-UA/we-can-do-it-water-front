@@ -86,6 +86,7 @@ const HomeUserPage = () => {
           {dailyNorma && <DailyNormaModal close={close} />}
         </Modalochka>
       )}
+      {dailyNormaModal && <DailyNormaModal onClick={onClick} />}
     </Container>
   );
 };
