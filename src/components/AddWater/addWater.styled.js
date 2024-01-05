@@ -39,7 +39,7 @@ export const ButClose = styled(Close)`
   width: 24px;
   height: 24px;
 `;
-export const Tilel = styled.p`
+export const TilelAddWater = styled.p`
   color: #2f2f2f;
   width: 128px;
   font-family: Roboto;

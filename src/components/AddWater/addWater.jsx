@@ -7,7 +7,7 @@ import { uk } from 'date-fns/locale/uk';
 import {
   Backdrop,
   BodyModal,
-  Tilel,
+  TilelAddWater,
   ChoWal,
   AmoWate,
   Time,
@@ -37,7 +37,7 @@ const waterValidationSchema = Yup.object().shape({
     .required('Please enter a valid number between 1 and 999'),
 });
 
-export const AddWater = () => {
+export const AddWater = ({ close }) => {
   registerLocale('uk', uk);
   const dispatch = useDispatch();
   const [startDate, setStartDate] = useState(new Date());
@@ -55,11 +55,13 @@ export const AddWater = () => {
     const newWater = { amount, time };
     // const serializedNewWater = JSON.stringify(newWater);
     // localStorage.setItem('id', serializedNewWater);
+    console.log(newWater);
     dispatch(addWater(newWater)).then(() => {
       setWaterValue(0);
       setStartDate(new Date());
       actions.resetForm();
     });
+    close(close);
   };
 
   //захист щоб користувач не міг видалити весь час з DatePicker та зламати код + стилізація
@@ -73,96 +75,96 @@ export const AddWater = () => {
     />
   ));
   return (
-    <Backdrop>
-      <BodyModal>
-        <Formik
-          initialValues={{ water: waterValue }}
-          onSubmit={onSubmit}
-          validationSchema={waterValidationSchema}
-        >
-          {({ values, setFieldValue }) => (
-            <Form>
-              <WraperTitel>
-                <Tilel>Add water</Tilel> <ButClose></ButClose>
-              </WraperTitel>
-              <ChoWal>Choose a value:</ChoWal>
-              <AmoWate>Amount of water:</AmoWate>
-              <WrapValue>
-                <ButValue
-                  type="button"
-                  onClick={() => {
-                    const roundedValue = roundedValueWater(waterValue - 50);
-                    const newValue = roundedValue >= 0 ? roundedValue : 0;
-                    setWaterValue(newValue);
-                    setFieldValue('water', newValue);
-                  }}
-                >
-                  <ButMinus />
-                </ButValue>
-                <WaterMlBeg>{waterValue}ml</WaterMlBeg>
-                <ButValue
-                  type="button"
-                  onClick={() => {
-                    const roundedValue = roundedValueWater(waterValue + 50);
-                    const newValue = Math.min(roundedValue, 999);
-                    setWaterValue(newValue);
-                    setFieldValue('water', newValue);
-                  }}
-                >
-                  {' '}
-                  <ButPlus />
-                </ButValue>
-              </WrapValue>
-              <Time>Recording time:</Time>
-              <DatePicker
-                locale="uk"
-                selected={startDate}
-                onChange={date => {
-                  setStartDate(date);
+    // <Backdrop onClick={close}>
+    <BodyModal>
+      <Formik
+        initialValues={{ water: waterValue }}
+        onSubmit={onSubmit}
+        validationSchema={waterValidationSchema}
+      >
+        {({ values, setFieldValue }) => (
+          <Form>
+            <WraperTitel>
+              <TilelAddWater>Add water</TilelAddWater>
+              {/* <ButClose onClick={close}></ButClose> */}
+            </WraperTitel>
+            <ChoWal>Choose a value:</ChoWal>
+            <AmoWate>Amount of water:</AmoWate>
+            <WrapValue>
+              <ButValue
+                type="button"
+                onClick={() => {
+                  const roundedValue = roundedValueWater(waterValue - 50);
+                  const newValue = roundedValue >= 0 ? roundedValue : 0;
+                  setWaterValue(newValue);
+                  setFieldValue('water', newValue);
                 }}
-                showTimeSelect
-                showTimeSelectOnly
-                timeIntervals={5}
-                timeCaption="Time"
-                dateFormat="H:mm"
-                customInput={<CustomInput />}
-              />
-              <ValueWater>Enter the value of the water used:</ValueWater>
-              <StyledInput
-                name="water"
-                value={values.water}
-                onChange={e => {
-                  const inputValue = e.target.value.trim();
-                  if (inputValue === '') {
-                    setFieldValue('water', '');
-                  } else {
-                    let numericValue = parseInt(inputValue, 10);
-                    if (isNaN(numericValue)) {
-                      numericValue = 0;
-                    }
-
-                    if (numericValue < 0) {
-                      numericValue = 0;
-                    }
-                    setWaterValue(numericValue);
-                    setFieldValue('water', numericValue);
+              >
+                <ButMinus />
+              </ButValue>
+              <WaterMlBeg>{waterValue}ml</WaterMlBeg>
+              <ButValue
+                type="button"
+                onClick={() => {
+                  const roundedValue = roundedValueWater(waterValue + 50);
+                  const newValue = Math.min(roundedValue, 999);
+                  setWaterValue(newValue);
+                  setFieldValue('water', newValue);
+                }}
+              >
+                <ButPlus />
+              </ButValue>
+            </WrapValue>
+            <Time>Recording time:</Time>
+            <DatePicker
+              locale="uk"
+              selected={startDate}
+              onChange={date => {
+                setStartDate(date);
+              }}
+              showTimeSelect
+              showTimeSelectOnly
+              timeIntervals={5}
+              timeCaption="Time"
+              dateFormat="H:mm"
+              customInput={<CustomInput />}
+            />
+            <ValueWater>Enter the value of the water used:</ValueWater>
+            <StyledInput
+              name="water"
+              value={values.water}
+              onChange={e => {
+                const inputValue = e.target.value.trim();
+                if (inputValue === '') {
+                  setFieldValue('water', '');
+                } else {
+                  let numericValue = parseInt(inputValue, 10);
+                  if (isNaN(numericValue)) {
+                    numericValue = 0;
                   }
-                }}
-                readOnly={false}
-                min={0}
-                max={999}
-                maxLength={3}
-              />
-              <WrapSave>
-                <WaterMl>{waterValue}ml</WaterMl>
-                <ButSave type="submit">
-                  <StileSave>Save</StileSave>
-                </ButSave>
-              </WrapSave>
-            </Form>
-          )}
-        </Formik>
-      </BodyModal>
-    </Backdrop>
+
+                  if (numericValue < 0) {
+                    numericValue = 0;
+                  }
+                  setWaterValue(numericValue);
+                  setFieldValue('water', numericValue);
+                }
+              }}
+              readOnly={false}
+              min={0}
+              max={999}
+              maxLength={3}
+            />
+            <WrapSave>
+              <WaterMl>{waterValue}ml</WaterMl>
+              <ButSave type="submit">
+                <StileSave>Save</StileSave>
+              </ButSave>
+            </WrapSave>
+          </Form>
+        )}
+      </Formik>
+    </BodyModal>
+    // </Backdrop>
   );
 };
