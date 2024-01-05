@@ -1,39 +1,32 @@
-import { useEffect } from "react";
-import { VscChromeClose } from "react-icons/vsc";
+import { useDispatch } from 'react-redux';
 
-import { CancelButton, Container, LogOutButton, LogOutContainer, LogOutText, Modal, Overlay, SecondaryText, MediaButtonsContainer, CloseButton } from "./LogOut.styled";
+import {
+  CancelButton,
+  Container,
+  LogOutButton,
+  SecondaryText,
+  MediaButtonsContainer,
+} from './LogOut.styled';
+import { logOut } from 'components/redux/auth/operations';
 
-export const LogOut = ({ backdropClick, close }) => {
-    
-    useEffect(() => {
-  const handleKeydown = e => {
-    if (e.code === 'Escape') {
-        close()
-      }
-    }
+export const LogOut = ({ close }) => {
+  const dispatch = useDispatch();
 
-    window.addEventListener('keydown', handleKeydown)
-    
-    return () => {
-    window.removeEventListener('keydown', handleKeydown)
-    }
-}, [close])
-
-    return (
-        <Overlay onClick={backdropClick}>
-            <Modal>
-                <Container>
-                <LogOutContainer>
-                    <LogOutText>Log out</LogOutText>
-                    <CloseButton type="button" onClick={close}><VscChromeClose /></CloseButton>
-                </LogOutContainer>
-                    <SecondaryText>Do you really want to leave?</SecondaryText>
-                    <MediaButtonsContainer>
-                    <LogOutButton>Log out</LogOutButton>
-                    <CancelButton onClick={close}>Cancel</CancelButton>
-                    </MediaButtonsContainer>
-                </Container>
-            </Modal>
-        </Overlay>
-    )
-}
+  return (
+    <Container>
+      <SecondaryText>Do you really want to leave?</SecondaryText>
+      <MediaButtonsContainer>
+        <LogOutButton
+          type="submit"
+          onClick={() => {
+            dispatch(logOut());
+            close();
+          }}
+        >
+          Log out
+        </LogOutButton>
+        <CancelButton onClick={close}>Cancel</CancelButton>
+      </MediaButtonsContainer>
+    </Container>
+  );
+};

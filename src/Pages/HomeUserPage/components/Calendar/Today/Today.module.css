@@ -1,0 +1,16 @@
+.icon_trash {
+  fill: none;
+  stroke: #ef5050;
+  transition: all 0.25s cubic-bezier(0.7, 0.98, 0.86, 0.98);
+}
+
+.icon_pencil {
+  fill: none;
+  stroke: #9ebbff;
+  transition: all 0.25s cubic-bezier(0.7, 0.98, 0.86, 0.98);
+}
+
+.icon_trash:hover,
+.icon_pencil:hover {
+  scale: 1.2;
+}
