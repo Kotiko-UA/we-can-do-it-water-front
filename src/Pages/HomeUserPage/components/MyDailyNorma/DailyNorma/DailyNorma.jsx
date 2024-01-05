@@ -58,7 +58,6 @@ export const DailyNorma = () => {
     setIsOpen(false);
   };
 
-
   return (
     <Container>
       <DailyNormaContainer>
@@ -72,10 +71,11 @@ export const DailyNorma = () => {
       {isOpen && (
         <Modalochka toggleModal={toggleModal}>
           {dailyNormaModal && <AddWater close={close} />}
-          {addWaterModal && <DailyNormaModal close={close} closeModal={toggleModal} />}
-
+          {addWaterModal && (
+            <DailyNormaModal close={close} closeModal={toggleModal} />
+          )}
         </Modalochka>
-      )} */}
+      )}
 
       <picture>
         <source
