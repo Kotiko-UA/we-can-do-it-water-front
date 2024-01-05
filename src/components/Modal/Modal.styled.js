@@ -11,13 +11,11 @@ export const OverLay = styled.div`
   height: 100%;
   background: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0) 100%);
 `;
-export const Div = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 24px;
-`;
 export const ButtonClose = styled.button`
+  display: block;
+  position: absolute;
+  top: 36px;
+  right: 24px;
   padding: 0;
   background: initial;
 `;
