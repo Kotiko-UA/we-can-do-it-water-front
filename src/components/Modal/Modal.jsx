@@ -1,14 +1,6 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
-import {
-  OverLay,
-  ButtonClose,
-  Modal,
-  Svg,
-  Div,
-  TitleModal,
-  ButtonSave,
-} from './Modal.styled';
+import { OverLay, ButtonClose, Modal, Svg, Div } from './Modal.styled';
 import { useEffect } from 'react';
 
 // 1. В компоненте где хотите рендерить модалку обьвляете локальній стейт
@@ -50,7 +42,6 @@ export const Modalochka = ({ children, title, toggleModal }) => {
     <OverLay onClick={onClickBackdrop}>
       <Modal>
         <Div>
-          <TitleModal> {title} </TitleModal>
           <ButtonClose onClick={toggleModal} type="button">
             <Svg
               xmlns="http://www.w3.org/2000/svg"
