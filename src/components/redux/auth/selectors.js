@@ -13,3 +13,4 @@ export const selectDailyNorma = state => state.auth.dailyNorma;
 
 export const selectError = state => state.auth.error;
 
+export const selectGender = state => state.auth.gender;

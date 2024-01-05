@@ -17,6 +17,7 @@ const initialState = {
   isLoading: false,
   dailyNorma: 2,
   error: null,
+  gender: 'femail',
 };
 
 const handleRejected = (state, action) => {
@@ -44,12 +45,15 @@ const authSlice = createSlice({
         state.token = action.payload.token;
         state.isLoggedIn = true;
         state.icon = action.payload.avatarURL;
+       
+
       })
       .addCase(signIn.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
         state.icon = action.payload.avatarURL;
+       
       })
       .addCase(signIn.rejected, (state, action) => {
         handleRejected(state, action);

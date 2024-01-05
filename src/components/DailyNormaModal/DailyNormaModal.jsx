@@ -21,9 +21,10 @@ import {
   WrapInfo,
   WrapTitle,
 } from './DailyNormaModal.styled';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { addDailyNorma } from 'components/redux/auth/operations';
+import { selectGender } from 'components/redux/auth/selectors';
 
 const DailyNormaSchema = Yup.object().shape({
   weight: Yup.number().moreThan(-1, 'The value must be positive!'),
@@ -45,6 +46,7 @@ const normaForMan = values => {
 
 export const DailyNormaModal = ({ closeModal }) => {
   const dispatch = useDispatch();
+  const gender = useSelector(selectGender)
 
   const handleSave = (values, actions) => {
     dispatch(addDailyNorma(values.drink));
@@ -54,9 +56,9 @@ export const DailyNormaModal = ({ closeModal }) => {
 
 
   const dailyNormaCounter = values =>
-    values.picked === 'For girl'
+    values.picked === 'femail'
       ? normaForGirl(values).toFixed(1)
-      : values.picked === 'For man'
+      : values.picked === 'mail'
       ? normaForMan(values).toFixed(1)
       : 0;
 
@@ -83,7 +85,7 @@ export const DailyNormaModal = ({ closeModal }) => {
         </div>
         <Formik
           initialValues={{
-            picked: '', // Взяти із Setting
+            picked: gender, 
             weight: 0,
             time: 0,
             drink: 0,
@@ -101,12 +103,12 @@ export const DailyNormaModal = ({ closeModal }) => {
                     <RadioBtnField
                       type="radio"
                       name="picked"
-                      value="For girl"
+                      value="femail"
                     />
                     For girl
                   </RadioBtnLabel>
                   <RadioBtnLabel>
-                    <RadioBtnField type="radio" name="picked" value="For man" />
+                    <RadioBtnField type="radio" name="picked" value="mail" />
                     For man
                   </RadioBtnLabel>
                 </RadioWrap>
