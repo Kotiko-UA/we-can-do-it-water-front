@@ -20,7 +20,6 @@ export const Layout = () => {
   const { isLoading } = useAuth();
   const { isLoadingWater } = useAuth();
 
-
   const onClickPaskal = () => {
     setModal(prevState => !prevState);
   };
@@ -58,9 +57,7 @@ export const Layout = () => {
       <main>
         <Outlet />
         {isOpen && (
-
-          <Modalochka toggleModal={toggleModal} title={settingModal ? "Setting" : "Log out"}>
-
+          <Modalochka toggleModal={toggleModal}>
             {settingModal && <Setting close={close} />}
             {logOutModal && <LogOut close={close} />}
           </Modalochka>
