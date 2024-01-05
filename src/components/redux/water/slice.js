@@ -33,6 +33,7 @@ const waterSlice = createSlice({
     builder
       .addCase(findWaterToday.pending, state => {})
       .addCase(findWaterToday.fulfilled, (state, action) => {
+
         state.items = action.payload;
         //"?"
       })
@@ -43,6 +44,7 @@ const waterSlice = createSlice({
       .addCase(addWater.rejected, handleRejected)
       .addCase(updateWater.fulfilled, (state, action) => {
         state.items.notes = state.items.notes.map(water =>
+
           water.id === action.payload.id ? action.payload : water
         );
         //"?"
@@ -50,6 +52,7 @@ const waterSlice = createSlice({
       .addCase(updateWater.rejected, handleRejected)
       .addCase(deleteWater.fulfilled, (state, action) => {
         const index = state.items.notes.findIndex(
+
           water => water.id === action.payload.id
         );
         state.items.notes.splice(index, 1);
