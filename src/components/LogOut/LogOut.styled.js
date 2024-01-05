@@ -1,52 +1,8 @@
 import styled from "styled-components";
 
-import { ReactComponent as CloseSvg } from "../../icons/close.svg";
-
-export const Overlay = styled.div`
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0) 100%);
--webkit-backdrop-filter: blur(11px);
-backdrop-filter: blur(11px);
-z-index: 999;
-`;
-
-export const Modal = styled.div`
-border-radius: 10px;
-padding: 32px 24px;
-background-color: ${props => props.theme.primaryWhite};
-position: absolute;
-left: 50%;
-top: 20%;
-transform: translate(-50%, -50%);
-
-@media(min-width: 768px) {
-    top: 30%;
-}
-
-@media(min-width: 1440px) {
-    top: 50%;
-}
-`;
-
-export const CloseButton = styled.button`
-background-color: transparent;
-`
-
-export const Close = styled(CloseSvg)`
-color: ${props => props.theme.primaryBlue};
-width: 18px;
-height: 18px;
-`
-
-
 export const Container = styled.div`
 display: flex;
 flex-wrap: wrap;
-flex-direction: column;
 `;
 
 export const LogOutContainer = styled.div`
@@ -57,12 +13,6 @@ justify-content: space-between;
 align-items: center;
 `;
 
-export const LogOutText = styled.p`
-font-family: 'Roboto';
-font-size: 26px;
-font-weight: 500;
-line-height: 1.23;
-`;
 
 export const SecondaryText = styled.p`
 font-family: 'Roboto';
@@ -75,7 +25,7 @@ margin-bottom: 24px;
 
 export const Button = styled.button`
 white-space: nowrap;
-width: 100%;
+width: 232px;
 padding: 8px 30px;
 border-radius: 10px;
 font-family: 'Roboto';
