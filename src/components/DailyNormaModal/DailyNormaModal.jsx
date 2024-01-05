@@ -8,6 +8,7 @@ import {
   FormStyled,
   Formula,
   LabelFormNorma,
+  ModalWin,
   NormaWrap,
   RadioBtnField,
   RadioBtnLabel,
@@ -60,7 +61,7 @@ export const DailyNormaModal = ({ closeModal }) => {
       : 0;
 
   return (
-      <div>
+      <ModalWin>
         <WrapTitle>
           <Title>My daily norma</Title>
         </WrapTitle>
@@ -135,6 +136,6 @@ export const DailyNormaModal = ({ closeModal }) => {
             </FormStyled>
           )}
         </Formik>
-      </div>
+      </ModalWin>
   );
 };

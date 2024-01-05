@@ -15,16 +15,16 @@ export const Backdrop = styled.div`
   z-index: 999;
 `;
 
-export const Modal = styled.div`
-  position: absolute;
-  padding: 24px 12px;
+export const ModalWin = styled.div`
+  /* position: absolute;
+  padding: 24px 12px; */
   max-width: 256px;
-  border-radius: 10px;
+  /* border-radius: 10px;
   top: 50%;
   left: 50%;
   overflow-y: auto;
   transform: translate(-50%, -50%) scale(1);
-  background-color: #fff;
+  background-color: #fff; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -33,7 +33,7 @@ export const Modal = styled.div`
 
   @media screen and (min-width: 768px) {
     min-width: 704px;
-    padding: 32px 24px;
+    /* padding: 32px 24px; */
   }
 
   @media screen and (min-width: 1440px) {
