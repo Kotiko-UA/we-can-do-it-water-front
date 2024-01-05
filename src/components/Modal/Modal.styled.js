@@ -23,15 +23,11 @@ export const ButtonClose = styled.button`
 export const Modal = styled.div`
   padding: 24px 12px;
   position: absolute;
-  max-width: 280px;
+  max-width: 1008px;
   background-color: #ffffff;
   border-radius: 10px;
   @media (min-width: 768px) {
     padding: 32px 24px;
-    max-width: 704px;
-  }
-  @media (min-width: 1440px) {
-    max-width: 1008px;
   }
 `;
 export const Svg = styled.svg`
