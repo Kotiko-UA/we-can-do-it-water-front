@@ -2,7 +2,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 axios.defaults.baseURL = 'https://water-p2oh.onrender.com/api';
 
-
 export const fetchWater = createAsyncThunk(
   'water/fetchAll',
   async (_, thunkAPI) => {
@@ -30,6 +29,7 @@ export const findWaterToday = createAsyncThunk(
 export const addWater = createAsyncThunk(
   'water/add',
   async (newWater, thunkAPI) => {
+    console.log(newWater);
     try {
       const response = await axios.post('/waternotes', newWater);
       return response.data;
