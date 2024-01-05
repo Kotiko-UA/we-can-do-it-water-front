@@ -3,8 +3,9 @@ import { useAuth } from 'Hooks/useAuth.js';
 import { signUp } from '../redux/auth/operations';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
+  InputWrapper,
   StyledLink,
   FormWrapper,
   Label,
@@ -15,8 +16,7 @@ import {
   EyeActive,
 } from './SignUpForm.styled.js';
 import { Loader } from '../../components/Loader.jsx';
-
-
+import toast from 'react-hot-toast';
 
 const SignUpFormSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
@@ -52,77 +52,94 @@ export const SignUpForm = () => {
       signUp({
         email: values.email,
         password: values.password,
-        repeatPassword: values.repeatPassword,
       })
     );
   };
 
-  //const loading = useSelector(state => state.auth.isLoading);
-  const { isLoading } = useAuth();
+  const { isLoading, error } = useAuth();
+
+  useEffect(() => {
+    if (error) {
+      toast.error(error);
+    }
+  }, [error]);
 
   return (
     <div>
-      {isLoading ? (
-        <Loader />
-      ) : (
+      <div>
+        <Formik
+          initialValues={{
+            email: '',
+            password: '',
+            repeatPassword: '',
+          }}
+          validationSchema={SignUpFormSchema}
+          onSubmit={(values, actions) => {
+            HandleSubmit(values);
+            actions.resetForm();
+          }}
+        >
+          {({ errors, touched }) => (
+            <FormWrapper>
+              <Label>Enter your email</Label>
+              <FieldInput
+                autoComplete="on"
+                type="email"
+                name="email"
+                placeholder="E-mail"
+                style={
+                  errors.email && touched.email
+                    ? { borderColor: '#EF5050', color: '#EF5050' }
+                    : null
+                }
+              />
+              <ErrorMsg name="email" component="div" />
+
+              <Label>Enter your password</Label>
+              <InputWrapper>
+                <FieldInput
+                  autoComplete="on"
+                  type={type}
+                  name="password"
+                  placeholder="Password"
+                  style={
+                    errors.password && touched.password
+                      ? { borderColor: '#EF5050', color: '#EF5050' }
+                      : null
+                  }
+                />
+                <span onClick={handleToggle}>{icon}</span>
+              </InputWrapper>
+
+              <ErrorMsg name="password" component="div" />
+
+              <Label>Repeat password</Label>
+              <InputWrapper>
+                <FieldInput
+                  autoComplete="on"
+                  type={type}
+                  name="repeatPassword"
+                  placeholder="Repeat password"
+                  style={
+                    errors.repeatPassword && touched.repeatPassword
+                      ? { borderColor: '#EF5050', color: '#EF5050' }
+                      : null
+                  }
+                />
+                <span onClick={handleToggle}>{icon}</span>
+              </InputWrapper>
+
+              <ErrorMsg name="repeatPassword" component="div" />
+
+              <ButtonSbmt type="submit">Sign Up</ButtonSbmt>
+            </FormWrapper>
+          )}
+        </Formik>
+
         <div>
-          <Formik
-            initialValues={{
-              email: '',
-              password: '',
-              repeatPassword: '',
-            }}
-            
-            validationSchema={SignUpFormSchema}
-            onSubmit={(values, actions) => {
-              HandleSubmit(values);
-              actions.resetForm();
-            }}
-            >
-              {({ errors, touched }) => (
-                <FormWrapper>
-                  <Label>Enter your email</Label>
-                  <FieldInput
-		                autoComplete="on"
-                    type="email"
-                    name="email"
-                    placeholder="E-mail"
-                  style = {(errors.email && touched.email) ? {borderColor:"#EF5050", color:"#EF5050"} : null}/>
-                  <ErrorMsg name="email" component="div" />
-
-                  <Label>Enter your password</Label>
-                  <FieldInput
-		                autoComplete="on"
-                    type={type}
-                    name="password"
-                    placeholder="Password"
-                  style = {(errors.password && touched.password) ? {borderColor:"#EF5050", color:"#EF5050"} : null}/>
-                  <span onClick={handleToggle}>{icon}</span>
-
-                  <ErrorMsg name="password" component="div" />
-
-                  <Label>Repeat password</Label>
-                  <FieldInput
-		                autoComplete="on"
-                    type={type}
-                    name="repeatPassword"
-                    placeholder="Repeat password"
-                    style = {(errors.repeatPassword && touched.repeatPassword) ? {borderColor:"#EF5050", color:"#EF5050"} : null}
-                  />
-                  <span onClick={handleToggle}>{icon}</span>
-
-                  <ErrorMsg name="repeatPassword" component="div" />
-
-                  <ButtonSbmt type="submit">Sign Up</ButtonSbmt>
-                </FormWrapper>
-              )}
-          </Formik>
-
-          <div>
-            <StyledLink to="/signIn">Sign in</StyledLink>
-          </div>
+          <StyledLink to="/signIn">Sign in</StyledLink>
         </div>
-      )}
+      </div>
     </div>
   );
 };

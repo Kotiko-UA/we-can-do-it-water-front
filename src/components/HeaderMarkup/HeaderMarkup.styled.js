@@ -59,11 +59,18 @@ export const Nav = styled.nav`
 
 export const RightNavWrapper = styled.div`
   justify-content: right;
+  position: relative;
   &:hover .navMenu {
     transform: translateY(0);
     opacity: 1;
     visibility: visible;
   }
+
+  /* &:active .open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  } */
 `;
 export const StyledLink = styled(NavLink)`
   font-size: 18px;
@@ -105,6 +112,7 @@ export const NavMenu = styled.ul`
   align-items: flex-start;
   gap: 16px;
   width: 118px;
+  right: 0;
 
   border-radius: 10px;
   background: ${props => props.theme.primaryWhite};
@@ -121,7 +129,14 @@ export const NavMenu = styled.ul`
   opacity: 0;
   transform: translateY(-10px);
   visibility: hidden;
-  transition: 0.3s;
+  transition: 0.5s;
+
+  &:active .open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
 `;
 export const NavLi = styled.li`
   display: flex;

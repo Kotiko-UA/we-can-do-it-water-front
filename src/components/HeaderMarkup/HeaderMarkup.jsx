@@ -15,14 +15,24 @@ import {
   ArrowIcon,
 } from './HeaderMarkup.styled.js';
 import { Loader } from '../Loader.jsx';
-//import { useSelector } from 'react-redux';
+// import { useState } from 'react';
 
-const HeaderMarkup = ({ toggleSetting, toggleLogOut }) => {
+const HeaderMarkup = ({ onClickSetting, onClickLogout }) => {
   const { isLoggedIn } = useAuth();
   const { userIcon } = useAuth();
-  // const { user } = useAuth();
-  //const loading = useSelector(state => state.auth.isLoading);
   const { isLoading } = useAuth();
+  const { user } = useAuth();
+  // const [isOpen, setOpen] = useState(false);
+
+  let userNameFromEmail = null;
+  const userEmail = user.email;
+  if (userEmail !== null) {
+    const index = userEmail.indexOf('@');
+    userNameFromEmail = userEmail.slice(0, index);
+  }
+
+  // console.log('user', user);
+  // console.log('emailNаme not in if', userNameFromEmail);
 
   return (
     <>
@@ -38,21 +48,32 @@ const HeaderMarkup = ({ toggleSetting, toggleLogOut }) => {
               </StyledLinkLogo>
             </li>
 
-            <li style={{ width: '118px' }}>
+            <li
+            // style={{ width: '118px' }}
+            >
               {isLoggedIn ? (
-                <RightNavWrapper>
+                <RightNavWrapper
+                // onClick={() => {
+                //   console.log('ckick');
+                //   setOpen(!isOpen);
+                // }}
+                >
                   <StyledLink to="/">
-                    <h3>Hi, user</h3>
+                    <h3>{userNameFromEmail}</h3>
                     <RealUserIcon src={userIcon} alt="user real avatar" />
                     <ArrowIcon />
                   </StyledLink>
-                  <NavMenu className="navMenu">
+
+                  <NavMenu
+                    className="navMenu"
+                    // {`${isOpen ? 'open' : ''}`}
+                  >
                     <NavLi>
                       <SettingsIcon />
                       <a
                         href="#settings"
                         style={{ color: '#407bff' }}
-                        onClick={() => toggleSetting()}
+                        onClick={onClickSetting}
                       >
                         Settings
                       </a>
@@ -62,7 +83,7 @@ const HeaderMarkup = ({ toggleSetting, toggleLogOut }) => {
                       <a
                         href="#logout"
                         style={{ color: '#407bff' }}
-                        onClick={() => toggleLogOut()}
+                        onClick={onClickLogout}
                       >
                         Log out
                       </a>

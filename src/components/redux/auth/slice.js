@@ -1,5 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { signUp, signIn, refreshUser, logOut, addDailyNorma } from './operations';
+import {
+  signUp,
+  signIn,
+  refreshUser,
+  logOut,
+  addDailyNorma,
+  updateAvatar,
+} from './operations';
 
 const initialState = {
   user: { name: null, email: null },
@@ -9,10 +16,11 @@ const initialState = {
   icon: null,
   isLoading: false,
   dailyNorma: 2,
+  error: null,
 };
 
 const handleRejected = (state, action) => {
-  alert(action.payload);
+  state.error = action.payload;
   state.isLoading = false;
 };
 
@@ -59,6 +67,7 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
         state.isRefreshing = false;
         state.dailyNorma = action.payload.dailyNorma;
+        state.icon = action.payload.avatarURL;
       })
       .addCase(refreshUser.rejected, (state, action) => {
         state.isRefreshing = false;
@@ -75,25 +84,32 @@ const authSlice = createSlice({
         handleRejected(state, action);
       })
 
-      .addCase(addDailyNorma.pending, (state, action) => {
-        state.isLoading = true;
-      })
       .addCase(addDailyNorma.fulfilled, (state, action) => {
-        state.isLoading = false;
         state.dailyNorma = action.payload.dailyNorma;
       })
       .addCase(addDailyNorma.rejected, handleRejected)
 
+      .addCase(updateAvatar.pending, (state, action) => {
+        state.isRefreshing = true;
+      })
+      .addCase(updateAvatar.fulfilled, (state, action) => {
+        state.icon = action.payload.avatarURL;
+      })
+      .addCase(updateAvatar.rejected, (state, action) => {
+        handleRejected(state, action);
+      })
+
       .addMatcher(isPendingAction, (state, action) => {
         state.isLoading = true;
+        state.error = null;
       })
       .addMatcher(isFulfilledAction, (state, action) => {
         state.isLoading = false;
+        state.error = null;
       })
       .addMatcher(isRejectedAction, (state, action) => {
         state.isLoading = false;
-
-      })
+      });
   },
 });
 
