@@ -49,9 +49,6 @@ export const EditingWater = ({ id, close }) => {
   const [startDate, setStartDate] = useState(new Date());
   const [waterValue, setWaterValue] = useState(250);
   const { notes = [] } = useSelector(selectWaterItems);
-  // const oldWaterValue = useSelector(state =>
-  //   state.water.items.find(entry => entry.id === id)
-  // );
 
   const oldWaterValue = notes.find(data => data._id === id);
   console.log(oldWaterValue.time);
