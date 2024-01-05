@@ -5,7 +5,6 @@ import DatePicker, { registerLocale } from 'react-datepicker';
 import { uk } from 'date-fns/locale/uk';
 
 import {
-  Backdrop,
   BodyModal,
   Tilel,
   ChoWal,
@@ -24,7 +23,6 @@ import {
   StyledDatePicker,
   WrapSave,
   StileSave,
-  ButClose,
   SaveTime,
   OldWaterState,
   OldWaterMlBeg,
@@ -32,7 +30,6 @@ import {
 } from './EditingWater.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateWater } from 'components/redux/water/operations';
-// необхідно додати  "date-fns": "^3.0.6", "react-datepicker": "^4.25.0",
 import { selectWaterItems } from 'components/redux/water/selectors';
 const waterValidationSchema = Yup.object().shape({
   water: Yup.number()
@@ -46,17 +43,12 @@ export const EditingWater = ({ id, close }) => {
   registerLocale('uk', uk);
 
   const dispatch = useDispatch();
-  const [startDate, setStartDate] = useState(new Date());
-  const [waterValue, setWaterValue] = useState(250);
   const { notes = [] } = useSelector(selectWaterItems);
+  const oldWaterValue = notes.find(data => data.id === id);
+  const [startDate, setStartDate] = useState(new Date());
+  const [waterValue, setWaterValue] = useState(oldWaterValue.amount);
 
-  const oldWaterValue = notes.find(data => data._id === id);
-  console.log(oldWaterValue.time);
-  console.log(oldWaterValue.amount);
   useEffect(() => {
-    if (!oldWaterValue) {
-      return console.log(oldWaterValue);
-    }
     if (oldWaterValue) {
       const today = new Date();
 
@@ -84,10 +76,10 @@ export const EditingWater = ({ id, close }) => {
     const amount = values.water;
 
     const updatedWater = { amount, time };
+
     dispatch(updateWater(id, updatedWater));
     actions.resetForm();
     close(close);
-    console.log(id, updatedWater);
   };
   //захист щоб користувач не міг видалити весь час з DatePicker та зламати код + стилізація
   const CustomInput = React.forwardRef(({ value, onClick }, ref) => (
@@ -100,7 +92,6 @@ export const EditingWater = ({ id, close }) => {
     />
   ));
   return (
-    // <Backdrop>
     <BodyModal>
       <Formik
         initialValues={{ water: waterValue }}
@@ -111,7 +102,6 @@ export const EditingWater = ({ id, close }) => {
           <Form>
             <WraperTitel>
               <Tilel>Edit the entered amount of water</Tilel>
-              {/* <ButClose onClick={close}></ButClose> */}
             </WraperTitel>
             <OldWaterState>
               <GlassSvg></GlassSvg>
@@ -198,6 +188,5 @@ export const EditingWater = ({ id, close }) => {
         )}
       </Formik>
     </BodyModal>
-    // </Backdrop>
   );
 };

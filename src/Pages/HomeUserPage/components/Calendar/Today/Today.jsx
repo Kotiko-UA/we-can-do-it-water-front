@@ -13,9 +13,9 @@ import {
   ImgCont,
 } from './Today.styled';
 
-import { AddWater } from 'components/AddWater/addWater';
-import { EditingWater } from 'components/EditingWater/EditingWater';
-import { DeleteWater } from 'components/DeleteWater/DeleteWater';
+// import { AddWater } from 'components/AddWater/addWater';
+// import { EditingWater } from 'components/EditingWater/EditingWater';
+// import { DeleteWater } from 'components/DeleteWater/DeleteWater';
 
 import css from './Today.module.css';
 import Icons from '../../../../../icons/HomePage/sprite.svg';
@@ -23,13 +23,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectWaterItems } from 'components/redux/water/selectors';
 import { findWaterToday } from 'components/redux/water/operations';
 
-const Today = () => {
+const Today = ({ onDeleteWater, onAddWater, onEditingWater }) => {
   const dispatch = useDispatch();
   const { notes = [] } = useSelector(selectWaterItems);
-  const [isOpenAddModal, setIsOpenAddModal] = useState(false);
-  const [isOpenEditModal, setIsOpenEditModal] = useState(false);
-  const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
-  const [isId, setIsId] = useState();
+  // const [isOpenAddModal, setIsOpenAddModal] = useState(false);
+  // const [isOpenEditModal, setIsOpenEditModal] = useState(false);
+  // const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
+  // const [isId, setIsId] = useState();
   const listRef = useRef(null);
 
   useEffect(() => {
@@ -58,30 +58,32 @@ const Today = () => {
                     aria-label="Edit notice"
                     type="button"
                     onClick={() => {
-                      setIsId(data._id);
-                      setIsOpenEditModal(!isOpenEditModal);
+                      // setIsId(data._id);
+                      // setIsOpenEditModal(!isOpenEditModal);
+                      onEditingWater(data._id);
                     }}
                   >
                     <svg className={css.icon_pencil} width="16" height="16">
                       <use href={Icons + '#pencil-square'}></use>
                     </svg>
                   </Button>
-                  {isOpenEditModal && <EditingWater id={isId} />}
+                  {/* {isOpenEditModal && <EditingWater id={isId} />} */}
                 </TableCell>
                 <TableCell>
                   <Button
                     aria-label="Delete notice"
                     type="button"
                     onClick={() => {
-                      setIsId(data._id);
-                      setIsOpenDeleteModal(!isOpenDeleteModal);
+                      // setIsId(data._id);
+                      // setIsOpenDeleteModal(!isOpenDeleteModal);
+                      onDeleteWater(data._id);
                     }}
                   >
                     <svg className={css.icon_trash} width="16" height="16">
                       <use href={Icons + '#trash'}></use>
                     </svg>
                   </Button>
-                  {isOpenDeleteModal && <DeleteWater id={isId} />}
+                  {/* {isOpenDeleteModal && <DeleteWater id={isId} />} */}
                 </TableCell>
               </TableRow>
             ))}
@@ -90,12 +92,13 @@ const Today = () => {
         <AddButton
           type="button"
           onClick={() => {
-            setIsOpenAddModal(!isOpenAddModal);
+            // setIsOpenAddModal(!isOpenAddModal);
+            onAddWater();
           }}
         >
           + Add water
         </AddButton>
-        {isOpenAddModal && <AddWater />}
+        {/* {isOpenAddModal && <AddWater />} */}
       </Viewport>
     </Container>
   );

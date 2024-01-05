@@ -53,8 +53,7 @@ export const AddWater = ({ close }) => {
   const onSubmit = (values, actions) => {
     const amount = values.water;
     const newWater = { amount, time };
-    // const serializedNewWater = JSON.stringify(newWater);
-    // localStorage.setItem('id', serializedNewWater);
+
     console.log(newWater);
     dispatch(addWater(newWater)).then(() => {
       setWaterValue(0);
@@ -75,7 +74,6 @@ export const AddWater = ({ close }) => {
     />
   ));
   return (
-    // <Backdrop onClick={close}>
     <BodyModal>
       <Formik
         initialValues={{ water: waterValue }}
@@ -165,6 +163,5 @@ export const AddWater = ({ close }) => {
         )}
       </Formik>
     </BodyModal>
-    // </Backdrop>
   );
 };
