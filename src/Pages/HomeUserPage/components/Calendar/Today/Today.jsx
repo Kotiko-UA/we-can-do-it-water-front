@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import {
   Viewport,
@@ -13,38 +13,28 @@ import {
   ImgCont,
 } from './Today.styled';
 
-import { ModalContext } from 'components/helpers/ModalContext';
+import { AddWater } from 'components/AddWater/addWater';
+import { EditingWater } from 'components/EditingWater/EditingWater';
+import { DeleteWater } from 'components/DeleteWater/DeleteWater';
 
 import css from './Today.module.css';
 import Icons from '../../../../../icons/HomePage/sprite.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectWaterItems } from 'components/redux/water/selectors';
-import {
-  addWater,
-  deleteWater,
-  findWaterToday,
-} from 'components/redux/water/operations';
+import { findWaterToday } from 'components/redux/water/operations';
 
 const Today = () => {
   const dispatch = useDispatch();
   const { notes = [] } = useSelector(selectWaterItems);
+  const [isOpenAddModal, setIsOpenAddModal] = useState(false);
+  const [isOpenEditModal, setIsOpenEditModal] = useState(false);
+  const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
+  const [isId, setIsId] = useState();
   const listRef = useRef(null);
 
   useEffect(() => {
     dispatch(findWaterToday());
   }, [dispatch]);
-
-  // function onAddWater(amount) {
-  //   dispatch(addWater(data));
-  // }
-
-  // function onEdite({ id, time, amout }) {
-  // {date: "1, January", norma: "2.0 L", procent: "0%", servings: 0}
-  // }
-
-  // function onDelete(id) {
-  //   dispatch(deleteWater(id));
-  // }
 
   return (
     <Container>
@@ -53,7 +43,7 @@ const Today = () => {
         <TableStyled>
           <tbody>
             {notes.map(data => (
-              <TableRow key={data._id} idWater={data._id}>
+              <TableRow key={data._id}>
                 <TableCell>
                   <ImgCont>
                     <svg className={css.cup} width="26" height="26">
@@ -64,24 +54,48 @@ const Today = () => {
                 <TextCell>{data.amount} ml</TextCell>
                 <TimeCell>{data.time}</TimeCell>
                 <TableCell>
-                  <Button aria-label="Edit notice">
+                  <Button
+                    aria-label="Edit notice"
+                    type="button"
+                    onClick={() => {
+                      setIsId(data._id);
+                      setIsOpenEditModal(!isOpenEditModal);
+                    }}
+                  >
                     <svg className={css.icon_pencil} width="16" height="16">
                       <use href={Icons + '#pencil-square'}></use>
                     </svg>
                   </Button>
+                  {isOpenEditModal && <EditingWater id={isId} />}
                 </TableCell>
                 <TableCell>
-                  <Button aria-label="Delete notice">
+                  <Button
+                    aria-label="Delete notice"
+                    type="button"
+                    onClick={() => {
+                      setIsId(data._id);
+                      setIsOpenDeleteModal(!isOpenDeleteModal);
+                    }}
+                  >
                     <svg className={css.icon_trash} width="16" height="16">
                       <use href={Icons + '#trash'}></use>
                     </svg>
                   </Button>
+                  {isOpenDeleteModal && <DeleteWater id={isId} />}
                 </TableCell>
               </TableRow>
             ))}
           </tbody>
         </TableStyled>
-        <AddButton type="submit">+ Add water</AddButton>
+        <AddButton
+          type="button"
+          onClick={() => {
+            setIsOpenAddModal(!isOpenAddModal);
+          }}
+        >
+          + Add water
+        </AddButton>
+        {isOpenAddModal && <AddWater />}
       </Viewport>
     </Container>
   );
