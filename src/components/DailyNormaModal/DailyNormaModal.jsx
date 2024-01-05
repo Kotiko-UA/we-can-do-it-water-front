@@ -1,9 +1,6 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import {
-  Backdrop,
-  ButtonClose,
-  ButtonCloseIcon,
   ButtonSave,
   ErrMsg,
   FieldForm,
@@ -11,7 +8,6 @@ import {
   FormStyled,
   Formula,
   LabelFormNorma,
-  Modal,
   NormaWrap,
   RadioBtnField,
   RadioBtnLabel,
@@ -24,10 +20,9 @@ import {
   WrapInfo,
   WrapTitle,
 } from './DailyNormaModal.styled';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+
 import { addDailyNorma } from 'components/redux/auth/operations';
-import { selectDailyNorma } from 'components/redux/auth/selectors';
 
 const DailyNormaSchema = Yup.object().shape({
   weight: Yup.number().moreThan(-1, 'The value must be positive!'),
@@ -47,29 +42,16 @@ const normaForMan = values => {
   return values.weight * 0.04 + values.time * 0.6;
 };
 
-export const DailyNormaModal = ({ onClick }) => {
+export const DailyNormaModal = ({ closeModal }) => {
   const dispatch = useDispatch();
-  const dailyNormaValue = useSelector(selectDailyNorma);
 
-  useEffect(() => {
-    const handleClick = e => {
-      if (e.target === e.currentTarget) {
-        onClick('edit-daily-norm');
-      }
-    };
-    const handleKeydown = e => {
-      if (e.key === 'Escape') {
-        onClick('edit-daily-norm');
-      }
-    };
-    const backdrop = document.querySelector('.js-dayly-backdrop');
-    document.addEventListener('keydown', handleKeydown);
-    backdrop.addEventListener('click', handleClick);
-    return () => {
-      backdrop.removeEventListener('click', handleClick);
-      document.removeEventListener('keydown', handleKeydown);
-    };
-  }, [onClick]);
+  const handleSave = (values, actions) => {
+    dispatch(addDailyNorma(values.drink));
+    actions.resetForm();
+    closeModal(); 
+  };
+
+
   const dailyNormaCounter = values =>
     values.picked === 'For girl'
       ? normaForGirl(values).toFixed(1)
@@ -78,13 +60,9 @@ export const DailyNormaModal = ({ onClick }) => {
       : 0;
 
   return (
-    <Backdrop className="js-dayly-backdrop">
-      <Modal>
+      <div>
         <WrapTitle>
           <Title>My daily norma</Title>
-          <ButtonClose type="button" onClick={() => onClick('edit-daily-norm')}>
-            <ButtonCloseIcon />
-          </ButtonClose>
         </WrapTitle>
         <div>
           <TextWrap>
@@ -110,11 +88,8 @@ export const DailyNormaModal = ({ onClick }) => {
             drink: 0,
           }}
           validationSchema={DailyNormaSchema}
-          onSubmit={(values, actions) => {
-            dispatch(addDailyNorma(values.drink));
-            onClick('edit-daily-norm');
-            actions.resetForm();
-          }}
+          onSubmit={(values, actions) => handleSave(values, actions)}
+
         >
           {({ values }) => (
             <FormStyled>
@@ -160,7 +135,6 @@ export const DailyNormaModal = ({ onClick }) => {
             </FormStyled>
           )}
         </Formik>
-      </Modal>
-    </Backdrop>
+      </div>
   );
 };

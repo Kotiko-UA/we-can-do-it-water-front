@@ -15,6 +15,7 @@ import {
   EyeSlash,
   EyeActive,
 } from './SignUpForm.styled.js';
+
 import toast from 'react-hot-toast';
 
 const SignUpFormSchema = Yup.object().shape({
@@ -54,6 +55,7 @@ export const SignUpForm = () => {
       })
     );
   };
+
 
   const { error } = useAuth();
 
