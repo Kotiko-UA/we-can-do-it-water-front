@@ -29,7 +29,6 @@ export const findWaterToday = createAsyncThunk(
 export const addWater = createAsyncThunk(
   'water/add',
   async (newWater, thunkAPI) => {
-    console.log(newWater);
     try {
       const response = await axios.post('/waternotes', newWater);
       return response.data;
