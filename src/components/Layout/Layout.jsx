@@ -20,7 +20,6 @@ export const Layout = () => {
   const { isLoading } = useAuth();
   const { isLoadingWater } = useAuth();
 
-
   const onClickPaskal = () => {
     setModal(prevState => !prevState);
   };
@@ -43,10 +42,6 @@ export const Layout = () => {
   const close = () => {
     setIsOpen(false);
   };
-
-  // не працює, треба не через редакс
-  //const loading = useSelector(state => state.auth.isLoading);
-
   return (
     <div>
       <Header>
@@ -58,9 +53,7 @@ export const Layout = () => {
       <main>
         <Outlet />
         {isOpen && (
-
-          <Modalochka toggleModal={toggleModal} title={settingModal ? "Setting" : "Log out"}>
-
+          <Modalochka toggleModal={toggleModal}>
             {settingModal && <Setting close={close} />}
             {logOutModal && <LogOut close={close} />}
           </Modalochka>
