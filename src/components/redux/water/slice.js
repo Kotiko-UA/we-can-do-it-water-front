@@ -61,13 +61,10 @@ const waterSlice = createSlice({
       })
       .addCase(updateWater.rejected, handleRejected)
       .addCase(deleteWater.fulfilled, (state, action) => {
-        // state.notes.filter(water => water._id !== action.payload.id);
-        // const deleteId = action.payload.id;
-        // state.notes = state.notes.filter(water => water._id !== deleteId);
-        // const index = state.notes.findIndex(
-        //   water => water._id === action.payload.id
-        // );
-        // state.notes.splice(index, 1);
+        const index = state.notes.findIndex(
+          water => water._id === action.payload.id
+        );
+        state.notes.splice(index, 1);
       })
       .addCase(deleteWater.rejected, handleRejected)
       .addCase(logOut.fulfilled, state => {
