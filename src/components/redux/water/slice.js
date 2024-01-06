@@ -39,25 +39,15 @@ const waterSlice = createSlice({
       })
       .addCase(findWaterToday.rejected, handleRejected)
       .addCase(addWater.fulfilled, (state, action) => {
-        // state.items.notes.push(action.payload);
         state.notes.push(action.payload);
       })
       .addCase(addWater.rejected, handleRejected)
       .addCase(updateWater.fulfilled, (state, action) => {
-        console.log(state);
-        console.log(action);
-
-        // state.notes = state.notes.map(water =>
-        //   water._id === action.payload.id ? action.payload : water
-        // );
         const updatedWater = action.payload;
         const index = state.notes.findIndex(
           water => water._id === updatedWater._id
         );
-
-        // if (index !== -1) {
         state.notes[index] = updatedWater;
-        // }
       })
       .addCase(updateWater.rejected, handleRejected)
       .addCase(deleteWater.fulfilled, (state, action) => {
