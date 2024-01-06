@@ -9,19 +9,17 @@ import {
 } from './operations';
 
 const initialState = {
-  user: { name: null, email: null },
-  token: null,
+  user: { name: '', email: '', gender: '', dailyNorma: 0 },
+  avatarURL: '',
+  token: '',
   isLoggedIn: false,
   isRefreshing: false,
-  icon: null,
   isLoading: false,
-  dailyNorma: 2,
   error: null,
 };
 
 const handleRejected = (state, action) => {
   state.error = action.payload;
-  state.isLoading = false;
 };
 
 function isPendingAction(action) {
@@ -41,15 +39,13 @@ const authSlice = createSlice({
     builder
       .addCase(signUp.fulfilled, (state, action) => {
         state.user = action.payload.user;
-        state.token = action.payload.token;
         state.isLoggedIn = true;
-        state.icon = action.payload.avatarURL;
       })
       .addCase(signIn.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
-        state.icon = action.payload.avatarURL;
+        state.avatarURL = action.payload.avatarURL;
       })
       .addCase(signIn.rejected, (state, action) => {
         handleRejected(state, action);
@@ -66,7 +62,7 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
         state.isRefreshing = false;
         state.dailyNorma = action.payload.dailyNorma;
-        state.icon = action.payload.avatarURL;
+        state.avatarURL = action.payload.avatarURL;
       })
       .addCase(refreshUser.rejected, (state, action) => {
         state.isRefreshing = false;
@@ -75,9 +71,10 @@ const authSlice = createSlice({
         state.isRefreshing = true;
       })
       .addCase(logOut.fulfilled, (state, action) => {
-        state.user = { name: null, email: null };
-        state.token = null;
+        state.user = { name: '', email: '', gender: '', dailyNorma: 0 };
+        state.token = '';
         state.isLoggedIn = false;
+        state.avatarURL = '';
       })
       .addCase(logOut.rejected, (state, action) => {
         handleRejected(state, action);
@@ -87,7 +84,7 @@ const authSlice = createSlice({
       })
 
       .addCase(addDailyNorma.fulfilled, (state, action) => {
-        state.dailyNorma = action.payload.dailyNorma;
+        state.user.dailyNorma = action.payload.user.dailyNorma;
       })
       .addCase(addDailyNorma.rejected, handleRejected)
 
@@ -95,7 +92,7 @@ const authSlice = createSlice({
         state.isRefreshing = true;
       })
       .addCase(updateAvatar.fulfilled, (state, action) => {
-        state.icon = action.payload.avatarURL;
+        state.avatarURL = action.payload.avatarURL;
       })
       .addCase(updateAvatar.rejected, (state, action) => {
         handleRejected(state, action);

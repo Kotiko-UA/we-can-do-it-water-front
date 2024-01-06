@@ -8,12 +8,11 @@ import {
 import { logOut } from '../auth/operations';
 
 const initialState = {
-  items: {},
+  items: { norma: 0, procent: 0, notes: [] },
   isLoading: false,
   error: null,
 };
 const handleRejected = (state, action) => {
-  state.isLoading = false;
   state.error = action.payload;
 };
 
@@ -31,7 +30,6 @@ const waterSlice = createSlice({
   initialState,
   extraReducers: builder => {
     builder
-      .addCase(findWaterToday.pending, state => {})
       .addCase(findWaterToday.fulfilled, (state, action) => {
         state.items = action.payload;
       })
@@ -41,7 +39,7 @@ const waterSlice = createSlice({
       })
       .addCase(addWater.rejected, handleRejected)
       .addCase(updateWater.fulfilled, (state, action) => {
-        state.items.notes = state.items.notes.map(water =>
+        state.items.notes.map(water =>
           water.id === action.payload.id ? action.payload : water
         );
       })
@@ -51,7 +49,7 @@ const waterSlice = createSlice({
       })
       .addCase(deleteWater.rejected, handleRejected)
       .addCase(logOut.fulfilled, state => {
-        state.items = [];
+        state.items = { norma: 0, procent: 0, notes: [] };
       })
       .addMatcher(isPendingAction, (state, action) => {
         state.isLoading = true;
