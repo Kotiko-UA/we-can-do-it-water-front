@@ -9,15 +9,13 @@ import {
 } from './operations';
 
 const initialState = {
-  user: { name: null, email: null },
+  user: { name: null, email: null, dailyNorma: 2, gender: 'female'},
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
   icon: null,
   isLoading: false,
-  dailyNorma: 2,
   error: null,
-  gender: 'femail',
 };
 
 const handleRejected = (state, action) => {
@@ -69,7 +67,6 @@ const authSlice = createSlice({
         state.user = action.payload;
         state.isLoggedIn = true;
         state.isRefreshing = false;
-        state.dailyNorma = action.payload.dailyNorma;
         state.icon = action.payload.avatarURL;
       })
       .addCase(refreshUser.rejected, (state, action) => {
@@ -92,7 +89,7 @@ const authSlice = createSlice({
       })
 
       .addCase(addDailyNorma.fulfilled, (state, action) => {
-        state.dailyNorma = action.payload.dailyNorma;
+        state.user.dailyNorma = action.payload.dailyNorma;
       })
       .addCase(addDailyNorma.rejected, handleRejected)
 

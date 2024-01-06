@@ -25,6 +25,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { addDailyNorma } from 'components/redux/auth/operations';
 import { selectGender } from 'components/redux/auth/selectors';
+import { useEffect } from 'react';
 
 const DailyNormaSchema = Yup.object().shape({
   weight: Yup.number().moreThan(-1, 'The value must be positive!'),
@@ -56,11 +57,18 @@ export const DailyNormaModal = ({ closeModal }) => {
 
 
   const dailyNormaCounter = values =>
-    values.picked === 'femail'
+    values.picked === 'female'
       ? normaForGirl(values).toFixed(1)
-      : values.picked === 'mail'
+      : values.picked === 'male'
       ? normaForMan(values).toFixed(1)
       : 0;
+
+
+      // useEffect(() => {
+      //   if (error) {
+      //     toast.error(error);
+      //   }
+      // }, [error]);
 
   return (
       <ModalWin>
@@ -103,12 +111,12 @@ export const DailyNormaModal = ({ closeModal }) => {
                     <RadioBtnField
                       type="radio"
                       name="picked"
-                      value="femail"
+                      value="female"
                     />
                     For girl
                   </RadioBtnLabel>
                   <RadioBtnLabel>
-                    <RadioBtnField type="radio" name="picked" value="mail" />
+                    <RadioBtnField type="radio" name="picked" value="male" />
                     For man
                   </RadioBtnLabel>
                 </RadioWrap>
