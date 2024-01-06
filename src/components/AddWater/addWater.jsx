@@ -53,7 +53,6 @@ export const AddWater = ({ close }) => {
   const onSubmit = (values, actions) => {
     const amount = values.water;
     const newWater = { amount, time };
-
     console.log(newWater);
     dispatch(addWater(newWater)).then(() => {
       setWaterValue(0);

@@ -15,6 +15,7 @@ import { deleteWater } from 'components/redux/water/operations';
 export const DeleteWater = ({ deleteId, close }) => {
   const dispatch = useDispatch();
   const onDelete = async deleteId => {
+    console.log(deleteId);
     await dispatch(deleteWater(deleteId));
     close();
   };

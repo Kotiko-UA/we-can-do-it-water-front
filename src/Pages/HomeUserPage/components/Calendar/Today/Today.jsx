@@ -22,16 +22,17 @@ import Icons from '../../../../../icons/HomePage/sprite.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectWaterItems } from 'components/redux/water/selectors';
 import { findWaterToday } from 'components/redux/water/operations';
+import { selectWaterNotes } from 'components/redux/water/selectors';
 
 const Today = ({ onDeleteWater, onAddWater, onEditingWater }) => {
   const dispatch = useDispatch();
-  const { notes = [] } = useSelector(selectWaterItems);
+  // const { notes } = useSelector(selectWaterItems);
+  const notes = useSelector(selectWaterNotes);
   // const [isOpenAddModal, setIsOpenAddModal] = useState(false);
   // const [isOpenEditModal, setIsOpenEditModal] = useState(false);
   // const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
   // const [isId, setIsId] = useState();
   const listRef = useRef(null);
-
   useEffect(() => {
     dispatch(findWaterToday());
   }, [dispatch]);

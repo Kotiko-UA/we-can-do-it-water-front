@@ -31,6 +31,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { updateWater } from 'components/redux/water/operations';
 import { selectWaterItems } from 'components/redux/water/selectors';
+import { selectWaterNotes } from 'components/redux/water/selectors';
 const waterValidationSchema = Yup.object().shape({
   water: Yup.number()
     .integer()
@@ -43,7 +44,8 @@ export const EditingWater = ({ editingId, close }) => {
   registerLocale('uk', uk);
   const id = editingId;
   const dispatch = useDispatch();
-  const { notes = [] } = useSelector(selectWaterItems);
+  // const { notes = [] } = useSelector(selectWaterItems);
+  const notes = useSelector(selectWaterNotes);
   const oldWaterValue = notes.find(data => data._id === id);
   const [startDate, setStartDate] = useState(new Date());
   const [waterValue, setWaterValue] = useState(oldWaterValue.amount);
@@ -76,7 +78,7 @@ export const EditingWater = ({ editingId, close }) => {
     const amount = values.water;
 
     const updatedWater = { id, amount, time };
-
+    console.log(updatedWater);
     dispatch(updateWater(updatedWater));
 
     actions.resetForm();

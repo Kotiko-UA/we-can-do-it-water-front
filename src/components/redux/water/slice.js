@@ -8,10 +8,12 @@ import {
 import { logOut } from '../auth/operations';
 
 const initialState = {
-  items: { norma: 0, procent: 0, notes: [] },
+  items: { norma: 0, procent: 0 },
+  notes: [],
   isLoading: false,
   error: null,
 };
+
 const handleRejected = (state, action) => {
   state.error = action.payload;
 };
@@ -31,21 +33,41 @@ const waterSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(findWaterToday.fulfilled, (state, action) => {
-        state.items = action.payload;
+        state.items.norma = action.payload.norma;
+        state.items.procent = action.payload.procent;
+        state.notes = action.payload.notes;
       })
       .addCase(findWaterToday.rejected, handleRejected)
       .addCase(addWater.fulfilled, (state, action) => {
-        state.items.notes.push(action.payload);
+        // state.items.notes.push(action.payload);
+        state.notes.push(action.payload);
       })
       .addCase(addWater.rejected, handleRejected)
       .addCase(updateWater.fulfilled, (state, action) => {
-        state.items.notes.map(water =>
-          water._id === action.payload.id ? action.payload : water
+        console.log(state);
+        console.log(action);
+
+        // state.notes = state.notes.map(water =>
+        //   water._id === action.payload.id ? action.payload : water
+        // );
+        const updatedWater = action.payload;
+        const index = state.notes.findIndex(
+          water => water._id === updatedWater._id
         );
+
+        // if (index !== -1) {
+        state.notes[index] = updatedWater;
+        // }
       })
       .addCase(updateWater.rejected, handleRejected)
       .addCase(deleteWater.fulfilled, (state, action) => {
-        state.items.notes.filter(water => water.id !== action.payload.id);
+        // state.notes.filter(water => water._id !== action.payload.id);
+        // const deleteId = action.payload.id;
+        // state.notes = state.notes.filter(water => water._id !== deleteId);
+        // const index = state.notes.findIndex(
+        //   water => water._id === action.payload.id
+        // );
+        // state.notes.splice(index, 1);
       })
       .addCase(deleteWater.rejected, handleRejected)
       .addCase(logOut.fulfilled, state => {
