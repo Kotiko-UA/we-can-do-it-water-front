@@ -28,7 +28,7 @@ const Calendar = () => {
     const getMonthData = async () => {
       try {
         const resp = await instanceWaterMonth.get(
-          `/waternotes?month=${month}&year=${year}`,
+          `/waternotes/month?month=${month}&year=${year}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
