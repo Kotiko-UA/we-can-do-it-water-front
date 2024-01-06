@@ -39,12 +39,12 @@ const waterValidationSchema = Yup.object().shape({
     .required('Please enter a valid number between 1 and 999'),
 });
 
-export const EditingWater = ({ id, close }) => {
+export const EditingWater = ({ editingId, close }) => {
   registerLocale('uk', uk);
-
+  const id = editingId;
   const dispatch = useDispatch();
   const { notes = [] } = useSelector(selectWaterItems);
-  const oldWaterValue = notes.find(data => data.id === id);
+  const oldWaterValue = notes.find(data => data._id === id);
   const [startDate, setStartDate] = useState(new Date());
   const [waterValue, setWaterValue] = useState(oldWaterValue.amount);
 
@@ -75,9 +75,10 @@ export const EditingWater = ({ id, close }) => {
   const onSubmit = (values, actions) => {
     const amount = values.water;
 
-    const updatedWater = { amount, time };
+    const updatedWater = { id, amount, time };
 
-    dispatch(updateWater(id, updatedWater));
+    dispatch(updateWater(updatedWater));
+
     actions.resetForm();
     close(close);
   };

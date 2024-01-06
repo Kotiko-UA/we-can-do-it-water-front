@@ -40,7 +40,7 @@ const waterSlice = createSlice({
       .addCase(addWater.rejected, handleRejected)
       .addCase(updateWater.fulfilled, (state, action) => {
         state.items.notes.map(water =>
-          water.id === action.payload.id ? action.payload : water
+          water._id === action.payload.id ? action.payload : water
         );
       })
       .addCase(updateWater.rejected, handleRejected)
