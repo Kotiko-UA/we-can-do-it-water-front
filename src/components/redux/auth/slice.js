@@ -84,7 +84,7 @@ const authSlice = createSlice({
       })
 
       .addCase(addDailyNorma.fulfilled, (state, action) => {
-        state.user.dailyNorma = action.payload.user.dailyNorma;
+        state.user.dailyNorma = action.payload.dailyNorma;
       })
       .addCase(addDailyNorma.rejected, handleRejected)
 
