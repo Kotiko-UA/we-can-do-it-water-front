@@ -37,6 +37,7 @@ import { selectDailyNorma } from 'components/redux/auth/selectors';
 export const DailyNorma = ({ onDailyNorma, onAddWater }) => {
   const { norma, procent } = useSelector(selectWaterItems);
   const dailyNormaValue = useSelector(selectDailyNorma);
+
   // const [dailyNormaModal, setDailyNormaModal] = useState(false);
   // const [addWaterModal, setaddWaterModal] = useState(false);
   // const [isOpen, setIsOpen] = useState(false);

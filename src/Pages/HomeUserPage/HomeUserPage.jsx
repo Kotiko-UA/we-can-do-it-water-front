@@ -71,11 +71,7 @@ const HomeUserPage = () => {
   return (
     <Container>
       <WrapperHomePage>
-        <DailyNorma
-          // onClick={onClick}
-          onDailyNorma={onDailyNorma}
-          onAddWater={onAddWater}
-        />
+        <DailyNorma onDailyNorma={onDailyNorma} onAddWater={onAddWater} />
         <Calendar
           onDeleteWater={onDeleteWater}
           onEditingWater={onEditingWater}
