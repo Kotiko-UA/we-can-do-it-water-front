@@ -83,7 +83,6 @@ const authSlice = createSlice({
       .addCase(logOut.rejected, (state, action) => {
         handleRejected(state, action);
       })
-      
       .addCase(addDailyNorma.pending, (state, action) => {
         state.isRefreshing = true;
       })

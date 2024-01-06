@@ -8,7 +8,7 @@ import {
 import { logOut } from '../auth/operations';
 
 const initialState = {
-  items: [],
+  items: {},
   isLoading: false,
   error: null,
 };
@@ -33,38 +33,33 @@ const waterSlice = createSlice({
     builder
       .addCase(findWaterToday.pending, state => {})
       .addCase(findWaterToday.fulfilled, (state, action) => {
-        state.error = null;
+
         state.items = action.payload;
         //"?"
       })
       .addCase(findWaterToday.rejected, handleRejected)
-      .addCase(addWater.pending, state => {})
       .addCase(addWater.fulfilled, (state, action) => {
-        state.error = null;
-        state.items.push(action.payload);
+        state.items.notes.push(action.payload);
       })
       .addCase(addWater.rejected, handleRejected)
-      .addCase(updateWater.pending, state => {})
       .addCase(updateWater.fulfilled, (state, action) => {
-        state.error = null;
-        state.items = state.items.map(water =>
+        state.items.notes = state.items.notes.map(water =>
+
           water.id === action.payload.id ? action.payload : water
         );
         //"?"
       })
       .addCase(updateWater.rejected, handleRejected)
-      .addCase(deleteWater.pending, state => {})
       .addCase(deleteWater.fulfilled, (state, action) => {
-        state.error = null;
-        const index = state.items.findIndex(
+        const index = state.items.notes.findIndex(
+
           water => water.id === action.payload.id
         );
-        state.items.splice(index, 1);
+        state.items.notes.splice(index, 1);
       })
       .addCase(deleteWater.rejected, handleRejected)
       .addCase(logOut.fulfilled, state => {
         state.items = [];
-        state.error = null;
       })
       .addMatcher(isPendingAction, (state, action) => {
         state.isLoading = true;

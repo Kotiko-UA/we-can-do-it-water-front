@@ -7,14 +7,14 @@ export const StyledLink = styled(NavLink)`
   font-style: normal;
   font-weight: 400;
   line-height: 24px;
-  color: #407bff;
+  color: ${props => props.theme.primaryBlue};
   display: flex;
   align-items: center;
   margin-top: 16px;
 
   &:hover,
   :focus {
-    color: var(--Secondary-color-5, #ff9d43);
+    color: ${props => props.theme.secondaryOrange};
   }
 `;
 
@@ -50,7 +50,7 @@ export const Label = styled.label`
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  color: #2f2f2f;
+  color: ${props => props.theme.primaryBlack};
   font-family: Roboto;
   font-size: 18px;
   font-style: normal;
@@ -63,7 +63,7 @@ export const Label = styled.label`
 `;
 export const Input = styled.input`
   width: 100%;
-  color: #9ebbff;
+  color: ${props => props.theme.secondaryBlue};
   font-family: Roboto;
   font-size: 16px;
   font-style: normal;
@@ -71,12 +71,19 @@ export const Input = styled.input`
   line-height: 20px;
   padding: 12px 10px;
   border-radius: 6px;
-  border: 1px solid #d7e3ff;
-  background: #fff;
+  border: 1px solid ${props => props.theme.secondaryLightBlue};
+  background: ${props => props.theme.primaryWhite};
   margin-bottom: 40px;
 
   &:focus {
-    color: #407bff;
+    color: ${props => props.theme.primaryBlue};
+  }
+  &::placeholder {
+    color: ${props => props.theme.secondaryBlue};
+    opacity: 1;
+  }
+  &:invalid {
+    border: 1px solid ${props => props.theme.secondaryRed};
   }
 `;
 export const Button = styled.button`
@@ -89,13 +96,20 @@ export const Button = styled.button`
   align-items: center;
   align-self: center;
   border-radius: 10px;
-  background-color: var(--Primery-Color-Blue, #407bff);
+  background-color: ${props => props.theme.primaryBlue};
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
-  color: #ffffff;
+  color: ${props => props.theme.primaryWhite};
   text-align: center;
   font-family: Roboto;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
   line-height: 20px;
+  &:hover {
+    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+  }
+
+  &:focus {
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+  }
 `;

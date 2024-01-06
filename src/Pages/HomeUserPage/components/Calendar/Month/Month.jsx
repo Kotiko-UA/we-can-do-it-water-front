@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { selectToken } from 'components/redux/auth/selectors';
-import { selectWaterItems } from 'components/redux/water/selectors';
 import Icons from '../../../../../icons/HomePage/sprite.svg';
 
 import {
