@@ -14,12 +14,10 @@ import {
   LogOutIcon,
   ArrowIcon,
 } from './HeaderMarkup.styled.js';
-import { Loader } from '../Loader.jsx';
 
 const HeaderMarkup = ({ onClickSetting, onClickLogout }) => {
   const { isLoggedIn } = useAuth();
   const { userIcon } = useAuth();
-  const { isLoading } = useAuth();
   const { user } = useAuth();
 
   let userNameFromEmail = null;
@@ -30,62 +28,56 @@ const HeaderMarkup = ({ onClickSetting, onClickLogout }) => {
   }
 
   return (
-    <>
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <Container>
-          <Nav>
-            <li>
-              <StyledLinkLogo to="/">
-                <LogoSvg alt="logo" />
-                Tracker <br /> of water
-              </StyledLinkLogo>
-            </li>
+    <Container>
+      <Nav>
+        <li>
+          <StyledLinkLogo to="/">
+            <LogoSvg alt="logo" />
+            Tracker <br /> of water
+          </StyledLinkLogo>
+        </li>
 
-            <li>
-              {isLoggedIn ? (
-                <RightNavWrapper>
-                  <StyledLink to="/">
-                    <h3>{userNameFromEmail}</h3>
-                    <RealUserIcon src={userIcon} alt="user real avatar" />
-                    <ArrowIcon />
-                  </StyledLink>
+        <li>
+          {isLoggedIn ? (
+            <RightNavWrapper>
+              <StyledLink to="/">
+                <h3>{userNameFromEmail}</h3>
+                <RealUserIcon src={userIcon} alt="user real avatar" />
+                <ArrowIcon />
+              </StyledLink>
 
-                  <NavMenu className="navMenu">
-                    <NavLi>
-                      <SettingsIcon />
-                      <a
-                        href="#settings"
-                        style={{ color: '#407bff' }}
-                        onClick={onClickSetting}
-                      >
-                        Settings
-                      </a>
-                    </NavLi>
-                    <NavLi>
-                      <LogOutIcon />
-                      <a
-                        href="#logout"
-                        style={{ color: '#407bff' }}
-                        onClick={onClickLogout}
-                      >
-                        Log out
-                      </a>
-                    </NavLi>
-                  </NavMenu>
-                </RightNavWrapper>
-              ) : (
-                <StyledLink to="/signin">
-                  Sign in
-                  <UserAvatar alt="user default avatar" />
-                </StyledLink>
-              )}
-            </li>
-          </Nav>
-        </Container>
-      )}
-    </>
+              <NavMenu className="navMenu">
+                <NavLi>
+                  <SettingsIcon />
+                  <a
+                    href="#settings"
+                    style={{ color: '#407bff' }}
+                    onClick={onClickSetting}
+                  >
+                    Settings
+                  </a>
+                </NavLi>
+                <NavLi>
+                  <LogOutIcon />
+                  <a
+                    href="#logout"
+                    style={{ color: '#407bff' }}
+                    onClick={onClickLogout}
+                  >
+                    Log out
+                  </a>
+                </NavLi>
+              </NavMenu>
+            </RightNavWrapper>
+          ) : (
+            <StyledLink to="/signin">
+              Sign in
+              <UserAvatar alt="user default avatar" />
+            </StyledLink>
+          )}
+        </li>
+      </Nav>
+    </Container>
   );
 };
 
