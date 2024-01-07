@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 import {
   Viewport,
@@ -13,25 +13,15 @@ import {
   ImgCont,
 } from './Today.styled';
 
-// import { AddWater } from 'components/AddWater/addWater';
-// import { EditingWater } from 'components/EditingWater/EditingWater';
-// import { DeleteWater } from 'components/DeleteWater/DeleteWater';
-
 import css from './Today.module.css';
 import Icons from '../../../../../icons/HomePage/sprite.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectWaterItems } from 'components/redux/water/selectors';
 import { findWaterToday } from 'components/redux/water/operations';
 import { selectWaterNotes } from 'components/redux/water/selectors';
 
 const Today = ({ onDeleteWater, onAddWater, onEditingWater }) => {
   const dispatch = useDispatch();
-  // const { notes } = useSelector(selectWaterItems);
   const notes = useSelector(selectWaterNotes);
-  // const [isOpenAddModal, setIsOpenAddModal] = useState(false);
-  // const [isOpenEditModal, setIsOpenEditModal] = useState(false);
-  // const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
-  // const [isId, setIsId] = useState();
   const listRef = useRef(null);
   useEffect(() => {
     dispatch(findWaterToday());
@@ -59,8 +49,6 @@ const Today = ({ onDeleteWater, onAddWater, onEditingWater }) => {
                     aria-label="Edit notice"
                     type="button"
                     onClick={() => {
-                      // setIsId(data._id);
-                      // setIsOpenEditModal(!isOpenEditModal);
                       onEditingWater(data._id);
                     }}
                   >
@@ -68,15 +56,12 @@ const Today = ({ onDeleteWater, onAddWater, onEditingWater }) => {
                       <use href={Icons + '#pencil-square'}></use>
                     </svg>
                   </Button>
-                  {/* {isOpenEditModal && <EditingWater id={isId} />} */}
                 </TableCell>
                 <TableCell>
                   <Button
                     aria-label="Delete notice"
                     type="button"
                     onClick={() => {
-                      // setIsId(data._id);
-                      // setIsOpenDeleteModal(!isOpenDeleteModal);
                       onDeleteWater(data._id);
                     }}
                   >
@@ -84,7 +69,6 @@ const Today = ({ onDeleteWater, onAddWater, onEditingWater }) => {
                       <use href={Icons + '#trash'}></use>
                     </svg>
                   </Button>
-                  {/* {isOpenDeleteModal && <DeleteWater id={isId} />} */}
                 </TableCell>
               </TableRow>
             ))}
@@ -93,13 +77,11 @@ const Today = ({ onDeleteWater, onAddWater, onEditingWater }) => {
         <AddButton
           type="button"
           onClick={() => {
-            // setIsOpenAddModal(!isOpenAddModal);
             onAddWater();
           }}
         >
           + Add water
         </AddButton>
-        {/* {isOpenAddModal && <AddWater />} */}
       </Viewport>
     </Container>
   );

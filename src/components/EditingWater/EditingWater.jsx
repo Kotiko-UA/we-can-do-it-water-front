@@ -30,7 +30,6 @@ import {
 } from './EditingWater.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateWater } from 'components/redux/water/operations';
-import { selectWaterItems } from 'components/redux/water/selectors';
 import { selectWaterNotes } from 'components/redux/water/selectors';
 const waterValidationSchema = Yup.object().shape({
   water: Yup.number()
@@ -44,7 +43,6 @@ export const EditingWater = ({ editingId, close }) => {
   registerLocale('uk', uk);
   const id = editingId;
   const dispatch = useDispatch();
-  // const { notes = [] } = useSelector(selectWaterItems);
   const notes = useSelector(selectWaterNotes);
   const oldWaterValue = notes.find(data => data._id === id);
   const [startDate, setStartDate] = useState(new Date());
@@ -84,7 +82,6 @@ export const EditingWater = ({ editingId, close }) => {
     actions.resetForm();
     close(close);
   };
-  //захист щоб користувач не міг видалити весь час з DatePicker та зламати код + стилізація
   const CustomInput = React.forwardRef(({ value, onClick }, ref) => (
     <StyledDatePicker
       type="text"
