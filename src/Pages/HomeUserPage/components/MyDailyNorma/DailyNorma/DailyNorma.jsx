@@ -27,56 +27,26 @@ import imgMobPng2x from '../../../../../icons/HomePage/main/bottle-mob-2x.png';
 
 import sprite from '../../../../../icons/HomePage/sprite.svg';
 import { useSelector } from 'react-redux';
-import { useState } from 'react';
-import { DailyNormaModal } from 'components/DailyNormaModal/DailyNormaModal.jsx';
-import { Modalochka } from 'components/Modal/Modal';
-import { selectWaterItems } from 'components/redux/water/selectors';
-import { AddWater } from 'components/AddWater/addWater';
+import { selectWaterNotes } from 'components/redux/water/selectors';
 import { selectDailyNorma } from 'components/redux/auth/selectors';
 
-export const DailyNorma = () => {
-  const { norma, procent } = useSelector(selectWaterItems);
+export const DailyNorma = ({ onDailyNorma, onAddWater }) => {
   const dailyNormaValue = useSelector(selectDailyNorma);
-  const [dailyNormaModal, setDailyNormaModal] = useState(false);
-  const [addWaterModal, setaddWaterModal] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
-  const toggleModal = () => {
-    setIsOpen(prevstate => !prevstate);
+  const waterNotes = useSelector(selectWaterNotes);
+  const procent = (norma, notes) => {
+    let allWater = 0;
+    notes.forEach(water => (allWater += water.amount));
+    return (allWater / (norma * 1000)) * 100;
   };
-
-  function onClickDailyNorma() {
-    setaddWaterModal(true);
-    setDailyNormaModal(false);
-    toggleModal();
-  }
-  function onClickAddWater() {
-    setaddWaterModal(false);
-    setDailyNormaModal(true);
-    toggleModal();
-  }
-  const close = () => {
-    setIsOpen(false);
-  };
-
   return (
     <Container>
       <DailyNormaContainer>
         <Title>My daily norma</Title>
         <NormaContainer>
           <Norma>{dailyNormaValue} L</Norma>
-          <NormaBtn onClick={onClickDailyNorma}>Edit</NormaBtn>
+          <NormaBtn onClick={onDailyNorma}>Edit</NormaBtn>
         </NormaContainer>
       </DailyNormaContainer>
-
-      {isOpen && (
-        <Modalochka toggleModal={toggleModal}>
-          {dailyNormaModal && <AddWater close={close} />}
-          {addWaterModal && (
-            <DailyNormaModal close={close} closeModal={toggleModal} />
-          )}
-        </Modalochka>
-      )}
-
       <picture>
         <source
           media="(min-width: 1440px)"
@@ -113,7 +83,7 @@ export const DailyNorma = () => {
       <StatusContainer>
         <WaterStatus>
           <p>Today</p>
-          <WaterMeter $filled={procent}>
+          <WaterMeter $filled={procent(dailyNormaValue, waterNotes)}>
             <div />
           </WaterMeter>
           <WaterInfo>
@@ -122,7 +92,7 @@ export const DailyNorma = () => {
             <span>100%</span>
           </WaterInfo>
         </WaterStatus>
-        <Button type="button" onClick={onClickAddWater}>
+        <Button type="button" onClick={onAddWater}>
           <svg>
             <use href={sprite + '#plus-circle'} />
           </svg>

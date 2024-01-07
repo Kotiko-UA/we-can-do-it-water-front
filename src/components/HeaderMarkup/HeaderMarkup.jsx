@@ -15,14 +15,12 @@ import {
   ArrowIcon,
 } from './HeaderMarkup.styled.js';
 import { Loader } from '../Loader.jsx';
-// import { useState } from 'react';
 
 const HeaderMarkup = ({ onClickSetting, onClickLogout }) => {
   const { isLoggedIn } = useAuth();
   const { userIcon } = useAuth();
   const { isLoading } = useAuth();
   const { user } = useAuth();
-  // const [isOpen, setOpen] = useState(false);
 
   let userNameFromEmail = null;
   const userEmail = user.email;
@@ -30,9 +28,6 @@ const HeaderMarkup = ({ onClickSetting, onClickLogout }) => {
     const index = userEmail.indexOf('@');
     userNameFromEmail = userEmail.slice(0, index);
   }
-
-  // console.log('user', user);
-  // console.log('emailNаme not in if', userNameFromEmail);
 
   return (
     <>
@@ -48,26 +43,16 @@ const HeaderMarkup = ({ onClickSetting, onClickLogout }) => {
               </StyledLinkLogo>
             </li>
 
-            <li
-            // style={{ width: '118px' }}
-            >
+            <li>
               {isLoggedIn ? (
-                <RightNavWrapper
-                // onClick={() => {
-                //   console.log('ckick');
-                //   setOpen(!isOpen);
-                // }}
-                >
+                <RightNavWrapper>
                   <StyledLink to="/">
                     <h3>{userNameFromEmail}</h3>
                     <RealUserIcon src={userIcon} alt="user real avatar" />
                     <ArrowIcon />
                   </StyledLink>
 
-                  <NavMenu
-                    className="navMenu"
-                    // {`${isOpen ? 'open' : ''}`}
-                  >
+                  <NavMenu className="navMenu">
                     <NavLi>
                       <SettingsIcon />
                       <a
