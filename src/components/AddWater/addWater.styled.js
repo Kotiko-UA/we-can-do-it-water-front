@@ -1,22 +1,9 @@
 import styled from 'styled-components';
 import 'react-datepicker/dist/react-datepicker.css';
-import { ReactComponent as Close } from '../../icons/close.svg';
+
 import { ReactComponent as Minus } from '../../icons/minus-small.svg';
 import { ReactComponent as Plus } from '../../icons/plus-small.svg';
-export const Backdrop = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0) 100%);
-  -webkit-backdrop-filter: blur(11px);
-  backdrop-filter: blur(11px);
-  z-index: 999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+
 export const BodyModal = styled.div`
   padding: 24px 12px;
 
@@ -35,11 +22,8 @@ export const BodyModal = styled.div`
     width: 592px;
   }
 `;
-export const ButClose = styled(Close)`
-  width: 24px;
-  height: 24px;
-`;
-export const Tilel = styled.p`
+
+export const TilelAddWater = styled.p`
   color: #2f2f2f;
   width: 128px;
   font-family: Roboto;
@@ -183,7 +167,7 @@ export const StyledInput = styled.input`
   border: 1px solid #d7e3ff;
   width: 120px;
   color: #407bff;
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -205,7 +189,7 @@ export const StyledDatePicker = styled.input`
   border: 1px solid #d7e3ff;
   color: #407bff;
   width: 120px;
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -222,7 +206,7 @@ export const StileSave = styled.span`
   color: #fff;
   width: 196px;
   text-align: center;
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 16px;
   font-style: normal;
   font-weight: 500;

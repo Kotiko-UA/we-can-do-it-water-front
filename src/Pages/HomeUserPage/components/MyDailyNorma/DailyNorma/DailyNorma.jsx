@@ -27,43 +27,26 @@ import imgMobPng2x from '../../../../../icons/HomePage/main/bottle-mob-2x.png';
 
 import sprite from '../../../../../icons/HomePage/sprite.svg';
 import { useSelector } from 'react-redux';
-// import { selectDailyNorma } from 'components/redux/auth/selectors';
-import { useState } from 'react';
+import { selectWaterNotes } from 'components/redux/water/selectors';
+import { selectDailyNorma } from 'components/redux/auth/selectors';
 
-// import { selectDailyNorma } from 'components/redux/auth/selectors';
-
-import { DailyNormaModal } from 'components/DailyNormaModal/DailyNormaModal';
-import { Modalochka } from 'components/Modal/Modal';
-import { selectWaterItems } from 'components/redux/water/selectors';
-import { AddWater } from 'components/AddWater/addWater';
-
-export const DailyNorma = () => {
-  const { norma, procent } = useSelector(selectWaterItems);
-  const [isOpen, setIsOpen] = useState(false);
-  // const toggleModal = () => {
-  //   setIsOpen(prevstate => !prevstate);
-  // };
-
+export const DailyNorma = ({ onDailyNorma, onAddWater }) => {
+  const dailyNormaValue = useSelector(selectDailyNorma);
+  const waterNotes = useSelector(selectWaterNotes);
+  const procent = (norma, notes) => {
+    let allWater = 0;
+    notes.forEach(water => (allWater += water.amount));
+    return (allWater / (norma * 1000)) * 100;
+  };
   return (
     <Container>
       <DailyNormaContainer>
         <Title>My daily norma</Title>
         <NormaContainer>
-          <Norma>{norma} L</Norma>
-          <NormaBtn
-          // onClick={toggleModal}
-          >
-            Edit
-          </NormaBtn>
+          <Norma>{dailyNormaValue} L</Norma>
+          <NormaBtn onClick={onDailyNorma}>Edit</NormaBtn>
         </NormaContainer>
       </DailyNormaContainer>
-
-      {/* {isOpen && (
-        <Modalochka toggleModal={toggleModal} title={'edit-daily-norm'}>
-          <DailyNormaModal />
-        </Modalochka>
-      )} */}
-
       <picture>
         <source
           media="(min-width: 1440px)"
@@ -100,7 +83,7 @@ export const DailyNorma = () => {
       <StatusContainer>
         <WaterStatus>
           <p>Today</p>
-          <WaterMeter $filled={procent}>
+          <WaterMeter $filled={procent(dailyNormaValue, waterNotes)}>
             <div />
           </WaterMeter>
           <WaterInfo>
@@ -109,18 +92,12 @@ export const DailyNorma = () => {
             <span>100%</span>
           </WaterInfo>
         </WaterStatus>
-        <Button
-          type="button"
-          onClick={() => {
-            setIsOpen(!isOpen);
-          }}
-        >
+        <Button type="button" onClick={onAddWater}>
           <svg>
             <use href={sprite + '#plus-circle'} />
           </svg>
           Add water
         </Button>
-        {isOpen && <AddWater />}
       </StatusContainer>
     </Container>
   );

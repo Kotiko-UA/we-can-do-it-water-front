@@ -1,9 +1,4 @@
 import styled from 'styled-components';
-import { ReactComponent as Close } from '../../icons/close.svg';
-export const ButClose = styled(Close)`
-  width: 24px;
-  height: 24px;
-`;
 
 export const BodyModal = styled.div`
   display: inline-flex;
@@ -22,20 +17,7 @@ export const BodyModal = styled.div`
     align-items: end;
   }
 `;
-export const Backdrop = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0) 100%);
-  -webkit-backdrop-filter: blur(11px);
-  backdrop-filter: blur(11px);
-  z-index: 999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+
 export const ButDelete = styled.button`
   display: flex;
   padding: 8px 30px;

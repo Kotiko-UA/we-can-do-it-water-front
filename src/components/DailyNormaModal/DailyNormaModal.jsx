@@ -1,9 +1,6 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import {
-  Backdrop,
-  ButtonClose,
-  ButtonCloseIcon,
   ButtonSave,
   ErrMsg,
   FieldForm,
@@ -11,7 +8,7 @@ import {
   FormStyled,
   Formula,
   LabelFormNorma,
-  Modal,
+  ModalWin,
   NormaWrap,
   RadioBtnField,
   RadioBtnLabel,
@@ -24,10 +21,9 @@ import {
   WrapInfo,
   WrapTitle,
 } from './DailyNormaModal.styled';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+
 import { addDailyNorma } from 'components/redux/auth/operations';
-import { selectDailyNorma } from 'components/redux/auth/selectors';
 
 const DailyNormaSchema = Yup.object().shape({
   weight: Yup.number().moreThan(-1, 'The value must be positive!'),
@@ -47,29 +43,15 @@ const normaForMan = values => {
   return values.weight * 0.04 + values.time * 0.6;
 };
 
-export const DailyNormaModal = ({ onClick }) => {
+export const DailyNormaModal = ({ close }) => {
   const dispatch = useDispatch();
-  const dailyNormaValue = useSelector(selectDailyNorma);
 
-  useEffect(() => {
-    const handleClick = e => {
-      if (e.target === e.currentTarget) {
-        onClick('edit-daily-norm');
-      }
-    };
-    const handleKeydown = e => {
-      if (e.key === 'Escape') {
-        onClick('edit-daily-norm');
-      }
-    };
-    const backdrop = document.querySelector('.js-dayly-backdrop');
-    document.addEventListener('keydown', handleKeydown);
-    backdrop.addEventListener('click', handleClick);
-    return () => {
-      backdrop.removeEventListener('click', handleClick);
-      document.removeEventListener('keydown', handleKeydown);
-    };
-  }, [onClick]);
+  const handleSave = (values, actions) => {
+    dispatch(addDailyNorma(values.drink));
+    actions.resetForm();
+    close();
+  };
+
   const dailyNormaCounter = values =>
     values.picked === 'For girl'
       ? normaForGirl(values).toFixed(1)
@@ -78,89 +60,76 @@ export const DailyNormaModal = ({ onClick }) => {
       : 0;
 
   return (
-    <Backdrop className="js-dayly-backdrop">
-      <Modal>
-        <WrapTitle>
-          <Title>My daily norma</Title>
-          <ButtonClose type="button" onClick={() => onClick('edit-daily-norm')}>
-            <ButtonCloseIcon />
-          </ButtonClose>
-        </WrapTitle>
-        <div>
-          <TextWrap>
-            <p>
-              For girl: <Formula>V=(M*0,03) + (T*0,4)</Formula>
-            </p>
-            <p>
-              For man: <Formula>V=(M*0,04) + (T*0,6)</Formula>
-            </p>
-          </TextWrap>
-          <WrapInfo>
-            <SpanStar>*</SpanStar> V is the volume of the water norm in liters
-            per day, M is your body weight, T is the time of active sports, or
-            another type of activity commensurate in terms of loads (in the
-            absence of these, you must set 0)
-          </WrapInfo>
-        </div>
-        <Formik
-          initialValues={{
-            picked: '', // Взяти із Setting
-            weight: 0,
-            time: 0,
-            drink: 0,
-          }}
-          validationSchema={DailyNormaSchema}
-          onSubmit={(values, actions) => {
-            dispatch(addDailyNorma(values.drink));
-            onClick('edit-daily-norm');
-            actions.resetForm();
-          }}
-        >
-          {({ values }) => (
-            <FormStyled>
-              <FormCalculateWrap>
-                <Subtitle>Calculate your rate:</Subtitle>
-                <RadioWrap role="group" aria-labelledby="my-radio-group">
-                  <RadioBtnLabel>
-                    <RadioBtnField
-                      type="radio"
-                      name="picked"
-                      value="For girl"
-                    />
-                    For girl
-                  </RadioBtnLabel>
-                  <RadioBtnLabel>
-                    <RadioBtnField type="radio" name="picked" value="For man" />
-                    For man
-                  </RadioBtnLabel>
-                </RadioWrap>
+    <ModalWin>
+      <WrapTitle>
+        <Title>My daily norma</Title>
+      </WrapTitle>
+      <div>
+        <TextWrap>
+          <p>
+            For girl: <Formula>V=(M*0,03) + (T*0,4)</Formula>
+          </p>
+          <p>
+            For man: <Formula>V=(M*0,04) + (T*0,6)</Formula>
+          </p>
+        </TextWrap>
+        <WrapInfo>
+          <SpanStar>*</SpanStar> V is the volume of the water norm in liters per
+          day, M is your body weight, T is the time of active sports, or another
+          type of activity commensurate in terms of loads (in the absence of
+          these, you must set 0)
+        </WrapInfo>
+      </div>
+      <Formik
+        initialValues={{
+          picked: '', // Взяти із Setting
+          weight: 0,
+          time: 0,
+          drink: 0,
+        }}
+        validationSchema={DailyNormaSchema}
+        onSubmit={(values, actions) => handleSave(values, actions)}
+      >
+        {({ values }) => (
+          <FormStyled>
+            <FormCalculateWrap>
+              <Subtitle>Calculate your rate:</Subtitle>
+              <RadioWrap role="group" aria-labelledby="my-radio-group">
+                <RadioBtnLabel>
+                  <RadioBtnField type="radio" name="picked" value="For girl" />
+                  For girl
+                </RadioBtnLabel>
+                <RadioBtnLabel>
+                  <RadioBtnField type="radio" name="picked" value="For man" />
+                  For man
+                </RadioBtnLabel>
+              </RadioWrap>
 
-                <label>
-                  Your weight in kilograms:
-                  <FieldForm id="weight" name="weight" type="number" />
-                  <ErrMsg name="weight" component="div" />
-                </label>
-                <label>
-                  The time of active participation in sports or other activities
-                  with a high physical load:
-                  <FieldForm id="time " name="time" type="number" />
-                  <ErrMsg name="time" component="div" />
-                </label>
-                <NormaWrap>
-                  <p>The required amount of water in liters per day:</p>
-                  <TextNorma>{dailyNormaCounter(values)} </TextNorma>
-                </NormaWrap>
-                <LabelFormNorma>
-                  Write down how much water you will drink:
-                  <FieldForm id="drink " name="drink" type="number" />
-                  <ErrMsg name="drink" component="div" />
-                </LabelFormNorma>
-              </FormCalculateWrap>
-              <ButtonSave type="submit">Save</ButtonSave>
-            </FormStyled>
-          )}
-        </Formik>
-      </Modal>
-    </Backdrop>
+              <label>
+                Your weight in kilograms:
+                <FieldForm id="weight" name="weight" type="number" />
+                <ErrMsg name="weight" component="div" />
+              </label>
+              <label>
+                The time of active participation in sports or other activities
+                with a high physical load:
+                <FieldForm id="time " name="time" type="number" />
+                <ErrMsg name="time" component="div" />
+              </label>
+              <NormaWrap>
+                <p>The required amount of water in liters per day:</p>
+                <TextNorma>{dailyNormaCounter(values)} </TextNorma>
+              </NormaWrap>
+              <LabelFormNorma>
+                Write down how much water you will drink:
+                <FieldForm id="drink " name="drink" type="number" />
+                <ErrMsg name="drink" component="div" />
+              </LabelFormNorma>
+            </FormCalculateWrap>
+            <ButtonSave type="submit">Save</ButtonSave>
+          </FormStyled>
+        )}
+      </Formik>
+    </ModalWin>
   );
 };
