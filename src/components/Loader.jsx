@@ -10,9 +10,6 @@ export const Loader = () => {
         left: '0',
         width: '100%',
         height: '100%',
-        background: 'linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0) 100%)',
-        WebkitBackdropFilter: 'blur(11px)',
-        backdropFilter: 'blur(11px)',
         zIndex: '999',
       }}
     >
