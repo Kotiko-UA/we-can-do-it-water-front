@@ -62,11 +62,11 @@ export const Nav = styled.nav`
 export const RightNavWrapper = styled.div`
   justify-content: right;
   position: relative;
-  &:hover .navMenu {
+  /* &:hover .navMenu {
     transform: translateY(0);
     opacity: 1;
     visibility: visible;
-  }
+  } */
 
   /* &:active .open {
     transform: translateY(0);
@@ -132,8 +132,8 @@ export const NavMenu = styled.ul`
   visibility: hidden;
   transition: 0.5s;
 
-  &:active .open {
-    transform: translateY(0);
+  &.open {
+    transform: translateY(30px);
     opacity: 1;
     visibility: visible;
   }
@@ -143,6 +143,10 @@ export const NavLi = styled.li`
   flex-direction: row;
   align-items: center;
   gap: 8px;
+`;
+
+export const Button = styled.button`
+  background-color: transparent;
 `;
 
 export const SettingsIcon = styled(Settings)``;
