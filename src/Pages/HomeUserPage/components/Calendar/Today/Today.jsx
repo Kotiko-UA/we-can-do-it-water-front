@@ -33,45 +33,46 @@ const Today = ({ onDeleteWater, onAddWater, onEditingWater }) => {
       <Viewport ref={listRef}>
         <TableStyled>
           <tbody>
-            {notes.map(data => (
-              <TableRow key={data._id}>
-                <TableCell>
-                  <ImgCont>
-                    <svg className={css.cup} width="26" height="26">
-                      <use href={Icons + '#cup'}></use>
-                    </svg>
-                  </ImgCont>
-                </TableCell>
-                <TextCell>{data.amount} ml</TextCell>
-                <TimeCell>{data.time}</TimeCell>
-                <TableCell>
-                  <Button
-                    aria-label="Edit notice"
-                    type="button"
-                    onClick={() => {
-                      onEditingWater(data._id);
-                    }}
-                  >
-                    <svg className={css.icon_pencil} width="16" height="16">
-                      <use href={Icons + '#pencil-square'}></use>
-                    </svg>
-                  </Button>
-                </TableCell>
-                <TableCell>
-                  <Button
-                    aria-label="Delete notice"
-                    type="button"
-                    onClick={() => {
-                      onDeleteWater(data._id);
-                    }}
-                  >
-                    <svg className={css.icon_trash} width="16" height="16">
-                      <use href={Icons + '#trash'}></use>
-                    </svg>
-                  </Button>
-                </TableCell>
-              </TableRow>
-            ))}
+            {notes &&
+              notes.map(data => (
+                <TableRow key={data._id}>
+                  <TableCell>
+                    <ImgCont>
+                      <svg className={css.cup} width="26" height="26">
+                        <use href={Icons + '#cup'}></use>
+                      </svg>
+                    </ImgCont>
+                  </TableCell>
+                  <TextCell>{data.amount} ml</TextCell>
+                  <TimeCell>{data.time}</TimeCell>
+                  <TableCell>
+                    <Button
+                      aria-label="Edit notice"
+                      type="button"
+                      onClick={() => {
+                        onEditingWater(data._id);
+                      }}
+                    >
+                      <svg className={css.icon_pencil} width="16" height="16">
+                        <use href={Icons + '#pencil-square'}></use>
+                      </svg>
+                    </Button>
+                  </TableCell>
+                  <TableCell>
+                    <Button
+                      aria-label="Delete notice"
+                      type="button"
+                      onClick={() => {
+                        onDeleteWater(data._id);
+                      }}
+                    >
+                      <svg className={css.icon_trash} width="16" height="16">
+                        <use href={Icons + '#trash'}></use>
+                      </svg>
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))}
           </tbody>
         </TableStyled>
         <AddButton

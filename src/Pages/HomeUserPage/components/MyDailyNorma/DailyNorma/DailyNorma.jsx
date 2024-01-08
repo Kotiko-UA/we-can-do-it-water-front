@@ -34,6 +34,9 @@ export const DailyNorma = ({ onDailyNorma, onAddWater }) => {
   const dailyNormaValue = useSelector(selectDailyNorma);
   const waterNotes = useSelector(selectWaterNotes);
   const procent = (norma, notes) => {
+    if (!notes) {
+      return 0;
+    }
     let allWater = 0;
     notes.forEach(water => (allWater += water.amount));
     return (allWater / (norma * 1000)) * 100;

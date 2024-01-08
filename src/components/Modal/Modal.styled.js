@@ -10,14 +10,19 @@ export const OverLay = styled.div`
   width: 100%;
   height: 100%;
   background: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0) 100%);
+  z-index: 999;
 `;
 export const ButtonClose = styled.button`
   display: block;
   position: absolute;
-  top: 36px;
-  right: 24px;
+  top: 28px;
+  right: 12px;
   padding: 0;
   background: initial;
+  @media (min-width: 768px) {
+    top: 36px;
+    right: 24px;
+  }
 `;
 
 export const Modal = styled.div`
