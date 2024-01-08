@@ -23,13 +23,16 @@ const Calendar = () => {
   const [monthData, setMonthData] = useState([]);
   const token = useSelector(selectToken);
 
-   const month = currentDate.getMonth() + 1;
+  const month = currentDate.getMonth() + 1;
   const year = currentDate.getFullYear();
 
   const dailyNormaValue = useSelector(selectDailyNorma);
   const waterNotes = useSelector(selectWaterNotes);
-  
+
   useEffect(() => {
+    if (!waterNotes) {
+      return;
+    }
     const getMonthData = async () => {
       try {
         const resp = await instanceWaterMonth.get(
@@ -47,7 +50,6 @@ const Calendar = () => {
 
     getMonthData();
   }, [token, month, year, dailyNormaValue, waterNotes]);
-
 
   const ref = useRef(null);
 
