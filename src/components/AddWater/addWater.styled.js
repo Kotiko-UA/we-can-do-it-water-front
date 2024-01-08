@@ -5,21 +5,18 @@ import { ReactComponent as Minus } from '../../icons/minus-small.svg';
 import { ReactComponent as Plus } from '../../icons/plus-small.svg';
 
 export const BodyModal = styled.div`
-  padding: 24px 12px;
-
   gap: 24px;
   border-radius: 10px;
   background: #fff;
-  width: 280px;
-  height: 540px;
+  width: 256px;
+  height: 492px;
   margin: auto;
   @media (min-width: 768px) {
-    width: 704px;
-    padding: 32px 24px;
-    height: 504px;
+    width: 656px;
+    height: 440px;
   }
   @media (min-width: 1440px) {
-    width: 592px;
+    width: 544px;
   }
 `;
 

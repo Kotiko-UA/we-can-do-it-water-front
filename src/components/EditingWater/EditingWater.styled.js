@@ -5,21 +5,20 @@ import { ReactComponent as Plus } from '../../icons/plus-small.svg';
 import { ReactComponent as Glass } from '../../icons/glass_icon.svg';
 
 export const BodyModal = styled.div`
-  padding: 24px 12px;
-
   gap: 24px;
   border-radius: 10px;
   background: #fff;
-  width: 280px;
-  height: 648px;
+  width: 256px;
+  height: 600px;
+
   margin: auto;
   @media (min-width: 768px) {
-    width: 704px;
-    padding: 32px 24px;
-    height: 580px;
+    width: 656px;
+
+    height: 516px;
   }
   @media (min-width: 1440px) {
-    width: 592px;
+    width: 546px;
   }
 `;
 export const SaveTime = styled.div`
