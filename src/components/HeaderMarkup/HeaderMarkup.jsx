@@ -1,4 +1,5 @@
 import { useAuth } from 'Hooks/useAuth.js';
+import { useState, useRef } from 'react';
 import {
   Container,
   StyledLinkLogo,
@@ -13,12 +14,19 @@ import {
   SettingsIcon,
   LogOutIcon,
   ArrowIcon,
+  Button,
 } from './HeaderMarkup.styled.js';
+import { useOutSide } from '../../Hooks/outSide.js';
 
 const HeaderMarkup = ({ onClickSetting, onClickLogout }) => {
   const { isLoggedIn } = useAuth();
   const { userIcon } = useAuth();
   const { user } = useAuth();
+  const [isActive, setisActive] = useState(false);
+  const menuRef = useRef(null);
+  useOutSide(menuRef, () => {
+    setisActive(false);
+  });
 
   let userNameFromEmail = null;
   const userEmail = user.email;
@@ -40,13 +48,18 @@ const HeaderMarkup = ({ onClickSetting, onClickLogout }) => {
         <li>
           {isLoggedIn ? (
             <RightNavWrapper>
-              <StyledLink to="/">
-                <h3>{userNameFromEmail}</h3>
-                <RealUserIcon src={userIcon} alt="user real avatar" />
-                <ArrowIcon />
-              </StyledLink>
+              <Button type="button" onClick={() => setisActive(!isActive)}>
+                <StyledLink to="/">
+                  <h3>{userNameFromEmail}</h3>
+                  <RealUserIcon src={userIcon} alt="user real avatar" />
+                  <ArrowIcon />
+                </StyledLink>
+              </Button>
 
-              <NavMenu className="navMenu">
+              <NavMenu
+                className={`navMenu ${isActive ? 'open' : ' '}`}
+                ref={menuRef}
+              >
                 <NavLi>
                   <SettingsIcon />
                   <a

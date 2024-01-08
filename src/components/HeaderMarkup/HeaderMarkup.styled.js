@@ -7,18 +7,20 @@ import { ReactComponent as Arrow } from '../../icons/arrow.svg';
 import { NavLink } from 'react-router-dom';
 
 export const Container = styled.div`
-  width: 100%;
+  width: 280px;
   padding-left: 20px;
   padding-right: 20px;
   margin-left: auto;
   margin-right: auto;
 
   @media (min-width: 768px) {
+    width: 704px;
     padding-left: 32px;
     padding-right: 32px;
   }
 
   @media (min-width: 1440px) {
+    width: 1216px;
     padding-left: 112px;
     padding-right: 112px;
   }
@@ -60,11 +62,11 @@ export const Nav = styled.nav`
 export const RightNavWrapper = styled.div`
   justify-content: right;
   position: relative;
-  &:hover .navMenu {
+  /* &:hover .navMenu {
     transform: translateY(0);
     opacity: 1;
     visibility: visible;
-  }
+  } */
 
   /* &:active .open {
     transform: translateY(0);
@@ -102,7 +104,6 @@ export const ArrowIcon = styled(Arrow)`
 export const UserAvatar = styled(Avatar)`
   width: 28px;
   height: 28px;
-
 `;
 
 export const NavMenu = styled.ul`
@@ -131,18 +132,21 @@ export const NavMenu = styled.ul`
   visibility: hidden;
   transition: 0.5s;
 
-  &:active .open {
-    transform: translateY(0);
+  &.open {
+    transform: translateY(30px);
     opacity: 1;
     visibility: visible;
   }
-
 `;
 export const NavLi = styled.li`
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 8px;
+`;
+
+export const Button = styled.button`
+  background-color: transparent;
 `;
 
 export const SettingsIcon = styled(Settings)``;

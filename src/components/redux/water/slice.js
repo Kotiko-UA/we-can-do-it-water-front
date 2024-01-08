@@ -8,7 +8,7 @@ import {
 import { logOut } from '../auth/operations';
 
 const initialState = {
-  notes: [],
+  notes: null,
   isLoading: false,
   error: null,
 };

@@ -46,7 +46,6 @@ export const SignInForm = () => {
 
   const { error } = useAuth();
 
-
   useEffect(() => {
     if (error) {
       toast.error(error);
@@ -103,7 +102,7 @@ export const SignInForm = () => {
           )}
         </Formik>
         <div>
-          <StyledLink to="/forget_password">Forgot password?</StyledLink>
+          <StyledLink to="/forgot-password">Forgot password?</StyledLink>
         </div>
         <div>
           <StyledLink to="/signUp">Sign up</StyledLink>

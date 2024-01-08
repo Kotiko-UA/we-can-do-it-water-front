@@ -1,30 +1,38 @@
 import styled from 'styled-components';
-import { ReactComponent as SingUpSVG } from '../../icons/SingUp mobile.svg';
-import backdroundimage from '../../icons/backgroundFoffotmobile.svg';
-import backgroundimageTablet from '../../icons/backgroundFoggotTablet.svg';
-import backgroungimagePc from '../../icons/backgroundForgotpc.svg';
-export const Bootle = styled(SingUpSVG)`
-  width: 280px;
-  height: 210px;
-  position: relative;
-  top: 50%;
-  left: 0%;
+import bcgSignInFrameMob from '../../icons/SignInFrameMob.svg';
+import bcgSignInFrameTab from '../../icons/SignInFrameTab.svg';
+import bcgSignInFrameDesk from '../../icons/SignInFrameDesk.svg';
+import bcgSignInBottleTab from '../../icons/SignInBottleTab.svg';
+import bcgSignInBottleMob from '../../icons/SignInBotleMob.svg';
+import bcgSignInBottleDesk from '../../icons/SignInBottleTab.svg';
+
+export const Section = styled.section`
+  width: 100%;
+  padding-top: 24px;
+  padding-bottom: 250px;
+  flex-direction: column;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-image: url(${bcgSignInFrameMob}), url(${bcgSignInBottleMob});
+  background-position: bottom;
 
   @media (min-width: 768px) {
-    width: 736px;
-    height: 548px;
-
-    position: relative;
-    bottom: 250px;
-    left: 112px;
+    padding-top: 40px;
+    padding-bottom: 300px;
+    flex-direction: row;
+    display: flex;
+    background-image: url(${bcgSignInFrameTab}), url(${bcgSignInBottleTab});
+    background-position: right;
   }
-  @media (min-width: 1440px) {
-    width: 916px;
-    height: 680px;
 
-    position: relative;
-    bottom: 350px;
-    left: -10%;
+  @media (min-width: 1440px) {
+    background-image: url(${bcgSignInFrameDesk}), url(${bcgSignInBottleDesk});
+    background-position: left;
+    padding-top: 0px;
+    padding-bottom: 0px;
   }
 `;
 export const Container = styled.div`
@@ -33,21 +41,19 @@ export const Container = styled.div`
   padding-right: 20px;
   margin-left: auto;
   margin-right: auto;
-  background-image: url(${backdroundimage});
-  background-size: cover;
+
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
 
   @media (min-width: 768px) {
-    padding-left: 32px;
-    padding-right: 32px;
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 336px;
+    height: auto;
     margin-left: 0px;
-    background-image: url(${backgroundimageTablet});
-    background-size: cover;
-  }
-
-  @media (min-width: 1440px) {
-    padding-left: 112px;
-    padding-right: 112px;
-    background-image: url(${backgroungimagePc});
+    margin-right: 400px;
+    align-items: flex-start;
   }
 `;
 
