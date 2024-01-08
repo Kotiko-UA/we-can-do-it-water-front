@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import { selectToken } from 'components/redux/auth/selectors';
+import { selectDailyNorma, selectToken } from 'components/redux/auth/selectors';
 import Icons from '../../../../../icons/HomePage/sprite.svg';
 
 import {
@@ -13,6 +13,7 @@ import {
 } from './Month.styled';
 import DayComponent from './DayComponent/DayComponent';
 import { useSelector } from 'react-redux';
+import { selectWaterNotes } from 'components/redux/water/selectors';
 
 const instanceWaterMonth = axios.create();
 instanceWaterMonth.defaults.baseURL = 'https://water-p2oh.onrender.com/api';
@@ -23,6 +24,9 @@ const Calendar = () => {
   const token = useSelector(selectToken);
   const month = currentDate.getMonth() + 1;
   const year = currentDate.getFullYear();
+
+  const dailyNormaValue = useSelector(selectDailyNorma);
+  const waterNotes = useSelector(selectWaterNotes);
   useEffect(() => {
     const getMonthData = async () => {
       try {
@@ -40,7 +44,7 @@ const Calendar = () => {
     };
 
     getMonthData();
-  }, [token, month, year]);
+  }, [token, month, year, dailyNormaValue, waterNotes]);
 
   const ref = useRef(null);
 
