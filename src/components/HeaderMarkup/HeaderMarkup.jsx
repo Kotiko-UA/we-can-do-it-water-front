@@ -34,6 +34,8 @@ const HeaderMarkup = ({ onClickSetting, onClickLogout }) => {
     const index = userEmail.indexOf('@');
     userNameFromEmail = userEmail.slice(0, index);
   }
+  const userName = user.name;
+  const userDefaultName = userName.includes('User_');
 
   return (
     <Container>
@@ -48,13 +50,14 @@ const HeaderMarkup = ({ onClickSetting, onClickLogout }) => {
         <li>
           {isLoggedIn ? (
             <RightNavWrapper>
-              <Button type="button" onClick={() => setisActive(!isActive)}>
+ <Button type="button" onClick={() => setisActive(!isActive)}>
                 <StyledLink to="/">
-                  <h3>{userNameFromEmail}</h3>
+  <h3>{userDefaultName ? userNameFromEmail : userName}</h3>
                   <RealUserIcon src={userIcon} alt="user real avatar" />
                   <ArrowIcon />
                 </StyledLink>
               </Button>
+
 
               <NavMenu
                 className={`navMenu ${isActive ? 'open' : ' '}`}
