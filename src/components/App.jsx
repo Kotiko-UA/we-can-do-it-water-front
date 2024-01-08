@@ -35,7 +35,7 @@ export const App = () => {
               <RestrictedRoute redirectTo="/" component={<SignInPage />} />
             }
           />
-          <Route path="/forget_password" element={<ForgetPasswordPage />} />
+          <Route path="/forgot-password" element={<ForgetPasswordPage />} />
           <Route path="/recovery" element={<RecoveryPasswordPage />} />
         </Route>
       </Routes>
