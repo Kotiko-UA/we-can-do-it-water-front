@@ -23,7 +23,7 @@ export const BodyModal = styled.div`
 export const TilelAddWater = styled.p`
   color: #2f2f2f;
   width: 128px;
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 26px;
   font-style: normal;
   font-weight: 500;
@@ -47,7 +47,7 @@ export const WraperTitel = styled.div`
 export const ChoWal = styled.p`
   color: #2f2f2f;
   margin-top: 24px;
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
@@ -56,7 +56,7 @@ export const ChoWal = styled.p`
 export const AmoWate = styled.p`
   color: #2f2f2f;
   margin-top: 16px;
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -65,7 +65,7 @@ export const AmoWate = styled.p`
 export const Time = styled.p`
   color: #2f2f2f;
   margin-top: 24px;
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -75,7 +75,7 @@ export const ValueWater = styled.p`
   color: #2f2f2f;
   margin-top: 24px;
   margin-bottom: 16px;
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
@@ -85,7 +85,7 @@ export const WaterMl = styled.div`
   color: #407bff;
 
   text-align: center;
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
@@ -108,7 +108,7 @@ export const WaterMlBeg = styled.div`
   color: #407bff;
 
   text-align: center;
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
