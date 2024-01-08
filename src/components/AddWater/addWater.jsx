@@ -26,7 +26,6 @@ import {
 } from './addWater.styled';
 import { useDispatch } from 'react-redux';
 import { addWater } from 'components/redux/water/operations';
-// необхідно додати  "date-fns": "^3.0.6", "react-datepicker": "^4.25.0",
 const waterValidationSchema = Yup.object().shape({
   water: Yup.number()
     .integer()
@@ -40,8 +39,6 @@ export const AddWater = ({ close }) => {
   const dispatch = useDispatch();
   const [startDate, setStartDate] = useState(new Date());
   const [waterValue, setWaterValue] = useState(0);
-
-  const roundedValueWater = value => Math.round(value / 50) * 50;
   const time = startDate.toLocaleTimeString('uk', {
     hour: '2-digit',
     minute: '2-digit',
@@ -86,8 +83,13 @@ export const AddWater = ({ close }) => {
               <ButValue
                 type="button"
                 onClick={() => {
-                  const roundedValue = roundedValueWater(waterValue - 50);
-                  const newValue = roundedValue >= 0 ? roundedValue : 0;
+                  let newValue;
+                  if (waterValue >= 50) {
+                    const roundedValue = Math.floor((waterValue - 1) / 50) * 50;
+                    newValue = Math.max(roundedValue, 0);
+                  } else {
+                    newValue = 0;
+                  }
                   setWaterValue(newValue);
                   setFieldValue('water', newValue);
                 }}
@@ -98,8 +100,13 @@ export const AddWater = ({ close }) => {
               <ButValue
                 type="button"
                 onClick={() => {
-                  const roundedValue = roundedValueWater(waterValue + 50);
-                  const newValue = Math.min(roundedValue, 999);
+                  let newValue;
+                  if (waterValue % 50 === 0) {
+                    newValue = waterValue + 50;
+                  } else {
+                    newValue = Math.ceil(waterValue / 50) * 50;
+                  }
+                  newValue = Math.min(newValue, 999);
                   setWaterValue(newValue);
                   setFieldValue('water', newValue);
                 }}
