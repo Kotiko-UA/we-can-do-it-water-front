@@ -24,7 +24,7 @@ export const BodyModal = styled.div`
 export const SaveTime = styled.div`
   color: #2f2f2f;
 
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
@@ -48,7 +48,7 @@ export const OldWaterState = styled.div`
 export const OldWaterMlBeg = styled.div`
   color: #407bff;
 
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -58,7 +58,7 @@ export const OldWaterMlBeg = styled.div`
 export const Tilel = styled.p`
   color: #2f2f2f;
   width: 200px;
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 26px;
   font-style: normal;
   font-weight: 500;
@@ -83,7 +83,7 @@ export const WraperTitel = styled.div`
 export const ChoWal = styled.p`
   color: #2f2f2f;
   margin-top: 24px;
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
@@ -92,7 +92,7 @@ export const ChoWal = styled.p`
 export const AmoWate = styled.p`
   color: #2f2f2f;
   margin-top: 16px;
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -101,7 +101,7 @@ export const AmoWate = styled.p`
 export const Time = styled.p`
   color: #2f2f2f;
   margin-top: 24px;
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -111,7 +111,7 @@ export const ValueWater = styled.p`
   color: #2f2f2f;
   margin-top: 24px;
   margin-bottom: 16px;
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
@@ -121,7 +121,7 @@ export const WaterMl = styled.div`
   color: #407bff;
 
   text-align: center;
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
@@ -144,7 +144,7 @@ export const WaterMlBeg = styled.div`
   color: #407bff;
 
   text-align: center;
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
@@ -200,7 +200,7 @@ export const StyledInput = styled.input`
   border: 1px solid #d7e3ff;
   width: 120px;
   color: #407bff;
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -222,7 +222,7 @@ export const StyledDatePicker = styled.input`
   border: 1px solid #d7e3ff;
   color: #407bff;
   width: 120px;
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -239,7 +239,7 @@ export const StileSave = styled.span`
   color: #fff;
   width: 196px;
   text-align: center;
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
