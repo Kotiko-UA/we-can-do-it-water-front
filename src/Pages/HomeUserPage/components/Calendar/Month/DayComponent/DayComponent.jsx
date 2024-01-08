@@ -39,7 +39,9 @@ const DayComponent = ({ calendarRef, day, waterPercentage }) => {
       <Day
         ref={ref}
         onClick={() => toggleModal(day)}
-        $isOutlineVisible={!waterPercentage || waterPercentage.procent < '100%'}
+        $isOutlineVisible={
+          !waterPercentage || Number(waterPercentage.procent.slice(0, -1)) < 100
+        }
       >
         {day}
       </Day>

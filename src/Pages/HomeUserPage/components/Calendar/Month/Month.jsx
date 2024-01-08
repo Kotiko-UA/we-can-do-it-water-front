@@ -22,11 +22,13 @@ const Calendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [monthData, setMonthData] = useState([]);
   const token = useSelector(selectToken);
-  const month = currentDate.getMonth() + 1;
+
+   const month = currentDate.getMonth() + 1;
   const year = currentDate.getFullYear();
 
   const dailyNormaValue = useSelector(selectDailyNorma);
   const waterNotes = useSelector(selectWaterNotes);
+  
   useEffect(() => {
     const getMonthData = async () => {
       try {
@@ -45,6 +47,7 @@ const Calendar = () => {
 
     getMonthData();
   }, [token, month, year, dailyNormaValue, waterNotes]);
+
 
   const ref = useRef(null);
 

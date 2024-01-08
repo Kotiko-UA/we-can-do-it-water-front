@@ -44,7 +44,7 @@ export const SignInForm = () => {
     dispatch(signIn({ email: values.email, password: values.password }));
   };
 
-  const { error } = useAuth();
+  const {error } = useAuth();
 
 
   useEffect(() => {
