@@ -10,7 +10,6 @@ export const StyledLink = styled(NavLink)`
   color: ${props => props.theme.primaryBlue};
   display: flex;
   align-items: center;
-  margin-top: 16px;
 
   &:hover,
   :focus {
@@ -24,7 +23,7 @@ export const Wrap = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 40px;
+  margin-bottom: 240px;
 
   @media (min-width: 768px) {
     width: 336px;
@@ -32,9 +31,9 @@ export const Wrap = styled.div`
     justify-content: flex-start;
   }
   @media (min-width: 1440px) {
-    justify-content: flex-end;
-    margin-left: auto;
-    margin-right: 198px;
+    width: 384px;
+
+    margin-bottom: 310px;
   }
 `;
 export const Form = styled.form`
@@ -56,9 +55,11 @@ export const Label = styled.label`
   font-style: normal;
   font-weight: 400;
   line-height: 24px;
-  margin-bottom: 8px;
   @media (min-width: 768px) {
     width: 336px;
+  }
+  @media (min-width: 1440px) {
+    width: 384px;
   }
 `;
 export const Input = styled.input`
@@ -73,7 +74,7 @@ export const Input = styled.input`
   border-radius: 6px;
   border: 1px solid ${props => props.theme.secondaryLightBlue};
   background: ${props => props.theme.primaryWhite};
-  margin-bottom: 40px;
+  margin-bottom: 16px;
 
   &:focus {
     color: ${props => props.theme.primaryBlue};
@@ -105,6 +106,7 @@ export const Button = styled.button`
   font-style: normal;
   font-weight: 500;
   line-height: 20px;
+  margin-bottom: 16px;
   &:hover {
     box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
   }
