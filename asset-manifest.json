@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/we-can-do-it-water-front/static/css/main.c0163d6a.css",
-    "main.js": "/we-can-do-it-water-front/static/js/main.3bcd8031.js",
+    "main.js": "/we-can-do-it-water-front/static/js/main.be81ff83.js",
     "static/js/845.17edd3a4.chunk.js": "/we-can-do-it-water-front/static/js/845.17edd3a4.chunk.js",
     "static/media/Roboto-Medium.woff": "/we-can-do-it-water-front/static/media/Roboto-Medium.b14ca2d2b289afceb0b0.woff",
     "static/media/Roboto-Bold.woff": "/we-can-do-it-water-front/static/media/Roboto-Bold.3f2cbde6b72e8d05669f.woff",
@@ -52,12 +52,11 @@
     "static/media/SignUpFrameMob.svg": "/we-can-do-it-water-front/static/media/SignUpFrameMob.5ec4264d3a07f5c8c6649102d7800ff8.svg",
     "static/media/backgroundFoffotmobile.svg": "/we-can-do-it-water-front/static/media/backgroundFoffotmobile.eb8ff14d96267fa9fc44014f2bee7fec.svg",
     "static/media/meow.mp3": "/we-can-do-it-water-front/static/media/meow.af166948bdd85f4ce0df.mp3",
-    "static/media/backgroundForgotpc.svg": "/we-can-do-it-water-front/static/media/backgroundForgotpc.0159f425eb01144cd79f428e0c14a9cd.svg",
     "static/media/settings.svg": "/we-can-do-it-water-front/static/media/settings.58262017e00fce9672e6b933c2d8ee67.svg",
     "static/media/screw.svg": "/we-can-do-it-water-front/static/media/screw.efbb94a9d6b57aee55f71b3ad62c22a2.svg",
-    "index.html": "/we-can-do-it-water-front/index.html",
     "static/media/calendarss.svg": "/we-can-do-it-water-front/static/media/calendarss.e0bdc4a9fab9ecfb9bbdffb4d00d0301.svg",
     "static/media/user.svg": "/we-can-do-it-water-front/static/media/user.25de06338b01ff28586ba8c853ea381a.svg",
+    "index.html": "/we-can-do-it-water-front/index.html",
     "static/media/eye_slash.svg": "/we-can-do-it-water-front/static/media/eye_slash.835af783a8a982b1deb4ce6713801864.svg",
     "static/media/arrow.svg": "/we-can-do-it-water-front/static/media/arrow.165a05120eb08b6ea4bc503780e9f28c.svg",
     "static/media/eye_active.svg": "/we-can-do-it-water-front/static/media/eye_active.22b194cb89fb806666f2cbc1ecf268fd.svg",
@@ -69,11 +68,11 @@
     "static/media/close.svg": "/we-can-do-it-water-front/static/media/close.1d558c839aa1ddbb6b8f1bdd572dd83f.svg",
     "static/media/mark-list.svg": "/we-can-do-it-water-front/static/media/mark-list.fddb539b56ea3011c50a91ee6d888f28.svg",
     "main.c0163d6a.css.map": "/we-can-do-it-water-front/static/css/main.c0163d6a.css.map",
-    "main.3bcd8031.js.map": "/we-can-do-it-water-front/static/js/main.3bcd8031.js.map",
+    "main.be81ff83.js.map": "/we-can-do-it-water-front/static/js/main.be81ff83.js.map",
     "845.17edd3a4.chunk.js.map": "/we-can-do-it-water-front/static/js/845.17edd3a4.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c0163d6a.css",
-    "static/js/main.3bcd8031.js"
+    "static/js/main.be81ff83.js"
   ]
 }
