@@ -23,7 +23,6 @@ const Calendar = () => {
   const token = useSelector(selectToken);
   const month = currentDate.getMonth() + 1;
   const year = currentDate.getFullYear();
-
   useEffect(() => {
     const getMonthData = async () => {
       try {
@@ -41,7 +40,7 @@ const Calendar = () => {
     };
 
     getMonthData();
-  }, [currentDate, token, month, year]);
+  }, [token, month, year]);
 
   const ref = useRef(null);
 
