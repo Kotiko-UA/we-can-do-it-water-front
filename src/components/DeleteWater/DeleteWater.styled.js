@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const BodyModal = styled.div`
-  padding: 10px 12px;
+  /* padding: 10px 12px; */
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -9,7 +9,7 @@ export const BodyModal = styled.div`
   border-radius: 10px;
   background: #fff;
   width: 256px;
-  height: 232px;
+  height: 220px;
   @media (min-width: 768px) {
     width: 544px;
     height: 144px;
@@ -23,7 +23,7 @@ export const ButDelete = styled.button`
   padding: 8px 30px;
   justify-content: center;
   align-items: center;
-  margin-bottom: 24px;
+
   gap: 10px;
   border-radius: 10px;
   background: var(--Secondary-color-3, #ef5050);
@@ -50,7 +50,7 @@ export const ButCancel = styled.button`
 export const Titel = styled.p`
   color: #2f2f2f;
 
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 26px;
   font-style: normal;
   font-weight: 500;
@@ -63,7 +63,7 @@ export const Text = styled.p`
   color: #2f2f2f;
   margin-top: 24px;
   margin-bottom: 24px;
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
@@ -76,7 +76,7 @@ export const Del = styled.span`
   color: #fff;
   width: 172px;
   text-align: center;
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -88,7 +88,7 @@ export const Del = styled.span`
 export const Can = styled.span`
   color: var(--Primery-Color-Blue, #407bff);
   text-align: center;
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -107,9 +107,12 @@ export const Wrap = styled.span`
   }
 `;
 export const ButtonWrap = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
   @media (min-width: 768px) {
-    display: flex;
     justify-content: end;
-    gap: 24px;
   }
 `;

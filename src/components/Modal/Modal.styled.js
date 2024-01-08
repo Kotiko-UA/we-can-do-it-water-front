@@ -14,10 +14,14 @@ export const OverLay = styled.div`
 export const ButtonClose = styled.button`
   display: block;
   position: absolute;
-  top: 36px;
-  right: 24px;
+  top: 28px;
+  right: 12px;
   padding: 0;
   background: initial;
+  @media (min-width: 768px) {
+    top: 36px;
+    right: 24px;
+  }
 `;
 
 export const Modal = styled.div`

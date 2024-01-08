@@ -65,7 +65,6 @@ export const EditingWater = ({ editingId, close }) => {
     }
   }, [id, oldWaterValue]);
 
-  const roundedValueWater = value => Math.round(value / 50) * 50;
   const time = startDate.toLocaleTimeString('uk', {
     hour: '2-digit',
     minute: '2-digit',
@@ -117,8 +116,13 @@ export const EditingWater = ({ editingId, close }) => {
               <ButValue
                 type="button"
                 onClick={() => {
-                  const roundedValue = roundedValueWater(waterValue - 50);
-                  const newValue = roundedValue >= 0 ? roundedValue : 0;
+                  let newValue;
+                  if (waterValue >= 50) {
+                    const roundedValue = Math.floor((waterValue - 1) / 50) * 50;
+                    newValue = Math.max(roundedValue, 0);
+                  } else {
+                    newValue = 0;
+                  }
                   setWaterValue(newValue);
                   setFieldValue('water', newValue);
                 }}
@@ -129,8 +133,13 @@ export const EditingWater = ({ editingId, close }) => {
               <ButValue
                 type="button"
                 onClick={() => {
-                  const roundedValue = roundedValueWater(waterValue + 50);
-                  const newValue = Math.min(roundedValue, 999);
+                  let newValue;
+                  if (waterValue % 50 === 0) {
+                    newValue = waterValue + 50;
+                  } else {
+                    newValue = Math.ceil(waterValue / 50) * 50;
+                  }
+                  newValue = Math.min(newValue, 999);
                   setWaterValue(newValue);
                   setFieldValue('water', newValue);
                 }}
