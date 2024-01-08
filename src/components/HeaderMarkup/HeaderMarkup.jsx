@@ -14,15 +14,11 @@ import {
   LogOutIcon,
   ArrowIcon,
 } from './HeaderMarkup.styled.js';
-import { Loader } from '../Loader.jsx';
-// import { useState } from 'react';
 
 const HeaderMarkup = ({ onClickSetting, onClickLogout }) => {
   const { isLoggedIn } = useAuth();
   const { userIcon } = useAuth();
-  const { isLoading } = useAuth();
   const { user } = useAuth();
-  // const [isOpen, setOpen] = useState(false);
 
   let userNameFromEmail = null;
   const userEmail = user.email;
@@ -31,76 +27,57 @@ const HeaderMarkup = ({ onClickSetting, onClickLogout }) => {
     userNameFromEmail = userEmail.slice(0, index);
   }
 
-  // console.log('user', user);
-  // console.log('emailNаme not in if', userNameFromEmail);
-
   return (
-    <>
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <Container>
-          <Nav>
-            <li>
-              <StyledLinkLogo to="/">
-                <LogoSvg alt="logo" />
-                Tracker <br /> of water
-              </StyledLinkLogo>
-            </li>
+    <Container>
+      <Nav>
+        <li>
+          <StyledLinkLogo to="/">
+            <LogoSvg alt="logo" />
+            Tracker <br /> of water
+          </StyledLinkLogo>
+        </li>
 
-            <li
-            // style={{ width: '118px' }}
-            >
-              {isLoggedIn ? (
-                <RightNavWrapper
-                // onClick={() => {
-                //   console.log('ckick');
-                //   setOpen(!isOpen);
-                // }}
-                >
-                  <StyledLink to="/">
-                    <h3>{userNameFromEmail}</h3>
-                    <RealUserIcon src={userIcon} alt="user real avatar" />
-                    <ArrowIcon />
-                  </StyledLink>
+        <li>
+          {isLoggedIn ? (
+            <RightNavWrapper>
+              <StyledLink to="/">
+                <h3>{userNameFromEmail}</h3>
+                <RealUserIcon src={userIcon} alt="user real avatar" />
+                <ArrowIcon />
+              </StyledLink>
 
-                  <NavMenu
-                    className="navMenu"
-                    // {`${isOpen ? 'open' : ''}`}
+              <NavMenu className="navMenu">
+                <NavLi>
+                  <SettingsIcon />
+                  <a
+                    href="#settings"
+                    style={{ color: '#407bff' }}
+                    onClick={onClickSetting}
                   >
-                    <NavLi>
-                      <SettingsIcon />
-                      <a
-                        href="#settings"
-                        style={{ color: '#407bff' }}
-                        onClick={onClickSetting}
-                      >
-                        Settings
-                      </a>
-                    </NavLi>
-                    <NavLi>
-                      <LogOutIcon />
-                      <a
-                        href="#logout"
-                        style={{ color: '#407bff' }}
-                        onClick={onClickLogout}
-                      >
-                        Log out
-                      </a>
-                    </NavLi>
-                  </NavMenu>
-                </RightNavWrapper>
-              ) : (
-                <StyledLink to="/signin">
-                  Sign in
-                  <UserAvatar alt="user default avatar" />
-                </StyledLink>
-              )}
-            </li>
-          </Nav>
-        </Container>
-      )}
-    </>
+                    Settings
+                  </a>
+                </NavLi>
+                <NavLi>
+                  <LogOutIcon />
+                  <a
+                    href="#logout"
+                    style={{ color: '#407bff' }}
+                    onClick={onClickLogout}
+                  >
+                    Log out
+                  </a>
+                </NavLi>
+              </NavMenu>
+            </RightNavWrapper>
+          ) : (
+            <StyledLink to="/signin">
+              Sign in
+              <UserAvatar alt="user default avatar" />
+            </StyledLink>
+          )}
+        </li>
+      </Nav>
+    </Container>
   );
 };
 

@@ -5,7 +5,6 @@ import DatePicker, { registerLocale } from 'react-datepicker';
 import { uk } from 'date-fns/locale/uk';
 
 import {
-  Backdrop,
   BodyModal,
   TilelAddWater,
   ChoWal,
@@ -24,7 +23,6 @@ import {
   StyledDatePicker,
   WrapSave,
   StileSave,
-  ButClose,
 } from './addWater.styled';
 import { useDispatch } from 'react-redux';
 import { addWater } from 'components/redux/water/operations';
@@ -53,7 +51,6 @@ export const AddWater = ({ close }) => {
   const onSubmit = (values, actions) => {
     const amount = values.water;
     const newWater = { amount, time };
-    console.log(newWater);
     dispatch(addWater(newWater)).then(() => {
       setWaterValue(0);
       setStartDate(new Date());
@@ -62,7 +59,6 @@ export const AddWater = ({ close }) => {
     close(close);
   };
 
-  //захист щоб користувач не міг видалити весь час з DatePicker та зламати код + стилізація
   const CustomInput = React.forwardRef(({ value, onClick }, ref) => (
     <StyledDatePicker
       type="text"
@@ -83,7 +79,6 @@ export const AddWater = ({ close }) => {
           <Form>
             <WraperTitel>
               <TilelAddWater>Add water</TilelAddWater>
-              {/* <ButClose onClick={close}></ButClose> */}
             </WraperTitel>
             <ChoWal>Choose a value:</ChoWal>
             <AmoWate>Amount of water:</AmoWate>

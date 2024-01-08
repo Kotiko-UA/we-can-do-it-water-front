@@ -167,7 +167,7 @@ export const StyledInput = styled.input`
   border: 1px solid #d7e3ff;
   width: 120px;
   color: #407bff;
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -189,7 +189,7 @@ export const StyledDatePicker = styled.input`
   border: 1px solid #d7e3ff;
   color: #407bff;
   width: 120px;
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -206,7 +206,7 @@ export const StileSave = styled.span`
   color: #fff;
   width: 196px;
   text-align: center;
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 16px;
   font-style: normal;
   font-weight: 500;

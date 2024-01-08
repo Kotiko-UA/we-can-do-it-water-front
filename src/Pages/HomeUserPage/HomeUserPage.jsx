@@ -10,10 +10,6 @@ import { EditingWater } from 'components/EditingWater/EditingWater';
 import { DeleteWater } from 'components/DeleteWater/DeleteWater';
 
 const HomeUserPage = () => {
-  // const [dailyNormaModal, setDailyNormaModal] = useState(false);
-  // const [addWaterModal, setAddWaterModal] = useState(false);
-  // const [correctWaterModal, setCorrectWaterModal] = useState(false);
-  // const [delWaterModal, setDelWaterModal] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [addWater, setAddWater] = useState(false);
   const [editingWater, setEditingWater] = useState(false);
@@ -58,16 +54,6 @@ const HomeUserPage = () => {
   const close = () => {
     setIsOpen(false);
   };
-  // const onClick = modal => {
-  //   switch (modal) {
-  //     case 'edit-daily-norm':
-  //       setDailyNormaModal(!dailyNormaModal);
-  //       return;
-
-  //     default:
-  //       return;
-  //   }
-  // };
   return (
     <Container>
       <WrapperHomePage>
@@ -86,7 +72,6 @@ const HomeUserPage = () => {
           {dailyNorma && <DailyNormaModal close={close} />}
         </Modalochka>
       )}
-      {/* {dailyNormaModal && <DailyNormaModal onClick={onClick} />} */}
     </Container>
   );
 };

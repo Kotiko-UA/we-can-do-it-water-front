@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import theme from '../../index.js';
 import { ReactComponent as CalendarSvg } from '../../icons/calendarss.svg';
 import { ReactComponent as PresentationSvg } from '../../icons/presentation.svg';
 import { ReactComponent as ScrewSvg } from '../../icons/screw.svg';
