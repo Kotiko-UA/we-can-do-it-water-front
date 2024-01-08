@@ -14,6 +14,8 @@ import {
 import DayComponent from './DayComponent/DayComponent';
 import { useSelector } from 'react-redux';
 
+import { selectWaterNotes } from 'components/redux/water/selectors';
+
 const instanceWaterMonth = axios.create();
 instanceWaterMonth.defaults.baseURL = 'https://water-p2oh.onrender.com/api';
 
@@ -21,6 +23,9 @@ const Calendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [monthData, setMonthData] = useState([]);
   const token = useSelector(selectToken);
+
+  const notes = useSelector(selectWaterNotes);
+
   const month = currentDate.getMonth() + 1;
   const year = currentDate.getFullYear();
   useEffect(() => {
@@ -40,7 +45,7 @@ const Calendar = () => {
     };
 
     getMonthData();
-  }, [token, month, year]);
+  }, [token, month, year, notes]);
 
   const ref = useRef(null);
 
