@@ -60,7 +60,7 @@ export const DailyNormaModal = ({ close }) => {
       .unwrap()
       .then(() => {
         actions.resetForm();
-        // closeModal();
+        close();
       })
       .catch((error) => {
         toast.error('Oops, something went wrong. Please try again');
