@@ -24,8 +24,8 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 
 import { addDailyNorma } from 'components/redux/auth/operations';
-import { selectError, selectGender } from 'components/redux/auth/selectors';
-import { useEffect, useState } from 'react';
+import {selectGender } from 'components/redux/auth/selectors';
+import { useState } from 'react';
 import toast from 'react-hot-toast';
 
 const DailyNormaSchema = Yup.object().shape({
