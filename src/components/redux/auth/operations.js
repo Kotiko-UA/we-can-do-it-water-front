@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import toast from 'react-hot-toast';
 
 axios.defaults.baseURL = 'https://water-p2oh.onrender.com/api';
 
@@ -15,16 +16,10 @@ export const signUp = createAsyncThunk(
   'auth/signup',
   async (credentials, thunkAPI) => {
     try {
-      let res = await axios.post('/users/register', credentials);
-
+      const res = await axios.post('/users/register', credentials);
       if (res.status === 201) {
-        res = await axios.post('/users/login', {
-          email: credentials.email,
-          password: credentials.password,
-        });
-        setAuthHeader(res.data.token);
+        toast.success(`Check your email and verify!`);
       }
-
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data.message);
@@ -66,8 +61,7 @@ export const refreshUser = createAsyncThunk(
   }
 );
 
-export const logOut = createAsyncThunk('auth/logout',
-  async (_, thunkAPI) => {
+export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     await axios.post('/users/logout');
     clearAuthHeader();
@@ -112,4 +106,4 @@ export const changeSettings = createAsyncThunk(
       return thunkAPI.rejectWithValue(error.message);
     }
   }
-)
+);
