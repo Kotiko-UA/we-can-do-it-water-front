@@ -43,26 +43,27 @@ const SettingFormSchema = Yup.object().shape({
     .min(8, 'Too short! At least 8')
     .max(64, 'Too long! Less then 64')
     .required(),
-  repeatPassword: Yup.string()
-    .oneOf([Yup.ref('newPassword'), null], 'Passwords must match')
+  repeatPassword: Yup.string().oneOf(
+    [Yup.ref('newPassword'), null],
+    'Passwords must match'
+  ),
 });
 
-
-export const Setting = ({close}) => {
-
+export const Setting = ({ close }) => {
   const [visiblePassword, setVisiblePassword] = useState(false);
-  
+
   const currentUser = useSelector(selectUser);
   const avatar = useSelector(selectIcon);
 
   const splitName = currentUser.email.split('@');
   const splitStartName = currentUser.name.split('_');
 
-  const nameValue = splitStartName[0] === "User" ? splitName[0] : currentUser.name;
+  const nameValue =
+    splitStartName[0] === 'User' ? splitName[0] : currentUser.name;
   const emailValue = currentUser.email;
-  
+
   const dispatch = useDispatch();
-  
+
   function changeAvatar(evt) {
     const file = evt.target.files[0];
     const formData = new FormData();
@@ -71,47 +72,49 @@ export const Setting = ({close}) => {
   }
 
   const initialState = {
-        name: nameValue,
-        email: emailValue,
-        gender: currentUser.gender,
-        password: '',
-        newPassword: '',
-        repeatPassword: ''
-  }
-  
-  const onSaveButton = (evt) => {
+    name: nameValue,
+    email: emailValue,
+    gender: currentUser.gender,
+    password: '',
+    newPassword: '',
+    repeatPassword: '',
+  };
+
+  const onSaveButton = evt => {
     const { name, email, gender, password, newPassword } = evt;
-    
+
     const data = { name, email, gender, password };
 
     if (password === data.password && newPassword !== '') {
-      data.newPassword = newPassword
+      data.newPassword = newPassword;
     }
 
-    dispatch(changeSettings(data))
+    dispatch(changeSettings(data));
     if (initialState.name === name || initialState.email === email) {
-      close()
+      close();
     }
-  }
+  };
 
   return (
     <MainSettingContainer>
       <SettingText>Setting</SettingText>
-      <Formik initialValues={initialState}
+      <Formik
+        initialValues={initialState}
         validationSchema={SettingFormSchema}
         onSubmit={(values, actions) => {
           onSaveButton(values);
           actions.resetForm({
             values: {
-              // name: initialState.name,
-              // email: initialState.email,
-              // gender: initialState.gender,
+              name: initialState.name,
+              email: initialState.email,
+              gender: initialState.gender,
               password: '',
               newPassword: '',
-              repeatPassword: ''
-            }
+              repeatPassword: '',
+            },
           });
-        }}>
+        }}
+      >
         {({ values, handleChange, errors, touched }) => (
           <MainContainer>
             <div>
@@ -137,20 +140,26 @@ export const Setting = ({close}) => {
                 <div>
                   <Text>Your gender identity</Text>
                   <GenderRadio
-                    value='female'
+                    value="female"
                     onChange={handleChange}
                     type="radio"
                     name="gender"
                   />
-                  <GenderLabel className="gender-label" htmlFor="girl">Woman</GenderLabel>
-                  <GenderRadio value='male'
+                  <GenderLabel className="gender-label" htmlFor="girl">
+                    Woman
+                  </GenderLabel>
+                  <GenderRadio
+                    value="male"
                     onChange={handleChange}
                     type="radio"
-                    name="gender" />
+                    name="gender"
+                  />
                   <GenderLabel htmlFor="man">Man</GenderLabel>
                 </div>
                 <DataContainer>
-                  <DataLabel className="gender-label" htmlFor="name">Your name</DataLabel>
+                  <DataLabel className="gender-label" htmlFor="name">
+                    Your name
+                  </DataLabel>
                   <CommonInput
                     id="name"
                     type="text"
@@ -158,10 +167,11 @@ export const Setting = ({close}) => {
                     placeholder="Name"
                     maxLength={32}
                     style={
-                  errors.name && touched.name
-                    ? { borderColor: '#EF5050', color: '#EF5050' }
-                    : null
-                }/>
+                      errors.name && touched.name
+                        ? { borderColor: '#EF5050', color: '#EF5050' }
+                        : null
+                    }
+                  />
                   <ErrorMsg name="name" component="div" />
                   <DataLabel htmlFor="email">E-mail</DataLabel>
                   <CommonInput
@@ -170,10 +180,11 @@ export const Setting = ({close}) => {
                     name="email"
                     placeholder="E-mail"
                     style={
-                  errors.email && touched.email
+                      errors.email && touched.email
                         ? { borderColor: '#EF5050', color: '#EF5050' }
-                    : null
-                }/>
+                        : null
+                    }
+                  />
                   <ErrorMsg name="email" component="div" />
                 </DataContainer>
               </InfoContainer>
@@ -189,14 +200,14 @@ export const Setting = ({close}) => {
                     autoComplete="on"
                     placeholder="Password"
                     style={
-                  errors.password && touched.password
-                    ? { borderColor: '#EF5050', color: '#EF5050' }
-                    : null
-                }/>
-      <span
-        onClick={() => setVisiblePassword(!visiblePassword)}>
-        {visiblePassword ? <EyeActive /> : <EyeSlash />}
-      </span>
+                      errors.password && touched.password
+                        ? { borderColor: '#EF5050', color: '#EF5050' }
+                        : null
+                    }
+                  />
+                  <span onClick={() => setVisiblePassword(!visiblePassword)}>
+                    {visiblePassword ? <EyeActive /> : <EyeSlash />}
+                  </span>
                 </PasswordInputContainer>
                 <ErrorMsg name="password" component="div" />
                 <PasswordLabel>New Password:</PasswordLabel>
@@ -204,19 +215,19 @@ export const Setting = ({close}) => {
                   <PasswordInputStyle
                     value={values.newPassword}
                     onChange={handleChange}
-                    name='newPassword'
+                    name="newPassword"
                     type={visiblePassword ? 'text' : 'password'}
                     autoComplete="on"
                     placeholder="Password"
                     style={
-                  errors.newPassword && touched.newPassword
-                    ? { borderColor: '#EF5050', color: '#EF5050' }
-                    : null
-                }/>
-      <span
-        onClick={() => setVisiblePassword(!visiblePassword)}>
-        {visiblePassword ? <EyeActive /> : <EyeSlash />}
-      </span>
+                      errors.newPassword && touched.newPassword
+                        ? { borderColor: '#EF5050', color: '#EF5050' }
+                        : null
+                    }
+                  />
+                  <span onClick={() => setVisiblePassword(!visiblePassword)}>
+                    {visiblePassword ? <EyeActive /> : <EyeSlash />}
+                  </span>
                 </PasswordInputContainer>
                 <ErrorMsg name="newPassword" component="div" />
                 <PasswordLabel>Repeat new password:</PasswordLabel>
@@ -224,24 +235,32 @@ export const Setting = ({close}) => {
                   <PasswordInputStyle
                     value={values.repeatPassword}
                     onChange={handleChange}
-                    name='repeatPassword'
+                    name="repeatPassword"
                     type={visiblePassword ? 'text' : 'password'}
                     autoComplete="on"
                     placeholder="Password"
                     style={
-                  errors.repeatPassword && touched.repeatPassword
-                    ? { borderColor: '#EF5050', color: '#EF5050' }
-                    : null
-                }/>
-      <span
-        onClick={() => setVisiblePassword(!visiblePassword)}>
-        {visiblePassword ? <EyeActive /> : <EyeSlash />}
-      </span>
+                      errors.repeatPassword && touched.repeatPassword
+                        ? { borderColor: '#EF5050', color: '#EF5050' }
+                        : null
+                    }
+                  />
+                  <span onClick={() => setVisiblePassword(!visiblePassword)}>
+                    {visiblePassword ? <EyeActive /> : <EyeSlash />}
+                  </span>
                 </PasswordInputContainer>
                 <ErrorMsg name="repeatPassword" component="div" />
               </PasswordContainer>
             </CommonInfoContainer>
-            <SaveButton disabled={!values.password && values.name === initialState.name && values.email === initialState.email && values.gender === initialState.gender} type="submit">
+            <SaveButton
+              disabled={
+                !values.password &&
+                values.name === initialState.name &&
+                values.email === initialState.email &&
+                values.gender === initialState.gender
+              }
+              type="submit"
+            >
               Save
             </SaveButton>
           </MainContainer>
