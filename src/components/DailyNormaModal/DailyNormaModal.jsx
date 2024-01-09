@@ -49,23 +49,24 @@ const normaForMan = values => {
 export const DailyNormaModal = ({ closeModal }) => {
   const dispatch = useDispatch();
   const gender = useSelector(selectGender);
-  const error = useSelector(selectError);
+
 
   const [weightEntered, setWeightEntered] = useState(false);
   const [timeEntered, setTimeEntered] = useState(false);
   const [drinkEntered, setDrinkEntered] = useState(false);
 
   const handleSave = (values, actions) => {
-    dispatch(addDailyNorma(values.drink));
-    actions.resetForm();
-    closeModal();
+    dispatch(addDailyNorma(values.drink))
+      .unwrap()
+      .then(() => {
+        actions.resetForm();
+        closeModal();
+      })
+      .catch((error) => {
+        toast.error('Oops, something went wrong. Please try again');
+      });
   };
-
-  useEffect(() => {
-    if (error) {
-      toast.error(error);
-    }
-  }, [error]);
+  
 
   const dailyNormaCounter = values =>
     values.picked === 'female'
