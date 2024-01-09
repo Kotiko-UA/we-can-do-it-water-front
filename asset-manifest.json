@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/we-can-do-it-water-front/static/css/main.c0163d6a.css",
-    "main.js": "/we-can-do-it-water-front/static/js/main.be81ff83.js",
+    "main.js": "/we-can-do-it-water-front/static/js/main.dd2dc5df.js",
     "static/js/845.17edd3a4.chunk.js": "/we-can-do-it-water-front/static/js/845.17edd3a4.chunk.js",
     "static/media/Roboto-Medium.woff": "/we-can-do-it-water-front/static/media/Roboto-Medium.b14ca2d2b289afceb0b0.woff",
     "static/media/Roboto-Bold.woff": "/we-can-do-it-water-front/static/media/Roboto-Bold.3f2cbde6b72e8d05669f.woff",
@@ -68,11 +68,11 @@
     "static/media/close.svg": "/we-can-do-it-water-front/static/media/close.1d558c839aa1ddbb6b8f1bdd572dd83f.svg",
     "static/media/mark-list.svg": "/we-can-do-it-water-front/static/media/mark-list.fddb539b56ea3011c50a91ee6d888f28.svg",
     "main.c0163d6a.css.map": "/we-can-do-it-water-front/static/css/main.c0163d6a.css.map",
-    "main.be81ff83.js.map": "/we-can-do-it-water-front/static/js/main.be81ff83.js.map",
+    "main.dd2dc5df.js.map": "/we-can-do-it-water-front/static/js/main.dd2dc5df.js.map",
     "845.17edd3a4.chunk.js.map": "/we-can-do-it-water-front/static/js/845.17edd3a4.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c0163d6a.css",
-    "static/js/main.be81ff83.js"
+    "static/js/main.dd2dc5df.js"
   ]
 }
