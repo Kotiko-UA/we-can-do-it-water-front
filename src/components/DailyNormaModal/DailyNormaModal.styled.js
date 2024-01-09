@@ -15,16 +15,7 @@ export const Backdrop = styled.div`
 `;
 
 export const ModalWin = styled.div`
-  /* position: absolute;
-  padding: 24px 12px; */
   max-width: 256px;
-  height: 768px;
-  /* border-radius: 10px;
-  top: 50%;
-  left: 50%;
-  overflow-y: auto;
-  transform: translate(-50%, -50%) scale(1);
-  background-color: #fff; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -32,8 +23,7 @@ export const ModalWin = styled.div`
   color: ${({ theme }) => theme.primaryBlack};
 
   @media screen and (min-width: 768px) {
-    min-width: 656px;
-    height: 612px;
+    min-width: 704px;
   }
 
   @media screen and (min-width: 1440px) {
@@ -43,7 +33,6 @@ export const ModalWin = styled.div`
 `;
 
 export const ButtonClose = styled.button`
-  /* display: block; */
   padding: 2px;
   background-color: transparent;
   margin-left: auto;
@@ -167,12 +156,16 @@ export const RadioBtnField = styled(Field)`
 `;
 
 export const FieldForm = styled(Field)`
-  margin-top: 8px;
-  padding: 12px 10px;
-  border-radius: 6px;
-  border: 1px solid #d7e3ff;
-  color: ${({ theme }) => theme.primaryBlue};
-  width: 100%;
+margin-top: 8px;
+padding: 12px 10px;
+border-radius: 6px;
+border: 1px solid #D7E3FF;
+color: ${({theme}) => theme.primaryBlue};
+width: 100%;
+
+&::placeholder {
+  color: ${({theme}) => theme.primaryBlue};
+}
 `;
 
 export const ErrMsg = styled(ErrorMessage)`
