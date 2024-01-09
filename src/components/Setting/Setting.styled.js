@@ -188,12 +188,16 @@ export const CommonInput = styled(Field)`
   padding: 12px 10px;
   border-radius: 6px;
   border: 1px solid ${props => props.theme.secondaryLightBlue};
-  color: ${props => props.theme.primaryBlue};
+  color: ${props => props.theme.secondaryBlue};
   font-family: 'Roboto';
   font-size: 16px;
   font-weight: 400;
   line-height: 1.25;
   margin-bottom: 24px;
+
+  &:focus {
+    color: ${props => props.theme.primaryBlue};
+  }
 
   &::placeholder {
     color: rgba(158, 187, 255, 1);
