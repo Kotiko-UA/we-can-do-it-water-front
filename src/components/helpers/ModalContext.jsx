@@ -1,3 +1,2 @@
-import React, { createContext, useCallback, useEffect, useState } from 'react';
-// import ReactModal from 'react-modal';
+import { createContext } from 'react';
 export const ModalContext = createContext();

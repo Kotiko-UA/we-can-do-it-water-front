@@ -1,18 +1,18 @@
 import styled from 'styled-components';
-import bcgSignInFrameMob from "../../icons/SignInFrameMob.svg";
-import bcgSignInFrameTab from "../../icons/SignInFrameTab.svg";
-import bcgSignInFrameDesk from "../../icons/SignInFrameDesk.svg";
-import bcgSignInBottleTab from "../../icons/SignInBottleTab.svg";
-import bcgSignInBottleMob from "../../icons/SignInBotleMob.svg";
-import bcgSignInBottleDesk from "../../icons/SignInBottleTab.svg";
+import bcgSignInFrameMob from '../../icons/SignInFrameMob.svg';
+import bcgSignInFrameTab from '../../icons/SignInFrameTab.svg';
+import bcgSignInFrameDesk from '../../icons/SignInFrameDesk.svg';
+import bcgSignInBottleTab from '../../icons/SignInBottleTab.svg';
+import bcgSignInBottleMob from '../../icons/SignInBotleMob.svg';
+import bcgSignInBottleDesk from '../../icons/SignInBottleTab.svg';
 
 export const Title = styled.h1`
-color: #2F2F2F;
-font-family: Roboto;
-font-size: 26px;
-font-style: normal;
-font-weight: 500;
-line-height: 32px;
+  color: ${props => props.theme.primaryBlack};
+  font-family: Roboto;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 32px;
 `;
 
 export const SignInSection = styled.section`
@@ -20,7 +20,7 @@ export const SignInSection = styled.section`
   padding-top: 24px;
   padding-bottom: 250px;
   flex-direction: column;
-  
+
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -28,13 +28,13 @@ export const SignInSection = styled.section`
   background-image: url(${bcgSignInFrameMob}), url(${bcgSignInBottleMob});
   background-position: bottom;
 
-@media (min-width: 768px) {
-  padding-top:40px;
-  padding-bottom:300px;
-  flex-direction: row;
-  display: flex;
-  background-image: url(${bcgSignInFrameTab}), url(${bcgSignInBottleTab});
-  background-position: right;
+  @media (min-width: 768px) {
+    padding-top: 40px;
+    padding-bottom: 300px;
+    flex-direction: row;
+    display: flex;
+    background-image: url(${bcgSignInFrameTab}), url(${bcgSignInBottleTab});
+    background-position: right;
   }
 
   @media (min-width: 1440px) {
@@ -43,8 +43,7 @@ export const SignInSection = styled.section`
     padding-top: 0px;
     padding-bottom: 0px;
   }
-  `;
-
+`;
 
 export const SignInContainer = styled.div`
   width: 100%;
@@ -53,10 +52,9 @@ export const SignInContainer = styled.div`
   margin-left: auto;
   margin-right: auto;
 
-display: inline-flex;
-flex-direction: column;
-align-items: flex-start;
-
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
 
   @media (min-width: 768px) {
     padding-left: 0px;
@@ -65,6 +63,7 @@ align-items: flex-start;
     height: auto;
     margin-left: 0px;
     margin-right: 400px;
+    align-items: flex-start;
   }
 
   @media (min-width: 1440px) {
@@ -74,14 +73,5 @@ align-items: flex-start;
     margin-bottom: 196px;
     margin-left: auto;
     margin-right: 198px;
-    align-items: flex-start;
   }
-  
 `;
-
-
-
-
-
-
- 

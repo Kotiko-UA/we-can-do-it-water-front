@@ -8,12 +8,12 @@ import {
 import { logOut } from '../auth/operations';
 
 const initialState = {
-  items: [],
+  notes: null,
   isLoading: false,
   error: null,
 };
+
 const handleRejected = (state, action) => {
-  state.isLoading = false;
   state.error = action.payload;
 };
 
@@ -26,45 +26,37 @@ function isFulfilledAction(action) {
 function isRejectedAction(action) {
   return typeof action.type === 'string' && action.type.endsWith('/rejected');
 }
+
 const waterSlice = createSlice({
   name: 'water',
   initialState,
   extraReducers: builder => {
     builder
-      .addCase(findWaterToday.pending, state => {})
       .addCase(findWaterToday.fulfilled, (state, action) => {
-        state.error = null;
-        state.items = action.payload;
-        //"?"
+        state.notes = action.payload.notes;
       })
       .addCase(findWaterToday.rejected, handleRejected)
-      .addCase(addWater.pending, state => {})
       .addCase(addWater.fulfilled, (state, action) => {
-        state.error = null;
-        state.items.push(action.payload);
+        state.notes.push(action.payload);
       })
       .addCase(addWater.rejected, handleRejected)
-      .addCase(updateWater.pending, state => {})
       .addCase(updateWater.fulfilled, (state, action) => {
-        state.error = null;
-        state.items = state.items.map(water =>
-          water.id === action.payload.id ? action.payload : water
+        const updatedWater = action.payload;
+        const index = state.notes.findIndex(
+          water => water._id === updatedWater._id
         );
-        //"?"
+        state.notes[index] = updatedWater;
       })
       .addCase(updateWater.rejected, handleRejected)
-      .addCase(deleteWater.pending, state => {})
       .addCase(deleteWater.fulfilled, (state, action) => {
-        state.error = null;
-        const index = state.items.findIndex(
-          water => water.id === action.payload.id
+        const index = state.notes.findIndex(
+          water => water._id === action.payload.id
         );
-        state.items.splice(index, 1);
+        state.notes.splice(index, 1);
       })
       .addCase(deleteWater.rejected, handleRejected)
       .addCase(logOut.fulfilled, state => {
-        state.items = [];
-        state.error = null;
+        state.notes = [];
       })
       .addMatcher(isPendingAction, (state, action) => {
         state.isLoading = true;

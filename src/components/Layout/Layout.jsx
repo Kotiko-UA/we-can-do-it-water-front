@@ -7,7 +7,6 @@ import { Paskal } from 'components/pascal/paskal.jsx';
 import { TeamModal } from 'components/teams/TeamModal.jsx';
 import { Setting } from 'components/Setting/Setting.jsx';
 import { LogOut } from 'components/LogOut/LogOut.jsx';
-//import { useSelector } from 'react-redux';
 import { Loader } from 'components/Loader.jsx';
 import { useAuth } from 'Hooks/useAuth.js';
 import { Modalochka } from 'components/Modal/Modal.jsx';

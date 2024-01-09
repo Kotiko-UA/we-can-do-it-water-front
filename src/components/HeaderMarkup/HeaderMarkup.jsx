@@ -1,4 +1,5 @@
 import { useAuth } from 'Hooks/useAuth.js';
+import { useState, useRef } from 'react';
 import {
   Container,
   StyledLinkLogo,
@@ -13,16 +14,19 @@ import {
   SettingsIcon,
   LogOutIcon,
   ArrowIcon,
+  Button,
 } from './HeaderMarkup.styled.js';
-import { Loader } from '../Loader.jsx';
-// import { useState } from 'react';
+import { useOutSide } from '../../Hooks/outSide.js';
 
 const HeaderMarkup = ({ onClickSetting, onClickLogout }) => {
   const { isLoggedIn } = useAuth();
   const { userIcon } = useAuth();
-  const { isLoading } = useAuth();
   const { user } = useAuth();
-  // const [isOpen, setOpen] = useState(false);
+  const [isActive, setisActive] = useState(false);
+  const menuRef = useRef(null);
+  useOutSide(menuRef, () => {
+    setisActive(false);
+  });
 
   let userNameFromEmail = null;
   const userEmail = user.email;
@@ -30,77 +34,66 @@ const HeaderMarkup = ({ onClickSetting, onClickLogout }) => {
     const index = userEmail.indexOf('@');
     userNameFromEmail = userEmail.slice(0, index);
   }
-
-  // console.log('user', user);
-  // console.log('emailNаme not in if', userNameFromEmail);
+  const userName = user.name;
+  const userDefaultName = userName.includes('User_');
 
   return (
-    <>
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <Container>
-          <Nav>
-            <li>
-              <StyledLinkLogo to="/">
-                <LogoSvg alt="logo" />
-                Tracker <br /> of water
-              </StyledLinkLogo>
-            </li>
+    <Container>
+      <Nav>
+        <li>
+          <StyledLinkLogo to="/">
+            <LogoSvg alt="logo" />
+            Tracker <br /> of water
+          </StyledLinkLogo>
+        </li>
 
-            <li
-            // style={{ width: '118px' }}
-            >
-              {isLoggedIn ? (
-                <RightNavWrapper
-                // onClick={() => {
-                //   console.log('ckick');
-                //   setOpen(!isOpen);
-                // }}
-                >
-                  <StyledLink to="/">
-                    <h3>{userNameFromEmail}</h3>
-                    <RealUserIcon src={userIcon} alt="user real avatar" />
-                    <ArrowIcon />
-                  </StyledLink>
-
-                  <NavMenu
-                    className="navMenu"
-                    // {`${isOpen ? 'open' : ''}`}
-                  >
-                    <NavLi>
-                      <SettingsIcon />
-                      <a
-                        href="#settings"
-                        style={{ color: '#407bff' }}
-                        onClick={onClickSetting}
-                      >
-                        Settings
-                      </a>
-                    </NavLi>
-                    <NavLi>
-                      <LogOutIcon />
-                      <a
-                        href="#logout"
-                        style={{ color: '#407bff' }}
-                        onClick={onClickLogout}
-                      >
-                        Log out
-                      </a>
-                    </NavLi>
-                  </NavMenu>
-                </RightNavWrapper>
-              ) : (
-                <StyledLink to="/signin">
-                  Sign in
-                  <UserAvatar alt="user default avatar" />
+        <li>
+          {isLoggedIn ? (
+            <RightNavWrapper>
+ <Button type="button" onClick={() => setisActive(!isActive)}>
+                <StyledLink to="/">
+  <h3>{userDefaultName ? userNameFromEmail : userName}</h3>
+                  <RealUserIcon src={userIcon} alt="user real avatar" />
+                  <ArrowIcon />
                 </StyledLink>
-              )}
-            </li>
-          </Nav>
-        </Container>
-      )}
-    </>
+              </Button>
+
+
+              <NavMenu
+                className={`navMenu ${isActive ? 'open' : ' '}`}
+                ref={menuRef}
+              >
+                <NavLi>
+                  <SettingsIcon />
+                  <a
+                    href="#settings"
+                    style={{ color: '#407bff' }}
+                    onClick={onClickSetting}
+                  >
+                    Settings
+                  </a>
+                </NavLi>
+                <NavLi>
+                  <LogOutIcon />
+                  <a
+                    href="#logout"
+                    style={{ color: '#407bff' }}
+                    onClick={onClickLogout}
+                  >
+                    Log out
+                  </a>
+                </NavLi>
+              </NavMenu>
+            </RightNavWrapper>
+          ) : (
+            <StyledLink to="/signin">
+              Sign in
+              <UserAvatar alt="user default avatar" />
+            </StyledLink>
+          )}
+        </li>
+      </Nav>
+    </Container>
   );
 };
 
