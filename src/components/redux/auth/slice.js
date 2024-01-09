@@ -6,21 +6,21 @@ import {
   logOut,
   addDailyNorma,
   updateAvatar,
+  changeSettings,
 } from './operations';
 
 const initialState = {
-  user: { name: null, email: null, dailyNorma: 2, gender: 'female'},
-  token: null,
+  user: { name: '', email: '', gender: '', dailyNorma: 0 },
+  avatarURL: '',
+  token: '',
   isLoggedIn: false,
   isRefreshing: false,
-  icon: null,
   isLoading: false,
   error: null,
 };
 
 const handleRejected = (state, action) => {
   state.error = action.payload;
-  state.isLoading = false;
 };
 
 function isPendingAction(action) {
@@ -42,16 +42,13 @@ const authSlice = createSlice({
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
-        state.icon = action.payload.avatarURL;
-       
-
+        state.avatarURL = action.payload.avatarURL;
       })
       .addCase(signIn.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
-        state.icon = action.payload.avatarURL;
-       
+        state.avatarURL = action.payload.avatarURL;
       })
       .addCase(signIn.rejected, (state, action) => {
         handleRejected(state, action);
@@ -67,7 +64,8 @@ const authSlice = createSlice({
         state.user = action.payload;
         state.isLoggedIn = true;
         state.isRefreshing = false;
-        state.icon = action.payload.avatarURL;
+        state.dailyNorma = action.payload.dailyNorma;
+        state.avatarURL = action.payload.avatarURL;
       })
       .addCase(refreshUser.rejected, (state, action) => {
         state.isRefreshing = false;
@@ -76,9 +74,10 @@ const authSlice = createSlice({
         state.isRefreshing = true;
       })
       .addCase(logOut.fulfilled, (state, action) => {
-        state.user = { name: null, email: null };
-        state.token = null;
+        state.user = { name: '', email: '', gender: '', dailyNorma: 0 };
+        state.token = '';
         state.isLoggedIn = false;
+        state.avatarURL = '';
       })
       .addCase(logOut.rejected, (state, action) => {
         handleRejected(state, action);
@@ -96,9 +95,19 @@ const authSlice = createSlice({
         state.isRefreshing = true;
       })
       .addCase(updateAvatar.fulfilled, (state, action) => {
-        state.icon = action.payload.avatarURL;
+        state.avatarURL = action.payload.avatarURL;
       })
       .addCase(updateAvatar.rejected, (state, action) => {
+        handleRejected(state, action);
+      })
+
+      .addCase(changeSettings.pending, (state, action) => {
+        state.isRefreshing = true;
+      })
+      .addCase(changeSettings.fulfilled, (state, action) => {
+        state.user = action.payload;
+      })
+      .addCase(changeSettings.rejected, (state, action) => {
         handleRejected(state, action);
       })
 

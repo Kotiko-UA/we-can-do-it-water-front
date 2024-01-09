@@ -1,13 +1,14 @@
 import { ForgetPassword } from 'components/ForgetPassword/ForgetPaswword';
-import { Container, Title, Bootle } from './ForgetPasswordPage.styled';
+import { Container, Title, Section } from './ForgetPasswordPage.styled';
 
 const ForgetPasswordPage = () => {
   return (
-    <Container>
-      <Title>Forgot Password</Title>
-      <ForgetPassword />
-      <Bootle />
-    </Container>
+    <Section>
+      <Container>
+        <Title>Forgot Password</Title>
+        <ForgetPassword />
+      </Container>
+    </Section>
   );
 };
 

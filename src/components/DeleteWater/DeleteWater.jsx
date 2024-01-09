@@ -1,8 +1,6 @@
 import { useDispatch } from 'react-redux';
 import {
-  ButClose,
   BodyModal,
-  Backdrop,
   ButCancel,
   ButDelete,
   Titel,
@@ -14,31 +12,28 @@ import {
 } from './DeleteWater.styled';
 import { deleteWater } from 'components/redux/water/operations';
 
-export const DeleteWater = ({ id }) => {
+export const DeleteWater = ({ deleteId, close }) => {
   const dispatch = useDispatch();
-  const onDelete = id => {
-    dispatch(deleteWater(id));
+  const onDelete = async deleteId => {
+    await dispatch(deleteWater(deleteId));
+    close();
   };
-  return (
-    <Backdrop>
-      <BodyModal>
-        <Wrap>
-          <Titel>Delete entry</Titel>
-          <ButClose></ButClose>
-          {/* onClose */}
-        </Wrap>
 
-        <Text>Are you sure you want to delete the entry?</Text>
-        <ButtonWrap>
-          <ButDelete>
-            <Del onClick={() => onDelete(id)}>Delete</Del>
-          </ButDelete>
-          <ButCancel>
-            <Can>Cancel</Can>
-            {/* onClose */}
-          </ButCancel>
-        </ButtonWrap>
-      </BodyModal>
-    </Backdrop>
+  return (
+    <BodyModal>
+      <Wrap>
+        <Titel>Delete entry</Titel>
+      </Wrap>
+
+      <Text>Are you sure you want to delete the entry?</Text>
+      <ButtonWrap>
+        <ButDelete>
+          <Del onClick={() => onDelete(deleteId)}>Delete</Del>
+        </ButDelete>
+        <ButCancel>
+          <Can onClick={close}>Cancel</Can>
+        </ButCancel>
+      </ButtonWrap>
+    </BodyModal>
   );
 };

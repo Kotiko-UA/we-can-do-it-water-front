@@ -1,14 +1,22 @@
 import styled from 'styled-components';
+import { Field, Form, ErrorMessage } from 'formik';
 
 import { ReactComponent as ArrowUpSvg } from '../../icons/arrow-up.svg';
+import { ReactComponent as EyeSlashSvg } from "../../icons/eye_slash.svg";
+import { ReactComponent as EyeActiveSvg } from "../../icons/eye_active.svg";
 
 export const MainSettingContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+  width: 256px;
 
+@media(min-width: 768px) {
+    width: 656px;
+}
+/* 
   @media (min-width: 1440px) {
       width: 1008px;
-  }
+  } */
 `;
 
 export const SettingText = styled.p`
@@ -16,9 +24,11 @@ export const SettingText = styled.p`
   font-size: 26px;
   font-weight: 500;
   line-height: 1.23;
+  margin-top: 8px;
+  margin-bottom: 24px;
 `;
 
-export const MainContainer = styled.form`
+export const MainContainer = styled(Form)`
   display: flex;
   flex-wrap: wrap;
   @media (min-width: 1440px) {
@@ -43,11 +53,12 @@ export const AvatarContainer = styled.div`
   gap: 8px;
   margin-bottom: 24px;
   margin-right: 34px;
-`;
+  `;
 
 export const AvatarOutContainer = styled.div`
   @media (min-width: 768px) {
     display: flex;
+    flex-direction: column;
   }
 `;
 
@@ -59,7 +70,7 @@ export const Avatar = styled.img`
 
 `;
 
-export const InputFile = styled.input`
+export const InputFile = styled(Field)`
   width: 0.1px;
   height: 0.1px;
   opacity: 0;
@@ -90,7 +101,7 @@ export const Text = styled(GeneralText)`
   margin-bottom: 12px;
 `;
 
-export const GenderRadio = styled.input`
+export const GenderRadio = styled(Field)`
   position: relative;
   appearance: none;
   box-sizing: content-box;
@@ -129,6 +140,15 @@ export const GenderLabel = styled.label`
   margin-left: 6px;
 `;
 
+export const ErrorMsg = styled(ErrorMessage)`
+color: #EF5050;
+font-family: 'Roboto';
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 18px;
+`;
+
 
 export const InfoContainer = styled.div`
   display: flex;
@@ -164,7 +184,7 @@ export const DataLabel = styled.label`
   line-height: 1.11;
   margin-bottom: 8px;
 `;
-export const CommonInput = styled.input`
+export const CommonInput = styled(Field)`
   width: 256px;
   padding: 12px 10px;
   border-radius: 6px;
@@ -205,6 +225,52 @@ export const PasswordInputContainer = styled.div`
   }
 `;
 
+
+export const PasswordInputStyle = styled.input`
+width: 100%;
+border-radius: 6px;
+color: rgba(64, 123, 255, 1);
+font-family: 'Roboto';
+font-size: 16px;
+font-weight: 400;
+line-height: 1.25;
+
+border: 0;
+padding: 0;
+&::placeholder {
+    color: rgba(158, 187, 255, 1);
+}
+
+@media(min-width: 768px) {
+  width: 392px;
+}
+`
+
+export const EyeButton = styled.div`
+color: rgba(64, 123, 255, 1);
+background-color: transparent;
+`
+
+export const EyeSlash = styled(EyeSlashSvg)`
+width: 16px;
+height: 16px;
+position: relative; 
+/* bottom: 30px;
+left: 190px; */
+/* vertical-align: middle;  */
+cursor: pointer;
+`;
+
+export const EyeActive = styled(EyeActiveSvg)`
+width: 16px;
+height: 16px;
+position: relative; 
+/* bottom: 30px;
+left: 190px; */
+/* vertical-align: middle;  */
+cursor: pointer;
+`;
+
 export const PasswordLabel = styled.label`
   font-family: 'Roboto';
   font-size: 16px;
@@ -218,6 +284,7 @@ export const SaveButton = styled.button`
   color: ${props => props.theme.primaryWhite};
   width: 256px;
   margin-top: 12px;
+  margin-bottom: 8px;
   padding: 8px 30px;
   border-radius: 10px;
   font-family: 'Roboto';

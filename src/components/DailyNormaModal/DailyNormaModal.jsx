@@ -46,7 +46,7 @@ const normaForMan = values => {
   return values.weight * 0.04 + values.time * 0.6;
 };
 
-export const DailyNormaModal = ({ closeModal }) => {
+export const DailyNormaModal = ({ close }) => {
   const dispatch = useDispatch();
   const gender = useSelector(selectGender);
 
