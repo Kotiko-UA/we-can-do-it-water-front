@@ -21,9 +21,12 @@ import {
   WrapInfo,
   WrapTitle,
 } from './DailyNormaModal.styled';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { addDailyNorma } from 'components/redux/auth/operations';
+import {selectGender } from 'components/redux/auth/selectors';
+import { useState } from 'react';
+import toast from 'react-hot-toast';
 
 const DailyNormaSchema = Yup.object().shape({
   weight: Yup.number().moreThan(-1, 'The value must be positive!'),
@@ -45,17 +48,30 @@ const normaForMan = values => {
 
 export const DailyNormaModal = ({ close }) => {
   const dispatch = useDispatch();
+  const gender = useSelector(selectGender);
+
+
+  const [weightEntered, setWeightEntered] = useState(false);
+  const [timeEntered, setTimeEntered] = useState(false);
+  const [drinkEntered, setDrinkEntered] = useState(false);
 
   const handleSave = (values, actions) => {
-    dispatch(addDailyNorma(values.drink));
-    actions.resetForm();
-    close();
+    dispatch(addDailyNorma(values.drink))
+      .unwrap()
+      .then(() => {
+        actions.resetForm();
+        close();
+      })
+      .catch((error) => {
+        toast.error('Oops, something went wrong. Please try again');
+      });
   };
+  
 
   const dailyNormaCounter = values =>
-    values.picked === 'For girl'
+    values.picked === 'female'
       ? normaForGirl(values).toFixed(1)
-      : values.picked === 'For man'
+      : values.picked === 'male'
       ? normaForMan(values).toFixed(1)
       : 0;
 
@@ -82,10 +98,10 @@ export const DailyNormaModal = ({ close }) => {
       </div>
       <Formik
         initialValues={{
-          picked: '', // Взяти із Setting
-          weight: 0,
-          time: 0,
-          drink: 0,
+          picked: gender,
+          weight: '',
+          time: '',
+          drink: '',
         }}
         validationSchema={DailyNormaSchema}
         onSubmit={(values, actions) => handleSave(values, actions)}
@@ -96,24 +112,36 @@ export const DailyNormaModal = ({ close }) => {
               <Subtitle>Calculate your rate:</Subtitle>
               <RadioWrap role="group" aria-labelledby="my-radio-group">
                 <RadioBtnLabel>
-                  <RadioBtnField type="radio" name="picked" value="For girl" />
+                  <RadioBtnField type="radio" name="picked" value="female" />
                   For girl
                 </RadioBtnLabel>
                 <RadioBtnLabel>
-                  <RadioBtnField type="radio" name="picked" value="For man" />
+                  <RadioBtnField type="radio" name="picked" value="male" />
                   For man
                 </RadioBtnLabel>
               </RadioWrap>
 
               <label>
                 Your weight in kilograms:
-                <FieldForm id="weight" name="weight" type="number" />
+                <FieldForm
+                  id="weight"
+                  name="weight"
+                  type="number"
+                  placeholder={weightEntered ? '' : '0'}
+                  onFocus={() => setWeightEntered(true)}
+                />
                 <ErrMsg name="weight" component="div" />
               </label>
               <label>
                 The time of active participation in sports or other activities
                 with a high physical load:
-                <FieldForm id="time " name="time" type="number" />
+                <FieldForm
+                  id="time"
+                  name="time"
+                  type="number"
+                  placeholder={timeEntered ? '' : '0'}
+                  onFocus={() => setTimeEntered(true)}
+                />
                 <ErrMsg name="time" component="div" />
               </label>
               <NormaWrap>
@@ -122,7 +150,13 @@ export const DailyNormaModal = ({ close }) => {
               </NormaWrap>
               <LabelFormNorma>
                 Write down how much water you will drink:
-                <FieldForm id="drink " name="drink" type="number" />
+                <FieldForm
+                  id="drink"
+                  name="drink"
+                  type="number"
+                  placeholder={drinkEntered ? '' : '0'}
+                  onFocus={() => setDrinkEntered(true)}
+                />
                 <ErrMsg name="drink" component="div" />
               </LabelFormNorma>
             </FormCalculateWrap>

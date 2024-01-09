@@ -6,6 +6,7 @@ import {
   logOut,
   addDailyNorma,
   updateAvatar,
+  changeSettings,
 } from './operations';
 
 const initialState = {
@@ -97,6 +98,16 @@ const authSlice = createSlice({
         state.avatarURL = action.payload.avatarURL;
       })
       .addCase(updateAvatar.rejected, (state, action) => {
+        handleRejected(state, action);
+      })
+
+      .addCase(changeSettings.pending, (state, action) => {
+        state.isRefreshing = true;
+      })
+      .addCase(changeSettings.fulfilled, (state, action) => {
+        state.user = action.payload;
+      })
+      .addCase(changeSettings.rejected, (state, action) => {
         handleRejected(state, action);
       })
 
