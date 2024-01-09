@@ -25,6 +25,7 @@ import {
   PasswordInputStyle,
   EyeActive,
   EyeSlash,
+  PasswordInputWrapper
 } from './Setting.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik } from 'formik';
@@ -160,19 +161,20 @@ export const Setting = ({ close }) => {
                   <DataLabel className="gender-label" htmlFor="name">
                     Your name
                   </DataLabel>
-                  <CommonInput
-                    id="name"
-                    type="text"
-                    name="name"
-                    placeholder="Name"
-                    maxLength={32}
-                    style={
-                      errors.name && touched.name
-                        ? { borderColor: '#EF5050', color: '#EF5050' }
-                        : null
-                    }
-                  />
-                  <ErrorMsg name="name" component="div" />
+                    <CommonInput
+                      id="name"
+                      type="text"
+                      name="name"
+                      placeholder="Name"
+                      maxLength={32}
+                      style={
+                        errors.name && touched.name
+                          ? { borderColor: '#EF5050', color: '#EF5050' }
+                          : null
+                      } 
+                    />
+                    <ErrorMsg name="name" component="div" />
+
                   <DataLabel htmlFor="email">E-mail</DataLabel>
                   <CommonInput
                     id="email"
@@ -190,66 +192,77 @@ export const Setting = ({ close }) => {
               </InfoContainer>
               <PasswordContainer>
                 <Text>Password</Text>
+
                 <PasswordLabel>Outdated password:</PasswordLabel>
-                <PasswordInputContainer>
-                  <PasswordInputStyle
-                    value={values.password}
-                    onChange={handleChange}
-                    name="password"
-                    type={visiblePassword ? 'text' : 'password'}
-                    autoComplete="on"
-                    placeholder="Password"
-                    style={
-                      errors.password && touched.password
-                        ? { borderColor: '#EF5050', color: '#EF5050' }
-                        : null
-                    }
-                  />
-                  <span onClick={() => setVisiblePassword(!visiblePassword)}>
-                    {visiblePassword ? <EyeActive /> : <EyeSlash />}
-                  </span>
-                </PasswordInputContainer>
-                <ErrorMsg name="password" component="div" />
+                    <PasswordInputWrapper>
+                        <PasswordInputContainer>
+                            <PasswordInputStyle
+                              value={values.password}
+                              onChange={handleChange}
+                              name="password"
+                              type={visiblePassword ? 'text' : 'password'}
+                              autoComplete="on"
+                              placeholder="Password"
+                              style={
+                                errors.password && touched.password
+                                  ? { borderColor: '#EF5050', color: '#EF5050' }
+                                  : null
+                              }
+                            />
+                            <span onClick={() => setVisiblePassword(!visiblePassword)}>
+                              {visiblePassword ? <EyeActive /> : <EyeSlash />}
+                            </span>
+                        </PasswordInputContainer>
+                        <ErrorMsg name="password" component="div" />
+                    </PasswordInputWrapper>
+                
+
                 <PasswordLabel>New Password:</PasswordLabel>
-                <PasswordInputContainer>
-                  <PasswordInputStyle
-                    value={values.newPassword}
-                    onChange={handleChange}
-                    name="newPassword"
-                    type={visiblePassword ? 'text' : 'password'}
-                    autoComplete="on"
-                    placeholder="Password"
-                    style={
-                      errors.newPassword && touched.newPassword
-                        ? { borderColor: '#EF5050', color: '#EF5050' }
-                        : null
-                    }
-                  />
-                  <span onClick={() => setVisiblePassword(!visiblePassword)}>
-                    {visiblePassword ? <EyeActive /> : <EyeSlash />}
-                  </span>
-                </PasswordInputContainer>
-                <ErrorMsg name="newPassword" component="div" />
+                    <PasswordInputWrapper>
+                          <PasswordInputContainer>
+                              <PasswordInputStyle
+                                value={values.newPassword}
+                                onChange={handleChange}
+                                name="newPassword"
+                                type={visiblePassword ? 'text' : 'password'}
+                                autoComplete="on"
+                                placeholder="Password"
+                                style={
+                                  errors.newPassword && touched.newPassword
+                                    ? { borderColor: '#EF5050', color: '#EF5050' }
+                                    : null
+                                }
+                              />
+                              <span onClick={() => setVisiblePassword(!visiblePassword)}>
+                                {visiblePassword ? <EyeActive /> : <EyeSlash />}
+                              </span>
+                          </PasswordInputContainer>
+                        <ErrorMsg name="newPassword" component="div" />
+                    </PasswordInputWrapper>
+                
                 <PasswordLabel>Repeat new password:</PasswordLabel>
-                <PasswordInputContainer>
-                  <PasswordInputStyle
-                    value={values.repeatPassword}
-                    onChange={handleChange}
-                    name="repeatPassword"
-                    type={visiblePassword ? 'text' : 'password'}
-                    autoComplete="on"
-                    placeholder="Password"
-                    style={
-                      errors.repeatPassword && touched.repeatPassword
-                        ? { borderColor: '#EF5050', color: '#EF5050' }
-                        : null
-                    }
-                  />
-                  <span onClick={() => setVisiblePassword(!visiblePassword)}>
-                    {visiblePassword ? <EyeActive /> : <EyeSlash />}
-                  </span>
-                </PasswordInputContainer>
-                <ErrorMsg name="repeatPassword" component="div" />
+                    <PasswordInputWrapper>
+                        <PasswordInputContainer>
+                                <PasswordInputStyle
+                                  value={values.repeatPassword}
+                                  onChange={handleChange}
+                                  name="repeatPassword"
+                                  type={visiblePassword ? 'text' : 'password'}
+                                  autoComplete="on"
+                                  placeholder="Password"
+                                  style={
+                                    errors.repeatPassword && touched.repeatPassword
+                                      ? { borderColor: '#EF5050', color: '#EF5050' }
+                                      : null
+                                  }
+                                />
+                          <span onClick={() => setVisiblePassword(!visiblePassword)}>
+                            {visiblePassword ? <EyeActive /> : <EyeSlash />}
+                          </span>
+                        </PasswordInputContainer>
+                    <ErrorMsg name="repeatPassword" component="div" />
+                    </PasswordInputWrapper>
+                
               </PasswordContainer>
             </CommonInfoContainer>
             <SaveButton
