@@ -12,7 +12,7 @@ import {
 } from './RecoveryPassword.styled';
 
 export const RecoveryPassword = () => {
-  const [email, setEmail] = useState();
+  // const [email, setEmail] = useState();
 
   const [type, setType] = useState('password');
   const [icon, setIcon] = useState(
@@ -36,7 +36,7 @@ export const RecoveryPassword = () => {
   const submit = event => {
     event.preventDefault();
     const form = event.currentTarget;
-    const { email } = form.elements;
+    // const { email } = form.elements;
     // dispatch(
     //   register({
     //     email: email.value,

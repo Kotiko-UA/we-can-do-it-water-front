@@ -1,48 +1,29 @@
 import styled from 'styled-components';
 import 'react-datepicker/dist/react-datepicker.css';
-import { ReactComponent as Close } from '../../icons/close.svg';
+
 import { ReactComponent as Minus } from '../../icons/minus-small.svg';
 import { ReactComponent as Plus } from '../../icons/plus-small.svg';
-export const Backdrop = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0) 100%);
-  -webkit-backdrop-filter: blur(11px);
-  backdrop-filter: blur(11px);
-  z-index: 999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-export const BodyModal = styled.div`
-  padding: 24px 12px;
 
+export const BodyModal = styled.div`
   gap: 24px;
   border-radius: 10px;
   background: #fff;
-  width: 280px;
-  height: 540px;
+  width: 256px;
+  height: 492px;
   margin: auto;
   @media (min-width: 768px) {
-    width: 704px;
-    padding: 32px 24px;
-    height: 504px;
+    width: 656px;
+    height: 440px;
   }
   @media (min-width: 1440px) {
-    width: 592px;
+    width: 544px;
   }
 `;
-export const ButClose = styled(Close)`
-  width: 24px;
-  height: 24px;
-`;
-export const Tilel = styled.p`
+
+export const TilelAddWater = styled.p`
   color: #2f2f2f;
   width: 128px;
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 26px;
   font-style: normal;
   font-weight: 500;
@@ -66,7 +47,7 @@ export const WraperTitel = styled.div`
 export const ChoWal = styled.p`
   color: #2f2f2f;
   margin-top: 24px;
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
@@ -75,7 +56,7 @@ export const ChoWal = styled.p`
 export const AmoWate = styled.p`
   color: #2f2f2f;
   margin-top: 16px;
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -84,7 +65,7 @@ export const AmoWate = styled.p`
 export const Time = styled.p`
   color: #2f2f2f;
   margin-top: 24px;
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -94,7 +75,7 @@ export const ValueWater = styled.p`
   color: #2f2f2f;
   margin-top: 24px;
   margin-bottom: 16px;
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
@@ -104,7 +85,7 @@ export const WaterMl = styled.div`
   color: #407bff;
 
   text-align: center;
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
@@ -127,7 +108,7 @@ export const WaterMlBeg = styled.div`
   color: #407bff;
 
   text-align: center;
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
@@ -183,7 +164,7 @@ export const StyledInput = styled.input`
   border: 1px solid #d7e3ff;
   width: 120px;
   color: #407bff;
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -205,7 +186,7 @@ export const StyledDatePicker = styled.input`
   border: 1px solid #d7e3ff;
   color: #407bff;
   width: 120px;
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -222,7 +203,7 @@ export const StileSave = styled.span`
   color: #fff;
   width: 196px;
   text-align: center;
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
