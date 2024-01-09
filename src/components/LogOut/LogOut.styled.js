@@ -55,6 +55,15 @@ background-color: ${props => props.theme.secondaryRed};
 box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
 margin-bottom: 24px;
 
+&:hover {
+    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+    transition: ${props => props.theme.cubicBezier};
+  }
+
+  &:active {
+    box-shadow: 0px 0px 0px 0px;
+  }
+
 @media(min-width: 768px) {
     margin-bottom: 0;
 }
@@ -64,6 +73,14 @@ export const CancelButton = styled(Button)`
 color: ${props => props.theme.primaryBlue};
 background-color: ${props => props.theme.secondaryLightBlue};
 margin-bottom: 8px;
+  &:hover {
+    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+    transition: ${props => props.theme.cubicBezier};
+  }
+
+  &:active {
+    box-shadow: 0px 0px 0px 0px;
+  }
 
 @media(min-width: 768px) {
     margin-bottom: 0;

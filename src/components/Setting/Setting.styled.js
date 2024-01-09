@@ -13,10 +13,10 @@ export const MainSettingContainer = styled.div`
 @media(min-width: 768px) {
     width: 656px;
 }
-/* 
+
   @media (min-width: 1440px) {
       width: 1008px;
-  } */
+  }
 `;
 
 export const SettingText = styled.p`
@@ -112,7 +112,6 @@ export const GenderRadio = styled(Field)`
   cursor: pointer;
 
   &::before {
-    /* box-sizing: content-box; */
     content: '';
     position: absolute;
     top: 50%;
@@ -208,67 +207,66 @@ export const CommonInput = styled(Field)`
 
 export const PasswordInputContainer = styled.div`
   display: flex;
+  margin-top: 8px;
+  margin-bottom: 12px;
+`;
+
+
+export const PasswordInputStyle = styled(Field)`
+  color: ${props => props.theme.secondaryBlue};
   width: 256px;
+  height: auto;
+  font-family: 'Roboto';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.25;
   padding: 12px 10px;
   border-radius: 6px;
   border: 1px solid ${props => props.theme.secondaryLightBlue};
-  color: ${props => props.theme.primaryBlue};
-  font-family: 'Roboto';
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.25;
-  margin-top: 8px;
-  margin-bottom: 12px;
+  background: ${props => props.theme.primaryWhite};
+
+  &::placeholder {
+    color: ${props => props.theme.secondaryBlue};
+    opacity: 1;
+  }
+
+  &:focus {
+    color: ${props => props.theme.primaryBlue};
+  }
 
   @media (min-width: 768px) {
     width: 392px;
   }
-`;
 
-
-export const PasswordInputStyle = styled.input`
-width: 100%;
-border-radius: 6px;
-color: rgba(64, 123, 255, 1);
-font-family: 'Roboto';
-font-size: 16px;
-font-weight: 400;
-line-height: 1.25;
-
-border: 0;
-padding: 0;
-&::placeholder {
-    color: rgba(158, 187, 255, 1);
-}
-
-@media(min-width: 768px) {
-  width: 392px;
-}
+  @media (min-width: 1440px) {
+    width: 384px;
+  }
 `
 
-export const EyeButton = styled.div`
+export const EyeButton = styled.span`
 color: rgba(64, 123, 255, 1);
 background-color: transparent;
 `
 
 export const EyeSlash = styled(EyeSlashSvg)`
-width: 16px;
-height: 16px;
-position: relative; 
-/* bottom: 30px;
-left: 190px; */
-/* vertical-align: middle;  */
-cursor: pointer;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  top: 15px;
+  right: 25px;
+  vertical-align: middle;
+  cursor: pointer;
 `;
 
 export const EyeActive = styled(EyeActiveSvg)`
-width: 16px;
-height: 16px;
-position: relative; 
-/* bottom: 30px;
-left: 190px; */
-/* vertical-align: middle;  */
-cursor: pointer;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  top: 15px;
+  right: 25px;
+  vertical-align: middle;
+  cursor: pointer;
 `;
 
 export const PasswordLabel = styled.label`
@@ -279,7 +277,6 @@ export const PasswordLabel = styled.label`
 `;
 
 export const SaveButton = styled.button`
-  margin: 0 auto;
   background-color: ${props => props.theme.primaryBlue};
   color: ${props => props.theme.primaryWhite};
   width: 256px;
@@ -293,6 +290,15 @@ export const SaveButton = styled.button`
   line-height: 1.25;
   text-align: center;
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
+
+  &:hover {
+    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+    transition: ${props => props.theme.cubicBezier};
+  }
+
+  &:active {
+    box-shadow: 0px 0px 0px 0px;
+  }
 
   @media (min-width: 768px) {
     width: 160px;

@@ -23,7 +23,6 @@ import {
   Avatar,
   ErrorMsg,
   PasswordInputStyle,
-  EyeButton,
   EyeActive,
   EyeSlash,
 } from './Setting.styled';
@@ -43,13 +42,13 @@ const SettingFormSchema = Yup.object().shape({
   password: Yup.string()
     .min(8, 'Too short! At least 8')
     .max(64, 'Too long! Less then 64')
-  .required(),
+    .required(),
   repeatPassword: Yup.string()
     .oneOf([Yup.ref('newPassword'), null], 'Passwords must match')
 });
 
 
-export const Setting = () => {
+export const Setting = ({close}) => {
 
   const [visiblePassword, setVisiblePassword] = useState(false);
   
@@ -71,35 +70,48 @@ export const Setting = () => {
     dispatch(updateAvatar(formData));
   }
 
-  const onSaveButton = (evt) => {
-    const { name, email, gender, password, newPassword } = evt;
-
-    const data = { name, email, gender, password };
-    
-    if (newPassword !== '') {
-      data.newPassword = newPassword
-    }
-    dispatch(changeSettings(data))
-
-    // close()
-  }
-
-  return (
-    <MainSettingContainer>
-      <SettingText>Setting</SettingText>
-      <Formik initialValues={{
+  const initialState = {
         name: nameValue,
         email: emailValue,
         gender: currentUser.gender,
         password: '',
         newPassword: '',
         repeatPassword: ''
-        }}
+  }
+  
+  const onSaveButton = (evt) => {
+    const { name, email, gender, password, newPassword } = evt;
+    
+    const data = { name, email, gender, password };
+
+    if (password === data.password && newPassword !== '') {
+      data.newPassword = newPassword
+    }
+
+    dispatch(changeSettings(data))
+    if (initialState.name === name || initialState.email === email) {
+      close()
+    }
+  }
+
+  return (
+    <MainSettingContainer>
+      <SettingText>Setting</SettingText>
+      <Formik initialValues={initialState}
         validationSchema={SettingFormSchema}
         onSubmit={(values, actions) => {
           onSaveButton(values);
-          actions.resetForm();
-          }}>
+          actions.resetForm({
+            values: {
+              // name: initialState.name,
+              // email: initialState.email,
+              // gender: initialState.gender,
+              password: '',
+              newPassword: '',
+              repeatPassword: ''
+            }
+          });
+        }}>
         {({ values, handleChange, errors, touched }) => (
           <MainContainer>
             <div>
@@ -130,7 +142,7 @@ export const Setting = () => {
                     type="radio"
                     name="gender"
                   />
-                  <GenderLabel className="gender-label" htmlFor="girl">Girl</GenderLabel>
+                  <GenderLabel className="gender-label" htmlFor="girl">Woman</GenderLabel>
                   <GenderRadio value='male'
                     onChange={handleChange}
                     type="radio"
@@ -159,7 +171,7 @@ export const Setting = () => {
                     placeholder="E-mail"
                     style={
                   errors.email && touched.email
-                    ? { borderColor: '#EF5050', color: '#EF5050' }
+                        ? { borderColor: '#EF5050', color: '#EF5050' }
                     : null
                 }/>
                   <ErrorMsg name="email" component="div" />
@@ -181,13 +193,12 @@ export const Setting = () => {
                     ? { borderColor: '#EF5050', color: '#EF5050' }
                     : null
                 }/>
-      <EyeButton
-        type="button"
+      <span
         onClick={() => setVisiblePassword(!visiblePassword)}>
         {visiblePassword ? <EyeActive /> : <EyeSlash />}
-      </EyeButton>
-                  <ErrorMsg name="password" component="div" />
+      </span>
                 </PasswordInputContainer>
+                <ErrorMsg name="password" component="div" />
                 <PasswordLabel>New Password:</PasswordLabel>
                 <PasswordInputContainer>
                   <PasswordInputStyle
@@ -202,13 +213,12 @@ export const Setting = () => {
                     ? { borderColor: '#EF5050', color: '#EF5050' }
                     : null
                 }/>
-      <EyeButton
-        type="button"
+      <span
         onClick={() => setVisiblePassword(!visiblePassword)}>
         {visiblePassword ? <EyeActive /> : <EyeSlash />}
-      </EyeButton>
-                  <ErrorMsg name="newPassword" component="div" />
+      </span>
                 </PasswordInputContainer>
+                <ErrorMsg name="newPassword" component="div" />
                 <PasswordLabel>Repeat new password:</PasswordLabel>
                 <PasswordInputContainer>
                   <PasswordInputStyle
@@ -223,16 +233,15 @@ export const Setting = () => {
                     ? { borderColor: '#EF5050', color: '#EF5050' }
                     : null
                 }/>
-      <EyeButton
-        type="button"
+      <span
         onClick={() => setVisiblePassword(!visiblePassword)}>
         {visiblePassword ? <EyeActive /> : <EyeSlash />}
-      </EyeButton>
-                  <ErrorMsg name="repeatPassword" component="div" />
+      </span>
                 </PasswordInputContainer>
+                <ErrorMsg name="repeatPassword" component="div" />
               </PasswordContainer>
             </CommonInfoContainer>
-            <SaveButton type="submit">
+            <SaveButton disabled={!values.password && values.name === initialState.name && values.email === initialState.email && values.gender === initialState.gender} type="submit">
               Save
             </SaveButton>
           </MainContainer>
