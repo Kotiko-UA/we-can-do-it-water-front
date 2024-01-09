@@ -207,10 +207,13 @@ export const CommonInput = styled(Field)`
 
 export const PasswordInputContainer = styled.div`
   display: flex;
+`;
+
+
+export const PasswordInputWrapper = styled.div`
   margin-top: 8px;
   margin-bottom: 12px;
 `;
-
 
 export const PasswordInputStyle = styled(Field)`
   color: ${props => props.theme.secondaryBlue};
