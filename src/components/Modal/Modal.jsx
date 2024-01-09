@@ -39,7 +39,7 @@ export const Modalochka = ({ children, title, toggleModal }) => {
   }, [toggleModal]);
 
   return createPortal(
-    <OverLay onClick={onClickBackdrop}>
+    <OverLay onMouseDown={onClickBackdrop}>
       <Modal>
         <ButtonClose onClick={toggleModal} type="button">
           <Svg
