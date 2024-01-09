@@ -105,7 +105,6 @@ export const updateAvatar = createAsyncThunk(
 export const changeSettings = createAsyncThunk(
   'auth/settings',
   async (userdata, thunkAPI) => {
-    console.log(userdata)
     try {
       const res = await axios.patch('/users/settings', userdata);
       return res.data;
