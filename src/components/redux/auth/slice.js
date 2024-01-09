@@ -10,11 +10,11 @@ import {
 } from './operations';
 
 const initialState = {
-  user: { name: null, email: null},
-  token: null,
+  user: { name: '', email: '', gender: ''},
+  token: '',
   isLoggedIn: false,
   isRefreshing: false,
-  icon: null,
+  icon: '',
   isLoading: false,
   dailyNorma: 2,
   error: null,
@@ -103,8 +103,7 @@ const authSlice = createSlice({
         state.isRefreshing = true;
       })
       .addCase(changeSettings.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        // console.log(state.user)
+        state.user = action.payload;
       })
       .addCase(changeSettings.rejected, (state, action) => {
         handleRejected(state, action);
