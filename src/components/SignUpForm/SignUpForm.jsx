@@ -15,6 +15,7 @@ import {
   EyeSlash,
   EyeActive,
 } from './SignUpForm.styled.js';
+import { useNavigate } from 'react-router-dom';
 
 import toast from 'react-hot-toast';
 
@@ -31,6 +32,7 @@ const SignUpFormSchema = Yup.object().shape({
 
 export const SignUpForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [type, setType] = useState('password');
   const [icon, setIcon] = useState(
@@ -54,8 +56,8 @@ export const SignUpForm = () => {
         password: values.password,
       })
     );
+    navigate('/signin', { replace: true });
   };
-
 
   const { error } = useAuth();
 
