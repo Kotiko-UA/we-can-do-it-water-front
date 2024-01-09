@@ -49,7 +49,7 @@ const HeaderMarkup = ({ onClickSetting, onClickLogout }) => {
 
         <li>
           {isLoggedIn ? (
-            <RightNavWrapper>
+            <RightNavWrapper ref={menuRef}>
  <Button type="button" onClick={() => setisActive(!isActive)}>
                 <StyledLink to="/">
   <h3>{userDefaultName ? userNameFromEmail : userName}</h3>
