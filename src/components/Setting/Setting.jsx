@@ -44,10 +44,12 @@ const SettingFormSchema = Yup.object().shape({
     .min(8, 'Too short! At least 8')
     .max(64, 'Too long! Less then 64')
     .required(),
-  repeatPassword: Yup.string().oneOf(
-    [Yup.ref('newPassword'), null],
-    'Passwords must match'
-  ),
+  newPassword: Yup.string()
+    .min(8, 'Too short! At least 8')
+    .max(64, 'Too long! Less then 64')
+    .oneOf([Yup.ref('repeatPassword'), null], 'New password must match repeated password'),
+  repeatPassword: Yup.string()
+    .oneOf([Yup.ref('newPassword'), null], 'New password must match repeated password')
 });
 
 export const Setting = ({ close }) => {
@@ -265,15 +267,11 @@ export const Setting = ({ close }) => {
                 
               </PasswordContainer>
             </CommonInfoContainer>
-            <SaveButton
-              disabled={
-                !values.password &&
-                values.name === initialState.name &&
-                values.email === initialState.email &&
-                values.gender === initialState.gender
-              }
-              type="submit"
-            >
+            <SaveButton disabled={!values.password &&
+              values.name === initialState.name &&
+              values.email === initialState.email &&
+              values.gender === initialState.gender &&
+              !values.newPassword && !values.repeatPassword} type="submit">
               Save
             </SaveButton>
           </MainContainer>
