@@ -33,12 +33,15 @@ const Calendar = () => {
     if (!waterNotes) {
       return;
     }
-    const getMonthData = async () => {
+    const controller = new AbortController();
+
+    const getMonthData = async (signal = null) => {
       try {
         const resp = await instanceWaterMonth.get(
           `/waternotes/month?month=${month}&year=${year}`,
           {
             headers: { Authorization: `Bearer ${token}` },
+            signal,
           }
         );
         const monthDataResp = resp.data;
@@ -48,7 +51,10 @@ const Calendar = () => {
       }
     };
 
-    getMonthData();
+    getMonthData(controller.signal);
+    return () => {
+      controller.abort();
+    };
   }, [token, month, year, dailyNormaValue, waterNotes]);
 
   const ref = useRef(null);
