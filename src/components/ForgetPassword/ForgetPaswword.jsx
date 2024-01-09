@@ -9,9 +9,11 @@ import {
   Form,
   StyledLink,
 } from './ForgetPassword.styled';
+import { useNavigate } from 'react-router-dom';
 
 export const ForgetPassword = () => {
   const [email, setEmail] = useState(' ');
+  const navigate = useNavigate();
 
   const handlEmail = event => {
     setEmail(event.target.value);
@@ -21,6 +23,7 @@ export const ForgetPassword = () => {
     event.preventDefault();
     checkUser(email);
     setEmail('');
+    navigate('/signin', { replace: true });
   };
 
   return (

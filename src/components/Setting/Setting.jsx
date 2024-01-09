@@ -49,6 +49,7 @@ const SettingFormSchema = Yup.object().shape({
     .oneOf([Yup.ref('repeatPassword'), null], 'New password must match repeated password'),
   repeatPassword: Yup.string()
     .oneOf([Yup.ref('newPassword'), null], 'New password must match repeated password')
+
 });
 
 export const Setting = ({ close }) => {
@@ -259,6 +260,7 @@ export const Setting = ({ close }) => {
               values.email === initialState.email &&
               values.gender === initialState.gender &&
               !values.newPassword && !values.repeatPassword} type="submit">
+
               Save
             </SaveButton>
           </MainContainer>
