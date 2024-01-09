@@ -3,16 +3,23 @@ import styled from "styled-components";
 export const Container = styled.div`
 display: flex;
 flex-wrap: wrap;
-`;
-
-export const LogOutContainer = styled.div`
-width: 100%;
-display: flex;
-margin-bottom: 24px;
-justify-content: space-between;
 align-items: center;
+margin-left: 12px;
+width: 244px;
+
+@media(min-width: 768px) {
+    width: 532px;
+}
 `;
 
+export const LogOutText = styled.p`
+font-family: 'Roboto';
+font-size: 26px;
+font-weight: 500;
+line-height: 1.23;
+margin-top: 8px;
+margin-bottom: 24px;
+`;
 
 export const SecondaryText = styled.p`
 font-family: 'Roboto';
@@ -56,6 +63,11 @@ margin-bottom: 24px;
 export const CancelButton = styled(Button)`
 color: ${props => props.theme.primaryBlue};
 background-color: ${props => props.theme.secondaryLightBlue};
+margin-bottom: 8px;
+
+@media(min-width: 768px) {
+    margin-bottom: 0;
+}
 `;
 
 export const MediaButtonsContainer = styled.div`
@@ -64,7 +76,7 @@ export const MediaButtonsContainer = styled.div`
     width: max-content;
     gap: 24px;
     justify-content: flex-end;
-    margin-left: 200px;
+    margin-left: 188px;
     flex-direction: row-reverse;
 }
 

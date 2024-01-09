@@ -6,6 +6,7 @@ import {
   LogOutButton,
   SecondaryText,
   MediaButtonsContainer,
+  LogOutText,
 } from './LogOut.styled';
 import { logOut } from 'components/redux/auth/operations';
 
@@ -14,7 +15,10 @@ export const LogOut = ({ close }) => {
 
   return (
     <Container>
-      <SecondaryText>Do you really want to leave?</SecondaryText>
+      <div>
+      <LogOutText>Log out</LogOutText>
+        <SecondaryText>Do you really want to leave?</SecondaryText>
+      </div>
       <MediaButtonsContainer>
         <LogOutButton
           type="submit"
