@@ -11,6 +11,7 @@ export const OverLay = styled.div`
   height: 100%;
   background: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0) 100%);
   z-index: 999;
+  overflow: auto;
 `;
 export const ButtonClose = styled.button`
   display: block;
@@ -27,10 +28,11 @@ export const ButtonClose = styled.button`
 
 export const Modal = styled.div`
   padding: 24px 12px;
-  position: absolute;
+  position: relative;
   max-width: 1008px;
   background-color: #ffffff;
   border-radius: 10px;
+  flex-shrink: 0;
   @media (min-width: 768px) {
     padding: 32px 24px;
   }

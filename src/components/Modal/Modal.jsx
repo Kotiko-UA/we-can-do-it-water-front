@@ -17,9 +17,13 @@ export const Modalochka = ({ children, title, toggleModal }) => {
         toggleModal();
       }
     };
+    const body = document.querySelector('body');
+
+    body.style.position = 'fixed';
     window.addEventListener('keydown', onEscapeClick);
 
     return () => {
+      body.style.position = '';
       window.removeEventListener('keydown', onEscapeClick);
     };
   }, [toggleModal]);
