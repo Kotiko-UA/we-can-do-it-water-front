@@ -27,11 +27,11 @@ export const DeleteWater = ({ deleteId, close }) => {
 
       <Text>Are you sure you want to delete the entry?</Text>
       <ButtonWrap>
-        <ButCancel>
-          <Can onClick={close}>Cancel</Can>
+        <ButCancel onClick={close}>
+          <Can>Cancel</Can>
         </ButCancel>
-        <ButDelete>
-          <Del onClick={() => onDelete(deleteId)}>Delete</Del>
+        <ButDelete onClick={() => onDelete(deleteId)}>
+          <Del>Delete</Del>
         </ButDelete>
       </ButtonWrap>
     </BodyModal>
