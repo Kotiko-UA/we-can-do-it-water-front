@@ -81,7 +81,7 @@ export const DailyNormaModal = ({ close }) => {
       <div>
         <TextWrap>
           <p>
-            For woman: <Formula>V=(M*0,03) + (T*0,4)</Formula>
+            For girl: <Formula>V=(M*0,03) + (T*0,4)</Formula>
           </p>
           <p>
             For man: <Formula>V=(M*0,04) + (T*0,6)</Formula>
