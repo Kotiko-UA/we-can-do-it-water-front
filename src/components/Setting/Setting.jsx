@@ -202,7 +202,7 @@ export const Setting = ({ close }) => {
               <PasswordContainer>
                 <Text>Password</Text>
 
-                <PasswordLabel>Outdated password:</PasswordLabel>
+                <PasswordLabel>Сurrent password:</PasswordLabel>
                 <PasswordInputWrapper>
                   <PasswordInputContainer>
                     <PasswordInputStyle
