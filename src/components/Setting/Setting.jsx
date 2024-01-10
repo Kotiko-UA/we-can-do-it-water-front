@@ -25,7 +25,7 @@ import {
   PasswordInputStyle,
   EyeActive,
   EyeSlash,
-  PasswordInputWrapper
+  PasswordInputWrapper,
 } from './Setting.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik } from 'formik';
@@ -47,9 +47,14 @@ const SettingFormSchema = Yup.object().shape({
   newPassword: Yup.string()
     .min(8, 'Too short! At least 8')
     .max(64, 'Too long! Less then 64')
-    .oneOf([Yup.ref('repeatPassword'), null], 'New password must match repeated password'),
-  repeatPassword: Yup.string()
-    .oneOf([Yup.ref('newPassword'), null], 'New password must match repeated password')
+    .oneOf(
+      [Yup.ref('repeatPassword'), null],
+      'New password must match repeated password'
+    ),
+  repeatPassword: Yup.string().oneOf(
+    [Yup.ref('newPassword'), null],
+    'New password must match repeated password'
+  ),
 });
 
 export const Setting = ({ close }) => {
@@ -147,8 +152,9 @@ export const Setting = ({ close }) => {
                     onChange={handleChange}
                     type="radio"
                     name="gender"
+                    id="female"
                   />
-                  <GenderLabel className="gender-label" htmlFor="girl">
+                  <GenderLabel className="gender-label" htmlFor="female">
                     Woman
                   </GenderLabel>
                   <GenderRadio
@@ -156,26 +162,27 @@ export const Setting = ({ close }) => {
                     onChange={handleChange}
                     type="radio"
                     name="gender"
+                    id="male"
                   />
-                  <GenderLabel htmlFor="man">Man</GenderLabel>
+                  <GenderLabel htmlFor="male">Man</GenderLabel>
                 </div>
                 <DataContainer>
                   <DataLabel className="gender-label" htmlFor="name">
                     Your name
                   </DataLabel>
-                    <CommonInput
-                      id="name"
-                      type="text"
-                      name="name"
-                      placeholder="Name"
-                      maxLength={32}
-                      style={
-                        errors.name && touched.name
-                          ? { borderColor: '#EF5050', color: '#EF5050' }
-                          : null
-                      } 
-                    />
-                    <ErrorMsg name="name" component="div" />
+                  <CommonInput
+                    id="name"
+                    type="text"
+                    name="name"
+                    placeholder="Name"
+                    maxLength={32}
+                    style={
+                      errors.name && touched.name
+                        ? { borderColor: '#EF5050', color: '#EF5050' }
+                        : null
+                    }
+                  />
+                  <ErrorMsg name="name" component="div" />
 
                   <DataLabel htmlFor="email">E-mail</DataLabel>
                   <CommonInput
@@ -196,82 +203,86 @@ export const Setting = ({ close }) => {
                 <Text>Password</Text>
 
                 <PasswordLabel>Outdated password:</PasswordLabel>
-                    <PasswordInputWrapper>
-                        <PasswordInputContainer>
-                            <PasswordInputStyle
-                              value={values.password}
-                              onChange={handleChange}
-                              name="password"
-                              type={visiblePassword ? 'text' : 'password'}
-                              autoComplete="on"
-                              placeholder="Password"
-                              style={
-                                errors.password && touched.password
-                                  ? { borderColor: '#EF5050', color: '#EF5050' }
-                                  : null
-                              }
-                            />
-                            <span onClick={() => setVisiblePassword(!visiblePassword)}>
-                              {visiblePassword ? <EyeActive /> : <EyeSlash />}
-                            </span>
-                        </PasswordInputContainer>
-                        <ErrorMsg name="password" component="div" />
-                    </PasswordInputWrapper>
-                
+                <PasswordInputWrapper>
+                  <PasswordInputContainer>
+                    <PasswordInputStyle
+                      value={values.password}
+                      onChange={handleChange}
+                      name="password"
+                      type={visiblePassword ? 'text' : 'password'}
+                      autoComplete="on"
+                      placeholder="Password"
+                      style={
+                        errors.password && touched.password
+                          ? { borderColor: '#EF5050', color: '#EF5050' }
+                          : null
+                      }
+                    />
+                    <span onClick={() => setVisiblePassword(!visiblePassword)}>
+                      {visiblePassword ? <EyeActive /> : <EyeSlash />}
+                    </span>
+                  </PasswordInputContainer>
+                  <ErrorMsg name="password" component="div" />
+                </PasswordInputWrapper>
 
                 <PasswordLabel>New Password:</PasswordLabel>
-                    <PasswordInputWrapper>
-                          <PasswordInputContainer>
-                              <PasswordInputStyle
-                                value={values.newPassword}
-                                onChange={handleChange}
-                                name="newPassword"
-                                type={visiblePassword ? 'text' : 'password'}
-                                autoComplete="on"
-                                placeholder="Password"
-                                style={
-                                  errors.newPassword && touched.newPassword
-                                    ? { borderColor: '#EF5050', color: '#EF5050' }
-                                    : null
-                                }
-                              />
-                              <span onClick={() => setVisiblePassword(!visiblePassword)}>
-                                {visiblePassword ? <EyeActive /> : <EyeSlash />}
-                              </span>
-                          </PasswordInputContainer>
-                        <ErrorMsg name="newPassword" component="div" />
-                    </PasswordInputWrapper>
-                
+                <PasswordInputWrapper>
+                  <PasswordInputContainer>
+                    <PasswordInputStyle
+                      value={values.newPassword}
+                      onChange={handleChange}
+                      name="newPassword"
+                      type={visiblePassword ? 'text' : 'password'}
+                      autoComplete="on"
+                      placeholder="Password"
+                      style={
+                        errors.newPassword && touched.newPassword
+                          ? { borderColor: '#EF5050', color: '#EF5050' }
+                          : null
+                      }
+                    />
+                    <span onClick={() => setVisiblePassword(!visiblePassword)}>
+                      {visiblePassword ? <EyeActive /> : <EyeSlash />}
+                    </span>
+                  </PasswordInputContainer>
+                  <ErrorMsg name="newPassword" component="div" />
+                </PasswordInputWrapper>
+
                 <PasswordLabel>Repeat new password:</PasswordLabel>
-                    <PasswordInputWrapper>
-                        <PasswordInputContainer>
-                                <PasswordInputStyle
-                                  value={values.repeatPassword}
-                                  onChange={handleChange}
-                                  name="repeatPassword"
-                                  type={visiblePassword ? 'text' : 'password'}
-                                  autoComplete="on"
-                                  placeholder="Password"
-                                  style={
-                                    errors.repeatPassword && touched.repeatPassword
-                                      ? { borderColor: '#EF5050', color: '#EF5050' }
-                                      : null
-                                  }
-                                />
-                          <span onClick={() => setVisiblePassword(!visiblePassword)}>
-                            {visiblePassword ? <EyeActive /> : <EyeSlash />}
-                          </span>
-                        </PasswordInputContainer>
-                    <ErrorMsg name="repeatPassword" component="div" />
-                    </PasswordInputWrapper>
-                
+                <PasswordInputWrapper>
+                  <PasswordInputContainer>
+                    <PasswordInputStyle
+                      value={values.repeatPassword}
+                      onChange={handleChange}
+                      name="repeatPassword"
+                      type={visiblePassword ? 'text' : 'password'}
+                      autoComplete="on"
+                      placeholder="Password"
+                      style={
+                        errors.repeatPassword && touched.repeatPassword
+                          ? { borderColor: '#EF5050', color: '#EF5050' }
+                          : null
+                      }
+                    />
+                    <span onClick={() => setVisiblePassword(!visiblePassword)}>
+                      {visiblePassword ? <EyeActive /> : <EyeSlash />}
+                    </span>
+                  </PasswordInputContainer>
+                  <ErrorMsg name="repeatPassword" component="div" />
+                </PasswordInputWrapper>
               </PasswordContainer>
             </CommonInfoContainer>
-            <SaveButton disabled={!values.password &&
-              values.name === initialState.name &&
-              values.email === initialState.email &&
-              values.gender === initialState.gender &&
-              !values.newPassword && !values.repeatPassword} type="submit">
+            <SaveButton
+              disabled={
+                !values.password &&
+                values.name === initialState.name &&
+                values.email === initialState.email &&
+                values.gender === initialState.gender &&
+                !values.newPassword &&
+                !values.repeatPassword
+              }
+              type="submit"
+            >
               Save
             </SaveButton>
           </MainContainer>
