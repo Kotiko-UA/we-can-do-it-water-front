@@ -12,18 +12,13 @@ export const Bootle = styled(SingUpSVG)`
 
   @media (min-width: 768px) {
     width: 736px;
-    height: 548px;
+
     position: relative;
     bottom: 400px;
     left: 200px;
   }
 `;
 export const Container = styled.div`
-  /* min-width: 768px; */
-
-  /* margin-top: 24px;
-  padding-left: 24px;
-  padding-right: 24px; */
   outline: 1px solid red;
   width: 100%;
   padding-left: 20px;

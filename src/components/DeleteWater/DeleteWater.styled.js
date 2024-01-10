@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const BodyModal = styled.div`
-  /* padding: 10px 12px; */
   flex-direction: column;
   justify-content: center;
   align-items: center;

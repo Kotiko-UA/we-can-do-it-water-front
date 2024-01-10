@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import HeaderMarkup from 'components/HeaderMarkup/HeaderMarkup.jsx';
-// import { Suspense } from 'react';
+
 import { Header } from './Layout.styled.js';
 import { Suspense, useState } from 'react';
 import { Paskal } from 'components/pascal/paskal.jsx';
@@ -50,8 +50,8 @@ export const Layout = () => {
         />
       </Header>
       <main>
-      <Suspense> 
-        <Outlet />
+        <Suspense>
+          <Outlet />
         </Suspense>
         {isOpen && (
           <Modalochka toggleModal={toggleModal}>
@@ -59,9 +59,7 @@ export const Layout = () => {
             {logOutModal && <LogOut close={close} />}
           </Modalochka>
         )}
-        
 
-        
         {modal && <TeamModal onClick={onClickPaskal} />}
         <Paskal onClick={onClickPaskal} />
         {(isLoading || isLoadingWater) && <Loader />}

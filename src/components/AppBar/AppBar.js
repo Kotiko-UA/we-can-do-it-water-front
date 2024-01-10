@@ -13,5 +13,3 @@ export const AppBar = () => {
     </header>
   );
 };
-
-//<UserMenu />
