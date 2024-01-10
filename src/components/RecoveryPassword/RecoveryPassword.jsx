@@ -12,8 +12,6 @@ import {
 } from './RecoveryPassword.styled';
 
 export const RecoveryPassword = () => {
-  // const [email, setEmail] = useState();
-
   const [type, setType] = useState('password');
   const [icon, setIcon] = useState(
     <EyeSlash alt="eye_slash">EyeSlash</EyeSlash>
@@ -29,19 +27,12 @@ export const RecoveryPassword = () => {
     }
   };
 
-  const handlEmail = event => {
-    // setEmail(event.target.value);
-  };
+  const handlEmail = event => {};
 
   const submit = event => {
     event.preventDefault();
     const form = event.currentTarget;
-    // const { email } = form.elements;
-    // dispatch(
-    //   register({
-    //     email: email.value,
-    //   })
-    // );
+
     form.reset();
   };
   return (

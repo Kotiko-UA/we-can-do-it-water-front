@@ -17,7 +17,6 @@ export const CalendarModalStyled = styled(motion.div)`
   z-index: 2;
 
   @media screen and (max-width: 767px) {
-    /* left: 50%; */
     left: ${props => -7 - props.$deltaNum}px;
     transform: translateX(-50%);
   }
