@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/we-can-do-it-water-front/static/css/main.65385844.css",
-    "main.js": "/we-can-do-it-water-front/static/js/main.b4e1c338.js",
+    "main.js": "/we-can-do-it-water-front/static/js/main.4d464a4b.js",
     "static/css/533.5b56f33e.chunk.css": "/we-can-do-it-water-front/static/css/533.5b56f33e.chunk.css",
     "static/js/533.31d1f9cf.chunk.js": "/we-can-do-it-water-front/static/js/533.31d1f9cf.chunk.js",
     "static/js/408.4547836b.chunk.js": "/we-can-do-it-water-front/static/js/408.4547836b.chunk.js",
@@ -76,7 +76,7 @@
     "static/media/close.svg": "/we-can-do-it-water-front/static/media/close.1d558c839aa1ddbb6b8f1bdd572dd83f.svg",
     "static/media/mark-list.svg": "/we-can-do-it-water-front/static/media/mark-list.fddb539b56ea3011c50a91ee6d888f28.svg",
     "main.65385844.css.map": "/we-can-do-it-water-front/static/css/main.65385844.css.map",
-    "main.b4e1c338.js.map": "/we-can-do-it-water-front/static/js/main.b4e1c338.js.map",
+    "main.4d464a4b.js.map": "/we-can-do-it-water-front/static/js/main.4d464a4b.js.map",
     "533.5b56f33e.chunk.css.map": "/we-can-do-it-water-front/static/css/533.5b56f33e.chunk.css.map",
     "533.31d1f9cf.chunk.js.map": "/we-can-do-it-water-front/static/js/533.31d1f9cf.chunk.js.map",
     "408.4547836b.chunk.js.map": "/we-can-do-it-water-front/static/js/408.4547836b.chunk.js.map",
@@ -89,6 +89,6 @@
   },
   "entrypoints": [
     "static/css/main.65385844.css",
-    "static/js/main.b4e1c338.js"
+    "static/js/main.4d464a4b.js"
   ]
 }
