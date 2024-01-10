@@ -24,7 +24,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 
 import { addDailyNorma } from 'components/redux/auth/operations';
-import {selectGender } from 'components/redux/auth/selectors';
+import { selectGender } from 'components/redux/auth/selectors';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 
@@ -50,7 +50,6 @@ export const DailyNormaModal = ({ close }) => {
   const dispatch = useDispatch();
   const gender = useSelector(selectGender);
 
-
   const [weightEntered, setWeightEntered] = useState(false);
   const [timeEntered, setTimeEntered] = useState(false);
   const [drinkEntered, setDrinkEntered] = useState(false);
@@ -62,11 +61,10 @@ export const DailyNormaModal = ({ close }) => {
         actions.resetForm();
         close();
       })
-      .catch((error) => {
+      .catch(error => {
         toast.error('Oops, something went wrong. Please try again');
       });
   };
-  
 
   const dailyNormaCounter = values =>
     values.picked === 'female'
@@ -83,7 +81,7 @@ export const DailyNormaModal = ({ close }) => {
       <div>
         <TextWrap>
           <p>
-            For girl: <Formula>V=(M*0,03) + (T*0,4)</Formula>
+            For woman: <Formula>V=(M*0,03) + (T*0,4)</Formula>
           </p>
           <p>
             For man: <Formula>V=(M*0,04) + (T*0,6)</Formula>
@@ -113,7 +111,7 @@ export const DailyNormaModal = ({ close }) => {
               <RadioWrap role="group" aria-labelledby="my-radio-group">
                 <RadioBtnLabel>
                   <RadioBtnField type="radio" name="picked" value="female" />
-                  For girl
+                  For woman
                 </RadioBtnLabel>
                 <RadioBtnLabel>
                   <RadioBtnField type="radio" name="picked" value="male" />
