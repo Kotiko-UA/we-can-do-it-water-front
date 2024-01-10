@@ -12,7 +12,7 @@ import {
 const initialState = {
   user: { name: '', email: '', gender: '', dailyNorma: 0 },
   avatarURL: '',
-  token: '',
+  token: null,
   isLoggedIn: false,
   isRefreshing: false,
   isLoading: false,
@@ -69,7 +69,7 @@ const authSlice = createSlice({
       })
       .addCase(logOut.fulfilled, (state, action) => {
         state.user = { name: '', email: '', gender: '', dailyNorma: 0 };
-        state.token = '';
+        state.token = null;
         state.isLoggedIn = false;
         state.avatarURL = '';
       })
@@ -87,11 +87,14 @@ const authSlice = createSlice({
 
       .addCase(updateAvatar.pending, (state, action) => {
         state.isRefreshing = true;
+        state.isLoading = true;
       })
       .addCase(updateAvatar.fulfilled, (state, action) => {
         state.avatarURL = action.payload.avatarURL;
+        state.isLoading = false;
       })
       .addCase(updateAvatar.rejected, (state, action) => {
+        state.isLoading = false;
         handleRejected(state, action);
       })
 

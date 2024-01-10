@@ -47,7 +47,7 @@ const Calendar = () => {
         const monthDataResp = resp.data;
         setMonthData(monthDataResp);
       } catch (error) {
-        console.error(error);
+        if (error.code !== 'ERR_CANCELED') console.error(error);
       }
     };
 
