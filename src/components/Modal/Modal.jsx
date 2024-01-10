@@ -3,20 +3,6 @@ import { createPortal } from 'react-dom';
 import { OverLay, ButtonClose, Modal, Svg } from './Modal.styled';
 import { useEffect } from 'react';
 
-// 1. В компоненте где хотите рендерить модалку обьвляете локальній стейт
-// const [isOpen, setIsOpen] = useState(false);
-// и функцию:
-// const toggleModal = () => {
-//   setIsOpen(prevstate => !prevstate);
-// };
-// 2. рендер модалки по условию (пропсы  title= заголовок модалки, и тогл)
-//  { isOpen && <Modalochka toggleModal={toggleModal} title={'add'}>
-// <сдесь компонент чилдрен>
-// </Modalochka >;
-// 3. конопка открітия у каждого своя . открітие пропс тогл
-// 4. стили прописаны для модалки для всех єкранов. Стили для компонента-чилдрен у каждого свои.
-//  }
-
 const modalElement = document.getElementById('portal');
 
 export const Modalochka = ({ children, title, toggleModal }) => {

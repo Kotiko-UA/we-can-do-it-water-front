@@ -1,15 +1,21 @@
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout/Layout.jsx';
 import { RestrictedRoute } from './RestrictedRoute';
-import ForgetPasswordPage from '../Pages/ForgetPasswordPage/ForgetPasswordPage.js';
-import RecoveryPasswordPage from 'Pages/RecoveryPage/RecoveryPage.jsx';
-import SignInPage from '../Pages/SignInPage/SignInPage';
-import SignUpPage from '../Pages/SignUpPage/SignUpPage.jsx';
 import { Toaster } from 'react-hot-toast';
-import HomePage from 'Pages/HomePage/HomePage.jsx';
 import { useDispatch } from 'react-redux';
-import { useEffect /*lazy*/ } from 'react';
+import { useEffect, lazy } from 'react';
 import { refreshUser } from './redux/auth/operations.js';
+
+
+const HomePage = lazy(() => import("../Pages/HomePage/HomePage.jsx"));
+const SignUpPage = lazy(() => import("../Pages/SignUpPage/SignUpPage.jsx"));
+const SignInPage = lazy(() => import("../Pages/SignInPage/SignInPage.jsx"));
+
+const ForgetPasswordPage = lazy(() => import("../Pages/ForgetPasswordPage/ForgetPasswordPage.js"));
+const RecoveryPasswordPage = lazy(() => import("../Pages/RecoveryPage/RecoveryPage.jsx"));
+
+
+
 
 export const App = () => {
   const dispatch = useDispatch();

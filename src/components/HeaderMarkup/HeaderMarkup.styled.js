@@ -7,7 +7,6 @@ import { ReactComponent as Arrow } from '../../icons/arrow.svg';
 import { NavLink } from 'react-router-dom';
 
 export const Container = styled.div`
- 
   padding-left: 20px;
   padding-right: 20px;
   display: flex;
@@ -15,14 +14,7 @@ export const Container = styled.div`
   margin-left: auto;
   margin-right: auto;
 
-  @media (min-width: 768px) {
-    /* width: 704px; */
-    /* padding-left: 32px;
-    padding-right: 32px; */
-  }
-
   @media (min-width: 1440px) {
-    /* width: 1216px; */
     padding-left: 112px;
     padding-right: 112px;
   }
@@ -55,12 +47,11 @@ export const LogoSvg = styled(Logo)`
 `;
 
 export const Nav = styled.nav`
- width: 280px;
+  width: 280px;
   list-style: none;
   display: flex;
   align-items: center;
   justify-content: space-between;
-
 
   display: flex;
   flex-direction: row;
@@ -68,29 +59,16 @@ export const Nav = styled.nav`
   justify-content: space-between;
   @media (min-width: 768px) {
     width: 704px;
-
   }
 
   @media (min-width: 1440px) {
     width: 1216px;
   }
-
 `;
 
 export const RightNavWrapper = styled.div`
   justify-content: right;
   position: relative;
-  /* &:hover .navMenu {
-    transform: translateY(0);
-    opacity: 1;
-    visibility: visible;
-  } */
-
-  /* &:active .open {
-    transform: translateY(0);
-    opacity: 1;
-    visibility: visible;
-  } */
 `;
 export const StyledLink = styled(NavLink)`
   font-size: 18px;

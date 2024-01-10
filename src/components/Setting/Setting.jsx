@@ -129,7 +129,7 @@ export const Setting = ({ close }) => {
                     type="file"
                     name="file"
                     id="file"
-                    accept="image/*"
+                    accept="image"
                     onChange={evt => changeAvatar(evt)}
                   />
                   <Label htmlFor="file">

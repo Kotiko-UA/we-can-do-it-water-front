@@ -10,12 +10,6 @@ import backgroundMainPageDesc from '../../icons/backgroundMainPageDesc.svg';
 import { ReactComponent as PointSvg } from '../../icons/mark-list.svg';
 
 export const Container = styled.div`
-  /* min-width: 768px; */
-
-  /* margin-top: 24px;
-  padding-left: 24px;
-  padding-right: 24px; */
-
   width: 100%;
   padding-left: 20px;
   padding-right: 20px;
@@ -113,7 +107,6 @@ export const ListTitle = styled.p`
   margin-bottom: 12px;
 
   @media (min-width: 1440px) {
-    /* padding-top: 31px; */
   }
 `;
 
@@ -158,17 +151,14 @@ export const Screw = styled(ScrewSvg)`
   height: 40px;
 `;
 
-export const Point = styled(PointSvg)`
-  /* width: 24px;
-  height: 24px; */
-`;
+export const Point = styled(PointSvg)``;
 
 export const Text = styled.p`
   color: ${props => props.theme.primaryBlack};
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  line-height: 20px; /* 125% */
+  line-height: 20px;
 `;
 
 export const Button = styled.button`
@@ -212,7 +202,7 @@ export const ArgumentsContainer = styled.div`
   display: flex;
   padding: 24px 16px;
   flex-direction: column;
-  /* align-items: flex-start; */
+
   gap: 12px;
   height: 368px;
   width: 280px;
