@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: fit-content;
+  width: 100%;
   h2 {
     color: #2f2f2f;
     font-size: 24px;
@@ -11,6 +11,7 @@ export const Container = styled.div`
     @media screen and (min-width: 768px) {
       font-size: 26px;
       line-height: calc(32 / 26);
+      width: fit-content;
     }
 
     @media screen and (min-width: 1440px) {
@@ -47,6 +48,7 @@ export const Viewport = styled.div`
 
 export const TableStyled = styled.table`
   border-collapse: collapse;
+  width: 100%;
   @media screen and (min-width: 768px) {
     width: 656px;
   }
