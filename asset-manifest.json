@@ -1,8 +1,16 @@
 {
   "files": {
-    "main.css": "/we-can-do-it-water-front/static/css/main.c0163d6a.css",
-    "main.js": "/we-can-do-it-water-front/static/js/main.5dde112c.js",
+    "main.css": "/we-can-do-it-water-front/static/css/main.65385844.css",
+    "main.js": "/we-can-do-it-water-front/static/js/main.f89b204f.js",
+    "static/css/533.5b56f33e.chunk.css": "/we-can-do-it-water-front/static/css/533.5b56f33e.chunk.css",
+    "static/js/533.69692571.chunk.js": "/we-can-do-it-water-front/static/js/533.69692571.chunk.js",
+    "static/js/408.4547836b.chunk.js": "/we-can-do-it-water-front/static/js/408.4547836b.chunk.js",
+    "static/js/528.73e47c85.chunk.js": "/we-can-do-it-water-front/static/js/528.73e47c85.chunk.js",
+    "static/js/96.d21ef7c2.chunk.js": "/we-can-do-it-water-front/static/js/96.d21ef7c2.chunk.js",
+    "static/js/421.fd1a50b0.chunk.js": "/we-can-do-it-water-front/static/js/421.fd1a50b0.chunk.js",
     "static/js/845.822000a3.chunk.js": "/we-can-do-it-water-front/static/js/845.822000a3.chunk.js",
+    "static/js/301.ed22d916.chunk.js": "/we-can-do-it-water-front/static/js/301.ed22d916.chunk.js",
+    "static/js/250.9f649b65.chunk.js": "/we-can-do-it-water-front/static/js/250.9f649b65.chunk.js",
     "static/media/Roboto-Medium.woff": "/we-can-do-it-water-front/static/media/Roboto-Medium.b14ca2d2b289afceb0b0.woff",
     "static/media/Roboto-Bold.woff": "/we-can-do-it-water-front/static/media/Roboto-Bold.3f2cbde6b72e8d05669f.woff",
     "static/media/Roboto-Regular.woff": "/we-can-do-it-water-front/static/media/Roboto-Regular.31012f9b3e3da44f87e8.woff",
@@ -67,12 +75,20 @@
     "static/media/minus-small.svg": "/we-can-do-it-water-front/static/media/minus-small.a8977711065e19426c70cf050ec4250a.svg",
     "static/media/close.svg": "/we-can-do-it-water-front/static/media/close.1d558c839aa1ddbb6b8f1bdd572dd83f.svg",
     "static/media/mark-list.svg": "/we-can-do-it-water-front/static/media/mark-list.fddb539b56ea3011c50a91ee6d888f28.svg",
-    "main.c0163d6a.css.map": "/we-can-do-it-water-front/static/css/main.c0163d6a.css.map",
-    "main.5dde112c.js.map": "/we-can-do-it-water-front/static/js/main.5dde112c.js.map",
-    "845.822000a3.chunk.js.map": "/we-can-do-it-water-front/static/js/845.822000a3.chunk.js.map"
+    "main.65385844.css.map": "/we-can-do-it-water-front/static/css/main.65385844.css.map",
+    "main.f89b204f.js.map": "/we-can-do-it-water-front/static/js/main.f89b204f.js.map",
+    "533.5b56f33e.chunk.css.map": "/we-can-do-it-water-front/static/css/533.5b56f33e.chunk.css.map",
+    "533.69692571.chunk.js.map": "/we-can-do-it-water-front/static/js/533.69692571.chunk.js.map",
+    "408.4547836b.chunk.js.map": "/we-can-do-it-water-front/static/js/408.4547836b.chunk.js.map",
+    "528.73e47c85.chunk.js.map": "/we-can-do-it-water-front/static/js/528.73e47c85.chunk.js.map",
+    "96.d21ef7c2.chunk.js.map": "/we-can-do-it-water-front/static/js/96.d21ef7c2.chunk.js.map",
+    "421.fd1a50b0.chunk.js.map": "/we-can-do-it-water-front/static/js/421.fd1a50b0.chunk.js.map",
+    "845.822000a3.chunk.js.map": "/we-can-do-it-water-front/static/js/845.822000a3.chunk.js.map",
+    "301.ed22d916.chunk.js.map": "/we-can-do-it-water-front/static/js/301.ed22d916.chunk.js.map",
+    "250.9f649b65.chunk.js.map": "/we-can-do-it-water-front/static/js/250.9f649b65.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c0163d6a.css",
-    "static/js/main.5dde112c.js"
+    "static/css/main.65385844.css",
+    "static/js/main.f89b204f.js"
   ]
 }
