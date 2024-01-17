@@ -17,11 +17,27 @@ import {
   HomeSection,
   BenefitsContainer,
 } from './HomeDefaultPage.styled';
+import { useEffect } from 'react';
+import axios from 'axios';
+
+const instanceWakeUp = axios.create();
+instanceWakeUp.defaults.baseURL = 'https://water-p2oh.onrender.com/api';
 const HomeDefaultPage = () => {
   const navigate = useNavigate();
   const handleClick = () => {
     navigate('/signup');
   };
+  useEffect(() => {
+    const backEndWakeUp = async () => {
+      try {
+        await instanceWakeUp.get(`/waternotes/`);
+      } catch (error) {
+        console.log('backend is not sleep now xD');
+      }
+    };
+
+    backEndWakeUp();
+  }, []);
 
   return (
     <HomeSection>
