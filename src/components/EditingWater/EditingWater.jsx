@@ -75,7 +75,6 @@ export const EditingWater = ({ editingId, close }) => {
     const amount = values.water;
 
     const updatedWater = { id, amount, time };
-    console.log(updatedWater);
     dispatch(updateWater(updatedWater));
 
     actions.resetForm();
